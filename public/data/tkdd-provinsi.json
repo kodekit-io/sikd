@@ -1,0 +1,112 @@
+{
+    "data": [
+		{
+			"Kota": "Kab. Bandung",
+			"Value": 66.76
+		},
+		{
+			"Kota": "Kab. Bandung Barat",
+			"Value": 97.94
+		},
+		{
+			"Kota": "Kab. Bekasi",
+			"Value": 170.67
+		},
+		{
+			"Kota": "Kab. Bogor",
+			"Value": 231.39
+		},
+		{
+			"Kota": "Kab. Ciamis",
+			"Value": 274.72
+		},
+		{
+			"Kota": "Kab. Cianjur",
+			"Value": 334.74
+		},
+		{
+			"Kota": "Kab. Cirebon",
+			"Value": 389.32
+		},
+		{
+			"Kota": "Kab. Garut",
+			"Value": 432.92
+		},
+		{
+			"Kota": "Kab. Indramayu",
+			"Value": 511.21
+		},
+		{
+			"Kota": "Kab. Karawang",
+			"Value": 553.93
+		},
+		{
+			"Kota": "Kab. Kuningan",
+			"Value": 605.88
+		},
+		{
+			"Kota": "Kab. Majalengka",
+			"Value": 622.92
+		},
+		{
+			"Kota": "Kab. Pangandaran",
+			"Value": 100.23
+		},
+		{
+			"Kota": "Kab. Purwakarta",
+			"Value": 133.05
+		},
+		{
+			"Kota": "Kab. Subang",
+			"Value": 197.49
+		},
+		{
+			"Kota": "Kab. Sukabumi",
+			"Value": 268.86
+		},
+		{
+			"Kota": "Kab. Sumedang",
+			"Value": 328.7
+		},
+		{
+			"Kota": "Kab. Tasikmalaya",
+			"Value": 384.33
+		},
+		{
+			"Kota": "Kota Bandung",
+			"Value": 446.72
+		},
+		{
+			"Kota": "Kota Banjar",
+			"Value": 491.64
+		},
+		{
+			"Kota": "Kota Bekasi",
+			"Value": 499.55
+		},
+		{
+			"Kota": "Kota Bogor",
+			"Value": 76.76
+		},
+		{
+			"Kota": "Kota Cimahi",
+			"Value": 107.94
+		},
+		{
+			"Kota": "Kota Cirebon",
+			"Value": 180.67
+		},
+		{
+			"Kota": "Kota Depok",
+			"Value": 241.39
+		},
+		{
+			"Kota": "Kota Sukabumi",
+			"Value": 284.72
+		},
+		{
+			"Kota": "Kota Tasikmalaya",
+			"Value": 344.74
+		}
+	]
+}

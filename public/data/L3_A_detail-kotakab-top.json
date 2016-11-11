@@ -1,0 +1,37 @@
+{
+	"detail-kotakab-top": [{
+		"id": 1,
+		"name": "Map",
+		"map-info": [{
+			"id": "01",
+			"name": "Kab. Badung",
+			"image": "http://wisata.balitoursclub.com/wp-content/uploads/2012/09/Peta-Badung.jpg",
+			"detail": [{
+				"title": ["Populasi","Total","Kepadatan","Kecamatan","Kelurahan"],
+				"value": ["2010","543332","1293,37 jiwa/km2",6,63]
+			}]
+		}]
+	}, {
+		"id": 2,
+		"name": "TKDD",
+		"target": 2673,
+		"realisasi": 2058,
+		"percentage": "77%"
+	}, {
+		"id": 3,
+		"name": "APBD",
+		"target": 2572,
+		"realisasi": 1723,
+		"percentage": "67%"
+	}, {
+		"id": 4,
+		"name": "Penyampaian Data",
+		"target": 12,
+		"realisasi": 7,
+		"percentage": "58%"
+	}, {
+		"id": 5,
+		"name": "Peringkat",
+		"value": "BB+"
+	}]
+}

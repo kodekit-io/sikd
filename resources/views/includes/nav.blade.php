@@ -23,7 +23,7 @@
 					</a>
 					<ul id="sikd-account-dropdown" class="dropdown-content transparent z-depth-0">
 						<li><a href="#!"><i class="uk-icon-cog uk-margin-small-right"></i> User Setting</a></li>
-						<li><a href="./"><i class="uk-icon-power-off uk-margin-small-right"></i> Logout</a></li>
+						<li><a href="{!! url('logout') !!}"><i class="uk-icon-power-off uk-margin-small-right"></i> Logout</a></li>
 					</ul>
 				</li>
 			</ul>

@@ -5,13 +5,13 @@
 	<div class="uk-vertical-align-middle uk-width-1-1">
 		<div class="uk-container uk-container-center uk-width-1-3">
 			<div class="card-panel">
-				<form class="col s12" action="{!! url('/') !!}">
+				<form class="col s12" action="{!! url('/login') !!}" method="post">
 					<div class='row center'>
 						<img class="sikd-logo uk-margin-top" src="assets/img/logo.png">
 					</div>
 					<div class="row uk-margin-remove">
 						<div class='input-field col s12'>
-							<input class='validate' type='email' name='email' id='email' />
+							<input class='validate' type='email' name='username' id='email' />
 							<label for='email'>Enter your email</label>
 						</div>
 					</div>

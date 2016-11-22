@@ -1,4 +1,4 @@
-<footer class="uk-width-1-1 indigo white-text">
+<footer class="uk-width-1-1 sikd-blue-bg white-text">
     <div class="uk-container uk-container-center">
         <div class="uk-align-left uk-margin-remove">
             Copyright &copy; <?php echo date('Y'); ?> - DJPK Kementerian Keuangan RI

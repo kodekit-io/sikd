@@ -3,19 +3,21 @@
 	<link rel="stylesheet" href="{!! asset('assets/css/datatables/dataTables.materialize.css') !!}" />
 @endsection
 @section('content')
-<main class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
-	<ul class="uk-grid uk-grid-medium uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
+<main class="uk-container uk-container-center">
+	<ul class="uk-grid uk-grid-small uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
 		<li class="uk-width-1-1">
-			<div class="card-panel z-depth-3 soft">
-				<h2 class="card-title">
-					DATA UMUM KAB. BADUNG
-				</h2>
-				<a href="{!! url('/') !!}" class="btn-floating waves-effect waves-light right z-depth-0 indigo" data-uk-tooltip title="Ke Beranda"><i class="material-icons">home</i></a>
-				<a href="javascript: history.go(-1)" class="btn-floating waves-effect waves-light right z-depth-0 orange uk-margin-small-right" data-uk-tooltip title="Halaman Sebelumnya"><i class="material-icons">arrow_back</i></a>
+			<div class="card uk-margin-remove">
+				<div class="card-action card-toolbar">
+					<h2 class="card-title uk-margin-remove">
+						DATA UMUM KAB. BADUNG
+					</h2>
+					<a href="{!! url('/') !!}" class="btn-floating waves-effect waves-light right z-depth-0 indigo" data-uk-tooltip title="Ke Beranda"><i class="material-icons">home</i></a>
+					<a href="javascript: history.go(-1)" class="btn-floating waves-effect waves-light right z-depth-0 orange uk-margin-small-right" data-uk-tooltip title="Halaman Sebelumnya"><i class="material-icons">arrow_back</i></a>
+				</div>
 			</div>
 		</li>
 		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable bgmap" style="background-image:url(http://wisata.balitoursclub.com/wp-content/uploads/2012/09/Peta-Badung.jpg)">
+			<div class="card-panel bgmap" style="background-image:url(http://wisata.balitoursclub.com/wp-content/uploads/2012/09/Peta-Badung.jpg)">
 				<div class="note">
 					Population (2010)<br>
 					 • Total: 543332<br>
@@ -26,40 +28,40 @@
 			</div>
 		</li>
 		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
+			<div class="card-panel">
 				<div class="skid-gauge-wrap">
 					<div id="g1" class="skid-gauge"></div>
 				</div>
 			</div>
 		</li>
 		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
+			<div class="card-panel">
 				<div class="skid-gauge-wrap">
 					<div id="g2" class="skid-gauge"></div>
 				</div>
 			</div>
 		</li>
 		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
+			<div class="card-panel">
 				<div class="skid-gauge-wrap">
 					<div id="g3" class="skid-gauge"></div>
 				</div>
 			</div>
 		</li>
 		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
+			<div class="card-panel">
 				<div class="skid-gauge-wrap">
 					<div id="g4" class="skid-gauge"></div>
 				</div>
 			</div>
 		</li>
 		<li class="uk-width-1-1">
-			<div class="card-panel z-depth-3 soft hoverable">
-				<ul class="tabs uk-margin-bottom-remove">
-					<li class="tab"><a class="active" href="#tab1">Data Realisasi TKDD</a></li>
-					<li class="tab"><a href="#tab2">Data PAD</a></li>
-					<li class="tab"><a href="#tab3">Belanja Perjenis</a></li>
-					<li class="tab"><a href="#tab4">Opini LKPD</a></li>
+			<div class="card-panel">
+				<ul class="tabs uk-margin-bottom-remove" style="border-bottom: 1px solid #ddd;">
+					<li class="tab col s3"><a class="active" href="#tab1">Data Realisasi TKDD</a></li>
+					<li class="tab col s3"><a href="#tab2">Data PAD</a></li>
+					<li class="tab col s3"><a href="#tab3">Belanja Perjenis</a></li>
+					<li class="tab col s3"><a href="#tab4">Opini LKPD</a></li>
 				</ul>
 				<div id="tab1" class="col s12">
 					Tabel Realisasi TKDD

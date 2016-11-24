@@ -8,6 +8,7 @@
 @import url('components/slideshow.min.css');
 @import url('components/slidenav.min.css');
 @import url('components/dotnav.min.css');
+
 body {
     font: 16px/1.5 'Source Sans Pro', sans-serif;
     background-color: rgba(0, 0, 0, 0.08);
@@ -30,7 +31,7 @@ footer .uk-subnav>*>* {
 }
 
 main {
-    min-height: calc(100vh - 56px);
+    min-height: calc(100vh - 121px);
 }
 
 main.sikd-login {
@@ -53,7 +54,7 @@ main.sikd-login {
 }
 
 .input-field label {
-    color: rgba(17, 74, 134, 1);
+    color: rgba(0, 0, 0, 0.5);
 }
 .input-field input[type=text]:focus+label,
 .input-field input[type=email]:focus+label,
@@ -75,7 +76,9 @@ main.sikd-login {
 .input-field .prefix.active {
     color: rgba(17, 74, 134, 1);
 }
-
+.input-field .prefix {
+	bottom: 25px;
+}
 
 /*UIKIT*/
 
@@ -284,21 +287,21 @@ nav ul a.btn-floating {
     padding-bottom: 0.5em;
 }
 
-.card-action .tabs {
+.tabs {
     margin: 0;
     padding: 0;
     background: none !important;
     height: auto !important;
 }
 
-.card-action .tabs .indicator {
+.tabs .indicator {
     background-color: rgba(17, 74, 134, 1);
     height: 2px;
     top: 0px;
     z-index: 0;
 }
 
-.card-action .tabs .tab {
+.tabs .tab {
     position: relative;
     height: auto !important;
     padding-top: 10px;
@@ -329,14 +332,6 @@ nav ul a.btn-floating {
     -moz-box-shadow: inset 0px 10px 10px -15px rgba(0, 0, 0, 0.5);
     box-shadow: inset 0px 10px 10px -15px rgba(0, 0, 0, 0.5);
 }
-
-.card-action.card-toolbar {
-    border-top: none;
-    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
     color: rgba(160, 160, 160, 0.75);
 }
@@ -344,29 +339,31 @@ nav ul a.btn-floating {
 .card .card-action a.active {
     color: rgba(17, 74, 134, 1) !important;
 }
-
 .card .card-action a {
     line-height: normal;
     font-size: 14px;
     font-weight: 700;
 }
+.card .card-toolbar {
+    border-top: none;
+    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 10px 1em;
+}
 
 .card-title {
     line-height: 36px;
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 500 !important;
     display: inline-block;
+    bottom: auto !important;
+    margin: 0;
 }
 
 .sikd-login .card-title {
-    line-height: normal;
-    font-size: 2rem;
-    font-weight: 500;
-    display: inline-block;
-    bottom: auto !important;
+    font-size: 2.2rem;
     top: 0;
     margin: 0;
-    font-family: inherit;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .sikd-login input, .sikd-login label {
@@ -577,13 +574,12 @@ nav ul a.btn-floating {
 }
 
 .sikd-map {
-    min-height: calc(100vh - 132px);
+    margin-top: calc(15px + 0.5rem);
+    min-height: calc(100vh - 156px - 1.5rem);
 }
-
 .sikd-map #map {
-    min-height: calc(100vh - 249px);
+    min-height: calc(100vh - 253px - 1.5rem);
 }
-
 .bgmap {
     background-position: center;
     background-repeat: no-repeat;

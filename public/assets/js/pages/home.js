@@ -63,7 +63,7 @@ $(document).ready(function() {
 
 					var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">'+$percentage+'</span>';
 
-					var linkdetail = './';
+					var linkdetail = './level-1';
 					var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
 							<div class="uk-width-medium-1-2"> \
 								<h5 class="sikd-chart--title sikd-blue">'+$name+'</h5> \
@@ -113,7 +113,7 @@ $(document).ready(function() {
 						//effect : effect[effectIndex],
 					});
 			        var option = {
-						color: clrs,
+						//color: clrs,
 						tooltip : {
 			                trigger: 'axis'
 			            },
@@ -162,11 +162,7 @@ $(document).ready(function() {
 					    chart.setOption(option);
 					},1800);
 
-					$(window).on('resize', function(){
-						if(chart != null && chart != undefined){
-							chart.resize();
-						}
-					});
+					window.onresize = chart.resize();
 				}
 			}
 		});

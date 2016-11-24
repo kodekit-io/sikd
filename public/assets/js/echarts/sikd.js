@@ -30,7 +30,7 @@
         ],
         "backgroundColor": "rgba(0,0,0,0)",
         "textStyle": {
-            "fontFamily": "'Montserrat', sans-serif",
+            "fontFamily": "'Source Sans Pro', sans-serif",
         },
         "title": {
             "textStyle": {

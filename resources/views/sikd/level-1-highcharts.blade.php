@@ -1,11 +1,11 @@
 @extends('layouts.default')
 
 @section('content')
-<main class="uk-container uk-container-center uk-margin-top">
-	<div class="card z-depth-3 soft hoverable sikd-map">
-		<div class="card-toolbar">
-			<h2 class="card-title">
-				Realisasi Total Penyaluran TKDD Nasional
+<main class="uk-container uk-container-center">
+	<div class="card uk-margin-top uk-margin-bottom sikd-map">
+		<div class="card-action card-toolbar">
+			<h2 class="card-title uk-margin-remove">
+				REALISASI TOTAL PENYALURAN TKDD NASIONAL
 			</h2>
 			<a href="#" data-activates="switchdata" class="dropdown-button orange z-depth-0 btn right" data-beloworigin="true" data-alignment="right">Pilih Jenis Informasi <i class="material-icons right">arrow_drop_down</i></a>
 			<!-- Dropdown Structure -->
@@ -29,17 +29,13 @@
 		<div class="card-content">
 			<div id="map" class=""></div>
 		</div>
+
 	</div>
 </main>
 @endsection
 
 @section('page-level-scripts')
-	<?php /*
 	<script src="{!! asset('assets/js/highcharts/highmaps.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/id-all.js') !!}"></script>
-	<script src="{!! asset('assets/js/pages/level-1.js') !!}"></script>
-	*/ ?>
-	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
-	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-1.js') !!}"></script>
 @endsection

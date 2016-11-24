@@ -1,169 +1,106 @@
 $(function() {
+    var data = [
+        {name : "Aceh",  value : 4822023},
+        {name : "Bali",  value : 4822023},
+        {name : "Banten",  value : 4822023},
+        {name : "Bengkulu",  value : 4822023},
+        {name : "DIY",  value : 4822023},
+        {name : "DKI Jakarta",  value : 4822023},
+        {name : "Gorontalo",  value : 4822023},
+        {name : "Jambi",  value : 4822023},
+        {name : "Jabar",  value : 4822023},
+        {name : "Jateng",  value : 4822023},
+        {name : "Jatim",  value : 4822023},
+        {name : "Kalbar",  value : 4822023},
+        {name : "Kalsel",  value : 4822023},
+        {name : "Kalteng",  value : 4822023},
+        {name : "Kaltim",  value : 4822023},
+        {name : "Kaltara",  value : 4822023},
+        {name : "Babel",  value : 4822023},
+        {name : "Kepri",  value : 4822023},
+        {name : "Lampung",  value : 4822023},
+        {name : "Maluku",  value : 4822023},
+        {name : "Malut",  value : 4822023},
+        {name : "NTB",  value : 4822023},
+        {name : "NTT",  value : 4822023},
+        {name : "Papua",  value : 4822023},
+        {name : "Pabar",  value : 4822023},
+        {name : "Riau",  value : 4822023},
+        {name : "Sulbar",  value : 4822023},
+        {name : "Sulsel",  value : 4822023},
+        {name : "Sulteng",  value : 4822023},
+        {name : "Sultra",  value : 4822023},
+        {name : "Sulut",  value : 4822023},
+        {name : "Sumbar",  value : 4822023},
+        {name : "Sumsel",  value : 4822023},
+        {name : "Sumut", value : 4822023},
+    ];
 
-    var data = [{
-        "hc-key": "id-3700",
-        "value": 0
-    }, {
-        "hc-key": "id-ac",
-        "value": 3868
-    }, {
-        "hc-key": "id-ki",
-        "value": 6987
-    }, {
-        "hc-key": "id-jt",
-        "value": 6355
-    }, {
-        "hc-key": "id-be",
-        "value": 5135
-    }, {
-        "hc-key": "id-bt",
-        "value": 6500
-    }, {
-        "hc-key": "id-kb",
-        "value": 5677
-    }, {
-        "hc-key": "id-bb",
-        "value": 6242
-    }, {
-        "hc-key": "id-ba",
-        "value": 8829
-    }, {
-        "hc-key": "id-ji",
-        "value": 6626
-    }, {
-        "hc-key": "id-ks",
-        "value": 9106
-    }, {
-        "hc-key": "id-nt",
-        "value": 7072
-    }, {
-        "hc-key": "id-se",
-        "value": 5910
-    }, {
-        "hc-key": "id-kr",
-        "value": 8830
-    }, {
-        "hc-key": "id-ib",
-        "value": 6749
-    }, {
-        "hc-key": "id-su",
-        "value": 8902
-    }, {
-        "hc-key": "id-ri",
-        "value": 7271
-    }, {
-        "hc-key": "id-sw",
-        "value": 7204
-    }, {
-        "hc-key": "id-la",
-        "value": 4824
-    }, {
-        "hc-key": "id-sb",
-        "value": 6873
-    }, {
-        "hc-key": "id-ma",
-        "value": 9146
-    }, {
-        "hc-key": "id-nb",
-        "value": 8969
-    }, {
-        "hc-key": "id-sg",
-        "value": 6851
-    }, {
-        "hc-key": "id-st",
-        "value": 9680
-    }, {
-        "hc-key": "id-pa",
-        "value": 5422
-    }, {
-        "hc-key": "id-jr",
-        "value": 8781
-    }, {
-        "hc-key": "id-1024",
-        "value": 6433
-    }, {
-        "hc-key": "id-jk",
-        "value": 8646
-    }, {
-        "hc-key": "id-go",
-        "value": 7742
-    }, {
-        "hc-key": "id-yo",
-        "value": 4103
-    }, {
-        "hc-key": "id-kt",
-        "value": 9264
-    }, {
-        "hc-key": "id-sl",
-        "value": 4734
-    }, {
-        "hc-key": "id-sr",
-        "value": 32
-    }, {
-        "hc-key": "id-ja",
-        "value": 33
-    }];
+    var myMap = echarts.init(document.getElementById('map'));
 
-    // Initiate the chart
-    $('#map').highcharts('Map', {
+    // Specify configurations and data graphs
+    myMap.showLoading();
 
-        title: {
-            text: null
-        },
+    $.get('assets/js/pages/indonesia.json', function (idJson) {
+        myMap.hideLoading();
 
-        subtitle: {
-            text: null
-        },
-
-        mapNavigation: {
-            enabled: true,
-            buttonOptions: {
-                verticalAlign: 'bottom'
-            }
-        },
-        colorAxis: {
-            min: 0
-        },
-		plotOptions:{
-        	series:{
-            	point:{
-                	events:{
-                    	click: function(){
-                        	//alert(this.name);
-							location.href = './level-2';
-                        }
-                    }
-                }
-            }
-        },
-		tooltip: {
-			borderWidth: 0,
-			backgroundColor: 'rgba(0,0,0,0.5)',
-			shadow: false,
-			style: {
-				color: '#ffffff'
-			}
-		},
-        series: [{
-            data: data,
-			name: 'Realisasi TKDD',
-            mapData: Highcharts.maps['countries/id/id-all'],
-            joinBy: 'hc-key',
-            states: {
-                hover: {
-                    color: '#BADA55'
+        echarts.registerMap('Indonesia', idJson, {});
+        var option = {
+            title : {
+                text: '',
+                subtext: '',
+                //sublink: 'http://',
+                left: 'right'
+            },
+            tooltip : {
+                trigger: 'item',
+                showDelay: 0,
+                transitionDuration: 0.2,
+                formatter : function (params) {
+                    var value = (params.value + '').split('.');
+                    value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,');
+                    return params.seriesName + '<br/>' + params.name + ' : ' + value;
                 }
             },
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}',
-				style: {
-                    textShadow: false,
-					fontFamily: '"Montserrat", sans-serif;',
-					fontWeight: 'normal',
-					color: '#111',
+            /*
+            visualMap: {
+                left: 'right',
+                min: 500000,
+                max: 38000000,
+                //color: ['orangered','yellow','lightskyblue'],
+                text:['High','Low'],
+                calculable : true
+            },
+            */
+            toolbox: {
+                show : true,
+                x: 'right',
+                padding: ['20','0','0','0'],
+                feature : {
+                    mark : {show: true},
+                    restore : {show: true, title: 'Reload'},
+                    saveAsImage : {show: true, title: 'Save'}
                 }
-            }
-        }]
+            },
+            series : [
+                {
+                    name: 'TKDD',
+                    type: 'map',
+                    roam: true,
+                    map: 'Indonesia',
+                    itemStyle:{
+                        emphasis:{label:{show:true}}
+                    },
+                    data:data
+                }
+            ]
+        };
+        //myMap.setOption(option);
+        myMap.setOption(option,true);
+        myMap.on('click', function (params) {
+            //alert(params.name);
+            location.href = './level-2';
+        });
+
     });
 });

@@ -3,11 +3,11 @@
 	<link rel="stylesheet" href="{!! asset('assets/css/datatables/dataTables.materialize.css') !!}" />
 @endsection
 @section('content')
-<main class="uk-container uk-container-center uk-margin-top">
-	<div class="card z-depth-3 soft hoverable sikd-map">
-		<div class="card-toolbar">
-			<h2 class="card-title">
-				Realisasi Total Penyaluran TKDD Se-Provinsi Bali
+<main class="uk-container uk-container-center">
+	<div class="card uk-margin-top uk-margin-bottom sikd-map">
+		<div class="card-action card-toolbar">
+			<h2 class="card-title uk-margin-remove">
+				REALISASI TOTAL PENYALURAN TKDD SE-PROVINSI BALI
 			</h2>
 			<a href="#" data-activates="switchdata" class="dropdown-button orange z-depth-0 btn right" data-beloworigin="true" data-alignment="right">PILIH PROVINSI <i class="material-icons right">arrow_drop_down</i></a>
 			<!-- Dropdown Structure -->

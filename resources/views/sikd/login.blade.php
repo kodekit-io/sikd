@@ -19,7 +19,7 @@
 						<div class="card-content">
 							<form class="" action="{!! url('/login') !!}" method="post">
 								<div class="row center">
-									<span class="sikd-login-logo uk-margin-top sikd-blue-bg"><img class="sikd-logo" src="assets/img/logo-white.png"></span>
+									<span class="sikd-login-logo uk-margin-top"><img class="sikd-logo" src="assets/img/logo.png"></span>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
@@ -43,31 +43,6 @@
 					</div>
 				</div>
 			</div>
-			<?php /*
-			<div class="card-panel">
-				<form class="col s12" action="{!! url('/login') !!}" method="post">
-					<div class='row center'>
-						<img class="sikd-logo uk-margin-top" src="assets/img/logo.png">
-					</div>
-					<div class="row uk-margin-remove">
-						<div class='input-field col s12'>
-							<input class='validate' type='email' name='username' id='email' />
-							<label for='email'>Enter your email</label>
-						</div>
-					</div>
-
-					<div class="row uk-margin-remove">
-						<div class='input-field col s12'>
-							<input class='validate' type='password' name='password' id='password' />
-							<label for='password'>Enter your password</label>
-						</div>
-					</div>
-					<div class="row uk-margin-remove">
-						<button type='submit' name='login' class='btn waves-effect right indigo'>Login</button>
-					</div>
-				</form>
-			</div>
-			*/ ?>
 		</div>
 	</div>
 </main>

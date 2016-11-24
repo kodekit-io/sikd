@@ -1,5 +1,5 @@
 <div class="navbar-fixed">
-	<nav class="white z-depth-1">
+	<nav class="white z-depth-1 soft">
 		<div class="nav-wrapper">
 			<a href="#" data-activates="sidedrawer" class="left sikd-btn-sidedrawer sikd-blue"><i class="material-icons">menu</i></a>
 

@@ -51,16 +51,6 @@
 		</div>
 		<div class="card-content">
 			<table id="tableProv" class="display uk-table-condensed uk-margin-remove" cellspacing="0" width="100%"></table>
-			{{--<table id="tableProv" class="display uk-table-condensed uk-margin-remove" cellspacing="0" width="100%">
-				<thead>
-					<tr>
-						<th></th>
-						<th width="15%"></th>
-						<th width="75%"></th>
-						<th width="10%"></th>
-					</tr>
-				</thead>
-			</table>--}}
 		</div>
 
 	</div>

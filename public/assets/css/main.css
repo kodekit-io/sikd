@@ -90,7 +90,7 @@ main.sikd-login {
 
 .uk-grid .card-panel {}
 
-.uk-progress, .uk-progress-bar {
+.uk-progress.slim, .slim .uk-progress-bar {
     height: 5px;
 }
 
@@ -344,6 +344,33 @@ nav ul a.btn-floating {
     font-size: 14px;
     font-weight: 700;
 }
+
+.card .card-action-top {
+    padding: 0 !important;
+    border-top: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: inset 0px -10px 10px -15px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0px -10px 10px -15px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px -10px 10px -15px rgba(0, 0, 0, 0.5);
+}
+.card .card-action-top a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: rgba(160, 160, 160, 0.75);
+}
+
+.card .card-action-top a.active {
+    color: rgba(17, 74, 134, 1) !important;
+}
+.card .card-action-top a {
+    line-height: normal;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 1em 0;
+}
+.card .card-action-top .tabs .indicator {
+    top: auto;
+    bottom: 0;
+}
+
 .card .card-toolbar {
     border-top: none;
     border-bottom: 1px solid rgba(160, 160, 160, 0.2);
@@ -590,10 +617,11 @@ nav ul a.btn-floating {
 
 .bgmap .note {
     position: absolute;
-    left: 1em;
-    bottom: 1em;
-    background: rgba(255, 255, 255, 0.7);
-    padding: .5em;
+    width: calc(100% - 10px);
+    left: 5px;
+    bottom: 5px;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 10px;
     font-size: .8em;
 }
 
@@ -604,7 +632,6 @@ nav ul a.btn-floating {
 }
 
 .skid-gauge {
-    width: 200px;
     height: 200px;
     margin: 0 auto;
 }

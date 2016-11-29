@@ -50,7 +50,7 @@ $(document).ready(function() {
                             var p = (v/max) * 100;
                             var m = (avg/max) * 100;
                             //console.log(m);
-                            return '<div class="uk-progress uk-margin-bottom-remove"><div class="sikd-m" data-uk-tooltip="{pos:\'left\'}" title="Average: '+avg+'" style="left:'+m+'%;"></div><div class="uk-progress-bar uk-animation-slide-left indigo" style="width: '+p+'%;">'+v+'</div></div>';
+                            return '<div class="uk-progress uk-margin-bottom-remove"><div class="sikd-m" data-uk-tooltip="{pos:\'left\'}" title="Average: '+avg+'" style="left:'+m+'%;"></div><div class="uk-progress-bar uk-animation-slide-left" style="width: '+p+'%;">'+v+'</div></div>';
                         }
                     },
                     {

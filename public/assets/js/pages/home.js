@@ -69,7 +69,7 @@ $(document).ready(function() {
 								<h5 class="sikd-chart--title sikd-blue">'+$name+'</h5> \
 							</div> \
 							<div class="uk-width-medium-1-2"> \
-								<div class="uk-progress uk-margin-bottom-remove sikd-yellow-bg"> \
+								<div class="uk-progress slim uk-margin-bottom-remove sikd-yellow-bg"> \
 									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg '+color+'" style="width: '+$percentage+';">'+$percentage+'</div> \
 								</div> \
 								<ul class="uk-subnav uk-margin-bottom-remove uk-margin-top-remove"> \
@@ -162,7 +162,7 @@ $(document).ready(function() {
 					    chart.setOption(option);
 					},1800);
 
-					window.onresize = chart.resize();
+					$(window).trigger("resize");
 				}
 			}
 		});

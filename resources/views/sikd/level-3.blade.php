@@ -3,75 +3,35 @@
 	<link rel="stylesheet" href="{!! asset('assets/css/datatables/dataTables.materialize.css') !!}" />
 @endsection
 @section('content')
-<main class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
+<main class="uk-container uk-container-center uk-margin-top uk-margin-bottom" data-uk-observe>
 	<ul class="uk-grid uk-grid-medium uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
 		<li class="uk-width-1-1">
 			<div class="card-panel z-depth-3 soft">
-				<h2 class="card-title">
-					DATA UMUM KAB. BADUNG
-				</h2>
-				<a href="{!! url('/') !!}" class="btn-floating waves-effect waves-light right z-depth-0 indigo" data-uk-tooltip title="Ke Beranda"><i class="material-icons">home</i></a>
-				<a href="javascript: history.go(-1)" class="btn-floating waves-effect waves-light right z-depth-0 orange uk-margin-small-right" data-uk-tooltip title="Halaman Sebelumnya"><i class="material-icons">arrow_back</i></a>
+				<h2 class="uk-margin-remove">DATA UMUM KAB. BADUNG</h2>
 			</div>
 		</li>
-		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable bgmap" style="background-image:url(http://wisata.balitoursclub.com/wp-content/uploads/2012/09/Peta-Badung.jpg)">
-				<div class="note">
-					Population (2010)<br>
-					 • Total: 543332<br>
-					 • Kepadatan: 1293,37 jiwa/km2<br>
-					 • Kecamatan: 6<br>
-					 • Kelurahan: 63<br>
-				</div>
-			</div>
-		</li>
-		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
-				<div class="skid-gauge-wrap">
-					<div id="g1" class="skid-gauge"></div>
-				</div>
-			</div>
-		</li>
-		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
-				<div class="skid-gauge-wrap">
-					<div id="g2" class="skid-gauge"></div>
-				</div>
-			</div>
-		</li>
-		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
-				<div class="skid-gauge-wrap">
-					<div id="g3" class="skid-gauge"></div>
-				</div>
-			</div>
-		</li>
-		<li class="uk-width-1-5">
-			<div class="card-panel z-depth-3 soft hoverable">
-				<div class="skid-gauge-wrap">
-					<div id="g4" class="skid-gauge"></div>
-				</div>
-			</div>
-		</li>
+		<li class="uk-width-1-5"><div id="panel1"></div></li>
+		<li class="uk-width-1-5"><div id="panel2"></div></li>
+		<li class="uk-width-1-5"><div id="panel3"></div></li>
+		<li class="uk-width-1-5"><div id="panel4"></div></li>
+		<li class="uk-width-1-5"><div id="panel5"></div></li>
 		<li class="uk-width-1-1">
-			<div class="card-panel z-depth-3 soft hoverable">
-				<ul class="tabs uk-margin-bottom-remove">
-					<li class="tab"><a class="active" href="#tab1">Data Realisasi TKDD</a></li>
-					<li class="tab"><a href="#tab2">Data PAD</a></li>
-					<li class="tab"><a href="#tab3">Belanja Perjenis</a></li>
-					<li class="tab"><a href="#tab4">Opini LKPD</a></li>
-				</ul>
-				<div id="tab1" class="col s12">
-					Tabel Realisasi TKDD
+			<div class="card z-depth-3 soft hoverable uk-margin-top-remove">
+				<div class="card-action-top">
+					<ul class="tabs" data-uk-switcher="{connect:'#tab-level-3'}">
+						<li class="tab"><a class="active" href="#tab1">Data Realisasi TKDD</a></li>
+						<li class="tab"><a href="#tab2">Data PAD</a></li>
+						<li class="tab"><a href="#tab3">Belanja Perjenis</a></li>
+						<li class="tab"><a href="#tab4">Opini LKPD</a></li>
+					</ul>
 				</div>
-				<div id="tab2" class="col s12">
-					Tabel Data PAD
-				</div>
-				<div id="tab3" class="col s12">
-					Tabel Belanja Perjenis
-				</div>
-				<div id="tab4" class="col s12">
-					Tabel Opini LKPD
+				<div class="card-content">
+					<ul id="tab-level-3" class="uk-switcher">
+						<li><div class="" id="A1">1</div></li>
+						<li><div class="" id="A2">2</div></li>
+						<li><div class="" id="A3">3</div></li>
+						<li><div class="" id="A4">4</div></li>
+					</ul>
 				</div>
 			</div>
 		</li>
@@ -80,20 +40,14 @@
 @endsection
 
 @section('page-level-scripts')
-	<script src="{!! asset('assets/js/highcharts/highcharts.js') !!}"></script>
-	<script src="{!! asset('assets/js/highcharts/highcharts-more.js') !!}"></script>
-	<script src="{!! asset('assets/js/highcharts/modules/solid-gauge.js') !!}"></script>
-	<script src="{!! asset('assets/js/highcharts/themes/mw.js') !!}"></script>
+	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
+	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/dataTables.materialize.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-3.js') !!}"></script>
 	<script>
-	$('.tablenya').DataTable({
-		"pageLength": 50,
-		"paging": false,
-		"searching": false,
-		"info": false,
-		"lengthChange": false,
-	});
+		$(document).ready(function() {
+			
+		});
 	</script>
 @endsection

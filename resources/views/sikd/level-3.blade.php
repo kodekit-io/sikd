@@ -7,7 +7,7 @@
 	<ul class="uk-grid uk-grid-medium uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
 		<li class="uk-width-1-1">
 			<div class="card-panel z-depth-3 soft">
-				<h2 class="uk-margin-remove">DATA UMUM KAB. BADUNG</h2>
+				<h2 class="card-title">Data Umum Kab. Badung</h2>
 			</div>
 		</li>
 		<li class="uk-width-1-5"><div id="panel1"></div></li>
@@ -47,7 +47,7 @@
 	<script src="{!! asset('assets/js/pages/level-3.js') !!}"></script>
 	<script>
 		$(document).ready(function() {
-			
+
 		});
 	</script>
 @endsection

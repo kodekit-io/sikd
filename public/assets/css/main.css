@@ -39,17 +39,17 @@ main.sikd-login {
 }
 
 ::-webkit-selection {
-    background-color: rgb(63, 81, 181);
+    background-color: #e91e63;
     color: #fff;
 }
 
 ::-moz-selection {
-    background-color: rgb(63, 81, 181);
+    background-color: #e91e63;
     color: #fff;
 }
 
 ::selection {
-    background-color: rgb(63, 81, 181);
+    background-color: #e91e63;
     color: #fff;
 }
 

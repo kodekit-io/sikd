@@ -204,6 +204,9 @@
 	<script src="{!! asset('assets/js/highcharts/themes/mw.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/home.js') !!}"></script>
 	*/ ?>
+	<script src="{!! asset('assets/js/highcharts/highcharts.js') !!}"></script>
+	<script src="{!! asset('assets/js/highcharts/themes/mw.js') !!}"></script>
+	
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/home.js') !!}"></script>

@@ -183,62 +183,151 @@ $(document).ready(function() {
 	L0Chart('B5','4','apbd','data/L0_B_apbd.json');
 	L0Chart('B6','5','apbd','data/L0_B_apbd.json');
 	L0Chart('B7','6','apbd','data/L0_B_apbd.json');
-});
 
-function Row2(id,type) {
-	$('#'+id).highcharts({
-	chart: {
-		type: type,
-		height: 370,
-		spacingBottom: 30
-	},
-	title: {
-		text: null
-	},
-	subtitle: {
-		text: null
-	},
-	xAxis: {
-		categories: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
-		crosshair: true
-	},
-	yAxis: {
-		min: 0,
+
+	function Row2(divID,type) {
+
+		var w = $('.sikd-leading').width();
+		var h = $('.sikd-leading').height();
+		$('#'+divID).width(w);
+		$('#'+divID).height(h);
+
+		//CHART
+		var dom = document.getElementById(divID);
+		var theme = 'sikd';
+		var chart = echarts.init(dom,theme);
+		var loadingTicket;
+		var effectIndex = -1;
+		var effect = ['spin'];
+		//var effectIndex = ++effectIndex % effect.length;
+		chart.showLoading({
+			text : '',
+			//effect : effect[effectIndex],
+		});
+		var option = {
+			//color: clrs,
+			tooltip : {
+				trigger: 'axis'
+			},
+			legend: {
+				data: ['2013','2014','2015','2016'],
+				padding: ['0','0','0','0'],
+				x: 'left',
+				y: 'bottom'
+			},
+			toolbox: {
+				show : true,
+				x: 'right',
+				padding: ['20','0','0','0'],
+				feature : {
+					mark : {show: true},
+					//dataView : {show: false, readOnly: false},
+					magicType: {
+						show : true,
+						type : ['line', 'bar'],
+						title : { line : 'Line', bar : 'Bar' },
+					},
+					restore : {show: true, title: 'Reload'},
+					saveAsImage : {show: true, title: 'Save'}
+				}
+			},
+			//calculable : true,
+			xAxis : [
+				{
+					type : 'category',
+					boundaryGap: false,
+					data : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
+				}
+			],
+			yAxis : [
+				{
+					type : 'value',
+					//splitArea : {show : true}
+				}
+			],
+			series : [{
+					name: '2016',
+					type: type,
+					data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+				}, {
+					name: '2015',
+					type: type,
+					data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+				}, {
+					name: '2014',
+					type: type,
+					data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+				}, {
+					name: '2013',
+					type: type,
+					data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+				}]
+		};
+		//chart.setOption(option);
+		clearTimeout(loadingTicket);
+		loadingTicket = setTimeout(function (){
+			chart.hideLoading();
+			chart.setOption(option);
+		},1800);
+
+		$(window).trigger("resize");
+
+
+
+		/*$('#'+id).highcharts({
+		chart: {
+			type: type,
+			height: 370,
+			spacingBottom: 30
+		},
 		title: {
 			text: null
-		}
-	},
-	tooltip: {
-		headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-		pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-			'<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-		footerFormat: '</table>',
-		shared: true,
-		useHTML: true
-	},
-	plotOptions: {
-		column: {
-			pointPadding: 0.2,
-			borderWidth: 0
-		}
-	},
-	series: [{
-			name: '2016',
-			data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-		}, {
-			name: '2015',
-			data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-		}, {
-			name: '2014',
-			data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-		}, {
-			name: '2013',
-			data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-		}]
-	});
-};
-Row2('LOC1','column');
-Row2('LOC2','line');
-Row2('LOC3','bar');
-Row2('LOC4','area');
-Row2('LOC5','scatter');
+		},
+		subtitle: {
+			text: null
+		},
+		xAxis: {
+			categories: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+			crosshair: true
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: null
+			}
+		},
+		tooltip: {
+			headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+			pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+				'<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+			footerFormat: '</table>',
+			shared: true,
+			useHTML: true
+		},
+		plotOptions: {
+			column: {
+				pointPadding: 0.2,
+				borderWidth: 0
+			}
+		},
+		series: [{
+				name: '2016',
+				data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+			}, {
+				name: '2015',
+				data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+			}, {
+				name: '2014',
+				data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+			}, {
+				name: '2013',
+				data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+			}]
+		});*/
+	};
+	Row2('LOC1','bar');
+	Row2('LOC2','line');
+	Row2('LOC3','bar');
+	Row2('LOC4','line');
+	Row2('LOC5','scatter');
+});

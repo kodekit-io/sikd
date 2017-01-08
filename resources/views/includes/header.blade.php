@@ -10,7 +10,6 @@
 
 	<link href="{!! asset('assets/img/icon.png') !!}" rel="shortcut icon">
 
-	<!-- link all the styles -->
 	<link rel="stylesheet" href="{!! asset('assets/css/main.css') !!}" />
 	@section('page-level-styles')
     @show
@@ -21,12 +20,7 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-	<script src="{!! asset('assets/js/jquery.js') !!}"></script>
-	<script src="{!! asset('assets/js/materialize.min.js') !!}"></script>
-	<script src="{!! asset('assets/js/uikit.min.js') !!}"></script>
-	<script src="{!! asset('assets/js/components/tooltip.min.js') !!}"></script>
-	<script src="{!! asset('assets/js/components/slideshow.min.js') !!}"></script>
-	<script src="{!! asset('assets/js/main.js') !!}"></script>
+
 </head>
 
 <body>

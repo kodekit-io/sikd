@@ -41,13 +41,13 @@ $(document).ready(function() {
 					img: $mainimg,
 					content: $content
 				};
-				var header = '<header class="header-page uk-vertical-align" style="background-image:url('+post.img[0]+');"> \
+				var header = '<header class="header-page uk-vertical-align" style="background-image:url('+post.img[1]+');"> \
 					<div class="uk-vertical-align-middle"> \
-						<h1 id="title" class="title-page uk-margin-remove">'+post.title[0]+'</h1> \
+						<h1 id="title" class="title-page uk-margin-remove">'+post.title[1]+'</h1> \
 					</div> \
 				</header>';
 				$('#header').html(header);
-				$('#content').html(post.content[0]);
+				$('#content').html(post.content[1]);
 				$(window).trigger("resize");
 			}
 		}

@@ -675,12 +675,26 @@ nav ul a.btn-floating {
     background-position: center;
     background-size: cover;
     margin-bottom: 20px;
+    position: relative;
+}
+.header-page:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 .title-page {
     text-align: center;
     color: #fff;
+    z-index: 10;
+    position: relative;
 }
-.header-page + main {
+#header + main {
     min-height: calc(100vh - 320px - 56px);
 }
 /*MOBILE*/

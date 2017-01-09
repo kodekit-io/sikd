@@ -1,0 +1,20 @@
+{
+    "data": [
+		{
+			"id": 1001,
+            "username": "admin",
+			"name": "Mimin Surimin",
+            "email": "admin@email.com",
+            "password": "123456",
+            "access": ["level1","level2","level3","account-profile","account-manage","account-add","account-edit"]
+		},
+        {
+			"id": 1002,
+            "username": "menkeu",
+			"name": "Menteri Keuangan",
+            "email": "menkeu@email.com",
+            "password": "123456",
+            "access": ["level1","level2","level3"]
+		}
+	]
+}

@@ -10,9 +10,9 @@
 						<img class="activator" src="assets/img/img-login.jpg">
 						<h1 class="card-title">Dashboard Executive Information System SIKD</h1>
 						<ul class="uk-subnav uk-subnav-line sikd-link-login">
-			                <li><a href="#">Tentang</a></li>
-			                <li><a href="#">Disclaimer</a></li>
-			                <li><a href="#">Panduan</a></li>
+			                <li><a href="{!! url('/tentang') !!}">Tentang</a></li>
+			                <li><a href="{!! url('/disclaimer') !!}">Disclaimer</a></li>
+			                <li><a href="{!! url('/panduan') !!}">Panduan</a></li>
 			            </ul>
 					</div>
 					<div class="uk-width-medium-1-2">

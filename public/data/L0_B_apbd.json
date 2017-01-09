@@ -2,6 +2,7 @@
 	"apbd": [{
 		"id": 1,
 		"name": "Realisasi APBD",
+		"info":"Data per Oktober 2016",
 		"achievement": [{
 			"target":  1245,
 			"realization":  803,
@@ -61,6 +62,7 @@
 	{
 		"id": 2,
 		"name": "Realisasi Pendapatan",
+		"info":"Data per Oktober 2016",
 		"achievement": [{
 			"target": 1821,
 			"realization": 1275,
@@ -124,6 +126,7 @@
 	{
 		"id": 3,
 		"name": "Realisasi PAD",
+		"info":"Data per Oktober 2016",
 		"achievement": [{
 			"target": 2029,
 			"realization": 1603,
@@ -187,6 +190,7 @@
 	{
 		"id": 4,
 		"name": "Realisasi Belanja Pegawai",
+		"info":"Data per Oktober 2016",
 		"achievement": [{
 			"target": 2029,
 			"realization": 1603,
@@ -250,6 +254,7 @@
 	{
 		"id": 5,
 		"name": "Realisasi Belanja Barang dan Jasa",
+		"info":"Data per Oktober 2016",
 		"achievement": [{
 			"target": 2537,
 			"realization": 1953,
@@ -313,6 +318,7 @@
 	{
 		"id": 6,
 		"name": "Realisasi Belanja Modal",
+		"info":"Data per Oktober 2016",
 		"achievement": [{
 			"target": 2139,
 			"realization": 1497,
@@ -376,6 +382,7 @@
 	{
 		"id": 7,
 		"name": "Penyampaian LRA Bulanan",
+		"info":"Data per Oktober 2016",
 		"achievement": [{
 			"target": 2566,
 			"realization": 2104,

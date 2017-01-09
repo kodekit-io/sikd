@@ -40,6 +40,7 @@ $(document).ready(function() {
 					for (i = 0; i < $data.length; i++) {
 						$id = $result[n].id;
 						$name = $result[n].name;
+						$info = $result[n].info;
 						$achievement = $result[n].achievement;
 						$target = $achievement[0].target;
 						$realization = $achievement[0].realization;
@@ -82,7 +83,7 @@ $(document).ready(function() {
 								<hr class="uk-margin-bottom-remove uk-margin-small-top"> \
 								<div id="'+divID+'Chart" class="sikd-chart-lagging"></div> \
 								<ul class="uk-subnav sikd-chart-action"> \
-									<li><a class=""><i class="material-icons" data-uk-tooltip title="Data Per 30 Oktober 2016">info</i></a></li> \
+									<li><a class=""><i class="material-icons" data-uk-tooltip title="'+$info+'">info</i></a></li> \
 									<li><a href="'+linkdetail+'" class="btn z-depth-0 sikd-pink-bg white-text" title="Lihat Detail '+$name+'" data-uk-tooltip>LIHAT DETAIL</a></li> \
 								</ul> \
 							</div> \

@@ -219,6 +219,23 @@ nav ul a.btn-floating {
     line-height: 50px !important;
     font-size: 1.8em !important;
 }
+.side-nav a,
+.side-nav .collapsible-header,
+.side-nav.fixed .collapsible-header {
+    padding: 0 20px;
+}
+.side-nav .collapsible-body ul {
+    padding-left: 0;
+    margin: 0;
+}
+.side-nav .collapsible-body li a,
+.side-nav.fixed .collapsible-body li a {
+    padding: 0 10px 0 20px;
+    font-weight: normal;
+}
+.side-nav li>a>i, .side-nav li>a>[class^="mdi-"], .side-nav li>a>[class*="mdi-"], .side-nav li>a>i.material-icons {
+    margin: 0;
+}
 
 .sikd-chip-contact {
     float: left;
@@ -252,7 +269,7 @@ nav ul a.btn-floating {
     content: "";
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 75%;
     margin-left: -10px;
     width: 0;
     height: 0;
@@ -650,8 +667,36 @@ nav ul a.btn-floating {
 
 
 /**/
-
-
+.header-page {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    background-color: #666;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+    position: relative;
+}
+.header-page:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.title-page {
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+    position: relative;
+}
+#header + main {
+    min-height: calc(100vh - 320px - 56px);
+}
 /*MOBILE*/
 
 @media (max-width: 768px) {

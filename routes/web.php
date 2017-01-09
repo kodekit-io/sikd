@@ -55,4 +55,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/content-management', function () {
         return view('sikd.content-management');
     });
+
+    Route::get('/content-edit', function () {
+        return view('sikd.content-edit');
+    });
 });

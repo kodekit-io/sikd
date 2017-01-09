@@ -10,8 +10,6 @@
 				Realisasi Total Penyaluran TKDD Se-Provinsi Bali
 			</h2>
 			<a href="#" data-activates="switchdata" class="dropdown-button orange z-depth-0 btn right" data-beloworigin="true" data-alignment="right">PILIH PROVINSI <i class="material-icons right">arrow_drop_down</i></a>
-			<!-- Dropdown Structure -->
-
 			<ul id="switchdata" class="dropdown-content">
 				<li><a href="#!">Nanggro Aceh Darussalam</a></li>
 				<li><a href="#!">Sumatera Utara</a></li>

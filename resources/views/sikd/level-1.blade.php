@@ -8,7 +8,6 @@
 				Realisasi Total Penyaluran TKDD Nasional
 			</h2>
 			<a href="#" data-activates="switchdata" class="dropdown-button orange z-depth-0 btn right" data-beloworigin="true" data-alignment="right">Pilih Jenis Informasi <i class="material-icons right">arrow_drop_down</i></a>
-			<!-- Dropdown Structure -->
 			<ul id="switchdata" class="dropdown-content">
 				<li><a href="#!">Penyaluran TKDD</a></li>
 				<li><a href="#!">Penyaluran DAK</a></li>

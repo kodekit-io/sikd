@@ -45,9 +45,4 @@
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/dataTables.materialize.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-3.js') !!}"></script>
-	<script>
-		$(document).ready(function() {
-
-		});
-	</script>
 @endsection

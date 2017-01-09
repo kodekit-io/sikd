@@ -34,11 +34,6 @@
 @endsection
 
 @section('page-level-scripts')
-	<?php /*
-	<script src="{!! asset('assets/js/highcharts/highmaps.js') !!}"></script>
-	<script src="{!! asset('assets/js/pages/id-all.js') !!}"></script>
-	<script src="{!! asset('assets/js/pages/level-1.js') !!}"></script>
-	*/ ?>
 	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-1.js') !!}"></script>

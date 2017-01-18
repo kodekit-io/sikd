@@ -1,72 +1,50 @@
 $(document).ready(function() {
-	function L0Chart(divID,n,type,url) {
-		var clrs;
+	function L0Chart(divID,n,type,result) {
 		var color;
-		/*switch (type) {
-			case "apbd":
-				clrs = ['#ff8f00', '#ffe0b2'];
-				color = "orange";
-				break;
-			case "penyaluran":
-				clrs = ["#3f51b5", "#7986cb"];
-				color = "indigo";
-				break;
-		}*/
 
-		//console.log(clrs);
-		$.ajax({
-			url : url,
-			beforeSend : function(xhr) {
-				$('#' + divID).hide();
-			},
-			complete : function(xhr, status) {
-				$('#' + divID).show();
-			},
-			success : function(result) {
-				//result = jQuery.parseJSON(result);
-				if(type==='apbd') {
-					$result = result.apbd;
-					$data = result.apbd[n].trend;
-				} else if (type==='penyaluran') {
-					$result = result.Penyaluran;
-					$data = result.Penyaluran[n].trend;
-				}
+        if(type==='apbd') {
+            $result = result.apbd;
+        } else if (type==='penyaluran') {
+            $result = result.Penyaluran;
+        }
 
-				//console.log($data);
-				if ($data.length === 0) {
-					$('#' + divID).html("<div class='center'>No data chart</div>");
-				} else {
-					var $content = [];
-					var $legend = [];
-					for (i = 0; i < $data.length; i++) {
-						$id = $result[n].id;
-						$name = $result[n].name;
-						$info = $result[n].info;
-						$achievement = $result[n].achievement;
-						$target = $achievement[0].target;
-						$realization = $achievement[0].realization;
-						$percentage = $achievement[0].percentage;
+        if ($result.length === 0) {
+            $('#' + divID).html("<div class='center'>No data chart</div>");
+        } else {
+            var $content = [];
+            var $legend = [];
+            $data = $result[n].trend;
+            $id = $result[n].id;
+            $name = $result[n].name;
+            $info = $result[n].info;
+            $achievement = $result[n].achievement;
 
-						$type = 'line';
-						$year = $data[i].year;
-						$value = $data[i].value;
-						$cat = $data[i].month;
+            for (i = 0; i < $data.length; i++) {
+                $target = $achievement[0].target;
+                $realization = $achievement[0].realization;
+                $percentage = $achievement[0].percentage;
 
-						$content[i] = {name: $year, type: $type, data: $value};
-						$legend[i] = $year;
+                $type = 'line';
+                $year = $data[i].year.toString();
+                $value = $data[i].value;
+                $cat = $data[i].month;
 
-					}
-					var chartData = {
-						content: $content,
-						cat: $cat,
-						legend: $legend
-					};
+                $content[i] = {name: $year, type: $type, data: $value};
+                $legend[i] = $year;
+            }
+
+            var chartData = {
+                content: $content,
+                cat: $cat,
+                legend: $legend
+            };
 
 
-					var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">'+$percentage+'%</span>';
 
-					var linkdetail = './level-1';
-					var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
+            var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">'+$percentage+'%</span>';
+
+            var linkdetail = './level-1';
+            var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
 							<div class="uk-width-medium-1-2"> \
 								<h5 class="sikd-chart--title sikd-blue">'+$name+'</h5> \
 							</div> \
@@ -89,102 +67,103 @@ $(document).ready(function() {
 								</ul> \
 							</div> \
 						</div>';
-					$('#' + divID).html(tabcontent);
+            $('#' + divID).html(tabcontent);
 
-					$('#' + divID +'tab a').html(tab);
-					$('#' + divID +'tab a').attr('title', ''+$name+'');
+            $('#' + divID +'tab a').html(tab);
+            $('#' + divID +'tab a').attr('title', ''+$name+'');
 
-					$(".sikd-lagging-tab__title").html(function(i, html) {
-						return html.replace(/ /g, '<br>');
-					});
+            $(".sikd-lagging-tab__title").html(function(i, html) {
+                return html.replace(/ /g, '<br>');
+            });
 
-					var w = $('#L0A').width();
-					$('.sikd-chart-lagging').width(w);
-					$('.sikd-chart-lagging').height(w/2);
+            var w = $('#L0A').width();
+            $('.sikd-chart-lagging').width(w);
+            $('.sikd-chart-lagging').height(w/2);
 
-					//CHART
-					var dom = document.getElementById(divID+'Chart');
-					var theme = 'sikd';
-					var chart = echarts.init(dom,theme);
-			        var loadingTicket;
-			        var effectIndex = -1;
-			        var effect = ['spin'];
-					//var effectIndex = ++effectIndex % effect.length;
-					chart.showLoading({
-						text : '',
-						//effect : effect[effectIndex],
-					});
-			        var option = {
-						//color: clrs,
-						tooltip : {
-			                trigger: 'axis'
-			            },
-			            legend: {
-							data: chartData.legend,
-							padding: ['0','0','0','0'],
-							x: 'left',
-							y: 'bottom'
-			            },
-			            toolbox: {
-			                show : true,
-							x: 'right',
-							padding: ['20','0','0','0'],
-			                feature : {
-			                    mark : {show: true},
-			                    //dataView : {show: false, readOnly: false},
-								magicType: {
-					                show : true,
-									type : ['line', 'bar'],
-					                title : { line : 'Line', bar : 'Bar' },
-					            },
-			                    restore : {show: true, title: 'Reload'},
-			                    saveAsImage : {show: true, title: 'Save'}
-			                }
-			            },
-			            //calculable : true,
-			            xAxis : [
-			                {
-			                    type : 'category',
-								boundaryGap: false,
-			                    data : chartData.cat
-			                }
-			            ],
-			            yAxis : [
-			                {
-			                    type : 'value',
-			                    //splitArea : {show : true}
-			                }
-			            ],
-						series : chartData.content
-			        };
-			        //chart.setOption(option);
-					clearTimeout(loadingTicket);
-					loadingTicket = setTimeout(function (){
-					    chart.hideLoading();
-					    chart.setOption(option);
-					},1800);
+            //CHART
+            var dom = document.getElementById(divID+'Chart');
+            var theme = 'sikd';
+            var chart = echarts.init(dom,theme);
+            var loadingTicket;
+            var effectIndex = -1;
+            var effect = ['spin'];
+            //var effectIndex = ++effectIndex % effect.length;
+            chart.showLoading({
+                text : '',
+                //effect : effect[effectIndex],
+            });
+            var option = {
+                //color: clrs,
+                tooltip : {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data: chartData.legend,
+                    padding: ['0','0','0','0'],
+                    x: 'left',
+                    y: 'bottom'
+                },
+                toolbox: {
+                    show : true,
+                    x: 'right',
+                    padding: ['20','0','0','0'],
+                    feature : {
+                        mark : {show: true},
+                        //dataView : {show: false, readOnly: false},
+                        magicType: {
+                            show : true,
+                            type : ['line', 'bar'],
+                            title : { line : 'Line', bar : 'Bar' },
+                        },
+                        restore : {show: true, title: 'Reload'},
+                        saveAsImage : {show: true, title: 'Save'}
+                    }
+                },
+                //calculable : true,
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap: false,
+                        data : chartData.cat
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        //splitArea : {show : true}
+                    }
+                ],
+                series : chartData.content
+            };
+            //chart.setOption(option);
+            clearTimeout(loadingTicket);
+            loadingTicket = setTimeout(function (){
+                chart.hideLoading();
+                chart.setOption(option);
+            },1800);
 
-					$(window).trigger("resize");
-				}
-			}
-		});
+            $(window).trigger("resize");
+        }
 	}
 
-	L0Chart('A1','0','penyaluran','data/dump.json');
-	L0Chart('A2','1','penyaluran','data/L0_A_penyaluran.json');
-	L0Chart('A3','2','penyaluran','data/L0_A_penyaluran.json');
-	L0Chart('A4','3','penyaluran','data/L0_A_penyaluran.json');
-	L0Chart('A5','4','penyaluran','data/L0_A_penyaluran.json');
-	L0Chart('A6','5','penyaluran','data/L0_A_penyaluran.json');
-	L0Chart('A7','6','penyaluran','data/L0_A_penyaluran.json');
 
-	L0Chart('B1','0','apbd','data/L0_B_apbd.json');
-	L0Chart('B2','1','apbd','data/L0_B_apbd.json');
-	L0Chart('B3','2','apbd','data/L0_B_apbd.json');
-	L0Chart('B4','3','apbd','data/L0_B_apbd.json');
-	L0Chart('B5','4','apbd','data/L0_B_apbd.json');
-	L0Chart('B6','5','apbd','data/L0_B_apbd.json');
-	L0Chart('B7','6','apbd','data/L0_B_apbd.json');
+	var $tkddData = jQuery.parseJSON(tkddData);
+
+	L0Chart('A1','0','penyaluran', $tkddData);
+	L0Chart('A2','1','penyaluran', $tkddData);
+	L0Chart('A3','2','penyaluran', $tkddData);
+	L0Chart('A4','3','penyaluran', $tkddData);
+	L0Chart('A5','4','penyaluran', $tkddData);
+	L0Chart('A6','5','penyaluran', $tkddData);
+	L0Chart('A7','6','penyaluran', $tkddData);
+
+	// L0Chart('B1','0','apbd','data/L0_B_apbd.json');
+	// L0Chart('B2','1','apbd','data/L0_B_apbd.json');
+	// L0Chart('B3','2','apbd','data/L0_B_apbd.json');
+	// L0Chart('B4','3','apbd','data/L0_B_apbd.json');
+	// L0Chart('B5','4','apbd','data/L0_B_apbd.json');
+	// L0Chart('B6','5','apbd','data/L0_B_apbd.json');
+	// L0Chart('B7','6','apbd','data/L0_B_apbd.json');
 
 
 	function Row2(divID,type) {

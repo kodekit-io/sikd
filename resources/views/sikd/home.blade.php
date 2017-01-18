@@ -3,7 +3,7 @@
 @section('content')
 <main class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
 	<div class="uk-grid uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
-		<?php //ROW 1 A ?>
+		{{--ROW 1 A--}}
 		<div class="uk-width-medium-1-2">
 			<div class="card z-depth-3 soft hoverable">
 				<div class="card-content">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		</div>
-		<?php //ROW 1 B ?>
+		{{--ROW 1 B--}}
 		<div class="uk-width-medium-1-2">
 			<div class="card z-depth-3 soft hoverable">
 				<div class="card-content">
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 
-		<?php //ROW 2 ?>
+		{{--ROW 2--}}
 		<div class="uk-width-medium-1-1">
 			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom-remove">
 				<div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true}">
@@ -82,7 +82,7 @@
 			</div>
 		</div>
 
-		<?php //ROW 3 ?>
+		{{--ROW 3--}}
 		<div class="uk-width-medium-1-1">
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom">
 				<div class="card-content">
@@ -199,6 +199,9 @@
 @endsection
 
 @section('page-level-scripts')
+	<script type="text/javascript">
+		var tkddData = '{!! $tkddData !!}';
+	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/components/slideshow.min.js') !!}"></script>

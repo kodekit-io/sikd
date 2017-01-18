@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'mediawave' => [
+        'base_url' => env('MWV_BASE_URL'),
+        'app_key' => env('MWV_APP_KEY'),
+    ]
+
 ];

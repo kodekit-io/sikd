@@ -32,9 +32,10 @@ Route::group(['middleware' => ['auth']], function () {
         return view('sikd.level-3');
     });
 
-    Route::get('/home', function() {
-        return view('sikd.home');
-    });
+//    Route::get('/home', function() {
+//        return view('sikd.home');
+//    });
+    Route::get('home', 'HomeController@home');
 
     Route::get('/account-profile', function () {
         return view('sikd.account-profile');
@@ -60,3 +61,5 @@ Route::group(['middleware' => ['auth']], function () {
         return view('sikd.content-edit');
     });
 });
+
+Route::get('test/tkdd', 'HomeController@testTkdd');

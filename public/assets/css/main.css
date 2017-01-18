@@ -665,6 +665,10 @@ nav ul a.btn-floating {
     background: #ff9800 !important;
 }
 
+.sikd-text-ptr {
+    font-size: .95rem;
+    letter-spacing: -1%;
+}
 
 /**/
 .header-page {

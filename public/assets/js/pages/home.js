@@ -1,4 +1,22 @@
 $(document).ready(function() {
+	function abbr(number, decimal) {
+		decimal = Math.pow(10,decimal);
+		var abbrev = [ " K", " M", " B", " T" ];
+		for (var i=abbrev.length-1; i>=0; i--) {
+			var size = Math.pow(10,(i+1)*3);
+			if(size <= number) {
+				number = Math.round(number*decimal/size)/decimal;
+				if((number == 1000) && (i < abbrev.length - 1)) {
+					number = 1;
+					i++;
+				}
+				number += abbrev[i];
+				break;
+			}
+		}
+		return number;
+	}
+
 	function L0Chart(divID,n,type,result) {
 		var color;
 
@@ -20,9 +38,12 @@ $(document).ready(function() {
             $achievement = $result[n].achievement;
 
             for (i = 0; i < $data.length; i++) {
-                $target = $achievement[0].target;
-                $realization = $achievement[0].realization;
-                $percentage = $achievement[0].percentage;
+                $target000 = $achievement[0].target;
+				$target = abbr($target000,2);
+                $realization000 = $achievement[0].realization;
+				$realization = abbr($realization000,2);
+                $percentage000 = $achievement[0].percentage;
+				$percentage = Math.round($percentage000 * 100) / 100
 
                 $type = 'line';
                 $year = $data[i].year.toString();
@@ -52,10 +73,10 @@ $(document).ready(function() {
 								<div class="uk-progress slim uk-margin-bottom-remove sikd-yellow-bg"> \
 									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg '+color+'" style="width: '+$percentage+';">'+$percentage+'%</div> \
 								</div> \
-								<ul class="uk-subnav uk-margin-bottom-remove uk-margin-top-remove"> \
+								<ul class="uk-subnav uk-margin-bottom-remove uk-margin-top-remove sikd-text-ptr"> \
 									<li class="uk-margin-small-top"><strong>'+$percentage+'%</strong></li> \
-									<li class="uk-margin-small-top">( Alokasi : <strong>'+$target+'</strong></li> \
-									<li class="uk-margin-small-top">Realisasi : <strong>'+$realization+'</strong> )</li> \
+									<li class="uk-margin-small-top">(Alokasi : <strong>'+$target+'</strong></li> \
+									<li class="uk-margin-small-top">Realisasi : <strong>'+$realization+'</strong>)</li> \
 								</ul> \
 							</div> \
 							<div class="uk-width-medium-1-1"> \
@@ -106,7 +127,7 @@ $(document).ready(function() {
                 toolbox: {
                     show : true,
                     x: 'right',
-                    padding: ['20','0','0','0'],
+                    padding: ['20','1','0','0'],
                     feature : {
                         mark : {show: true},
                         //dataView : {show: false, readOnly: false},
@@ -131,6 +152,12 @@ $(document).ready(function() {
                     {
                         type : 'value',
                         //splitArea : {show : true}
+						axisLabel : {
+							formatter: function(v) {
+								$v = abbr(v,2);
+								return $v;
+							}
+						}
                     }
                 ],
                 series : chartData.content

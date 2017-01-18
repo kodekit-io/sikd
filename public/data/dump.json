@@ -1,0 +1,515 @@
+{
+  "Penyaluran": [
+    {
+      "id": 1,
+      "name": "Penyaluran TKDD",
+      "achievement": [{
+        "target": 876408239992290,
+        "realization": 0,
+        "percentage": 0
+      }],
+      "trend": [
+        {
+          "year": "2017",
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "year": 2016,
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            6442450941,
+            4294967294,
+            10737418235,
+            10737418235,
+            10737418235,
+            10737418235,
+            8589934588,
+            10737418235,
+            10737418235,
+            10737418235,
+            10737418235,
+            6442450941
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Penyaluran DAK",
+      "achievement": {
+        "target": 876408239992290,
+        "realization": 0,
+        "percentage": 0
+      },
+      "trend": [
+        {
+          "year": "2017",
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "year": 2016,
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Penyaluran DBH",
+      "achievement": {
+        "target": 876408239992290,
+        "realization": 0,
+        "percentage": 0
+      },
+      "trend": [
+        {
+          "year": "2017",
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "year": 2016,
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Penyaluran DAU",
+      "achievement": {
+        "target": 876408239992290,
+        "realization": 0,
+        "percentage": 0
+      },
+      "trend": [
+        {
+          "year": "2017",
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "year": 2016,
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Penyaluran DID",
+      "achievement": {
+        "target": 876408239992290,
+        "realization": 0,
+        "percentage": 0
+      },
+      "trend": [
+        {
+          "year": "2017",
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "year": 2016,
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Penyaluran DANA",
+      "achievement": {
+        "target": 876408239992290,
+        "realization": 0,
+        "percentage": 0
+      },
+      "trend": [
+        {
+          "year": "2017",
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "year": 2016,
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Penyaluran DAKN",
+      "achievement": {
+        "target": 876408239992290,
+        "realization": 0,
+        "percentage": 0
+      },
+      "trend": [
+        {
+          "year": "2017",
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "year": 2016,
+          "month": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "value": [
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647,
+            2147483647
+          ]
+        }
+      ]
+    }
+  ]
+}

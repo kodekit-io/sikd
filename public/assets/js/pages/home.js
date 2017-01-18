@@ -40,7 +40,8 @@ $(document).ready(function() {
             };
 
 
-            var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">'+$percentage+'</span>';
+
+            var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">'+$percentage+'%</span>';
 
             var linkdetail = './level-1';
             var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
@@ -49,10 +50,10 @@ $(document).ready(function() {
 							</div> \
 							<div class="uk-width-medium-1-2"> \
 								<div class="uk-progress slim uk-margin-bottom-remove sikd-yellow-bg"> \
-									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg '+color+'" style="width: '+$percentage+';">'+$percentage+'</div> \
+									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg '+color+'" style="width: '+$percentage+';">'+$percentage+'%</div> \
 								</div> \
 								<ul class="uk-subnav uk-margin-bottom-remove uk-margin-top-remove"> \
-									<li class="uk-margin-small-top"><strong>'+$percentage+'</strong></li> \
+									<li class="uk-margin-small-top"><strong>'+$percentage+'%</strong></li> \
 									<li class="uk-margin-small-top">( Alokasi : <strong>'+$target+'</strong></li> \
 									<li class="uk-margin-small-top">Realisasi : <strong>'+$realization+'</strong> )</li> \
 								</ul> \
@@ -144,6 +145,7 @@ $(document).ready(function() {
             $(window).trigger("resize");
         }
 	}
+
 
 	var $tkddData = jQuery.parseJSON(tkddData);
 

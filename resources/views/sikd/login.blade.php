@@ -48,5 +48,6 @@
 </main>
 @endsection
 @section('page-level-scripts')
-
+	<script src="{!! asset('assets/js/jquery.js') !!}"></script>
+	<script src="{!! asset('assets/js/materialize.min.js') !!}"></script>
 @endsection

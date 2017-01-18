@@ -413,7 +413,9 @@ nav ul a.btn-floating {
 .sikd-login input, .sikd-login label {
     font-size: 16px;
 }
-
+.sikd-login .card .card-image img {
+    border-radius: 2px 0 0 2px;
+}
 .sikd-link-login {
     position: absolute;
     bottom: 10px;

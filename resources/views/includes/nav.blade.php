@@ -12,11 +12,6 @@
 
 
 			<ul class="right uk-subnav uk-margin-right">
-				<?php /* if is home
-				<li>
-					<a class="btn-floating waves-effect waves-light z-depth-0 grey" data-uk-tooltip title="Search"><i class="material-icons">search</i></a>
-				</li>
-				 //end if is home */ ?>
 				<li>
 					<a class="btn-floating waves-effect waves-light z-depth-0 grey" data-uk-tooltip title="Refresh Page" onclick="location.reload();"><i class="material-icons">refresh</i></a>
 				</li>
@@ -46,15 +41,17 @@
 		<img class="sikd-logo" src="assets/img/logo.png">
 	</li>
 	<li><a href="{!! url('/') !!}">BERANDA</a></li>
-	<?php //if user level 1 ?>
+
 	<li><a href="{!! url('/level-1') !!}">DATA NASIONAL</a></li>
 
-	<?php //if user level 2 ?>
 	<li>
 		<a class="collapsible-header">DATA PROVINSI<i class="material-icons right">arrow_drop_down</i></a>
 		<div class="collapsible-body">
 			<ul>
-				<li><a href="{!! url('/level-2') !!}">Nanggro Aceh Darussalam</a></li>
+				{{--@foreach($gProvinces as $province)--}}
+                    {{--<li><a href="{!! url('/level-2/' . $province->PemdaKey) !!}">{!! $province->ProvName !!}</a></li>--}}
+                {{--@endforeach--}}
+
 				<li><a href="{!! url('/level-2') !!}">Sumatera Utara</a></li>
 				<li><a href="{!! url('/level-2') !!}">Sumatera Barat</a></li>
 				<li><a href="{!! url('/level-2') !!}">Riau</a></li>
@@ -62,32 +59,32 @@
 				<li><a href="{!! url('/level-2') !!}">Jambi</a></li>
 				<li><a href="{!! url('/level-2') !!}">Sumatera Selatan</a></li>
 				<li><a href="{!! url('/level-2') !!}">Bangka Belitung</a></li>
-				<li><a href="{!! url('/level-2') !!}">Bengkulu</a></li>
-				<li><a href="{!! url('/level-2') !!}">Lampung</a></li>
-				<li><a href="{!! url('/level-2') !!}">DKI Jakarta</a></li>
-				<li><a href="{!! url('/level-2') !!}">Jawa Barat</a></li>
-				<li><a href="{!! url('/level-2') !!}">Banten</a></li>
-				<li><a href="{!! url('/level-2') !!}">Jawa Tengah</a></li>
-				<li><a href="{!! url('/level-2') !!}">Daerah Istimewa Yogyakarta</a></li>
-				<li><a href="{!! url('/level-2') !!}">Jawa Timur</a></li>
-				<li><a href="{!! url('/level-2') !!}">Bali</a></li>
-				<li><a href="{!! url('/level-2') !!}">Nusa Tenggara Barat</a></li>
-				<li><a href="{!! url('/level-2') !!}">Nusa Tenggara Timur</a></li>
-				<li><a href="{!! url('/level-2') !!}">Kalimantan Barat</a></li>
-				<li><a href="{!! url('/level-2') !!}">Kalimantan Tengah</a></li>
-				<li><a href="{!! url('/level-2') !!}">Kalimantan Selatan</a></li>
-				<li><a href="{!! url('/level-2') !!}">Kalimantan Timur</a></li>
-				<li><a href="{!! url('/level-2') !!}">Kalimantan Utara</a></li>
-				<li><a href="{!! url('/level-2') !!}">Sulawesi Utara</a></li>
-				<li><a href="{!! url('/level-2') !!}">Sulawesi Barat</a></li>
-				<li><a href="{!! url('/level-2') !!}">Sulawesi Tengah</a></li>
-				<li><a href="{!! url('/level-2') !!}">Sulawesi Tenggara</a></li>
-				<li><a href="{!! url('/level-2') !!}">Sulawesi Selatan</a></li>
-				<li><a href="{!! url('/level-2') !!}">Gorontalo</a></li>
-				<li><a href="{!! url('/level-2') !!}">Maluku</a></li>
-				<li><a href="{!! url('/level-2') !!}">Maluku Utara</a></li>
-				<li><a href="{!! url('/level-2') !!}">Papua Barat</a></li>
-				<li><a href="{!! url('/level-2') !!}">Papua</a></li>
+				{{--<li><a href="{!! url('/level-2') !!}">Bengkulu</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Lampung</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">DKI Jakarta</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Jawa Barat</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Banten</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Jawa Tengah</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Daerah Istimewa Yogyakarta</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Jawa Timur</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Bali</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Nusa Tenggara Barat</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Nusa Tenggara Timur</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Kalimantan Barat</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Kalimantan Tengah</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Kalimantan Selatan</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Kalimantan Timur</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Kalimantan Utara</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Sulawesi Utara</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Sulawesi Barat</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Sulawesi Tengah</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Sulawesi Tenggara</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Sulawesi Selatan</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Gorontalo</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Maluku</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Maluku Utara</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Papua Barat</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Papua</a></li>--}}
 			</ul>
 		</div>
 	</li>

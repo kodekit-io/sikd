@@ -2,11 +2,9 @@
 
 @section('content')
 <main class="uk-container uk-container-center uk-margin-top">
-	<div class="card z-depth-3 soft hoverable sikd-map">
+	<div class="card z-depth-3 soft hoverable sikd-map uk-animation-fade">
 		<div class="card-toolbar">
-			<h2 class="card-title">
-				Realisasi Total Penyaluran TKDD Nasional
-			</h2>
+			<h2 class="card-title" id="titleMap"></h2>
 			<a href="#" data-activates="switchdata" class="dropdown-button orange z-depth-0 btn right" data-beloworigin="true" data-alignment="right">Pilih Jenis Informasi <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="switchdata" class="dropdown-content">
 				<li><a href="#!">Penyaluran TKDD</a></li>

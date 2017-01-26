@@ -24,7 +24,7 @@ class Province
     {
         $minutes = 5 * 24 * 60;
         $provinces = Cache::remember('provinces', $minutes, function () {
-            $path = public_path('assets/js/pages/indonesia.json');
+            $path = public_path('assets/js/pages/indonesiaMap.json');
             $jsonResult = File::get($path);
             $jsonResult = \GuzzleHttp\json_decode($jsonResult);
             $features = $jsonResult->features;

@@ -158,7 +158,7 @@ $(function() {
                                 break;
                             }
                             //alert(idProv);
-                            location.href = './level-2/'+idProv;
+                            location.href = baseUrl+'/level-2/'+idProv;
                         });
 
                         //myMap.setOption(option);

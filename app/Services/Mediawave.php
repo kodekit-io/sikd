@@ -4,6 +4,12 @@ namespace App\Service;
 
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\Psr7;
+use Illuminate\Support\Facades\Log;
 
 class Mediawave
 {
@@ -16,41 +22,72 @@ class Mediawave
      */
     public function __construct(Client $client)
     {
+        $this->urlV2 = config('services.mediawave.base_url_v2');
         $this->url = config('services.mediawave.base_url');
         $this->appKey = config('services.mediawave.app_key');
         $this->client = $client;
     }
 
-    public function post($url, $params, $withToken=false)
+    public function post($url, $params = [], $apiVersion = 1, $withToken=false)
     {
         if ($withToken) {
             $params['auth_token'] = session('api_token');
         }
 
-        $apiUrl = $this->url . $url;
+        $apiUrl = $this->generateApiUrl($url, $apiVersion);
 
-        $response = $this->client->post($apiUrl, [
-            'form_params' => $params
-        ]);
-
-        $parsedResponse = $this->parseResponse($response);
+        try {
+            $response = $this->client->post($apiUrl, [
+                'form_params' => $params
+            ]);
+            $parsedResponse = $this->parseResponse($response);
+        } catch (\Exception $e) {
+            $message = 'Networking Error ';
+            $code = '000';
+            if ($e instanceof TransferException) {
+                if ($e->hasResponse()) {
+                    $response = $e->getResponse();
+                    $message = $response->getReasonPhrase();
+                    $code = $response->getStatusCode();
+                }
+                $parsedResponse = new SimpleAPIResponse($code, $message . ' at ' . $apiUrl . '.');
+            } else {
+                $parsedResponse = new SimpleAPIResponse(000, 'Unknown Error for ' . $apiUrl . '.');
+            }
+        }
 
         return $parsedResponse;
     }
 
-    public function get($url, $params, $withToken = false)
+    public function get($url, $params = [], $apiVersion = 1, $withToken = false)
     {
         if ($withToken) {
             $params['auth_token'] = session('api_token');
         }
 
-        $apiUrl = $this->url . $url;
+        $apiUrl = $this->generateApiUrl($url, $apiVersion);
 
-        $response = $this->client->get($apiUrl, [
-            'query' => $params
-        ]);
+        try {
+            $response = $this->client->get($apiUrl, [
+                'query' => $params
+            ]);
+            $parsedResponse = $this->parseResponse($response);
+        } catch (\Exception $e) {
+            $message = 'Networking Error ';
+            $code = '000';
+            if ($e instanceof TransferException) {
+                if ($e->hasResponse()) {
+                    $response = $e->getResponse();
+                    $message = $response->getReasonPhrase();
+                    $code = $response->getStatusCode();
+                }
+                $parsedResponse = new SimpleAPIResponse($code, $message . ' at ' . $apiUrl . '.');
+            } else {
+                $parsedResponse = new SimpleAPIResponse(000, 'Unknown Error for ' . $apiUrl . '.');
+            }
 
-        $parsedResponse = $this->parseResponse($response);
+            Log::alert('ERROR API ==> ' . $message);
+        }
 
         return $parsedResponse;
     }
@@ -62,12 +99,20 @@ class Mediawave
         $reason = $response->getReasonPhrase(); // OK
 
         if ($code == 200 && $reason == 'OK') {
-            $response = \GuzzleHttp\json_decode($body);
+            $result = \GuzzleHttp\json_decode($body);
+            return new SimpleAPIResponse($code, $result);
         } else {
-            return redirect('/logout')->withErrors(['session_expired' => 'Invalid Request.']);
+            return new SimpleAPIResponse(400, 'Bad API Result.');
+        }
+    }
+
+    private function generateApiUrl($url, $version)
+    {
+        if ($version == 2) {
+            return $this->urlV2 . $url;
         }
 
-        return $response;
+        return $this->url . $url;
     }
 
 

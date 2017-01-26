@@ -13,6 +13,12 @@
     </div>
 </footer>
 
+@section('page-level-js-variables')
+    <script type="text/javascript">
+        var baseUrl = '{!! url('/') !!}';
+    </script>
+@show
+
 <script src="{!! asset('assets/js/jquery.js') !!}"></script>
 <script src="{!! asset('assets/js/materialize.min.js') !!}"></script>
 <script src="{!! asset('assets/js/uikit.min.js') !!}"></script>

@@ -42,6 +42,10 @@
 						<li><div class="" id="B5"></div></li>
 						<li><div class="" id="B6"></div></li>
 						<li><div class="" id="B7"></div></li>
+                        <li><div class="" id="B8"></div></li>
+                        <li><div class="" id="B9"></div></li>
+                        <li><div class="" id="B10"></div></li>
+                        <li><div class="" id="B11"></div></li>
 					</ul>
 				</div>
 				<div class="card-action">
@@ -53,6 +57,10 @@
 						<li class="tab" id="B5tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 						<li class="tab" id="B6tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 						<li class="tab" id="B7tab"><a href="#" data-uk-tooltip title="Title"></a></li>
+                        <li class="tab" id="B8tab"><a href="#" data-uk-tooltip title="Title"></a></li>
+                        <li class="tab" id="B9tab"><a href="#" data-uk-tooltip title="Title"></a></li>
+                        <li class="tab" id="B10tab"><a href="#" data-uk-tooltip title="Title"></a></li>
+                        <li class="tab" id="B11tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -201,6 +209,7 @@
 @section('page-level-scripts')
 	<script type="text/javascript">
 		var tkddData = '{!! $tkddData !!}';
+        var apbdData = '{!! $apbdData !!}';
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>

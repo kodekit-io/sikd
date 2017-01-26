@@ -1,7 +1,7 @@
 $(function() {
-    L1Map('Realisasi Total Penyaluran PAD Nasional','PAD','data/map-apbd-pad.json','./level-2?idprovinsi');
+    L1Map('Realisasi Total Penyaluran PAD Nasional', 'PAD', 'data/map-apbd-pad.json', './level-2?idprovinsi');
 
-    function L1Map(title,titleShort,type,linkTo) {
+    function L1Map(title, titleShort, type, linkTo) {
         $("#titleMap").html(title);
         $.ajax({
             url : type,

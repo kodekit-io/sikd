@@ -35,19 +35,20 @@ class HomeController extends Controller
 
     public function home()
     {
-        $thisYear = date('Y');
-        $params = [ 'tahun' => 2016 ];
+//        $thisYear = date('Y');
+        $thisYear = '2016';
+        $params = [ 'tahun' => $thisYear ];
+        // tkdd
         $tkdd = $this->mediawave->get('TKDD', $params);
-        $data['tkddData'] = \GuzzleHttp\json_encode($tkdd);
+        $tkddResult = ($tkdd->status == '200') ? $tkdd->result : [];
+
+        // apbd
+        $apbd = $this->mediawave->get('apbd/all/0/' . $thisYear, [], 2);
+        $apbdResult = ($apbd->status == '200') ? $apbd->result : [];
+
+        $data['tkddData'] = \GuzzleHttp\json_encode($tkddResult);
+        $data['apbdData'] = \GuzzleHttp\json_encode($apbdResult);
 
         return view('sikd.home', $data);
-    }
-
-    public function testTkdd()
-    {
-        $url = 'TKDD';
-        $params = [ 'tahun' => 2016 ];
-        $tkdd = $this->mediawave->get($url, $params, false);
-        var_dump($tkdd);
     }
 }

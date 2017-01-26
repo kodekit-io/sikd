@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    var url = "data/L2_A_detail-prov.json";
+    // var url = "data/L2_A_detail-prov.json";
+    var url = baseUrl + '/get-province-chart/' + $provinceId + '/' + $reportType;
     var div = "tableProv";
     $.ajax({
         url : url,
@@ -10,10 +11,11 @@ $(document).ready(function() {
             $('#' + div).show();
         },
         success : function(result) {
-            data = result.data;
+            $result = $.parseJSON(result);
+            data = $result.data;
             //console.log(data[1]);
             if (data.length === 0) {
-				$('#' + div).html("<div class='center'>No data</div>");
+				// $('#' + div).html("<div class='center'>No data</div>");
 			} else {
 				var $value = [];
 				for (i = 0; i < data.length; i++) {

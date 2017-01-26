@@ -19,14 +19,12 @@ Route::post('/login', 'ApiAuthController@postLogin');
 Route::post('/logout', 'ApiAuthController@logout');
 Route::get('/logout', 'ApiAuthController@logout');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('/level-1', function () {
         return view('sikd.level-1');
     });
 
-    Route::get('/level-2', function () {
-        return view('sikd.level-2');
-    });
+    Route::get('/level-2/{provinceId}/{reportType?}', 'ProvinceController@province');
 
     Route::get('/level-3', function () {
         return view('sikd.level-3');
@@ -60,6 +58,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/content-edit', function () {
         return view('sikd.content-edit');
     });
+
+    Route::get('get-province-chart/{provinceId}/{reportType?}', 'ProvinceController@getProvinceChart');
+
+    Route::get('get-provinces', 'ProvinceController@getProvince');
 });
 
-Route::get('test/tkdd', 'HomeController@testTkdd');
+Route::get('test/api-exception', 'MiscController@apiException');

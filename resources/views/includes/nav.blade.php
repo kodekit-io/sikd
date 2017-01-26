@@ -5,7 +5,7 @@
 
 			<h1 class="sikd-page-title left">
 				<a href="{!! url('/') !!}"  title="Monitoring Nasional SIKD" class="sikd-blue">
-					<img class="sikd-logo" src="assets/img/icon.png">
+					<img class="sikd-logo" src="{!! asset('assets/img/icon.png') !!}">
 					<span class="uk-hidden-small">Monitoring Nasional SIKD</span>
 				</a>
 			</h1>
@@ -38,7 +38,7 @@
 
 <ul id="sidedrawer" class="side-nav collapsible collapsible-accordion">
 	<li class=" sikd-page-title center">
-		<img class="sikd-logo" src="assets/img/logo.png">
+		<img class="sikd-logo" src="{!! asset('assets/img/logo.png') !!}">
 	</li>
 	<li><a href="{!! url('/') !!}">BERANDA</a></li>
 
@@ -46,19 +46,20 @@
 
 	<li>
 		<a class="collapsible-header">DATA PROVINSI<i class="material-icons right">arrow_drop_down</i></a>
+
 		<div class="collapsible-body">
 			<ul>
-				{{--@foreach($gProvinces as $province)--}}
-                    {{--<li><a href="{!! url('/level-2/' . $province->PemdaKey) !!}">{!! $province->ProvName !!}</a></li>--}}
-                {{--@endforeach--}}
+				@foreach($gProvinces as $province)
+                    <li><a href="{!! url('/level-2/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
+                @endforeach
 
-				<li><a href="{!! url('/level-2') !!}">Sumatera Utara</a></li>
-				<li><a href="{!! url('/level-2') !!}">Sumatera Barat</a></li>
-				<li><a href="{!! url('/level-2') !!}">Riau</a></li>
-				<li><a href="{!! url('/level-2') !!}">Kepulauan Riau</a></li>
-				<li><a href="{!! url('/level-2') !!}">Jambi</a></li>
-				<li><a href="{!! url('/level-2') !!}">Sumatera Selatan</a></li>
-				<li><a href="{!! url('/level-2') !!}">Bangka Belitung</a></li>
+				{{--<li><a href="{!! url('/level-2') !!}">Sumatera Utara</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Sumatera Barat</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Riau</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Kepulauan Riau</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Jambi</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Sumatera Selatan</a></li>--}}
+				{{--<li><a href="{!! url('/level-2') !!}">Bangka Belitung</a></li>--}}
 				{{--<li><a href="{!! url('/level-2') !!}">Bengkulu</a></li>--}}
 				{{--<li><a href="{!! url('/level-2') !!}">Lampung</a></li>--}}
 				{{--<li><a href="{!! url('/level-2') !!}">DKI Jakarta</a></li>--}}
@@ -87,5 +88,7 @@
 				{{--<li><a href="{!! url('/level-2') !!}">Papua</a></li>--}}
 			</ul>
 		</div>
+
+		{{--<div class="collapsible-body" id="listProvinsi"></div>--}}
 	</li>
 </ul>

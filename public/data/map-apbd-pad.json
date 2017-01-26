@@ -1,0 +1,174 @@
+{
+  "map": [
+    {
+      "id": "01",
+      "name": "Prov. Aceh",
+      "value": 10353604175010
+    },
+    {
+      "id": "02",
+      "name": "Prov. Sumut",
+      "value": 9100065755025.3
+    },
+    {
+      "id": "03",
+      "name": "Prov. Sumatera Barat",
+      "value": 12657976768551
+    },
+    {
+      "id": "04",
+      "name": "Prov. Riau",
+      "value": 15075621372477
+    },
+    {
+      "id": "05",
+      "name": "Prov. Jambi",
+      "value": 6374099162831
+    },
+    {
+      "id": "06",
+      "name": "Prov. Sumsel",
+      "value": 17907233608172
+    },
+    {
+      "id": "07",
+      "name": "Prov. Bengkulu",
+      "value": 2002071740716.1
+    },
+    {
+      "id": "08",
+      "name": "Prov. Lampung",
+      "value": 3357482374102
+    },
+    {
+      "id": "09",
+      "name": "Prov. DKI Jakarta",
+      "value": 87701173251663
+    },
+    {
+      "id": "10",
+      "name": "Prov. Jabar",
+      "value": 72090745779269
+    },
+    {
+      "id": "11",
+      "name": "Prov. Jateng",
+      "value": 35723570273902
+    },
+    {
+      "id": "12",
+      "name": "Prov. DIY",
+      "value": 9340984909503.3
+    },
+    {
+      "id": "13",
+      "name": "Prov. Jawa Timur",
+      "value": 90106205465294
+    },
+    {
+      "id": "14",
+      "name": "Prov. Kalbar",
+      "value": 2160279084448.7
+    },
+    {
+      "id": "15",
+      "name": "Prov. Kalteng",
+      "value": 2266343396239
+    },
+    {
+      "id": "16",
+      "name": "Prov. Kalsel",
+      "value": 13921188777972
+    },
+    {
+      "id": "17",
+      "name": "Prov. Kaltim",
+      "value": 7232093046930.5
+    },
+    {
+      "id": "18",
+      "name": "Prov. Sulut",
+      "value": 3082823405705.2
+    },
+    {
+      "id": "19",
+      "name": "Prov. Sulteng",
+      "value": 5370364592185.7
+    },
+    {
+      "id": "20",
+      "name": "Prov. Sulsel",
+      "value": 12915167568431
+    },
+    {
+      "id": "21",
+      "name": "Prov. Sultra",
+      "value": 3432452596439.9
+    },
+    {
+      "id": "22",
+      "name": "Prov. Bali",
+      "value": 17343830008064
+    },
+    {
+      "id": "23",
+      "name": "Prov. NTB",
+      "value": 4114943385586.6
+    },
+    {
+      "id": "24",
+      "name": "Prov. NTT",
+      "value": 3123709261393.5
+    },
+    {
+      "id": "25",
+      "name": "Prov. Maluku",
+      "value": 2345516845553.6
+    },
+    {
+      "id": "26",
+      "name": "Prov. Papua",
+      "value": 3052417402681.4
+    },
+    {
+      "id": "27",
+      "name": "Prov. Malut",
+      "value": 516590239146.59
+    },
+    {
+      "id": "28",
+      "name": "Prov. Banten",
+      "value": 20031242791283
+    },
+    {
+      "id": "29",
+      "name": "Prov. Babel",
+      "value": 1858482808487.1
+    },
+    {
+      "id": "30",
+      "name": "Prov. Gorontalo",
+      "value": 1836069763392.4
+    },
+    {
+      "id": "31",
+      "name": "Prov. Kepulauan Riau",
+      "value": 7370478046162.1
+    },
+    {
+      "id": "32",
+      "name": "Prov. Papua Barat",
+      "value": 921271775776.21
+    },
+    {
+      "id": "33",
+      "name": "Prov. Sulawesi Barat",
+      "value": 551849552273.29
+    },
+    {
+      "id": "34",
+      "name": "Prov. Kalimantan Utara",
+      "value": 1229579041578.7
+    }
+  ]
+}

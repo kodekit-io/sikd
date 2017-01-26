@@ -1,22 +1,4 @@
 $(document).ready(function() {
-	function abbr(number, decimal) {
-		decimal = Math.pow(10,decimal);
-		var abbrev = [ " K", " M", " B", " T" ];
-		for (var i=abbrev.length-1; i>=0; i--) {
-			var size = Math.pow(10,(i+1)*3);
-			if(size <= number) {
-				number = Math.round(number*decimal/size)/decimal;
-				if((number == 1000) && (i < abbrev.length - 1)) {
-					number = 1;
-					i++;
-				}
-				number += abbrev[i];
-				break;
-			}
-		}
-		return number;
-	}
-
 	function L0Chart(divID,n,type,result) {
 		var color;
 
@@ -31,6 +13,8 @@ $(document).ready(function() {
         } else {
             var $content = [];
             var $legend = [];
+            console.log("n => " + n);
+            console.log($result);
             $data = $result[n].trend;
             $id = $result[n].id;
             $name = $result[n].name;
@@ -59,8 +43,6 @@ $(document).ready(function() {
                 cat: $cat,
                 legend: $legend
             };
-
-
 
             var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">'+$percentage+'%</span>';
 
@@ -184,9 +166,18 @@ $(document).ready(function() {
 	L0Chart('A6','5','penyaluran', $tkddData);
 	L0Chart('A7','6','penyaluran', $tkddData);
 
-	jQuery.get('data/L0_B_apbd.json', function($result) {
-        L0Chart('B1','1','apbd',$result);
-    });
+	var $apbdData = jQuery.parseJSON(apbdData);
+    L0Chart('B1','0','apbd', $apbdData);
+    L0Chart('B2','1','apbd', $apbdData);
+    L0Chart('B3','2','apbd', $apbdData);
+    L0Chart('B4','3','apbd', $apbdData);
+    L0Chart('B5','4','apbd', $apbdData);
+    L0Chart('B6','5','apbd', $apbdData);
+    L0Chart('B7','6','apbd', $apbdData);
+    L0Chart('B8','7','apbd', $apbdData);
+    L0Chart('B9','8','apbd', $apbdData);
+    L0Chart('B10','9','apbd', $apbdData);
+    L0Chart('B11','10','apbd', $apbdData);
 
 	// L0Chart('B1','0','apbd','data/L0_B_apbd.json');
 	// L0Chart('B2','1','apbd','data/L0_B_apbd.json');

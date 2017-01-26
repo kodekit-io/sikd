@@ -184,6 +184,10 @@ $(document).ready(function() {
 	L0Chart('A6','5','penyaluran', $tkddData);
 	L0Chart('A7','6','penyaluran', $tkddData);
 
+	jQuery.get('data/L0_B_apbd.json', function($result) {
+        L0Chart('B1','1','apbd',$result);
+    });
+
 	// L0Chart('B1','0','apbd','data/L0_B_apbd.json');
 	// L0Chart('B2','1','apbd','data/L0_B_apbd.json');
 	// L0Chart('B3','2','apbd','data/L0_B_apbd.json');

@@ -20,7 +20,7 @@ class Province
         $this->mediawave = $mediawave;
     }
 
-    public function getProvinces()
+    public function getProvinces($type = 'array')
     {
         $minutes = 5 * 24 * 60;
         $provinces = Cache::remember('provinces', $minutes, function () {
@@ -40,6 +40,10 @@ class Province
             return $provinces;
         });
 
+        if ($type == 'json') {
+            return \GuzzleHttp\json_encode($provinces);
+        }
+
         return $provinces;
     }
 
@@ -55,13 +59,24 @@ class Province
         return '';
     }
 
-    public function getProvinceChartData($provinceId, $reportType)
+    public function getApbdChart($level, $year = '2016', $reportType = 'pad', $provinceId = '')
     {
-        $thisYear = '2016';
-        $url = 'apbd/' . $reportType . '/2/' . $thisYear . '/' . $provinceId;
-        $apiRequest = $this->mediawave->get($url, [], 2);
+        $url = 'apbd/' . $reportType . '/' . $level . '/' . $year;
+        $url .= $provinceId != '' ? '/' . $provinceId : '';
+        $apiVersion = 2;
+        $apiRequest = $this->mediawave->get($url, [], $apiVersion);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
-        $modifiedResult['data'] = isset($result->{'detail-map-provinsi'}) ? $result->{'detail-map-provinsi'} : [];
+
+        // modified the api result
+        $modifiedResult['data'] = [];
+
+        if (isset($result->map)) {
+            $modifiedResult['data'] = $result->map;
+        }
+
+        if (isset($result->{'detail-map-provinsi'})) {
+            $modifiedResult['data'] = $result->{'detail-map-provinsi'};
+        }
 
         return \GuzzleHttp\json_encode($modifiedResult);
     }

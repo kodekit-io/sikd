@@ -38,6 +38,7 @@ class HomeController extends Controller
 //        $thisYear = date('Y');
         $thisYear = '2016';
         $params = [ 'tahun' => $thisYear ];
+
         // tkdd
         $tkdd = $this->mediawave->get('TKDD', $params);
         $tkddResult = ($tkdd->status == '200') ? $tkdd->result : [];

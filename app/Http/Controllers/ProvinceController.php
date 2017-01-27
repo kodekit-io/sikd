@@ -23,7 +23,6 @@ class ProvinceController extends Controller
 
     public function province($provinceId, $reportType = '')
     {
-        $data['provinces'] = $this->provinceService->getProvinces();
         $data['reportTypes'] = config('mediawave.reportType');
 
         $data['provinceName'] = $this->provinceService->getProvinceNameById($provinceId);
@@ -35,7 +34,8 @@ class ProvinceController extends Controller
 
     public function getProvinceChart($provinceId, $reportType)
     {
-        return $this->provinceService->getProvinceChartData($provinceId, $reportType);
+        $level = 2;
+        return $this->provinceService->getApbdChart($level, '2016', $reportType, $provinceId);
     }
 
     public function getProvince()

@@ -1,13 +1,16 @@
-$(function() {
-    L1Map('Realisasi Total Penyaluran PAD Nasional', 'PAD', 'data/map-apbd-pad.json');
+(function ($, window, document, $reportName, $mapBaseUrl, $reportType) {
+    $(function () {
+        var $url = $baseUrl + '/get-map-chart/' + $reportType;
+        L1Map($reportName, $url);
+    });
 
-    function L1Map(title, titleShort, type) {
+    function L1Map(title, type) {
         $("#titleMap").html(title);
         $.ajax({
             url : type,
             success : function(result) {
-                //result = jQuery.parseJSON(result);
-                data = result.map;
+                result = jQuery.parseJSON(result);
+                data = result.data;
 
                 if (data.length > 0) {
                     var $content = [];
@@ -22,7 +25,6 @@ $(function() {
                     var _array = $arrayval;
                     var valmax = Math.max.apply(Math,_array);
                     var valmin = Math.min.apply(Math,_array);
-                    //console.log(_array);
 
                     var map = {
                         content: $content
@@ -31,7 +33,7 @@ $(function() {
 
                     var myMap = echarts.init(document.getElementById('map'));
                     myMap.showLoading();
-                    $.get('assets/js/pages/indonesiaMap.json', function (idJson) {
+                    $.get($baseUrl + '/assets/js/pages/indonesiaMap.json', function (idJson) {
                         myMap.hideLoading();
                         echarts.registerMap('Indonesia', idJson, {});
                         var option = {
@@ -73,7 +75,7 @@ $(function() {
                             },
                             series : [
                                 {
-                                    name: titleShort,
+                                    name: 'chart',
                                     type: 'map',
                                     roam: true,
                                     map: 'Indonesia',
@@ -86,77 +88,79 @@ $(function() {
                         };
 
                         myMap.on('click', function (param) {
-                            nameProv = param.name;
-                            switch (nameProv) {
-                                case "Prov. Aceh": idProv = "01";
-                                break;
-                                case "Prov. Sumut": idProv = "02";
-                                break;
-                                case "Prov. Sumatera Barat": idProv = "03";
-                                break;
-                                case "Prov. Riau": idProv = "04";
-                                break;
-                                case "Prov. Jambi": idProv = "05";
-                                break;
-                                case "Prov. Sumsel": idProv = "06";
-                                break;
-                                case "Prov. Bengkulu": idProv = "07";
-                                break;
-                                case "Prov. Lampung": idProv = "08";
-                                break;
-                                case "Prov. DKI Jakarta": idProv = "09";
-                                break;
-                                case "Prov. Jabar": idProv = "10";
-                                break;
-                                case "Prov. Jateng": idProv = "11";
-                                break;
-                                case "Prov. DIY": idProv = "12";
-                                break;
-                                case "Prov. Jawa Timur": idProv = "13";
-                                break;
-                                case "Prov. Kalbar": idProv = "14";
-                                break;
-                                case "Prov. Kalteng": idProv = "15";
-                                break;
-                                case "Prov. Kalsel": idProv = "16";
-                                break;
-                                case "Prov. Kaltim": idProv = "17";
-                                break;
-                                case "Prov. Sulut": idProv = "18";
-                                break;
-                                case "Prov. Sulteng": idProv = "19";
-                                break;
-                                case "Prov. Sulsel": idProv = "20";
-                                break;
-                                case "Prov. Sultra": idProv = "21";
-                                break;
-                                case "Prov. Bali": idProv = "22";
-                                break;
-                                case "Prov. NTB": idProv = "23";
-                                break;
-                                case "Prov. NTT": idProv = "24";
-                                break;
-                                case "Prov. Maluku": idProv = "25";
-                                break;
-                                case "Prov. Papua": idProv = "26";
-                                break;
-                                case "Prov. Malut": idProv = "27";
-                                break;
-                                case "Prov. Banten": idProv = "28";
-                                break;
-                                case "Prov. Babel": idProv = "29";
-                                break;
-                                case "Prov. Gorontalo": idProv = "30";
-                                break;
-                                case "Prov. Kepulauan Riau": idProv = "31";
-                                break;
-                                case "Prov. Papua Barat": idProv = "32";
-                                break;
-                                case "Prov. Sulawesi Barat": idProv = "33";
-                                break;
-                                case "Prov. Kalimantan Utara": idProv = "34";
-                                break;
-                            }
+                            console.log(param.data.id);
+                            var idProv = param.data.id;
+                            // nameProv = param.name;
+                            // switch (nameProv) {
+                            //     case "Prov. Aceh": idProv = "01";
+                            //         break;
+                            //     case "Prov. Sumut": idProv = "02";
+                            //         break;
+                            //     case "Prov. Sumatera Barat": idProv = "03";
+                            //         break;
+                            //     case "Prov. Riau": idProv = "04";
+                            //         break;
+                            //     case "Prov. Jambi": idProv = "05";
+                            //         break;
+                            //     case "Prov. Sumsel": idProv = "06";
+                            //         break;
+                            //     case "Prov. Bengkulu": idProv = "07";
+                            //         break;
+                            //     case "Prov. Lampung": idProv = "08";
+                            //         break;
+                            //     case "Prov. DKI Jakarta": idProv = "09";
+                            //         break;
+                            //     case "Prov. Jabar": idProv = "10";
+                            //         break;
+                            //     case "Prov. Jateng": idProv = "11";
+                            //         break;
+                            //     case "Prov. DIY": idProv = "12";
+                            //         break;
+                            //     case "Prov. Jawa Timur": idProv = "13";
+                            //         break;
+                            //     case "Prov. Kalbar": idProv = "14";
+                            //         break;
+                            //     case "Prov. Kalteng": idProv = "15";
+                            //         break;
+                            //     case "Prov. Kalsel": idProv = "16";
+                            //         break;
+                            //     case "Prov. Kaltim": idProv = "17";
+                            //         break;
+                            //     case "Prov. Sulut": idProv = "18";
+                            //         break;
+                            //     case "Prov. Sulteng": idProv = "19";
+                            //         break;
+                            //     case "Prov. Sulsel": idProv = "20";
+                            //         break;
+                            //     case "Prov. Sultra": idProv = "21";
+                            //         break;
+                            //     case "Prov. Bali": idProv = "22";
+                            //         break;
+                            //     case "Prov. NTB": idProv = "23";
+                            //         break;
+                            //     case "Prov. NTT": idProv = "24";
+                            //         break;
+                            //     case "Prov. Maluku": idProv = "25";
+                            //         break;
+                            //     case "Prov. Papua": idProv = "26";
+                            //         break;
+                            //     case "Prov. Malut": idProv = "27";
+                            //         break;
+                            //     case "Prov. Banten": idProv = "28";
+                            //         break;
+                            //     case "Prov. Babel": idProv = "29";
+                            //         break;
+                            //     case "Prov. Gorontalo": idProv = "30";
+                            //         break;
+                            //     case "Prov. Kepulauan Riau": idProv = "31";
+                            //         break;
+                            //     case "Prov. Papua Barat": idProv = "32";
+                            //         break;
+                            //     case "Prov. Sulawesi Barat": idProv = "33";
+                            //         break;
+                            //     case "Prov. Kalimantan Utara": idProv = "34";
+                            //         break;
+                            // }
                             //alert(idProv);
                             location.href = baseUrl+'/level-2/'+idProv;
                         });
@@ -169,4 +173,4 @@ $(function() {
             }
         });
     }
-});
+}(window.jQuery, window, document, $reportName, $baseUrl, $reportType));

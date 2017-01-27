@@ -11,7 +11,7 @@
 			</h2>
 			<a href="#" data-activates="switchdata" class="dropdown-button orange white-text z-depth-0 uk-button right" data-beloworigin="true" data-alignment="right">PILIH PROVINSI <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="switchdata" class="dropdown-content slim-drop">
-				@foreach($provinces as $province)
+				@foreach($gProvinces as $province)
                     <li><a href="{!! url('level-2/' . $province['id'] . '/' . $reportType) !!}">{!! $province['name'] !!}</a></li>
                 @endforeach
 			</ul>

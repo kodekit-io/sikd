@@ -67,6 +67,8 @@ class Mediawave
 
         $apiUrl = $this->generateApiUrl($url, $apiVersion);
 
+        Log::alert('API URL ==> ' . $apiUrl);
+
         try {
             $response = $this->client->get($apiUrl, [
                 'query' => $params
@@ -86,7 +88,7 @@ class Mediawave
                 $parsedResponse = new SimpleAPIResponse(000, 'Unknown Error for ' . $apiUrl . '.');
             }
 
-            Log::alert('ERROR API ==> ' . $message);
+            Log::alert('ERROR API ==> ' . $message . ' at ' . $apiUrl);
         }
 
         return $parsedResponse;

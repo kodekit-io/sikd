@@ -5,7 +5,7 @@
     });
 
     function L1Map(title, type) {
-        $("#titleMap").html(title);
+        $("#titleMap").html("Penyaluran "+title+" Tingkat Nasional");
         $.ajax({
             url : type,
             success : function(result) {
@@ -50,7 +50,7 @@
                                 formatter : function (params) {
                                     var value = (params.value + '').split('.');
                                     value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,');
-                                    return params.seriesName + '<br/>' + params.name + ' : ' + value;
+                                    return title + '<br/>' + params.name + ' : ' + value;
                                 }
                             },
                             /**/
@@ -58,7 +58,7 @@
                                 left: 'left',
                                 min: valmin,
                                 max: valmax,
-                                color: ['#e91e63', '#ec407a', '#f06292', '#f48fb1', '#f8bbd0', '#fce4ec'],
+                                color: ['#f44336', '#ffeb3b', '#009688'],
                                 text:['Max','Min'],
                                 calculable : true
                             },

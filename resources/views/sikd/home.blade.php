@@ -208,6 +208,7 @@
 
 @section('page-level-scripts')
 	<script type="text/javascript">
+		var $baseUrl = "{!! url('/') !!}";
 		var tkddData = '{!! $tkddData !!}';
         var apbdData = '{!! $apbdData !!}';
 	</script>

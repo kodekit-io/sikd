@@ -56,7 +56,7 @@ $(function() {
                                 left: 'left',
                                 min: valmin,
                                 max: valmax,
-                                color: ['#e74c3c', '#e67e22', '#f1c40f', '#27ae60', '#85C1E9'],
+                                color: ['#e91e63', '#ec407a', '#f06292', '#f48fb1', '#f8bbd0', '#fce4ec'],
                                 text:['Max','Min'],
                                 calculable : true
                             },

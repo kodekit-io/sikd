@@ -59,7 +59,7 @@ $(document).ready(function() {
                         "data": null,
                         "render": function ( data ) {
                             var k = data["name"];
-                            var p = './level-3'
+                            var p = baseUrl+'/level-3'
                             return '<a class="uk-button cyan white-text right" href="'+p+'" data-uk-tooltip title="Informasi Detail '+k+'">Profil Pemda</a>';
                         }
                     },

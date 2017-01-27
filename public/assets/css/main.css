@@ -391,7 +391,7 @@ nav ul a.btn-floating {
 .card .card-toolbar {
     border-top: none;
     border-bottom: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 10px 1em;
+    padding: 10px 1em 5px;
 }
 
 .card-title {
@@ -451,23 +451,25 @@ nav ul a.btn-floating {
 
 
 /*Dropdown*/
-
-#switchdata.dropdown-content li {
+.slim-drop.dropdown-content {
+    max-height: 250px !important;
+}
+.slim-drop.dropdown-content li {
     min-height: 1em;
     border-bottom: 1px dotted #eee;
 }
 
-#switchdata.dropdown-content li:last-child {
+.slim-drop.dropdown-content li:last-child {
     border-bottom: none;
     margin-bottom: 10px;
 }
 
-#switchdata.dropdown-content li>a, #switchdata.dropdown-content li>span {
+.slim-drop.dropdown-content li>a, .slim-drop.dropdown-content li>span {
     font-size: 1rem;
     display: block;
     line-height: 1rem;
-    padding: 5px 1rem;
-    margin-left: 1rem;
+    padding: 5px 12px;
+    margin-left: 0;
     margin-right: 0;
     color: inherit !important;
 }

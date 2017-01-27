@@ -23,9 +23,11 @@ $(document).ready(function() {
 
             for (i = 0; i < $data.length; i++) {
                 $target000 = $achievement[0].target;
-				$target = abbr($target000,2);
+				$target = numeral($target000).format('0.00a');
+
                 $realization000 = $achievement[0].realization;
-				$realization = abbr($realization000,2);
+				$realization = numeral($realization000).format('0.00a');
+
                 $percentage000 = $achievement[0].percentage;
 				$percentage = Math.round($percentage000 * 100) / 100
 
@@ -136,7 +138,8 @@ $(document).ready(function() {
                         //splitArea : {show : true}
 						axisLabel : {
 							formatter: function(v) {
-								$v = abbr(v,2);
+								//$v = abbr(v,2);
+								$v = numeral(v).format('0.00a');
 								return $v;
 							}
 						}

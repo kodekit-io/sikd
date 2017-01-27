@@ -24,7 +24,7 @@
 <script src="{!! asset('assets/js/uikit.min.js') !!}"></script>
 <script src="{!! asset('assets/js/components/tooltip.min.js') !!}"></script>
 <script src="{!! asset('assets/js/main.js') !!}"></script>
-
+<script src="{!! asset('assets/js/numeral.js') !!}"></script>
 @section('page-level-scripts')
 @show
 </body>

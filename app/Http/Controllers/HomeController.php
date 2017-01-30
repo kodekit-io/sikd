@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\Apbd;
 use App\Service\Mediawave;
+use App\Service\Tkdd;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,16 +13,28 @@ class HomeController extends Controller
      * @var Mediawave
      */
     private $mediawave;
+    /**
+     * @var Apbd
+     */
+    private $apbd;
+    /**
+     * @var Tkdd
+     */
+    private $tkdd;
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param Mediawave $mediawave
+     * @param Tkdd $tkdd
+     * @param Apbd $apbd
      */
-    public function __construct(Mediawave $mediawave)
+    public function __construct(Mediawave $mediawave, Tkdd $tkdd, Apbd $apbd)
     {
         $this->middleware('auth');
         $this->mediawave = $mediawave;
+        $this->apbd = $apbd;
+        $this->tkdd = $tkdd;
     }
 
     /**
@@ -40,11 +54,11 @@ class HomeController extends Controller
         $params = [ 'tahun' => $thisYear ];
 
         // tkdd
-        $tkdd = $this->mediawave->get('TKDD', $params);
-        $tkddResult = ($tkdd->status == '200') ? $tkdd->result : [];
+        $tkddResult = $this->tkdd->getAllChart();
+        $tkddResult = ($tkddResult->status == '200') ? $tkddResult->result : [];
 
         // apbd
-        $apbd = $this->mediawave->get('apbd/all/0/' . $thisYear, [], 2);
+        $apbd = $this->mediawave->get('apbd/all/0/' . $thisYear, [], 1);
         $apbdResult = ($apbd->status == '200') ? $apbd->result : [];
 
         $data['tkddData'] = \GuzzleHttp\json_encode($tkddResult);

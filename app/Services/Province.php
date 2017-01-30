@@ -59,26 +59,4 @@ class Province
         return '';
     }
 
-    public function getApbdChart($level, $year = '2016', $reportType = 'pad', $provinceId = '')
-    {
-        $url = 'apbd/' . $reportType . '/' . $level . '/' . $year;
-        $url .= $provinceId != '' ? '/' . $provinceId : '';
-        $apiVersion = 2;
-        $apiRequest = $this->mediawave->get($url, [], $apiVersion);
-        $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
-
-        // modified the api result
-        $modifiedResult['data'] = [];
-
-        if (isset($result->map)) {
-            $modifiedResult['data'] = $result->map;
-        }
-
-        if (isset($result->{'detail-map-provinsi'})) {
-            $modifiedResult['data'] = $result->{'detail-map-provinsi'};
-        }
-
-        return \GuzzleHttp\json_encode($modifiedResult);
-    }
-
 }

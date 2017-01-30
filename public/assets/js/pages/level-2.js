@@ -19,7 +19,9 @@ $(document).ready(function() {
 			} else {
 				var $value = [];
 				for (i = 0; i < data.length; i++) {
-                    $value[i] = data[i].value;
+                    // console.log(data[i].percentage);
+                    // $value[i] = data[i].value;
+                    $value[i] = data[i].percentage;
 				}
                 var _array = $value;
                 var max = Math.max.apply(Math,_array);
@@ -28,7 +30,7 @@ $(document).ready(function() {
                    return pv + (parseFloat(cv)||0);
                 },0);
                 var avg = sum/data.length;
-                //console.log(avg);
+                console.log(avg);
             }
 
             var tableProv = $('#' + div).DataTable( {
@@ -41,18 +43,18 @@ $(document).ready(function() {
                 "columns": [
                     { "data": "id" },
                     { "data": "name" },
-                    { "data": "value" },
+                    { "data": "percentage" },
                     {
                         "data": null,
                         "class": "progressbar",
                         "width": "65%",
                         "render": function (data,type,row,meta) {
 
-                            var v = data["value"];
+                            var v = data["percentage"];
                             var p = (v/max) * 100;
                             var m = (avg/max) * 100;
                             //console.log(m);
-                            return '<div class="uk-progress uk-margin-bottom-remove"><div class="sikd-m" data-uk-tooltip="{pos:\'left\'}" title="Average: '+avg+'" style="left:'+m+'%;"></div><div class="uk-progress-bar uk-animation-slide-left" style="width: '+p+'%;">'+v+'</div></div>';
+                            return '<div class="uk-progress uk-margin-bottom-remove"><div class="sikd-m" data-uk-tooltip="{pos:\'left\'}" title="Average: '+avg+'" style="left:'+m+'%;"></div><div class="uk-progress-bar uk-animation-slide-left" style="width: '+p+'%;">'+v+'%</div></div>';
                         }
                     },
                     {

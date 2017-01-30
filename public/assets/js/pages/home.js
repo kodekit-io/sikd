@@ -4,10 +4,8 @@ $(document).ready(function() {
 
         if(type==='apbd') {
             $result = result.apbd;
-            $mapUrl = $baseUrl + '/apbd';
         } else if (type==='tkdd') {
             $result = result.tkdd;
-            $mapUrl = $baseUrl + '/tkdd';
         }
 
         if ($result[n] !== undefined) {
@@ -56,7 +54,7 @@ $(document).ready(function() {
 
                 var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">' + $percentage + '%</span>';
 
-                var linkdetail = $baseUrl + '/level-1/' + slug($name);
+                var linkdetail = $baseUrl + '/level-1/';
                 var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
 							<div class="uk-width-medium-1-2"> \
 								<h5 class="sikd-chart--title sikd-blue">' + $name + '</h5> \

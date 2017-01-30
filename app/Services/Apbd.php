@@ -19,20 +19,31 @@ class Apbd
         $this->mediawave = $mediawave;
     }
 
-    public function getChart($level, $year = '2016', $reportType = 'pad', $provinceId = '')
+    public function getMapChart($year = '2016', $reportType = 'pad')
     {
-        $url = 'apbd/' . $reportType . '/' . $level . '/' . $year;
+        $url = 'apbd/' . $reportType . '/1/' . $year;
+        $apiRequest = $this->mediawave->get($url, []);
+        $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
+        // modified the api result
+        $modifiedResult['data'] = [];
+        if (isset($result->map)) {
+            $modifiedResult['data'] = $result->map;
+        }
+        if (isset($result->{'detail-map-provinsi'})) {
+            $modifiedResult['data'] = $result->{'detail-map-provinsi'};
+        }
+        return \GuzzleHttp\json_encode($modifiedResult);
+    }
+
+    public function getProvinceChart($year, $reportType, $provinceId)
+    {
+        $url = 'apbd/' . $reportType . '/2/' . $year;
         $url .= $provinceId != '' ? '/' . $provinceId : '';
         $apiRequest = $this->mediawave->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 
         // modified the api result
         $modifiedResult['data'] = [];
-
-        if (isset($result->map)) {
-            $modifiedResult['data'] = $result->map;
-        }
-
         if (isset($result->{'detail-map-provinsi'})) {
             $modifiedResult['data'] = $result->{'detail-map-provinsi'};
         }

@@ -5,7 +5,7 @@
     });
 
     function L1Map(title, type) {
-        $("#titleMap").html("Penyaluran "+title+" Tingkat Nasional");
+        $("#titleMap").html(title+" Tingkat Nasional");
         $.ajax({
             url : type,
             success : function(result) {

@@ -15,6 +15,7 @@
 						<li><div class="" id="A5"></div></li>
 						<li><div class="" id="A6"></div></li>
 						<li><div class="" id="A7"></div></li>
+                        <li><div class="" id="A8"></div></li>
 					</ul>
 				</div>
 				<div class="card-action">
@@ -26,6 +27,7 @@
 						<li class="tab" id="A5tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 						<li class="tab" id="A6tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 						<li class="tab" id="A7tab"><a href="#" data-uk-tooltip title="Title"></a></li>
+                        <li class="tab" id="A8tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 					</ul>
 				</div>
 			</div>

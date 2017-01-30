@@ -4,181 +4,181 @@ $(document).ready(function() {
 
         if(type==='apbd') {
             $result = result.apbd;
-        } else if (type==='penyaluran') {
-            $result = result.Penyaluran;
+            $mapUrl = $baseUrl + '/apbd';
+        } else if (type==='tkdd') {
+            $result = result.tkdd;
+            $mapUrl = $baseUrl + '/tkdd';
         }
 
-        if ($result.length === 0) {
-            $('#' + divID).html("<div class='center'>No data chart</div>");
-        } else {
-            var $content = [];
-            var $legend = [];
-            console.log("n => " + n);
-            console.log($result);
-            $data = $result[n].trend;
-            $id = $result[n].id;
-            $name = $result[n].name;
-            $info = $result[n].info;
-            $achievement = $result[n].achievement;
+        if ($result[n] !== undefined) {
+            if ($result.length === 0) {
+                $('#' + divID).html("<div class='center'>No data chart</div>");
+            } else {
+                var $content = [];
+                var $legend = [];
+                $data = $result[n].trend;
+                $id = $result[n].id;
+                $name = $result[n].name;
+                $info = $result[n].info;
+                $achievement = $result[n].achievement;
 
-            for (i = 0; i < $data.length; i++) {
-                $target000 = $achievement[0].target;
-				$target = numeral($target000).format('0.00a');
+                for (i = 0; i < $data.length; i++) {
+                    $target000 = $achievement[0].target;
+                    $target = numeral($target000).format('0.00a');
 
-                $realization000 = $achievement[0].realization;
-				$realization = numeral($realization000).format('0.00a');
+                    $realization000 = $achievement[0].realization;
+                    $realization = numeral($realization000).format('0.00a');
 
-                $percentage000 = $achievement[0].percentage;
-				$percentage = Math.round($percentage000 * 100) / 100
+                    $percentage000 = $achievement[0].percentage;
+                    $percentage = Math.round($percentage000 * 100) / 100
 
-                $type = 'line';
-                $year = $data[i].year.toString();
-                $value = $data[i].value;
-                $cat = $data[i].month;
+                    $type = 'line';
+                    $year = $data[i].year.toString();
+                    $value = $data[i].value;
+                    $cat = $data[i].month;
 
-                $content[i] = {name: $year, type: $type, data: $value};
-                $legend[i] = $year;
-            }
+                    $content[i] = {name: $year, type: $type, data: $value};
+                    $legend[i] = $year;
+                }
 
-            var chartData = {
-                content: $content,
-                cat: $cat,
-                legend: $legend
-            };
+                var chartData = {
+                    content: $content,
+                    cat: $cat,
+                    legend: $legend
+                };
 
-			var slug = function(str) {
-			    var $slug = '';
-			    var trimmed = $.trim(str);
-			    $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
-			    replace(/-+/g, '-').
-			    replace(/^-|-$/g, '');
-			    return $slug.toLowerCase();
-			}
+                var slug = function (str) {
+                    var $slug = '';
+                    var trimmed = $.trim(str);
+                    $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                    return $slug.toLowerCase();
+                }
 
-            var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">'+$percentage+'%</span>';
+                var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">' + $percentage + '%</span>';
 
-            var linkdetail = $baseUrl+'/level-1/'+slug($name);
-            var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
+                var linkdetail = $baseUrl + '/level-1/' + slug($name);
+                var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
 							<div class="uk-width-medium-1-2"> \
-								<h5 class="sikd-chart--title sikd-blue">'+$name+'</h5> \
+								<h5 class="sikd-chart--title sikd-blue">' + $name + '</h5> \
 							</div> \
 							<div class="uk-width-medium-1-2"> \
 								<div class="uk-progress slim uk-margin-bottom-remove sikd-yellow-bg"> \
-									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg '+color+'" style="width: '+$percentage+';">'+$percentage+'%</div> \
+									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg ' + color + '" style="width: ' + $percentage + ';">' + $percentage + '%</div> \
 								</div> \
 								<ul class="uk-subnav uk-margin-bottom-remove uk-margin-top-remove sikd-text-ptr"> \
-									<li class="uk-margin-small-top"><strong>'+$percentage+'%</strong></li> \
-									<li class="uk-margin-small-top">(Alokasi : <strong>'+$target+'</strong></li> \
-									<li class="uk-margin-small-top">Realisasi : <strong>'+$realization+'</strong>)</li> \
+									<li class="uk-margin-small-top"><strong>' + $percentage + '%</strong></li> \
+									<li class="uk-margin-small-top">(Alokasi : <strong>' + $target + '</strong></li> \
+									<li class="uk-margin-small-top">Realisasi : <strong>' + $realization + '</strong>)</li> \
 								</ul> \
 							</div> \
 							<div class="uk-width-medium-1-1"> \
 								<hr class="uk-margin-bottom-remove uk-margin-small-top"> \
-								<div id="'+divID+'Chart" class="sikd-chart-lagging"></div> \
+								<div id="' + divID + 'Chart" class="sikd-chart-lagging"></div> \
 								<ul class="uk-subnav sikd-chart-action"> \
-									<li><a class=""><i class="material-icons" data-uk-tooltip title="'+$info+'">info</i></a></li> \
-									<li><a href="'+linkdetail+'" class="btn z-depth-0 sikd-pink-bg white-text" title="Lihat Detail '+$name+'" data-uk-tooltip>LIHAT DETAIL</a></li> \
+									<li><a class=""><i class="material-icons" data-uk-tooltip title="' + $info + '">info</i></a></li> \
+									<li><a href="' + linkdetail + '" class="btn z-depth-0 sikd-pink-bg white-text" title="Lihat Detail ' + $name + '" data-uk-tooltip>LIHAT DETAIL</a></li> \
 								</ul> \
 							</div> \
 						</div>';
-            $('#' + divID).html(tabcontent);
+                $('#' + divID).html(tabcontent);
 
-            $('#' + divID +'tab a').html(tab);
-            $('#' + divID +'tab a').attr('title', ''+$name+'');
+                $('#' + divID + 'tab a').html(tab);
+                $('#' + divID + 'tab a').attr('title', '' + $name + '');
 
-            $(".sikd-lagging-tab__title").html(function(i, html) {
-                return html.replace(/ /g, '<br>');
-            });
+                $(".sikd-lagging-tab__title").html(function (i, html) {
+                    return html.replace(/ /g, '<br>');
+                });
 
-            var w = $('#L0A').width();
-            $('.sikd-chart-lagging').width(w);
-            $('.sikd-chart-lagging').height(w/2);
+                var w = $('#L0A').width();
+                $('.sikd-chart-lagging').width(w);
+                $('.sikd-chart-lagging').height(w / 2);
 
-            //CHART
-            var dom = document.getElementById(divID+'Chart');
-            var theme = 'sikd';
-            var chart = echarts.init(dom,theme);
-            var loadingTicket;
-            var effectIndex = -1;
-            var effect = ['spin'];
-            //var effectIndex = ++effectIndex % effect.length;
-            chart.showLoading({
-                text : '',
-                //effect : effect[effectIndex],
-            });
-            var option = {
-                //color: clrs,
-                tooltip : {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data: chartData.legend,
-                    padding: ['0','0','0','0'],
-                    x: 'left',
-                    y: 'bottom'
-                },
-                toolbox: {
-                    show : true,
-                    x: 'right',
-                    padding: ['20','1','0','0'],
-                    feature : {
-                        mark : {show: true},
-                        //dataView : {show: false, readOnly: false},
-                        magicType: {
-                            show : true,
-                            type : ['line', 'bar'],
-                            title : { line : 'Line', bar : 'Bar' },
-                        },
-                        restore : {show: true, title: 'Reload'},
-                        saveAsImage : {show: true, title: 'Save'}
-                    }
-                },
-                //calculable : true,
-                xAxis : [
-                    {
-                        type : 'category',
-                        boundaryGap: false,
-                        data : chartData.cat
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value',
-                        //splitArea : {show : true}
-						axisLabel : {
-							formatter: function(v) {
-								//$v = abbr(v,2);
-								$v = numeral(v).format('0.00a');
-								return $v;
-							}
-						}
-                    }
-                ],
-                series : chartData.content
-            };
-            //chart.setOption(option);
-            clearTimeout(loadingTicket);
-            loadingTicket = setTimeout(function (){
-                chart.hideLoading();
-                chart.setOption(option);
-            },1800);
+                //CHART
+                var dom = document.getElementById(divID + 'Chart');
+                var theme = 'sikd';
+                var chart = echarts.init(dom, theme);
+                var loadingTicket;
+                var effectIndex = -1;
+                var effect = ['spin'];
+                //var effectIndex = ++effectIndex % effect.length;
+                chart.showLoading({
+                    text: '',
+                    //effect : effect[effectIndex],
+                });
+                var option = {
+                    //color: clrs,
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: chartData.legend,
+                        padding: ['0', '0', '0', '0'],
+                        x: 'left',
+                        y: 'bottom'
+                    },
+                    toolbox: {
+                        show: true,
+                        x: 'right',
+                        padding: ['20', '1', '0', '0'],
+                        feature: {
+                            mark: {show: true},
+                            //dataView : {show: false, readOnly: false},
+                            magicType: {
+                                show: true,
+                                type: ['line', 'bar'],
+                                title: {line: 'Line', bar: 'Bar'},
+                            },
+                            restore: {show: true, title: 'Reload'},
+                            saveAsImage: {show: true, title: 'Save'}
+                        }
+                    },
+                    //calculable : true,
+                    xAxis: [
+                        {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: chartData.cat
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            //splitArea : {show : true}
+                            axisLabel: {
+                                formatter: function (v) {
+                                    //$v = abbr(v,2);
+                                    $v = numeral(v).format('0.00a');
+                                    return $v;
+                                }
+                            }
+                        }
+                    ],
+                    series: chartData.content
+                };
+                //chart.setOption(option);
+                clearTimeout(loadingTicket);
+                loadingTicket = setTimeout(function () {
+                    chart.hideLoading();
+                    chart.setOption(option);
+                }, 1800);
 
-            $(window).trigger("resize");
+                $(window).trigger("resize");
+            }
         }
 	}
 
 
 	var $tkddData = jQuery.parseJSON(tkddData);
+	L0Chart('A1','0','tkdd', $tkddData);
+	L0Chart('A2','1','tkdd', $tkddData);
+	L0Chart('A3','2','tkdd', $tkddData);
+	L0Chart('A4','3','tkdd', $tkddData);
+	L0Chart('A5','4','tkdd', $tkddData);
+	L0Chart('A6','5','tkdd', $tkddData);
+	L0Chart('A7','6','tkdd', $tkddData);
+    L0Chart('A8','7','tkdd', $tkddData);
 
-	L0Chart('A1','0','penyaluran', $tkddData);
-	L0Chart('A2','1','penyaluran', $tkddData);
-	L0Chart('A3','2','penyaluran', $tkddData);
-	L0Chart('A4','3','penyaluran', $tkddData);
-	L0Chart('A5','4','penyaluran', $tkddData);
-	L0Chart('A6','5','penyaluran', $tkddData);
-	L0Chart('A7','6','penyaluran', $tkddData);
-
-	var $apbdData = jQuery.parseJSON(apbdData);
+    var $apbdData = jQuery.parseJSON(apbdData);
     L0Chart('B1','0','apbd', $apbdData);
     L0Chart('B2','1','apbd', $apbdData);
     L0Chart('B3','2','apbd', $apbdData);
@@ -190,14 +190,6 @@ $(document).ready(function() {
     L0Chart('B9','8','apbd', $apbdData);
     L0Chart('B10','9','apbd', $apbdData);
     L0Chart('B11','10','apbd', $apbdData);
-
-	// L0Chart('B1','0','apbd','data/L0_B_apbd.json');
-	// L0Chart('B2','1','apbd','data/L0_B_apbd.json');
-	// L0Chart('B3','2','apbd','data/L0_B_apbd.json');
-	// L0Chart('B4','3','apbd','data/L0_B_apbd.json');
-	// L0Chart('B5','4','apbd','data/L0_B_apbd.json');
-	// L0Chart('B6','5','apbd','data/L0_B_apbd.json');
-	// L0Chart('B7','6','apbd','data/L0_B_apbd.json');
 
 
 	function Row2(divID,type) {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\Apbd;
 use App\Service\Province;
 use Illuminate\Http\Request;
 
@@ -11,14 +12,20 @@ class ProvinceController extends Controller
      * @var Province
      */
     private $provinceService;
+    /**
+     * @var Apbd
+     */
+    private $apbdService;
 
     /**
      * ProvinceController constructor.
      * @param Province $provinceService
+     * @param Apbd $apbdService
      */
-    public function __construct(Province $provinceService)
+    public function __construct(Province $provinceService, Apbd $apbdService)
     {
         $this->provinceService = $provinceService;
+        $this->apbdService = $apbdService;
     }
 
     public function province($provinceId, $reportType = '')
@@ -35,7 +42,7 @@ class ProvinceController extends Controller
     public function getProvinceChart($provinceId, $reportType)
     {
         $level = 2;
-        return $this->provinceService->getApbdChart($level, '2016', $reportType, $provinceId);
+        return $this->apbdService->getChart($level, '2016', $reportType, $provinceId);
     }
 
     public function getProvince()

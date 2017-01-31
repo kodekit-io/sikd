@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    var url = "data/L3_A_detail-kotakab-top.json";
+    // var url = "data/L3_A_detail-kotakab-top.json";
+	var url = $baseUrl + '/get-pemda-chart/' + $year + '/' + $satkerCode;
 
 	function panelMap(id) {
 	    $.ajax({
@@ -11,20 +12,19 @@ $(document).ready(function() {
 	            $('#'+id).show();
 	        },
 	        success : function(result) {
+	            result = jQuery.parseJSON(result);
 	            data = result.detailKotakabTop[0].mapInfo;
-	            //console.log(data);
-	            if (data.length === 0) {
+	            detail = result.detailKotakabTop[0].detail;
+
+	            if (data.id == undefined) {
 					$('#'+id).html("<div class='center'>No data</div>");
 				} else {
-					for (i = 0; i < data.length; i++) {
-	                    $mapId = data[i].id;
-						$mapName = data[i].name;
-						$mapImg = data[i].image;
-						$mapDetail = data[i].detail;
-						$mapTitle = $mapDetail[0].title;
-						$mapValue = $mapDetail[0].value;
-						//console.log($mapValue[0]);
-					}
+                    $mapId = data.id;
+                    $mapName = data.name;
+                    $mapImg = data.image;
+                    $mapDetail = detail;
+                    $mapTitle = $mapDetail.title;
+                    $mapValue = $mapDetail.value;
 
 					var panelmap = '<div class="card-panel z-depth-3 soft hoverable bgmap uk-margin-remove" style="background-image:url('+$mapImg+')"> \
 						<div class="note"> \
@@ -55,20 +55,18 @@ $(document).ready(function() {
 	            $('#'+divID).show();
 	        },
 	        success : function(result) {
-	            data = result.detailKotakabTop;
+	            result = jQuery.parseJSON(result);
+	            data = result.detailKotakabTop[id];
 	            //console.log(data);
 	            if (data.length === 0) {
 					$('#'+divID).html("<div class='center'>No data</div>");
 				} else {
-                    var content = [];
-					for (i = 0; i < data.length; i++) {
-	                    $id = data[id].id;
-						$name = data[id].name;
-						$target = data[id].target;
-						$realisasi = data[id].realisasi;
-						$value = data[id].value;
+                    $id = data.id;
+                    $name = data.name;
+                    $target = data.target;
+                    $realisasi = (data.realization != undefined) ? data.realization : 0;
+                    $value = (data.percentage != undefined) ? data.percentage : (data.value != undefined) ? data.value : 0;
 
-					}
                     var chartData = {
                         i : $id,
 						n : $name,
@@ -77,9 +75,10 @@ $(document).ready(function() {
                         v : $value,
 						p : $realisasi/$target * 100,
 					};
+                    console.log(chartData);
                     var value = chartData.p;
                     value = Math.round(value * 1) / 1;
-                    //console.log(value);
+                    console.log(value);
 
 					var panelgauge = '<div class="card-panel z-depth-3 soft hoverable uk-margin-remove"> \
         				<div id="'+divID+'gauge" class="skid-gauge"></div> \

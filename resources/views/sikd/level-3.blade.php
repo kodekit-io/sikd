@@ -7,7 +7,7 @@
 	<ul class="uk-grid uk-grid-medium uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
 		<li class="uk-width-1-1">
 			<div class="card-panel z-depth-3 soft">
-				<h2 class="card-title">Data Umum Kab. Badung</h2>
+				<h2 class="card-title">Data Umum {!! $pemdaName !!}</h2>
 			</div>
 		</li>
 		<li class="uk-width-1-5"><div id="panel1"></div></li>
@@ -40,6 +40,11 @@
 @endsection
 
 @section('page-level-scripts')
+	<script type="text/javascript">
+		var $baseUrl = '{!! url('/') !!}';
+		var $year = '{!! $year !!}';
+		var $satkerCode = '{!! $satkerCode !!}';
+	</script>
 	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>

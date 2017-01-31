@@ -29,9 +29,8 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('/level-2/{provinceId}/{reportType?}', 'ProvinceController@province');
     Route::get('get-province-chart/{provinceId}/{reportType?}', 'ProvinceController@getProvinceChart');
 
-    Route::get('/level-3', function () {
-        return view('sikd.level-3');
-    });
+    Route::get('/pemda/{satkerCode}', 'PemdaController@profile');
+    Route::get('/get-pemda-chart/{year}/{satkerCode}', 'PemdaController@chart');
 
     Route::get('/account-profile', function () {
         return view('sikd.account-profile');

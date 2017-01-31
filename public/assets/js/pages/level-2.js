@@ -60,8 +60,9 @@ $(document).ready(function() {
                     {
                         "data": null,
                         "render": function ( data ) {
+                            console.log(data);
                             var k = data["name"];
-                            var p = baseUrl+'/level-3'
+                            var p = baseUrl + '/pemda/' + data["kodeSatker"]
                             return '<a class="uk-button cyan white-text right" href="'+p+'" data-uk-tooltip title="Informasi Detail '+k+'">Profil Pemda</a>';
                         }
                     },

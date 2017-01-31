@@ -1,0 +1,43 @@
+{
+	"data": [{
+		"id": "00",
+		"name": "Provinsi Bali",
+		"value": 422
+	}, {
+		"id": "01",
+		"name": "Kab. Badung",
+		"value": 585
+	}, {
+		"id": "02",
+		"name": "Kab. Bangli",
+		"value": 681
+	}, {
+		"id": "03",
+		"name": "Kab. Buleleng",
+		"value": 697
+	}, {
+		"id": "04",
+		"name": "Kab. Gianyar",
+		"value": 424
+	}, {
+		"id": "05",
+		"name": "Kab. Jembrana",
+		"value": 764
+	}, {
+		"id": "06",
+		"name": "Kab. Karangasem",
+		"value": 628
+	}, {
+		"id": "07",
+		"name": "Kab. Klungkung",
+		"value": 602
+	}, {
+		"id": "08",
+		"name": "Kab. Tabanan",
+		"value": 702
+	}, {
+		"id": "09",
+		"name": "Kota Denpasar",
+		"value": 520
+	}]
+}

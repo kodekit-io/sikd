@@ -278,9 +278,146 @@ $(document).ready(function() {
 		$(window).trigger("resize");
 
 	};
-	Row2('LOC1','bar');
-	Row2('LOC2','line');
-	Row2('LOC3','bar');
-	Row2('LOC4','line');
-	Row2('LOC5','scatter');
+	//Row2('LOC1','bar');
+	//Row2('LOC2','line');
+	//Row2('LOC3','bar');
+	//Row2('LOC4','line');
+	//Row2('LOC5','scatter');
+	//chartTengah('LOC1')
+
+	function chartTengah(id) {
+	    $.ajax({
+	        url: 'data/chart-tengah.json',
+	        //dataType: 'jsonp',
+	        success: function(result){
+	            var data = result.data;
+
+	            if (data.length === 0) {
+	                $('#'+id).html("<div class='center'>No Data</div>");
+	            } else {
+	                var $series=[], $dataValue=[], $name=[], $id=[], $dataID=[];
+	                for (var i = 0; i < data.length; i++) {
+						$id[i] = data[i].id;
+	                    $name[i] = data[i].name;
+	                    $dataID[i] = data[i].dataID;
+						$dataName = data[i].dataName;
+						$dataValue[i] = data[i].dataValue;
+
+	                    $series[i] = {
+	                        name: "nama",
+	                        type:'bar',
+	                        stack: 'data',
+	                        //barMaxWidth: 50,
+	                        //itemStyle : { normal: {label : {show: false, position: 'insideRight'}}},
+	                        data: [1]
+	                    }
+
+	                }
+					//console.log(data.length);
+	                var data = {
+						cat: $name,
+	                    legend: $dataName,
+	                    //color: $color,
+	                    //cat: $key,
+	                    series: $series
+	                }
+					console.log(data.series);
+
+
+	                //CHART
+	                var dom = document.getElementById(id);
+	                var theme = 'sikd';
+	                var theChart = echarts.init(dom,theme);
+	                var loadingTicket;
+	                var effectIndex = -1;
+	                var effect = ['spin'];
+	                //var effectIndex = ++effectIndex % effect.length;
+	                theChart.showLoading({
+	                    text : '',
+	                    //effect : effect[effectIndex],
+	                });
+
+	                var option = {
+	                    tooltip : {
+	                        trigger: 'axis',
+	                        axisPointer : {
+	                            type : 'shadow'
+	                        }
+	                    },
+	                    //color: data.color,
+	                    legend: {
+	                        data: data.legend,
+	                        x: 'left',
+	                        y: 'bottom',
+	                    },
+	                    grid: {
+	                        x: '30px',
+	                        x2: '10px',
+	                        y: '10px',
+	                        y2: '60px'
+	                    },
+	                    toolbox: {
+	                        show: true,
+	                        x: 'right',
+	                        y: 'bottom',
+	                        padding: ['0', '0', '0', '0'],
+	                        feature: {
+	                            mark: {show: true},
+	                            //dataView : {show: false, readOnly: false},
+	                            magicType: {
+	                                show: true,
+	                                type: ['stack', 'tiled'],
+	                                title: {stack: 'Stack', tiled: 'Bar'},
+	                            },
+	                            restore: {show: true, title: 'Reload'},
+	                            saveAsImage: {show: true, title: 'Save'}
+	                        }
+	                    },
+	                    //calculable : true,
+	                    yAxis : [
+	                        {
+	                            type : 'category',
+	                            data : data.cat,
+	                            axisLabel: {
+	                                textStyle: {
+	                                    fontSize: 10
+	                                }
+	                            }
+	                        }
+	                    ],
+						xAxis : [{type : 'value'}],
+						/*
+	                    yAxis : [
+	                        {
+	                            type : 'value',
+	                            axisLabel: {
+	                                textStyle: {
+	                                    fontSize: 10
+	                                },
+	                                formatter: function (v) {
+	                                    $v = numeral(v).format('0a');
+	                                    return $v;
+	                                }
+	                            },
+	                        }
+	                    ],
+						*/
+	                    series : data.series
+	                };
+
+	                clearTimeout(loadingTicket);
+	                loadingTicket = setTimeout(function (){
+	                    theChart.hideLoading();
+	                    theChart.setOption(option);
+	                    theChart.resize();
+	                },1800);
+	                $(window).on('resize', function(){
+	                    if(theChart != null && theChart != undefined){
+	                        theChart.resize();
+	                    }
+	                });
+	            }
+	        }
+	    });
+	}
 });

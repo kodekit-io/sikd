@@ -75,28 +75,27 @@
 		{{--ROW 2--}}
 		<div class="uk-width-medium-1-1">
 			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom-remove">
+				<div id="LOC1" class="uk-width-1-1" style="height:400px;"></div>
+				<?php /*
 				<div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true}">
 					<ul class="uk-slideshow sikd-leading">
 						<li><div id="LOC1" class="uk-width-1-1" style="height:400px;"></div></li>
-						<?php /*
 						<li><div id="LOC2"></div></li>
 						<li><div id="LOC3"></div></li>
 						<li><div id="LOC4"></div></li>
 						<li><div id="LOC5"></div></li>
-						*/ ?>
 					</ul>
 					<a class="uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
 					<a class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
 					<ul class="uk-dotnav uk-position-bottom uk-flex-center uk-margin-bottom-remove">
 						<li data-uk-slideshow-item="0"><a></a></li>
-						<?php /*
 						<li data-uk-slideshow-item="1"><a></a></li>
 						<li data-uk-slideshow-item="2"><a></a></li>
 						<li data-uk-slideshow-item="3"><a></a></li>
 						<li data-uk-slideshow-item="4"><a></a></li>
-						*/ ?>
 					</ul>
 				</div>
+				*/ ?>
 			</div>
 		</div>
 

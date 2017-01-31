@@ -159,8 +159,11 @@ $(document).ready(function() {
                     chart.hideLoading();
                     chart.setOption(option);
                 }, 1800);
-
-                $(window).trigger("resize");
+				$(window).on('resize', function(){
+                    if(theChart != null && theChart != undefined){
+                        theChart.resize();
+                    }
+                });
             }
         }
 	}
@@ -274,8 +277,11 @@ $(document).ready(function() {
 			chart.hideLoading();
 			chart.setOption(option);
 		},1800);
-
-		$(window).trigger("resize");
+		$(window).on('resize', function(){
+            if(theChart != null && theChart != undefined){
+                theChart.resize();
+            }
+        });
 
 	};
 	//Row2('LOC1','bar');
@@ -283,45 +289,42 @@ $(document).ready(function() {
 	//Row2('LOC3','bar');
 	//Row2('LOC4','line');
 	//Row2('LOC5','scatter');
-	//chartTengah('LOC1')
+	chartL0Row2A('LOC1')
 
-	function chartTengah(id) {
+	function chartL0Row2A(id) {
 	    $.ajax({
-	        url: 'data/chart-tengah.json',
+	        url: 'data/L0_row2_infrastruktur.json',
 	        //dataType: 'jsonp',
 	        success: function(result){
 	            var data = result.data;
+				var t = result.properties.Label;
+				//console.log(t);
 
 	            if (data.length === 0) {
 	                $('#'+id).html("<div class='center'>No Data</div>");
 	            } else {
-	                var $series=[], $dataValue=[], $name=[], $id=[], $dataID=[];
+	                var $series=[], $legend=[];
 	                for (var i = 0; i < data.length; i++) {
-						$id[i] = data[i].id;
-	                    $name[i] = data[i].name;
-	                    $dataID[i] = data[i].dataID;
+	                    $name = data[i].name;
 						$dataName = data[i].dataName;
-						$dataValue[i] = data[i].dataValue;
-
-	                    $series[i] = {
-	                        name: "nama",
-	                        type:'bar',
-	                        stack: 'data',
-	                        //barMaxWidth: 50,
-	                        //itemStyle : { normal: {label : {show: false, position: 'insideRight'}}},
-	                        data: [1]
-	                    }
-
+						$dataValue = data[i].dataValue;
+						$legend[i] = $name;
+						//console.log($dataValue);
+						$series[i] = {
+							name: $name,
+							type:'bar',
+							stack: 'data',
+							//barMaxWidth: 50,
+							//itemStyle : { normal: {label : {show: true, position: 'center'}}},
+							data: $dataValue
+						}
 	                }
-					//console.log(data.length);
-	                var data = {
-						cat: $name,
-	                    legend: $dataName,
-	                    //color: $color,
-	                    //cat: $key,
-	                    series: $series
+
+	                var dataseries = {
+						cat: $dataName,
+	                    legend: $legend,
+						series: $series
 	                }
-					console.log(data.series);
 
 
 	                //CHART
@@ -338,22 +341,26 @@ $(document).ready(function() {
 	                });
 
 	                var option = {
+						title: {
+							text: t,
+							left: 'center',
+							top: 0
+						},
 	                    tooltip : {
 	                        trigger: 'axis',
 	                        axisPointer : {
 	                            type : 'shadow'
 	                        }
 	                    },
-	                    //color: data.color,
 	                    legend: {
-	                        data: data.legend,
+	                        data: dataseries.legend,
 	                        x: 'left',
 	                        y: 'bottom',
 	                    },
 	                    grid: {
-	                        x: '30px',
-	                        x2: '10px',
-	                        y: '10px',
+	                        x: '20px',
+	                        x2: '20px',
+	                        y: '25px',
 	                        y2: '60px'
 	                    },
 	                    toolbox: {
@@ -374,10 +381,10 @@ $(document).ready(function() {
 	                        }
 	                    },
 	                    //calculable : true,
-	                    yAxis : [
+	                    xAxis : [
 	                        {
 	                            type : 'category',
-	                            data : data.cat,
+	                            data : dataseries.cat,
 	                            axisLabel: {
 	                                textStyle: {
 	                                    fontSize: 10
@@ -385,8 +392,6 @@ $(document).ready(function() {
 	                            }
 	                        }
 	                    ],
-						xAxis : [{type : 'value'}],
-						/*
 	                    yAxis : [
 	                        {
 	                            type : 'value',
@@ -401,8 +406,7 @@ $(document).ready(function() {
 	                            },
 	                        }
 	                    ],
-						*/
-	                    series : data.series
+	                    series : dataseries.series
 	                };
 
 	                clearTimeout(loadingTicket);

@@ -441,11 +441,13 @@ $(document).ready(function() {
 	tableRow3('topBottom','Belanja','data/L0_row3_belanja.json');
 	tableRow3('topBottom','PAD','data/L0_row3_pad.json');
 	function tableRow3(id,type,url) {
+
 		$.ajax({
 	        url: url,
 	        //dataType: 'jsonp',
-	        success: function(result){
-	            var result = result['top-bottom-'+type];
+	        success: function(param){
+	            var result = param['top-bottom-'+type];
+				//console.log(result);
 
 				var top = result.top;
 				var topData = top.data;
@@ -457,30 +459,55 @@ $(document).ready(function() {
 				var botTitle = bottom.name;
 				var botId = bottom.id;
 
-				if (result.length === 0) {
-					$('#'+id).html("<div class='center'>No Data</div>");
-				} else {
-
-					var card = '<div> \
-						<div class="uk-panel uk-panel-box z-depth-0"> \
-							<h5 class="uk-text-center"> \
-								<a href="#pop_'+type+'" data-uk-modal>'+topTitle+'<br>'+botTitle+'</a> \
-							</h5> \
-						</div> \
-						<div id="pop_'+type+'" class="uk-modal"> \
-							<div class="uk-modal-dialog uk-modal-dialog-large"> \
-								<a class="uk-modal-close uk-close"></a> \
-								<h3>'+topTitle+'</h3> \
-								<table class="uk-table" style="width:100%"><tbody><tr><td><div class="td_head">kodeSatker</div></td><td><div class="td_head">namaPemda</div></td><td><div class="td_head">target</div></td><td><div class="td_head">realization</div></td><td><div class="td_head">percentage</div></td></tr><tr><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">980280</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">998236</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">993401</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">998222</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">992139</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">Kab. Kutai Timur</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">Kab. Balangan</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">Kab. Mimika</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">Kab. Tanah Bumbu</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">Kab. Berau</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">2274888034182</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">1167579448452</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">2139583176585</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">1211654634047</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">1556040693654</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">2407336132894</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">1220610978585</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">2197032527959</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">1240094228627</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">1579086274304</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">105.822181</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">104.542006</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">102.685072</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">102.34717</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">101.48104</div></td></tr></tbody></table></td></tr></tbody></table> \
-								<h3>'+botTitle+'</h3> \
-								<table class="uk-table" style="width:100%"><tbody><tr><td><div class="td_head">kodeSatker</div></td><td><div class="td_head">namaPemda</div></td><td><div class="td_head">target</div></td><td><div class="td_head">realization</div></td><td><div class="td_head">percentage</div></td></tr><tr><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">990828</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">992321</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">980049</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">978417</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">992363</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">Prov. DKI Jakarta</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">Kab. Karangasem</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">Kota Cilegon</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">Kab. Kep Meranti</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">Kota Denpasar</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">24115539222572</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">1301859397854</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">1166836558568</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">1038527131936</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">1134078223002</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">15355229998672</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">986968117353</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">896285352422</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">824687184328</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">905098225326</div></td></tr></tbody></table></td><td class="td_row_even"><table class="uk-table uk-table-striped" style="width:100%"><tbody><tr><td class="td_row_even"><div class="td_row_even">63.673592</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">75.81219</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">76.813273</div></td></tr><tr><td class="td_row_odd"><div class="td_row_odd">79.409306</div></td></tr><tr><td class="td_row_even"><div class="td_row_even">79.809153</div></td></tr></tbody></table></td></tr></tbody></table> \
-							</div> \
-						</div> \
-					</div>';
-		            $('#'+id).append(card);
+				var $table=[];
+				for (var i = 0; i < topData.length; i++) {
+					$TkodeSatker = topData[i].kodeSatker;
+					$TnamaPemda = topData[i].namaPemda;
+					$Ttarget = topData[i].target;
+					$Trealization = topData[i].realization;
+					$Tpercentage = topData[i].percentage;
+				}
+				for (var i = 0; i < botData.length; i++) {
+					$BkodeSatker = botData[i].kodeSatker;
+					$BnamaPemda = botData[i].namaPemda;
+					$Btarget = botData[i].target;
+					$Brealization = botData[i].realization;
+					$Bpercentage = botData[i].percentage;
 				}
 
+				var card = '<div> \
+					<div class="uk-panel uk-panel-box z-depth-0"> \
+						<h5 class="uk-text-center"> \
+							<a href="#pop_'+type+'" data-uk-modal>'+topTitle+'<br>'+botTitle+'</a> \
+						</h5> \
+					</div> \
+					<div id="pop_'+type+'" class="uk-modal"> \
+						<div class="uk-modal-dialog uk-modal-dialog-large"> \
+							<a class="uk-modal-close uk-close"></a> \
+							<h3>'+topTitle+'</h3> \
+							<table class="uk-table uk-table-striped"> \
+								<thead><tr><th>Satker</th><th>Pemda</th><th>Target</th><th>Realization</th><th>Percentage</th></tr></thead> \
+								<tr><td>'+$TkodeSatker[0]+'</td><td>'+$TnamaPemda[0]+'</td><td>'+$Ttarget[0]+'</td><td>'+$Trealization[0]+'</td><td>'+$Tpercentage[0]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[1]+'</td><td>'+$TnamaPemda[1]+'</td><td>'+$Ttarget[1]+'</td><td>'+$Trealization[1]+'</td><td>'+$Tpercentage[1]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[2]+'</td><td>'+$TnamaPemda[2]+'</td><td>'+$Ttarget[2]+'</td><td>'+$Trealization[2]+'</td><td>'+$Tpercentage[2]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[3]+'</td><td>'+$TnamaPemda[3]+'</td><td>'+$Ttarget[3]+'</td><td>'+$Trealization[3]+'</td><td>'+$Tpercentage[3]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[4]+'</td><td>'+$TnamaPemda[4]+'</td><td>'+$Ttarget[4]+'</td><td>'+$Trealization[4]+'</td><td>'+$Tpercentage[4]+'%</td></tr> \
+							</table> \
+							<h3>'+botTitle+'</h3> \
+							<table class="uk-table uk-table-striped"> \
+								<thead><tr><th>Satker</th><th>Pemda</th><th>Target</th><th>Realization</th><th>Percentage</th></tr></thead> \
+								<tr><td>'+$BkodeSatker[0]+'</td><td>'+$BnamaPemda[0]+'</td><td>'+$Btarget[0]+'</td><td>'+$Brealization[0]+'</td><td>'+$Bpercentage[0]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[1]+'</td><td>'+$BnamaPemda[1]+'</td><td>'+$Btarget[1]+'</td><td>'+$Brealization[1]+'</td><td>'+$Bpercentage[1]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[2]+'</td><td>'+$BnamaPemda[2]+'</td><td>'+$Btarget[2]+'</td><td>'+$Brealization[2]+'</td><td>'+$Bpercentage[2]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[3]+'</td><td>'+$BnamaPemda[3]+'</td><td>'+$Btarget[3]+'</td><td>'+$Brealization[3]+'</td><td>'+$Bpercentage[3]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[4]+'</td><td>'+$BnamaPemda[4]+'</td><td>'+$Btarget[4]+'</td><td>'+$Brealization[4]+'</td><td>'+$Bpercentage[4]+'%</td></tr> \
+							</table> \
+						</div> \
+					</div> \
+				</div>';
+				$('#'+id).append(card);
 			}
 		});
+
 	}
 });

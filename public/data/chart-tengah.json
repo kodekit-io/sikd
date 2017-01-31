@@ -1,0 +1,654 @@
+{
+    "properties": {
+        "Label": "Infrastruktur",
+        "Position": "Center"
+    },
+    "data": [
+        {
+            "id": "01",
+            "name": "Prov. Aceh",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                4260710142332,
+                3797738015002,
+                295999055862
+            ]
+        },
+        {
+            "id": "02",
+            "name": "Prov. Sumut",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                2511695129798,
+                4902122897061,
+                258637254114
+            ]
+        },
+        {
+            "id": "03",
+            "name": "Prov. Sumatera Barat",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                2628298689526,
+                2562881970880,
+                134439025939
+            ]
+        },
+        {
+            "id": "04",
+            "name": "Prov. Riau",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                7824541374040,
+                3947258503026,
+                270791571361
+            ]
+        },
+        {
+            "id": "05",
+            "name": "Prov. Jambi",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1447553377617,
+                1916223934174,
+                79741562511
+            ]
+        },
+        {
+            "id": "06",
+            "name": "Prov. Sumsel",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1976700197493,
+                5056004552077,
+                374159652811
+            ]
+        },
+        {
+            "id": "07",
+            "name": "Prov. Bengkulu",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                594292418186,
+                1488401647825,
+                33098818789
+            ]
+        },
+        {
+            "id": "08",
+            "name": "Prov. Lampung",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                2170809081171,
+                2916208025298,
+                111839057100
+            ]
+        },
+        {
+            "id": "09",
+            "name": "Prov. DKI Jakarta",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                11135905621294,
+                1903765065784,
+                3175348900423
+            ]
+        },
+        {
+            "id": "10",
+            "name": "Prov. Jabar",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                7472596589373,
+                4749161111554,
+                1880235248839
+            ]
+        },
+        {
+            "id": "11",
+            "name": "Prov. Jateng",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                4480405067228,
+                7398723106301,
+                295149325500
+            ]
+        },
+        {
+            "id": "12",
+            "name": "Prov. DIY",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1147265041227,
+                522943282565,
+                417519803802
+            ]
+        },
+        {
+            "id": "13",
+            "name": "Prov. Jawa Timur",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                6597790482107,
+                5765126249277,
+                722461069392
+            ]
+        },
+        {
+            "id": "14",
+            "name": "Prov. Kalbar",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                3241380562864,
+                2083956501865,
+                127717248828
+            ]
+        },
+        {
+            "id": "15",
+            "name": "Prov. Kalteng",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1120024503846,
+                3681983651754,
+                114852273579
+            ]
+        },
+        {
+            "id": "16",
+            "name": "Prov. Kalsel",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                2027077826410,
+                3563723238767,
+                247502981878
+            ]
+        },
+        {
+            "id": "17",
+            "name": "Prov. Kaltim",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                3896923807244,
+                7659139260021,
+                628368106437
+            ]
+        },
+        {
+            "id": "18",
+            "name": "Prov. Sulut",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                755148861349,
+                2486858160772,
+                107298035724
+            ]
+        },
+        {
+            "id": "19",
+            "name": "Prov. Sulteng",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1115410990334,
+                2108976967477,
+                155391669326
+            ]
+        },
+        {
+            "id": "20",
+            "name": "Prov. Sulsel",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                4058930137789,
+                3091922719523,
+                218194654027
+            ]
+        },
+        {
+            "id": "21",
+            "name": "Prov. Sultra",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1681690738971,
+                3428676353225,
+                143466660508
+            ]
+        },
+        {
+            "id": "22",
+            "name": "Prov. Bali",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1747891718806,
+                1600067862236,
+                8080669075
+            ]
+        },
+        {
+            "id": "23",
+            "name": "Prov. NTB",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                820420497528,
+                1759371098375,
+                202740490513
+            ]
+        },
+        {
+            "id": "24",
+            "name": "Prov. NTT",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                2080766311482,
+                2905274452328,
+                49989958435
+            ]
+        },
+        {
+            "id": "25",
+            "name": "Prov. Maluku",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                880440752322,
+                2230599491275,
+                112811960631
+            ]
+        },
+        {
+            "id": "26",
+            "name": "Prov. Papua",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                6679606736562,
+                5388283924541,
+                628874195923
+            ]
+        },
+        {
+            "id": "27",
+            "name": "Prov. Malut",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1109680003298,
+                1534913152263,
+                90028830412
+            ]
+        },
+        {
+            "id": "28",
+            "name": "Prov. Banten",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                3282155513281,
+                3017595121281,
+                865603794965
+            ]
+        },
+        {
+            "id": "29",
+            "name": "Prov. Babel",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                880775135562,
+                651661303910,
+                70197970400
+            ]
+        },
+        {
+            "id": "30",
+            "name": "Prov. Gorontalo",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                261228950728,
+                599381437674,
+                50818302731
+            ]
+        },
+        {
+            "id": "31",
+            "name": "Prov. Kepulauan Riau",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1062377359855,
+                1093041049234,
+                19942965000
+            ]
+        },
+        {
+            "id": "32",
+            "name": "Prov. Papua Barat",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1502568066895,
+                3729227427342,
+                195617180096
+            ]
+        },
+        {
+            "id": "33",
+            "name": "Prov. Sulawesi Barat",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                1315168220227,
+                1218719227558,
+                70093538100
+            ]
+        },
+        {
+            "id": "34",
+            "name": "Prov. Kalimantan Utara",
+            "dataID": [
+                1,
+                2,
+                3
+            ],
+            "dataName": [
+                "Gedung dan Bangunan",
+                "Jalan, Irigasi, dan Jaringan",
+                "Tanah"
+            ],
+            "dataValue": [
+                555276865355,
+                1351768755519,
+                186250535500
+            ]
+        }
+    ]
+}

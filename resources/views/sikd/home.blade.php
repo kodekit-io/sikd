@@ -44,10 +44,12 @@
 						<li><div class="" id="B5"></div></li>
 						<li><div class="" id="B6"></div></li>
 						<li><div class="" id="B7"></div></li>
+						<?php /*
                         <li><div class="" id="B8"></div></li>
                         <li><div class="" id="B9"></div></li>
                         <li><div class="" id="B10"></div></li>
                         <li><div class="" id="B11"></div></li>
+						*/ ?>
 					</ul>
 				</div>
 				<div class="card-action">
@@ -59,10 +61,12 @@
 						<li class="tab" id="B5tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 						<li class="tab" id="B6tab"><a href="#" data-uk-tooltip title="Title"></a></li>
 						<li class="tab" id="B7tab"><a href="#" data-uk-tooltip title="Title"></a></li>
-                        <li class="tab" id="B8tab"><a href="#" data-uk-tooltip title="Title"></a></li>
+                        <?php /*
+						<li class="tab" id="B8tab"><a href="#" data-uk-tooltip title="Title"></a></li>
                         <li class="tab" id="B9tab"><a href="#" data-uk-tooltip title="Title"></a></li>
                         <li class="tab" id="B10tab"><a href="#" data-uk-tooltip title="Title"></a></li>
                         <li class="tab" id="B11tab"><a href="#" data-uk-tooltip title="Title"></a></li>
+						*/ ?>
 					</ul>
 				</div>
 			</div>
@@ -73,20 +77,24 @@
 			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom-remove">
 				<div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true}">
 					<ul class="uk-slideshow sikd-leading">
-						<li><div id="LOC1"></div></li>
+						<li><div id="LOC1" class="uk-width-1-1" style="height:400px;"></div></li>
+						<?php /*
 						<li><div id="LOC2"></div></li>
 						<li><div id="LOC3"></div></li>
 						<li><div id="LOC4"></div></li>
 						<li><div id="LOC5"></div></li>
+						*/ ?>
 					</ul>
 					<a class="uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
 					<a class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
 					<ul class="uk-dotnav uk-position-bottom uk-flex-center uk-margin-bottom-remove">
 						<li data-uk-slideshow-item="0"><a></a></li>
+						<?php /*
 						<li data-uk-slideshow-item="1"><a></a></li>
 						<li data-uk-slideshow-item="2"><a></a></li>
 						<li data-uk-slideshow-item="3"><a></a></li>
 						<li data-uk-slideshow-item="4"><a></a></li>
+						*/ ?>
 					</ul>
 				</div>
 			</div>

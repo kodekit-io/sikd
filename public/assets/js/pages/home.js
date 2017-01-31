@@ -486,7 +486,7 @@ $(document).ready(function() {
 							<a class="uk-modal-close uk-close"></a> \
 							<h3>'+topTitle+'</h3> \
 							<table class="uk-table uk-table-striped"> \
-								<thead><tr><th>Satker</th><th>Pemda</th><th>Target</th><th>Realization</th><th>Percentage</th></tr></thead> \
+								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%">Target</th><th width="20%">Realization</th><th width="20%">Percentage</th></tr></thead> \
 								<tr><td>'+$TkodeSatker[0]+'</td><td>'+$TnamaPemda[0]+'</td><td>'+$Ttarget[0]+'</td><td>'+$Trealization[0]+'</td><td>'+$Tpercentage[0]+'%</td></tr> \
 								<tr><td>'+$TkodeSatker[1]+'</td><td>'+$TnamaPemda[1]+'</td><td>'+$Ttarget[1]+'</td><td>'+$Trealization[1]+'</td><td>'+$Tpercentage[1]+'%</td></tr> \
 								<tr><td>'+$TkodeSatker[2]+'</td><td>'+$TnamaPemda[2]+'</td><td>'+$Ttarget[2]+'</td><td>'+$Trealization[2]+'</td><td>'+$Tpercentage[2]+'%</td></tr> \
@@ -495,7 +495,7 @@ $(document).ready(function() {
 							</table> \
 							<h3>'+botTitle+'</h3> \
 							<table class="uk-table uk-table-striped"> \
-								<thead><tr><th>Satker</th><th>Pemda</th><th>Target</th><th>Realization</th><th>Percentage</th></tr></thead> \
+								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%">Target</th><th width="20%">Realization</th><th width="20%">Percentage</th></tr></thead> \
 								<tr><td>'+$BkodeSatker[0]+'</td><td>'+$BnamaPemda[0]+'</td><td>'+$Btarget[0]+'</td><td>'+$Brealization[0]+'</td><td>'+$Bpercentage[0]+'%</td></tr> \
 								<tr><td>'+$BkodeSatker[1]+'</td><td>'+$BnamaPemda[1]+'</td><td>'+$Btarget[1]+'</td><td>'+$Brealization[1]+'</td><td>'+$Bpercentage[1]+'%</td></tr> \
 								<tr><td>'+$BkodeSatker[2]+'</td><td>'+$BnamaPemda[2]+'</td><td>'+$Btarget[2]+'</td><td>'+$Brealization[2]+'</td><td>'+$Bpercentage[2]+'%</td></tr> \

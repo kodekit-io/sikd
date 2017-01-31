@@ -1,5 +1,7 @@
 @extends('layouts.default')
-
+@section('page-level-styles')
+	<link rel="stylesheet" href="{!! asset('assets/css/datatables/dataTables.uikit.min.css') !!}" />
+@endsection
 @section('content')
 <main class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
 	<div class="uk-grid uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
@@ -103,6 +105,8 @@
 		<div class="uk-width-medium-1-1">
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom">
 				<div class="card-content">
+					<div id="topBottom" class="uk-grid uk-grid-medium uk-grid-width-1-5"></div>
+					{{--
 					<ul id="sikd-thematics" class="uk-switcher">
 						<li class="uk-width-1-1">
 							<ul class="uk-grid uk-grid-medium uk-grid-width-1-5">
@@ -207,6 +211,8 @@
 						<li class="uk-active"><span>1</span></li>
 						<li><span>2</span></li>
 					</ul>
+					--}}
+
 				</div>
 			</div>
 		</div>
@@ -225,5 +231,7 @@
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/components/slideshow.min.js') !!}"></script>
+	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
+	<script src="{!! asset('assets/js/datatables/dataTables.uikit.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/home.js') !!}"></script>
 @endsection

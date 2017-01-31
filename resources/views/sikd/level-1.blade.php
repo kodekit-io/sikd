@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-<main class="uk-container uk-container-center uk-margin-top">
+<main class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
 	<div class="card z-depth-3 soft hoverable sikd-map uk-animation-fade">
 		<div class="card-toolbar">
 			<h2 class="card-title" id="titleMap"></h2>

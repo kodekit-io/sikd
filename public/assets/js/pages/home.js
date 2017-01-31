@@ -61,7 +61,7 @@ $(document).ready(function() {
 							</div> \
 							<div class="uk-width-medium-1-2"> \
 								<div class="uk-progress slim uk-margin-bottom-remove sikd-yellow-bg"> \
-									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg ' + color + '" style="width: ' + $percentage + ';">' + $percentage + '%</div> \
+									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg ' + color + '" style="width: ' + $percentage + '%;">' + $percentage + '%</div> \
 								</div> \
 								<ul class="uk-subnav uk-margin-bottom-remove uk-margin-top-remove sikd-text-ptr"> \
 									<li class="uk-margin-small-top"><strong>' + $percentage + '%</strong></li> \

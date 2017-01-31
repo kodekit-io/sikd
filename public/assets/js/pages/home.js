@@ -53,8 +53,13 @@ $(document).ready(function() {
                 }
 
                 var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">' + $percentage + '%</span>';
-
-                var linkdetail = $baseUrl + '/level-1/';
+                if (type == 'tkdd') {
+                    var linkdetail = $baseUrl + '/level-1/' + $id;
+                } else {
+                    $reportTypes = jQuery.parseJSON(reportTypes);
+                    $reportCode = $reportTypes[$id];
+                    var linkdetail = $baseUrl + '/level-1/' + $reportCode;
+                }
                 var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
 							<div class="uk-width-medium-1-2"> \
 								<h5 class="sikd-chart--title sikd-blue">' + $name + '</h5> \

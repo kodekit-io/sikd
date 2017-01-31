@@ -7,8 +7,8 @@
 			<h2 class="card-title" id="titleMap"></h2>
 			<a href="#" data-activates="switchdata" class="dropdown-button orange white-text z-depth-0 uk-button right" data-beloworigin="true" data-alignment="right">PILIH JENIS INFORMASI <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="switchdata" class="dropdown-content slim-drop">
-				@foreach($reportTypes as $id => $name)
-					<li><a href="{!! url('level-1/' . $id) !!}">{!! $name !!}</a></li>
+				@foreach($reportTypes as $type)
+					<li><a href="{!! url('level-1/' . $type['code']) !!}">{!! $type['name'] !!}</a></li>
 				@endforeach
 			</ul>
 

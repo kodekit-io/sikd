@@ -89,7 +89,7 @@
 
                         myMap.on('click', function (param) {
                             var idProv = param.data.id;
-                            location.href = baseUrl+'/level-2/'+idProv;
+                            location.href = baseUrl + '/level-2/' + idProv + '/' + $reportType;
                         });
 
                         //myMap.setOption(option);

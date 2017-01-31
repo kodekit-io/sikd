@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Service\Apbd;
 use App\Service\Province;
+use App\Service\ReportType;
 use App\Service\Tkdd;
 use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
 {
+    use ReportType;
+
     /**
      * @var Province
      */
@@ -47,7 +50,7 @@ class ProvinceController extends Controller
         if ($this->tkddService->isPostureId($reportType)) {
             $data['reportName'] = $this->tkddService->getPosturNameById($reportType);
         } else {
-            $data['reportName'] = $reportTypes[$reportType];
+            $data['reportName'] = $this->getReportNameByCode($reportType);
         }
 
         $data['reportType'] = ($reportType != '') ? $reportType : 'pad';

@@ -221,6 +221,7 @@
 		var $baseUrl = "{!! url('/') !!}";
 		var tkddData = '{!! $tkddData !!}';
         var apbdData = '{!! $apbdData !!}';
+        var reportTypes = '{!! $reportTypes !!}';
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>

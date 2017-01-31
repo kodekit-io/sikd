@@ -18,8 +18,8 @@
 
 			<a href="#" data-activates="reportType" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH JENIS INFORMASI <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="reportType" class="dropdown-content slim-drop">
-                @foreach($reportTypes as $id => $name)
-                    <li><a href="{!! url('level-2/' . $provinceId . '/' . $id) !!}">{!! $name !!}</a></li>
+                @foreach($reportTypes as $type)
+                    <li><a href="{!! url('level-2/' . $provinceId . '/' . $type['code']) !!}">{!! $type['name'] !!}</a></li>
                 @endforeach
 			</ul>
 

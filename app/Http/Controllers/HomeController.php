@@ -61,6 +61,14 @@ class HomeController extends Controller
         $apbd = $this->mediawave->get('apbd/all/0/' . $thisYear, [], 1);
         $apbdResult = ($apbd->status == '200') ? $apbd->result : [];
 
+        // reportType
+        $reportTypes = config('mediawave.reportType');
+        $arr = [];
+        foreach ($reportTypes as $reportType) {
+            $arr[$reportType['id']] = $reportType['code'];
+        }
+
+        $data['reportTypes'] = \GuzzleHttp\json_encode($arr);
         $data['tkddData'] = \GuzzleHttp\json_encode($tkddResult);
         $data['apbdData'] = \GuzzleHttp\json_encode($apbdResult);
 

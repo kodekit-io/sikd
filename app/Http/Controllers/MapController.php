@@ -8,9 +8,11 @@ use App\Service\Province;
 use App\Service\Tkdd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use App\Service\ReportType;
 
 class MapController extends Controller
 {
+    use ReportType;
     /**
      * @var Tkdd
      */
@@ -37,10 +39,11 @@ class MapController extends Controller
         $data['reportTypes'] = $reportTypes;
         $data['postures'] = $this->tkddService->getPostures();
         $data['reportType'] = $reportType;
+
         if ($this->tkddService->isPostureId($reportType)) {
             $data['reportName'] = $this->tkddService->getPosturNameById($reportType);
         } else {
-            $data['reportName'] = $reportTypes[$reportType];
+            $data['reportName'] = $this->getReportNameByCode($reportType);
         }
 
         return view('sikd.level-1', $data);
@@ -55,4 +58,5 @@ class MapController extends Controller
 
         return $this->apbdService->getMapChart($year, $reportType);
     }
+
 }

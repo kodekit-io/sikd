@@ -5,7 +5,7 @@
 @section('content')
 <main class="uk-container uk-container-center uk-margin-top uk-margin-bottom" data-uk-observe>
 	<ul class="uk-grid uk-grid-medium uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
-		<li class="uk-width-1-1">
+		<li class="uk-width-1-1 uk-margin-small-bottom">
 			<div class="card-panel z-depth-3 soft">
 				<h2 class="card-title">Data Umum {!! $pemdaName !!}</h2>
 			</div>
@@ -15,6 +15,7 @@
 		<li class="uk-width-1-5"><div id="panel3"></div></li>
 		<li class="uk-width-1-5"><div id="panel4"></div></li>
 		<li class="uk-width-1-5"><div id="panel5"></div></li>
+		{{--
 		<li class="uk-width-1-1">
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove">
 				<div class="card-action-top">
@@ -35,6 +36,7 @@
 				</div>
 			</div>
 		</li>
+		--}}
 	</ul>
 </main>
 @endsection
@@ -48,7 +50,7 @@
 	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
-	<script src="{!! asset('assets/js/datatables/dataTables.materialize.js') !!}"></script>
+	<script src="{!! asset('assets/js/datatables/dataTables.uikit.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-3.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-3-A1.js') !!}"></script>
 @endsection

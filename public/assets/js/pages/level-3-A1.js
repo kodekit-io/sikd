@@ -9,6 +9,8 @@ $(document).ready(function() {
         //"processing": true,
         //"serverSide": true,
         "searching": false,
+        "paging": false,
+		"info": false,
         "ajax": "../data/L3_A1.json",
         "columns": [
             {

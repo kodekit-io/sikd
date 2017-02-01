@@ -159,6 +159,12 @@ $(document).ready(function() {
 			                    saveAsImage : {show: true, title: 'Save'}
 			                }
 			            },
+						grid: {
+							x: '0',
+							x2: '0',
+							y: '0',
+							y2: '0'
+						},
         			    series : [
         			        {
                                 name: $name,
@@ -229,7 +235,7 @@ $(document).ready(function() {
 
         			            title : {
         			                show : true,
-        			                offsetCenter: [0, '-160%'],
+        			                offsetCenter: [0, '-130%'],
         			                textStyle: {
         			                    color: '#000',
         			                    fontSize : 16

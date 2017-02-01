@@ -2,42 +2,82 @@
 	"data": [{
 		"id": "00",
 		"name": "Provinsi Bali",
-		"value": 422
+		"value": 422,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "01",
 		"name": "Kab. Badung",
-		"value": 585
+		"value": 585,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "02",
 		"name": "Kab. Bangli",
-		"value": 681
+		"value": 681,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "03",
 		"name": "Kab. Buleleng",
-		"value": 697
+		"value": 697,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "04",
 		"name": "Kab. Gianyar",
-		"value": 424
+		"value": 424,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "05",
 		"name": "Kab. Jembrana",
-		"value": 764
+		"value": 764,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "06",
 		"name": "Kab. Karangasem",
-		"value": 628
+		"value": 628,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "07",
 		"name": "Kab. Klungkung",
-		"value": 602
+		"value": 602,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "08",
 		"name": "Kab. Tabanan",
-		"value": 702
+		"value": 702,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}, {
 		"id": "09",
 		"name": "Kota Denpasar",
-		"value": 520
+		"value": 520,
+		"detail": {
+			"info1": "lorem ipsum",
+			"info2": "dolor sit amet"
+		}
 	}]
 }

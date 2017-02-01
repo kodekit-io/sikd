@@ -1,20 +1,21 @@
 function format ( d ) {
-    return 'Pemda: '+d.detail.info1+'<br>'+
-        'Data: '+d.detail.info2+'<br>'+
-        'The child row can contain any data you wish, including links, images, inner tables etc.';
+    return '<table class="uk-table bordered condensed"><tr><td>Pemda: </td><td>'+d.detail.info1+'</td></tr>'+
+        '<tr><td>Data:</td><td>'+d.detail.info2+'</td></tr>'+
+        '</table>';
 }
 
 $(document).ready(function() {
     var dt = $('#A1').DataTable( {
         //"processing": true,
         //"serverSide": true,
+        "searching": false,
         "ajax": "../data/L3_A1.json",
         "columns": [
             {
                 "class":          "details-control",
                 "orderable":      false,
                 "data":           null,
-                "defaultContent": "+"
+                "defaultContent": "<a class='uk-icon uk-icon-plus'></a>"
             },
             { "data": "id", "title": "ID" },
             { "data": "name", "title": "Name" },
@@ -33,15 +34,15 @@ $(document).ready(function() {
         if ( row.child.isShown() ) {
             tr.removeClass( 'details' );
             row.child.hide();
+            $(this).find('a').addClass('uk-icon-plus').removeClass('uk-icon-minus');
 
-            // Remove from the 'open' array
             detailRows.splice( idx, 1 );
         }
         else {
             tr.addClass( 'details' );
             row.child( format( row.data() ) ).show();
+            $(this).find('a').removeClass('uk-icon-plus').addClass('uk-icon-minus');
 
-            // Add to the 'open' array
             if ( idx === -1 ) {
                 detailRows.push( tr.attr('id') );
             }

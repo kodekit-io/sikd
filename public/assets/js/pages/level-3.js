@@ -75,10 +75,10 @@ $(document).ready(function() {
                         v : $value,
 						p : $realisasi/$target * 100,
 					};
-                    console.log(chartData);
+                    //console.log(chartData);
                     var value = chartData.p;
                     value = Math.round(value * 1) / 1;
-                    console.log(value);
+                    //console.log(value);
 
 					var panelgauge = '<div class="card-panel z-depth-3 soft hoverable uk-margin-remove"> \
         				<div id="'+divID+'gauge" class="skid-gauge"></div> \
@@ -187,44 +187,15 @@ $(document).ready(function() {
                                 },
 
                                 axisTick: {
-                                    show: false,
-                                    /*
-                                    splitNumber: 5,
-                                    length :10,
-                                    lineStyle: {
-                                        color: '#fff',
-                                        width: 1,
-                                        type: 'solid'
-                                    }
-                                    */
+                                    show: false
                                 },
 
                                 axisLabel: {
-                                    show: false,
-                                    /*
-                                    formatter: function(v){
-                                        switch (v+''){
-                                            case '10': return '10';
-                                            case '30': return '30';
-                                            case '60': return '60';
-                                            case '90': return '90';
-                                            default: return '';
-                                        }
-                                    },
-                                    textStyle: {
-                                        color: '#000'
-                                    }
-                                    */
+                                    show: false
                                 },
 
                                 splitLine: {
-                                    show: false,
-                                    length :25,
-                                    lineStyle: {
-                                        color: '#fff',
-                                        width: 1,
-                                        type: 'solid'
-                                    }
+                                    show: false
                                 },
 
         			            pointer : {
@@ -267,8 +238,11 @@ $(document).ready(function() {
 					    chart.hideLoading();
 					    chart.setOption(option);
 					},1800);
-
-					$(window).trigger("resize");
+					$(window).on('resize', function(){
+	                    if(chart != null && chart != undefined){
+	                        chart.resize();
+	                    }
+	                });
 	            }
 	        }
 	    });

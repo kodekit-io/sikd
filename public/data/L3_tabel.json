@@ -1,0 +1,30 @@
+{
+	"data": [{
+		"no": "",
+		"uraian": "",
+		"anggaran": ,
+		"realisasi": ,
+		"persen": ,
+		"level1": {
+			"no2": "",
+			"uraian2": "",
+			"anggaran2": ,
+			"realisasi2": ,
+			"persen2": ,
+			"level2": {
+				"no3": "",
+				"uraian3": "",
+				"anggaran3": ,
+				"realisasi3": ,
+				"persen3": ,
+				"level3": {
+					"no4": "",
+					"uraian4": "",
+					"anggaran4": ,
+					"realisasi4": ,
+					"persen4": ,
+				}
+			}
+		}
+	}]
+}

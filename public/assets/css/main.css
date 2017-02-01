@@ -533,7 +533,9 @@ nav ul a.btn-floating {
 
 
 /*Chart*/
-
+.sikd-chart-lagging {
+    display: block;
+}
 .sikd-chart--title {
     /*font-family: 'Montserrat', sans-serif;*/
     text-transform: uppercase;

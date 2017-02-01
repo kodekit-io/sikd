@@ -1,5 +1,7 @@
 @extends('layouts.default')
-
+@section('page-level-styles')
+	<link rel="stylesheet" href="{!! asset('assets/css/datatables/dataTables.uikit.min.css') !!}" />
+@endsection
 @section('content')
 <main class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
 	<div class="uk-grid uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
@@ -75,28 +77,27 @@
 		{{--ROW 2--}}
 		<div class="uk-width-medium-1-1">
 			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom-remove">
+				<div id="LOC1" class="uk-width-1-1" style="height:400px;"></div>
+				<?php /*
 				<div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true}">
 					<ul class="uk-slideshow sikd-leading">
 						<li><div id="LOC1" class="uk-width-1-1" style="height:400px;"></div></li>
-						<?php /*
 						<li><div id="LOC2"></div></li>
 						<li><div id="LOC3"></div></li>
 						<li><div id="LOC4"></div></li>
 						<li><div id="LOC5"></div></li>
-						*/ ?>
 					</ul>
 					<a class="uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
 					<a class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
 					<ul class="uk-dotnav uk-position-bottom uk-flex-center uk-margin-bottom-remove">
 						<li data-uk-slideshow-item="0"><a></a></li>
-						<?php /*
 						<li data-uk-slideshow-item="1"><a></a></li>
 						<li data-uk-slideshow-item="2"><a></a></li>
 						<li data-uk-slideshow-item="3"><a></a></li>
 						<li data-uk-slideshow-item="4"><a></a></li>
-						*/ ?>
 					</ul>
 				</div>
+				*/ ?>
 			</div>
 		</div>
 
@@ -104,6 +105,8 @@
 		<div class="uk-width-medium-1-1">
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom">
 				<div class="card-content">
+					<div id="topBottom" class="uk-grid uk-grid-medium uk-grid-width-1-5"></div>
+					{{--
 					<ul id="sikd-thematics" class="uk-switcher">
 						<li class="uk-width-1-1">
 							<ul class="uk-grid uk-grid-medium uk-grid-width-1-5">
@@ -208,6 +211,8 @@
 						<li class="uk-active"><span>1</span></li>
 						<li><span>2</span></li>
 					</ul>
+					--}}
+
 				</div>
 			</div>
 		</div>
@@ -226,5 +231,7 @@
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/components/slideshow.min.js') !!}"></script>
+	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
+	<script src="{!! asset('assets/js/datatables/dataTables.uikit.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/home.js') !!}"></script>
 @endsection

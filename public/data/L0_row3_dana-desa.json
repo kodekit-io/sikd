@@ -1,0 +1,90 @@
+{
+    "top-bottom-Dandes": {
+        "top": {
+            "id": 1,
+            "name": "Top 5 Dandes",
+            "data": [
+                {
+                    "kodeSatker": [
+                        "991549",
+                        "991972",
+                        "992391",
+                        "975616",
+                        "992888"
+                    ],
+                    "namaPemda": [
+                        "Kab. Kulon Progo",
+                        "Kab. Sintang",
+                        "Kab. Lombok Tengah",
+                        "Kab. Kubu Raya",
+                        "Kab. Barru"
+                    ],
+                    "target": [
+                        60511729000,
+                        202413744000,
+                        92903644000,
+                        77211484000,
+                        27457668000
+                    ],
+                    "realization": [
+                        60511729000,
+                        202413744000,
+                        92903644000,
+                        77211484000,
+                        27457668000
+                    ],
+                    "percentage": [
+                        100,
+                        100,
+                        100,
+                        100,
+                        100
+                    ]
+                }
+            ]
+        },
+        "bottom": {
+            "id": 2,
+            "name": "Bottom 5 Dandes",
+            "data": [
+                {
+                    "kodeSatker": [
+                        "976962",
+                        "978401",
+                        "976219",
+                        "999010",
+                        "963461"
+                    ],
+                    "namaPemda": [
+                        "Kab. Dogiyai",
+                        "Kota Gunungsitoli",
+                        "Kab. Mamberamo Tengah",
+                        "Kab. Pulau Taliabu",
+                        "Kab. Mamberamo Raya"
+                    ],
+                    "target": [
+                        53465282000,
+                        62513984000,
+                        45720846000,
+                        45163122000,
+                        51000992000
+                    ],
+                    "realization": [
+                        27313157000,
+                        32582079863,
+                        27432507600,
+                        33087509400,
+                        41414544000
+                    ],
+                    "percentage": [
+                        51.085781,
+                        52.119666,
+                        60,
+                        73.262228,
+                        81.203409
+                    ]
+                }
+            ]
+        }
+    }
+}

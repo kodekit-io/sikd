@@ -27,7 +27,7 @@
 				</div>
 				<div class="card-content">
 					<ul id="tab-level-3" class="uk-switcher">
-						<li><table class="uk-table uk-table-striped uk-table-hover" id="A1"></table></li>
+						<li><table class="uk-table bordered uk-table-hover" id="A1"></table></li>
 						<li><div class="" id="A2">2</div></li>
 						<li><div class="" id="A3">3</div></li>
 						<li><div class="" id="A4">4</div></li>

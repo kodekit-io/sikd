@@ -116,13 +116,14 @@ $(document).ready(function() {
                     legend: {
                         data: chartData.legend,
                         padding: ['0', '0', '0', '0'],
-                        x: 'left',
-                        y: 'bottom'
+                        left: 'center',
+                        bottom: 'bottom'
                     },
                     toolbox: {
                         show: true,
-                        x: 'right',
-                        padding: ['20', '1', '0', '0'],
+                        left: 'left',
+						bottom: 'bottom',
+                        padding: ['0', '0', '0', '0'],
                         feature: {
                             mark: {show: true},
                             //dataView : {show: false, readOnly: false},
@@ -135,7 +136,12 @@ $(document).ready(function() {
                             saveAsImage: {show: true, title: 'Save'}
                         }
                     },
-                    //calculable : true,
+					grid: {
+						x: '30px',
+						x2: '10px',
+						y: '10px',
+						y2: '50px'
+					},
                     xAxis: [
                         {
                             type: 'category',
@@ -150,7 +156,7 @@ $(document).ready(function() {
                             axisLabel: {
                                 formatter: function (v) {
                                     //$v = abbr(v,2);
-                                    $v = numeral(v).format('0.00a');
+                                    $v = numeral(v).format('0a');
                                     return $v;
                                 }
                             }
@@ -164,8 +170,11 @@ $(document).ready(function() {
                     chart.hideLoading();
                     chart.setOption(option);
                 }, 1800);
-
-                $(window).trigger("resize");
+				$(window).on('resize', function(){
+                    if(chart != null && chart != undefined){
+                        chart.resize();
+                    }
+                });
             }
         }
 	}
@@ -279,8 +288,11 @@ $(document).ready(function() {
 			chart.hideLoading();
 			chart.setOption(option);
 		},1800);
-
-		$(window).trigger("resize");
+		$(window).on('resize', function(){
+            if(chart != null && chart != undefined){
+                chart.resize();
+            }
+        });
 
 	};
 	//Row2('LOC1','bar');
@@ -288,45 +300,42 @@ $(document).ready(function() {
 	//Row2('LOC3','bar');
 	//Row2('LOC4','line');
 	//Row2('LOC5','scatter');
-	//chartTengah('LOC1')
+	chartL0Row2A('LOC1')
 
-	function chartTengah(id) {
+	function chartL0Row2A(id) {
 	    $.ajax({
-	        url: 'data/chart-tengah.json',
+	        url: 'data/L0_row2_infrastruktur.json',
 	        //dataType: 'jsonp',
 	        success: function(result){
 	            var data = result.data;
+				var t = result.properties.Label;
+				//console.log(t);
 
 	            if (data.length === 0) {
 	                $('#'+id).html("<div class='center'>No Data</div>");
 	            } else {
-	                var $series=[], $dataValue=[], $name=[], $id=[], $dataID=[];
+	                var $series=[], $legend=[];
 	                for (var i = 0; i < data.length; i++) {
-						$id[i] = data[i].id;
-	                    $name[i] = data[i].name;
-	                    $dataID[i] = data[i].dataID;
+	                    $name = data[i].name;
 						$dataName = data[i].dataName;
-						$dataValue[i] = data[i].dataValue;
-
-	                    $series[i] = {
-	                        name: "nama",
-	                        type:'bar',
-	                        stack: 'data',
-	                        //barMaxWidth: 50,
-	                        //itemStyle : { normal: {label : {show: false, position: 'insideRight'}}},
-	                        data: [1]
-	                    }
-
+						$dataValue = data[i].dataValue;
+						$legend[i] = $name;
+						//console.log($dataValue);
+						$series[i] = {
+							name: $name,
+							type:'bar',
+							stack: 'data',
+							//barMaxWidth: 50,
+							//itemStyle : { normal: {label : {show: true, position: 'center'}}},
+							data: $dataValue
+						}
 	                }
-					//console.log(data.length);
-	                var data = {
-						cat: $name,
-	                    legend: $dataName,
-	                    //color: $color,
-	                    //cat: $key,
-	                    series: $series
+
+	                var dataseries = {
+						cat: $dataName,
+	                    legend: $legend,
+						series: $series
 	                }
-					console.log(data.series);
 
 
 	                //CHART
@@ -343,22 +352,26 @@ $(document).ready(function() {
 	                });
 
 	                var option = {
+						title: {
+							text: t,
+							left: 'center',
+							top: 0
+						},
 	                    tooltip : {
 	                        trigger: 'axis',
 	                        axisPointer : {
 	                            type : 'shadow'
 	                        }
 	                    },
-	                    //color: data.color,
 	                    legend: {
-	                        data: data.legend,
+	                        data: dataseries.legend,
 	                        x: 'left',
 	                        y: 'bottom',
 	                    },
 	                    grid: {
-	                        x: '30px',
-	                        x2: '10px',
-	                        y: '10px',
+	                        x: '20px',
+	                        x2: '20px',
+	                        y: '25px',
 	                        y2: '60px'
 	                    },
 	                    toolbox: {
@@ -379,10 +392,10 @@ $(document).ready(function() {
 	                        }
 	                    },
 	                    //calculable : true,
-	                    yAxis : [
+	                    xAxis : [
 	                        {
 	                            type : 'category',
-	                            data : data.cat,
+	                            data : dataseries.cat,
 	                            axisLabel: {
 	                                textStyle: {
 	                                    fontSize: 10
@@ -390,8 +403,6 @@ $(document).ready(function() {
 	                            }
 	                        }
 	                    ],
-						xAxis : [{type : 'value'}],
-						/*
 	                    yAxis : [
 	                        {
 	                            type : 'value',
@@ -406,8 +417,7 @@ $(document).ready(function() {
 	                            },
 	                        }
 	                    ],
-						*/
-	                    series : data.series
+	                    series : dataseries.series
 	                };
 
 	                clearTimeout(loadingTicket);
@@ -424,5 +434,80 @@ $(document).ready(function() {
 	            }
 	        }
 	    });
+	}
+	tableRow3('topBottom','Realisasi-TKDD','data/L0_row3_tkdd.json');
+	tableRow3('topBottom','DAK-Fisik','data/L0_row3_dak-fisik.json');
+	tableRow3('topBottom','Dandes','data/L0_row3_dana-desa.json');
+	tableRow3('topBottom','Belanja','data/L0_row3_belanja.json');
+	tableRow3('topBottom','PAD','data/L0_row3_pad.json');
+	function tableRow3(id,type,url) {
+
+		$.ajax({
+	        url: url,
+	        //dataType: 'jsonp',
+	        success: function(param){
+	            var result = param['top-bottom-'+type];
+				//console.log(result);
+
+				var top = result.top;
+				var topData = top.data;
+				var topTitle = top.name;
+				var topId = top.id;
+
+				var bottom = result.bottom;
+				var botData = bottom.data;
+				var botTitle = bottom.name;
+				var botId = bottom.id;
+
+				var $table=[];
+				for (var i = 0; i < topData.length; i++) {
+					$TkodeSatker = topData[i].kodeSatker;
+					$TnamaPemda = topData[i].namaPemda;
+					$Ttarget = topData[i].target;
+					$Trealization = topData[i].realization;
+					$Tpercentage = topData[i].percentage;
+				}
+				for (var i = 0; i < botData.length; i++) {
+					$BkodeSatker = botData[i].kodeSatker;
+					$BnamaPemda = botData[i].namaPemda;
+					$Btarget = botData[i].target;
+					$Brealization = botData[i].realization;
+					$Bpercentage = botData[i].percentage;
+				}
+
+				var card = '<div> \
+					<div class="uk-panel uk-panel-box z-depth-0"> \
+						<h5 class="uk-text-center"> \
+							<a href="#pop_'+type+'" data-uk-modal>'+topTitle+'<br>'+botTitle+'</a> \
+						</h5> \
+					</div> \
+					<div id="pop_'+type+'" class="uk-modal"> \
+						<div class="uk-modal-dialog uk-modal-dialog-large"> \
+							<a class="uk-modal-close uk-close"></a> \
+							<h3>'+topTitle+'</h3> \
+							<table class="uk-table uk-table-striped"> \
+								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%">Target</th><th width="20%">Realization</th><th width="20%">Percentage</th></tr></thead> \
+								<tr><td>'+$TkodeSatker[0]+'</td><td>'+$TnamaPemda[0]+'</td><td>'+$Ttarget[0]+'</td><td>'+$Trealization[0]+'</td><td>'+$Tpercentage[0]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[1]+'</td><td>'+$TnamaPemda[1]+'</td><td>'+$Ttarget[1]+'</td><td>'+$Trealization[1]+'</td><td>'+$Tpercentage[1]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[2]+'</td><td>'+$TnamaPemda[2]+'</td><td>'+$Ttarget[2]+'</td><td>'+$Trealization[2]+'</td><td>'+$Tpercentage[2]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[3]+'</td><td>'+$TnamaPemda[3]+'</td><td>'+$Ttarget[3]+'</td><td>'+$Trealization[3]+'</td><td>'+$Tpercentage[3]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[4]+'</td><td>'+$TnamaPemda[4]+'</td><td>'+$Ttarget[4]+'</td><td>'+$Trealization[4]+'</td><td>'+$Tpercentage[4]+'%</td></tr> \
+							</table> \
+							<h3>'+botTitle+'</h3> \
+							<table class="uk-table uk-table-striped"> \
+								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%">Target</th><th width="20%">Realization</th><th width="20%">Percentage</th></tr></thead> \
+								<tr><td>'+$BkodeSatker[0]+'</td><td>'+$BnamaPemda[0]+'</td><td>'+$Btarget[0]+'</td><td>'+$Brealization[0]+'</td><td>'+$Bpercentage[0]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[1]+'</td><td>'+$BnamaPemda[1]+'</td><td>'+$Btarget[1]+'</td><td>'+$Brealization[1]+'</td><td>'+$Bpercentage[1]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[2]+'</td><td>'+$BnamaPemda[2]+'</td><td>'+$Btarget[2]+'</td><td>'+$Brealization[2]+'</td><td>'+$Bpercentage[2]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[3]+'</td><td>'+$BnamaPemda[3]+'</td><td>'+$Btarget[3]+'</td><td>'+$Brealization[3]+'</td><td>'+$Bpercentage[3]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[4]+'</td><td>'+$BnamaPemda[4]+'</td><td>'+$Btarget[4]+'</td><td>'+$Brealization[4]+'</td><td>'+$Bpercentage[4]+'%</td></tr> \
+							</table> \
+						</div> \
+					</div> \
+				</div>';
+				$('#'+id).append(card);
+			}
+		});
+
 	}
 });

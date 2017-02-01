@@ -15,6 +15,11 @@
 		<li class="uk-width-1-5"><div id="panel3"></div></li>
 		<li class="uk-width-1-5"><div id="panel4"></div></li>
 		<li class="uk-width-1-5"><div id="panel5"></div></li>
+		<li class="uk-width-1-1">
+			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove">
+				<table class="uk-table bordered" id="A1"></table>
+			</div>
+		</li>
 		{{--
 		<li class="uk-width-1-1">
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove">

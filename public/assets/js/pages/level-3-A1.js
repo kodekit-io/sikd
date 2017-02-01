@@ -1,7 +1,30 @@
 function format ( d ) {
-    return '<table class="uk-table bordered condensed"><tr><td>Pemda: </td><td>'+d.detail.info1+'</td></tr>'+
-        '<tr><td>Data:</td><td>'+d.detail.info2+'</td></tr>'+
-        '</table>';
+    return '<table class="uk-table bordered uk-width-1-1"> \
+        <tr> \
+            <td width="10%"></td> \
+            <td width="10%">'+d.level1[0].no2+'</td> \
+            <td width="20%">'+d.level1[0].uraian2+'</td> \
+            <td width="20%">'+d.level1[0].anggaran2+'</td> \
+            <td width="20%">'+d.level1[0].realisasi2+'</td> \
+            <td width="20%">'+d.level1[0].persen2+'</td> \
+        </tr> \
+        <tr> \
+            <td width="10%"></td> \
+            <td width="10%">'+d.level1[1].no2+'</td> \
+            <td width="20%">'+d.level1[1].uraian2+'</td> \
+            <td width="20%">'+d.level1[1].anggaran2+'</td> \
+            <td width="20%">'+d.level1[1].realisasi2+'</td> \
+            <td width="20%">'+d.level1[1].persen2+'</td> \
+        </tr> \
+        <tr> \
+            <td width="10%"></td> \
+            <td width="10%">'+d.level1[2].no2+'</td> \
+            <td width="20%">'+d.level1[2].uraian2+'</td> \
+            <td width="20%">'+d.level1[2].anggaran2+'</td> \
+            <td width="20%">'+d.level1[2].realisasi2+'</td> \
+            <td width="20%">'+d.level1[2].persen2+'</td> \
+        </tr> \
+    </table>';
 }
 
 $(document).ready(function() {
@@ -11,17 +34,20 @@ $(document).ready(function() {
         "searching": false,
         "paging": false,
 		"info": false,
-        "ajax": "../data/L3_A1.json",
+        "ajax": "../data/L3_tabel.json",
         "columns": [
             {
                 "class":          "details-control",
                 "orderable":      false,
                 "data":           null,
+                "width": "10%",
                 "defaultContent": "<a class='uk-icon uk-icon-plus'></a>"
             },
-            { "data": "id", "title": "ID" },
-            { "data": "name", "title": "Name" },
-            { "data": "value", "title": "Value" }
+            { "data": "no", "title": "No", "width": "10%" },
+            { "data": "uraian", "title": "Uraian", "width": "20%" },
+            { "data": "anggaran", "title": "Anggaran", "width": "20%" },
+            { "data": "realisasi", "title": "Realisasi", "width": "20%" },
+            { "data": "persen", "title": "Persen", "width": "20%" }
         ],
         "order": [[1, 'asc']]
     } );
@@ -32,7 +58,6 @@ $(document).ready(function() {
         var tr = $(this).closest('tr');
         var row = dt.row( tr );
         var idx = $.inArray( tr.attr('id'), detailRows );
-
         if ( row.child.isShown() ) {
             tr.removeClass( 'details' );
             row.child.hide();

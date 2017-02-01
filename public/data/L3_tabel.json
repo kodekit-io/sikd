@@ -1,30 +1,30 @@
 {
 	"data": [{
-		"no": "",
-		"uraian": "",
-		"anggaran": ,
-		"realisasi": ,
-		"persen": ,
-		"level1": {
-			"no2": "",
-			"uraian2": "",
-			"anggaran2": ,
-			"realisasi2": ,
-			"persen2": ,
-			"level2": {
-				"no3": "",
-				"uraian3": "",
-				"anggaran3": ,
-				"realisasi3": ,
-				"persen3": ,
-				"level3": {
-					"no4": "",
-					"uraian4": "",
-					"anggaran4": ,
-					"realisasi4": ,
-					"persen4": ,
-				}
+		"no": "4",
+		"uraian": "Pendapatan",
+		"anggaran": 12551166051800.00,
+		"realisasi": 39842779127285.17,
+		"persen": 3.174428,
+		"level1": [
+			{
+				"no2": "4.1",
+				"uraian2": "PAD",
+				"anggaran2": 2057481533300.00,
+				"realisasi2": 6059264401565.17,
+				"persen2": 2.944991
+			}, {
+				"no2": "4.2",
+				"uraian2": "Daper",
+				"anggaran2": 1670711099000.00,
+				"realisasi2": 5168451527292.00,
+				"persen2": 3.093564
+			},{
+				"no2": "4.3",
+				"uraian2": "Lain-lain pendapatan daerah yang sah",
+				"anggaran2": 8822973419500.00,
+				"realisasi2": 28615063198428.00,
+				"persen2": 3.243245
 			}
-		}
+		]
 	}]
 }

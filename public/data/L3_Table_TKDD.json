@@ -1,0 +1,23 @@
+{
+	"tkdd": {
+		"level_0": [{
+			"id": "39",
+			"name": "Transfer",
+			"anggaran": 0.55,
+			"realisasi": 0.55,
+			"percent": 0.55
+		},{
+			"id": "40",
+			"name": "DBH",
+			"anggaran": 0.55,
+			"realisasi": 0.55,
+			"percent": 0.55
+		},{
+			"id": "41",
+			"name": "DAU",
+			"anggaran": 0.55,
+			"realisasi": 0.55,
+			"percent": 0.55
+		}]
+	}
+}

@@ -14,6 +14,7 @@
 					</h2>
 				</div>
 				<div class="card-content">
+					<?php /*
 					<h3>Home Slider <span class="uk-text-small">(drag to sort)</span></h3>
 					<ul class="uk-grid uk-grid-small uk-grid-width-medium-1-5 uk-sortable uk-margin-bottom" data-uk-sortable="{handleClass:'uk-panel-slider'}" data-uk-grid-margin id="sortslider">
 						<li data-id="1">
@@ -114,6 +115,7 @@
 					</ul>
 					<button id="saveind" type="button" class="uk-button uk-button-success">Save</button>
 					<hr>
+					*/?>
 					<h3>Static Page</h3>
 					<table id="konten_manage" class="uk-table uk-table-hover uk-table-striped uk-width-1-1"></table>
 				</div>

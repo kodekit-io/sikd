@@ -1,0 +1,30 @@
+{
+	"lainnya": {
+		"Infrastruktur": [{
+			"year": 2016,
+			"data": [{
+				"id": "1",
+				"name": "Gedung dan Bangunan",
+				"anggaran": 159429619600.00
+			}, {
+				"id": "2",
+				"name": "Jalan, Irigasi, dan Jaringan",
+				"anggaran": 214034710015.00
+			}, {
+				"id": "3",
+				"name": "Tanah",
+				"anggaran": 57877130700.00
+			}]
+		}],
+		"SimpananPemda": [{
+			"tahun": 2010,
+			"value": 159429619600.00
+		}, {
+			"tahun": 2011,
+			"value": 159429619600.00
+		}, {
+			"tahun": 2012,
+			"value": 159429619600.00
+		}]
+	}
+}

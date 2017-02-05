@@ -223,9 +223,6 @@
 
 @section('page-level-scripts')
 	<script type="text/javascript">
-		$('[data-uk-switcher]').on('show.uk.switcher', function(event){
-			$(window).trigger('resize');
-		});
 		var $baseUrl = "{!! url('/') !!}";
 		var tkddData = '{!! $tkddData !!}';
         var apbdData = '{!! $apbdData !!}';

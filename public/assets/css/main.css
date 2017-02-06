@@ -706,6 +706,11 @@ nav ul a.btn-floating {
 #header + main {
     min-height: calc(100vh - 320px - 56px);
 }
+.btn-screenshot {
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+}
 /*MOBILE*/
 
 @media (max-width: 768px) {

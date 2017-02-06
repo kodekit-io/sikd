@@ -23,6 +23,9 @@
 <script src="{!! asset('assets/js/materialize.min.js') !!}"></script>
 <script src="{!! asset('assets/js/uikit.min.js') !!}"></script>
 <script src="{!! asset('assets/js/components/tooltip.min.js') !!}"></script>
+<script src="{!! asset('assets/js/html2canvas.min.js') !!}"></script>
+<script src="{!! asset('assets/js/html2canvas.svg.min.js') !!}"></script>
+<script src="{!! asset('assets/js/jquery.plugin.html2canvas.js') !!}"></script>
 <script src="{!! asset('assets/js/main.js') !!}"></script>
 <script src="{!! asset('assets/js/numeral.js') !!}"></script>
 @section('page-level-scripts')

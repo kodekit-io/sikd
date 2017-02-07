@@ -59,8 +59,8 @@ class HomeController extends Controller
 
         // apbd
         $apbd = $this->mediawave->get('apbd/all/0/' . $thisYear, [], 1);
-//        $apbdResult = ($apbd->status == '200') ? $apbd->result : [];
-        $apbdResult = [];
+        $apbdResult = ($apbd->status == '200') ? $apbd->result : [];
+//        $apbdResult = [];
 
         // reportType
         $reportTypes = config('mediawave.reportType');

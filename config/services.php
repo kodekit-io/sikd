@@ -39,6 +39,8 @@ return [
         'base_url' => env('MWV_BASE_URL'),
         'base_url_v2' => env('MWV_BASE_URL_V2'),
         'app_key' => env('MWV_APP_KEY'),
+        'client_id' => env('MWV_CLIENT_ID'),
+        'client_secret' => env('MWV_CLIENT_SECRET'),
     ]
 
 ];

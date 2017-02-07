@@ -53,10 +53,8 @@ class Tkdd
         }
 
         $url = 'tkdd/all/0/' . $year . '/' . $groupId;
-        $apiRequest = $this->mediawave->get($url, []);
-        $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 
-        return $result;
+        return $this->mediawave->get($url, []);
     }
 
     public function isPostureId($id)

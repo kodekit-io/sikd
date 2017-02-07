@@ -25,11 +25,13 @@
 					</a>
 					<div id="sikd-account-dropdown" class="dropdown-content transparent z-depth-0">
 						<ul>
+							<?php /*
 							<li><a href="{!! url('/account-profile') !!}"><i class="uk-icon-user uk-margin-small-right"></i> My Account</a></li>
 							<?php //if user can ?>
 							<li><a href="{!! url('/account-manage') !!}"><i class="uk-icon-users uk-margin-small-right"></i> Manage Account</a></li>
 							<li><a href="{!! url('/content-management') !!}"><i class="uk-icon-cog uk-margin-small-right"></i> Content Management</a></li>
 							<?php //end if  ?>
+							*/ ?>
 							<li><a href="{!! url('logout') !!}"><i class="uk-icon-power-off uk-margin-small-right"></i> Logout</a></li>
 						</ul>
 					</div>

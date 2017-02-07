@@ -42,7 +42,7 @@ class ApiAuthController extends Controller
 
             return redirect('/home');
         } else {
-            return redirect('/login')->withErrors(['error' => $apiLoginResult->result->msg]);
+            return redirect('/login')->withErrors(['error' => 'Please check your username and/or password.']);
         }
 
     }

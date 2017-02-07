@@ -17,7 +17,7 @@
 					</div>
 					<div class="uk-width-medium-1-2">
 						<div class="card-content">
-							<form class="" action="{!! url('/login') !!}" method="post">
+							<form id="login" action="{!! url('/login') !!}" method="post">
 								<div class="row center">
 									<span class="sikd-login-logo uk-margin-top"><img class="sikd-logo" src="assets/img/logo.png"></span>
 								</div>
@@ -25,14 +25,14 @@
 									<div class="input-field col s12">
 										<i class="material-icons prefix">email</i>
 										<input id="email" name="username" type="email" class="validate">
-										<label for="email">Your Email</label>
+										<label for="email" class="label-username">Your Email</label>
 									</div>
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
 										<i class="material-icons prefix">lock</i>
 										<input id="password" name="password" type="password" class="validate">
-										<label for="password">Password</label>
+										<label for="password" class="label-password">Password</label>
 									</div>
 								</div>
 								<div class="row uk-margin-remove center">
@@ -50,4 +50,30 @@
 @section('page-level-scripts')
 	<script src="{!! asset('assets/js/jquery.js') !!}"></script>
 	<script src="{!! asset('assets/js/materialize.min.js') !!}"></script>
+	<script src="{!! asset('assets/js/jquery.validate.min.js') !!}"></script>
+	<script>
+        $(document).ready(function() {
+            $('#login').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        email: true
+                    },
+					password: {
+                        required: true,
+                        minlength: 6
+                    }
+                },
+				errorElement: "em",
+				errorPlacement: function(error, element) {
+				    if (element.attr("name") == "username" )
+				        $(".label-username").html(error);
+				    else if  (element.attr("name") == "password" )
+				        $(".label-password").html(error);
+				    else
+				        error.insertAfter(element);
+				}
+            });
+        });
+    </script>
 @endsection

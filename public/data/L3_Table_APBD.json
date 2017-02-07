@@ -1,0 +1,96 @@
+{
+	"apbd": {
+		"level_0": [
+			{
+				"id": "4",
+				"name": "Pendapatan",
+				"anggaran": 0.55,
+				"realisasi": 0.55,
+				"percent": 0.55,
+				"level_1": [{
+					"id": "4.1",
+					"name": "Pendapatan 4.1",
+					"anggaran": 0.55,
+					"realisasi": 0.55,
+					"percent": 0.55,
+					"level_2": [{
+						"id": "4.1.1",
+						"name": "Pendapatan 4.1.1",
+						"anggaran": 0.55,
+						"realisasi": 0.55,
+						"percent": 0.55
+					}, {
+						"id": "4.1.2",
+						"name": "Pendapatan 4.1.2",
+						"anggaran": 0.55,
+						"realisasi": 0.55,
+						"percent": 0.55,
+						"level_3": [{
+							"id": "4.1.2.1",
+							"name": "Pendapatan 4.1.2.1",
+							"anggaran": 0.55,
+							"realisasi": 0.55,
+							"percent": 0.55
+						}, {
+							"id": "4.1.2.2",
+							"name": "Pendapatan 4.1.2.2",
+							"anggaran": 0.55,
+							"realisasi": 0.55,
+							"percent": 0.55
+						}]
+					}]
+				}, {
+					"id": "4.2",
+					"name": "Pendapatan 4.2",
+					"anggaran": 0.55,
+					"realisasi": 0.55,
+					"percent": 0.55
+				}, {
+					"id": "4.3",
+					"name": "Pendapatan 4.3",
+					"anggaran": 0.55,
+					"realisasi": 0.55,
+					"percent": 0.55
+				}]
+			}, {
+				"id": "5",
+				"name": "Belanja",
+				"anggaran": 0.55,
+				"realisasi": 0.55,
+				"percent": 0.55,
+				"level_1": [{
+					"id": "5.1",
+					"name": "Belanja 5.1",
+					"anggaran": 0.55,
+					"realisasi": 0.55,
+					"percent": 0.55,
+					"level_2": [{
+						"id": "5.1.1",
+						"name": "Belanja 5.1.1",
+						"anggaran": 0.55,
+						"realisasi": 0.55,
+						"percent": 0.55
+					}, {
+						"id": "5.1.2",
+						"name": "Belanja 5.1.2",
+						"anggaran": 0.55,
+						"realisasi": 0.55,
+						"percent": 0.55
+					}]
+				}, {
+					"id": "5.2",
+					"name": "Belanja 5.2",
+					"anggaran": 0.55,
+					"realisasi": 0.55,
+					"percent": 0.55
+				}, {
+					"id": "5.3",
+					"name": "Belanja 5.3",
+					"anggaran": 0.55,
+					"realisasi": 0.55,
+					"percent": 0.55
+				}]
+			}
+		]
+	}
+}

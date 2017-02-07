@@ -441,16 +441,14 @@ $(document).ready(function() {
 	tableRow3('topBottom','Belanja','data/L0_row3_belanja.json');
 	tableRow3('topBottom','PAD','data/L0_row3_pad.json');
 	function tableRow3(id,type,url) {
-		jQuery.support.cors = true;
-	    $.ajax({
-	        type: "GET",
+
+		$.ajax({
 	        url: url,
-	        //data: "{}",
-	        contentType: "application/json; charset=utf-8",
-	        dataType: "json",
-	        cache: false,
-	        success: function (param) {
-				var result = param['top-bottom-'+type];
+	        //dataType: 'jsonp',
+	        success: function(param){
+	            var result = param['top-bottom-'+type];
+				//console.log(result);
+
 				var top = result.top;
 				var topData = top.data;
 				var topTitle = top.name;
@@ -460,6 +458,22 @@ $(document).ready(function() {
 				var botData = bottom.data;
 				var botTitle = bottom.name;
 				var botId = bottom.id;
+
+				var $table=[];
+				for (var i = 0; i < topData.length; i++) {
+					$TkodeSatker = topData[i].kodeSatker;
+					$TnamaPemda = topData[i].namaPemda;
+					$Ttarget = topData[i].target;
+					$Trealization = topData[i].realization;
+					$Tpercentage = topData[i].percentage;
+				}
+				for (var i = 0; i < botData.length; i++) {
+					$BkodeSatker = botData[i].kodeSatker;
+					$BnamaPemda = botData[i].namaPemda;
+					$Btarget = botData[i].target;
+					$Brealization = botData[i].realization;
+					$Bpercentage = botData[i].percentage;
+				}
 
 				var card = '<div> \
 					<div class="uk-panel uk-panel-box z-depth-0"> \
@@ -471,36 +485,29 @@ $(document).ready(function() {
 						<div class="uk-modal-dialog uk-modal-dialog-large"> \
 							<a class="uk-modal-close uk-close"></a> \
 							<h3>'+topTitle+'</h3> \
-							<table id="top_'+type+'" class="uk-table uk-table-striped"> \
-								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%" class="uk-text-right">Target</th><th width="20%" class="uk-text-right">Realization</th><th width="20%" class="uk-text-right">Percentage</th></tr></thead> \
+							<table class="uk-table uk-table-striped"> \
+								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%">Target</th><th width="20%">Realization</th><th width="20%">Percentage</th></tr></thead> \
+								<tr><td>'+$TkodeSatker[0]+'</td><td>'+$TnamaPemda[0]+'</td><td>'+$Ttarget[0]+'</td><td>'+$Trealization[0]+'</td><td>'+$Tpercentage[0]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[1]+'</td><td>'+$TnamaPemda[1]+'</td><td>'+$Ttarget[1]+'</td><td>'+$Trealization[1]+'</td><td>'+$Tpercentage[1]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[2]+'</td><td>'+$TnamaPemda[2]+'</td><td>'+$Ttarget[2]+'</td><td>'+$Trealization[2]+'</td><td>'+$Tpercentage[2]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[3]+'</td><td>'+$TnamaPemda[3]+'</td><td>'+$Ttarget[3]+'</td><td>'+$Trealization[3]+'</td><td>'+$Tpercentage[3]+'%</td></tr> \
+								<tr><td>'+$TkodeSatker[4]+'</td><td>'+$TnamaPemda[4]+'</td><td>'+$Ttarget[4]+'</td><td>'+$Trealization[4]+'</td><td>'+$Tpercentage[4]+'%</td></tr> \
 							</table> \
 							<h3>'+botTitle+'</h3> \
-							<table id="bot_'+type+'" class="uk-table uk-table-striped"> \
-								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%" class="uk-text-right">Target</th><th width="20%" class="uk-text-right">Realization</th><th width="20%" class="uk-text-right">Percentage</th></tr></thead> \
+							<table class="uk-table uk-table-striped"> \
+								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%">Target</th><th width="20%">Realization</th><th width="20%">Percentage</th></tr></thead> \
+								<tr><td>'+$BkodeSatker[0]+'</td><td>'+$BnamaPemda[0]+'</td><td>'+$Btarget[0]+'</td><td>'+$Brealization[0]+'</td><td>'+$Bpercentage[0]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[1]+'</td><td>'+$BnamaPemda[1]+'</td><td>'+$Btarget[1]+'</td><td>'+$Brealization[1]+'</td><td>'+$Bpercentage[1]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[2]+'</td><td>'+$BnamaPemda[2]+'</td><td>'+$Btarget[2]+'</td><td>'+$Brealization[2]+'</td><td>'+$Bpercentage[2]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[3]+'</td><td>'+$BnamaPemda[3]+'</td><td>'+$Btarget[3]+'</td><td>'+$Brealization[3]+'</td><td>'+$Bpercentage[3]+'%</td></tr> \
+								<tr><td>'+$BkodeSatker[4]+'</td><td>'+$BnamaPemda[4]+'</td><td>'+$Btarget[4]+'</td><td>'+$Brealization[4]+'</td><td>'+$Bpercentage[4]+'%</td></tr> \
 							</table> \
 						</div> \
 					</div> \
 				</div>';
 				$('#'+id).append(card);
-
-		        var trTop = '';
-		        $.each(topData[0].kodeSatker, function (i, item) {
-					trTop += "<tr><td>" + topData[0].kodeSatker[i] + "</td><td>" + topData[0].namaPemda[i] + "</td><td class=\"uk-text-right\">" + numeral(topData[0].target[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(topData[0].realization[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(topData[0].percentage[i]).format('0.00') + "%</td></tr>";
-		        });
-		        $('#top_'+type).append(trTop);
-
-				var trBot = '';
-				$.each(botData[0].kodeSatker, function (i, item) {
-					trBot += "<tr><td>" + botData[0].kodeSatker[i] + "</td><td>" + botData[0].namaPemda[i] + "</td><td class=\"uk-text-right\">" + numeral(botData[0].target[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(botData[0].realization[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(botData[0].percentage[i]).format('0.00') + "%</td></tr>";
-		        });
-		        $('#bot_'+type).append(trBot);
-
-	        },
-
-	        error: function (msg) {
-	            alert("error");
-	        }
-	    });
+			}
+		});
 
 	}
 });

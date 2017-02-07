@@ -13,6 +13,9 @@
 
 			<ul class="right uk-subnav uk-margin-right">
 				<li>
+					<a class="btn-floating waves-effect waves-light z-depth-0 grey" title="Screenshot" data-uk-tooltip onclick="capture();"><i class="material-icons">camera_enhance</i></a>
+				</li>
+				<li>
 					<a class="btn-floating waves-effect waves-light z-depth-0 grey" data-uk-tooltip title="Refresh Page" onclick="location.reload();"><i class="material-icons">refresh</i></a>
 				</li>
 				<li>

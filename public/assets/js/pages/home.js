@@ -190,18 +190,18 @@ $(document).ready(function() {
 	L0Chart('A7','6','tkdd', $tkddData);
     L0Chart('A8','7','tkdd', $tkddData);
 
-    var $apbdData = jQuery.parseJSON(apbdData);
-    L0Chart('B1','0','apbd', $apbdData);
-    L0Chart('B2','1','apbd', $apbdData);
-    L0Chart('B3','2','apbd', $apbdData);
-    L0Chart('B4','3','apbd', $apbdData);
-    L0Chart('B5','4','apbd', $apbdData);
-    L0Chart('B6','5','apbd', $apbdData);
-    L0Chart('B7','6','apbd', $apbdData);
-    L0Chart('B8','7','apbd', $apbdData);
-    L0Chart('B9','8','apbd', $apbdData);
-    L0Chart('B10','9','apbd', $apbdData);
-    L0Chart('B11','10','apbd', $apbdData);
+    // var $apbdData = jQuery.parseJSON(apbdData);
+    // L0Chart('B1','0','apbd', $apbdData);
+    // L0Chart('B2','1','apbd', $apbdData);
+    // L0Chart('B3','2','apbd', $apbdData);
+    // L0Chart('B4','3','apbd', $apbdData);
+    // L0Chart('B5','4','apbd', $apbdData);
+    // L0Chart('B6','5','apbd', $apbdData);
+    // L0Chart('B7','6','apbd', $apbdData);
+    // L0Chart('B8','7','apbd', $apbdData);
+    // L0Chart('B9','8','apbd', $apbdData);
+    // L0Chart('B10','9','apbd', $apbdData);
+    // L0Chart('B11','10','apbd', $apbdData);
 
 
 	function Row2(divID,type) {

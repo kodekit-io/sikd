@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\Mediawave;
 use Illuminate\Http\Request;
 
 class ApiAuthController extends Controller
 {
 
     protected $apiService;
+    /**
+     * @var Mediawave
+     */
+    private $mediawave;
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param Mediawave $mediawave
      */
-    public function __construct()
+    public function __construct(Mediawave $mediawave)
     {
         $this->middleware('guest', ['except' => 'logout']);
         // $this->apiService = new ApiService();
+        $this->mediawave = $mediawave;
     }
 
     public function getLogin()
@@ -27,44 +33,33 @@ class ApiAuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        $params = $request->only(['username', 'password']);
-        $params['appkey'] = config('services.mediawave.app_key');
-
         // $apiLoginResult = $this->apiService->login($params);
-        $user = new \stdClass();
-        $user->userId = '1';
-        $user->userName = 'Tester';
+        $apiLoginResult = $this->mediawave->getAccessToken($request->get('username'), $request->get('password'));
 
-        $apiLoginResult = new \stdClass();
-        $apiLoginResult->status = 'OK';
-        $apiLoginResult->token = md5(url(''));
-        $apiLoginResult->user = $user;
-
-        if ($apiLoginResult->status == 'OK') {
-            $token = $apiLoginResult->token;
-            $mediawaveUser = $apiLoginResult->user;
-            $this->signIn($mediawaveUser, $request->get('password'), $token);
+        if ($apiLoginResult->status == 200) {
+            $token = $apiLoginResult->result->access_token;
+            $this->signIn($request->get('username'), $request->get('password'), $token);
 
             return redirect('/home');
         } else {
-            return redirect('/login')->withErrors(['error' => $apiLoginResult->msg]);
+            return redirect('/login')->withErrors(['error' => $apiLoginResult->result->msg]);
         }
 
     }
 
-    protected function signIn($user, $password, $token)
+    protected function signIn($userName, $password, $token)
     {
         $attributes = [
-            'id'        => $user->userId,
+            'id'        => $userName,
             'password'  => $password,
-            'email'     => $user->userId . '@mediawave.com',
-            'name'      => $user->userName,
+            'email'     => $userName,
+            'name'      => $userName,
             'remember_token' => ''
         ];
 
         session(['userAttributes' => $attributes]);
 
-        \Auth::loginUsingId($user->userId);
+        \Auth::loginUsingId($userName);
 
         $this->saveApiToken($token);
     }
@@ -72,7 +67,8 @@ class ApiAuthController extends Controller
     public function logout()
     {
         \Auth::logout();
-        session()->forget('userAttributes');
+        session()->flush();
+//        session()->forget('userAttributes');
 
         return redirect('/home');
     }

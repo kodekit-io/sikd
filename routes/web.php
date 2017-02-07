@@ -60,3 +60,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 });
 
 Route::get('test/api-exception', 'MiscController@apiException');
+
+use App\Service\Mediawave;
+
+Route::get('test/apbd', 'TestController@apbd');

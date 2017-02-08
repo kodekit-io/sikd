@@ -20,7 +20,7 @@
 function capture() {
     $('main').html2canvas({
         //letterRendering: true,
-        allowTaint: true,
+        //allowTaint: true,
         background: '#eeeeee',
         onrendered: function (canvas) {
             var url = canvas.toDataURL();

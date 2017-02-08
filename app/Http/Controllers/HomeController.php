@@ -54,13 +54,12 @@ class HomeController extends Controller
         $params = [ 'tahun' => $thisYear ];
 
         // tkdd
-        $tkddResult = $this->tkdd->getAllChart();
-        $tkddResult = ($tkddResult->status == '200') ? $tkddResult->result : [];
+        $tkddRequest = $this->tkdd->getAllChart($thisYear);
+        $tkddResult = ($tkddRequest->status == '200') ? $tkddRequest->result : [];
 
         // apbd
-        $apbd = $this->mediawave->get('apbd/all/0/' . $thisYear, [], 1);
-        $apbdResult = ($apbd->status == '200') ? $apbd->result : [];
-//        $apbdResult = [];
+        $apbdRequest = $this->apbd->getAllChart($thisYear);
+        $apbdResult = ($apbdRequest->status == '200') ? $apbdRequest->result : [];
 
         // reportType
         $reportTypes = config('mediawave.reportType');
@@ -69,10 +68,74 @@ class HomeController extends Controller
             $arr[$reportType['id']] = $reportType['code'];
         }
 
+        $data['thisYear'] = $thisYear;
         $data['reportTypes'] = \GuzzleHttp\json_encode($arr);
         $data['tkddData'] = \GuzzleHttp\json_encode($tkddResult);
         $data['apbdData'] = \GuzzleHttp\json_encode($apbdResult);
 
         return view('sikd.home', $data);
+    }
+
+    public function infrastructureData($year)
+    {
+        $url = 'infrastruktur/' . $year;
+        $infraRequest = $this->mediawave->get($url);
+        $infraResult = ($infraRequest->status == '200') ? $infraRequest->result : [];
+
+        return \GuzzleHttp\json_encode($infraResult);
+    }
+
+    public function simpananPemdaData()
+    {
+        $url = 'simpanan-pemda';
+        $pemdaRequest = $this->mediawave->get($url);
+        $pemdaResult = ($pemdaRequest->status == '200') ? $pemdaRequest->result : [];
+
+        return \GuzzleHttp\json_encode($pemdaResult);
+    }
+
+    public function realisasiTkdd($year)
+    {
+        $url = 'top-bottom/realisasi-tkdd/' . $year;
+        $realisasiTkddRequest = $this->mediawave->get($url);
+        $realisasiTkddResult = ($realisasiTkddRequest->status == '200') ? $realisasiTkddRequest->result : [];
+
+        return \GuzzleHttp\json_encode($realisasiTkddResult);
+    }
+
+    public function dakFisik($year)
+    {
+        $url = 'top-bottom/dak-fisik/' . $year;
+        $request = $this->mediawave->get($url);
+        $result = ($request->status == '200') ? $request->result : [];
+
+        return \GuzzleHttp\json_encode($result);
+    }
+
+    public function danaDesa($year)
+    {
+        $url = 'top-bottom/dana-desa/' . $year;
+        $request = $this->mediawave->get($url);
+        $result = ($request->status == '200') ? $request->result : [];
+
+        return \GuzzleHttp\json_encode($result);
+    }
+
+    public function belanja($year)
+    {
+        $url = 'top-bottom/belanja/' . $year;
+        $request = $this->mediawave->get($url);
+        $result = ($request->status == '200') ? $request->result : [];
+
+        return \GuzzleHttp\json_encode($result);
+    }
+
+    public function realisasiPad($year)
+    {
+        $url = 'top-bottom/pad/' . $year;
+        $request = $this->mediawave->get($url);
+        $result = ($request->status == '200') ? $request->result : [];
+
+        return \GuzzleHttp\json_encode($result);
     }
 }

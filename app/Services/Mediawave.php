@@ -10,6 +10,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Exception\TransferException;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class Mediawave
@@ -66,8 +67,16 @@ class Mediawave
         return $parsedResponse;
     }
 
-    public function get($url, $apiVersion = 1, $withToken = true)
+    public function get($url, $apiVersion = 1, $withToken = true, $cached = true)
     {
+        // days * hours * minutes
+        $minutes = 5 * 24 * 60;
+        $flatUrl = str_replace('/', '_', $url);
+        $flatUrl = str_replace('-', '_', $flatUrl);
+        Log::warning("Flat URL ==> " . $flatUrl);
+
+        $headers = [];
+
         if ($withToken) {
             $accessToken = session('api_token');
             $headers = [
@@ -76,18 +85,34 @@ class Mediawave
             ];
         }
 
-        $apiUrl = $this->generateApiUrl($url, $apiVersion);
+        if ($cached) {
+            $parsedResponse = Cache::remember($flatUrl, $minutes, function () use ($url, $apiVersion, $headers) {
+                $apiUrl = $this->generateApiUrl($url, $apiVersion);
+                // Log::alert('API URL ==> ' . $apiUrl);
 
-        Log::alert('API URL ==> ' . $apiUrl);
+                try {
+                    $request = new Request('GET', $apiUrl, $headers);
+                    $response = $this->client->send($request);
+                    $parsedResponse = $this->parseResponse($response);
+                } catch (\Exception $e) {
+                    $parsedResponse = $this->proceedException($e, $apiUrl);
+                }
 
-        try {
-//            $response = $this->client->get($apiUrl, $headers);
-            $request = new Request('GET', $apiUrl, $headers);
-            $response = $this->client->send($request);
-            $parsedResponse = $this->parseResponse($response);
-        } catch (\Exception $e) {
-            $parsedResponse = $this->proceedException($e, $apiUrl);
+                return $parsedResponse;
+            });
+        } else {
+            $apiUrl = $this->generateApiUrl($url, $apiVersion);
+            // Log::alert('API URL ==> ' . $apiUrl);
+
+            try {
+                $request = new Request('GET', $apiUrl, $headers);
+                $response = $this->client->send($request);
+                $parsedResponse = $this->parseResponse($response);
+            } catch (\Exception $e) {
+                $parsedResponse = $this->proceedException($e, $apiUrl);
+            }
         }
+
 
         return $parsedResponse;
     }

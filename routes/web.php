@@ -22,6 +22,14 @@ Route::get('/logout', 'ApiAuthController@logout');
 Route::group(['middleware' => ['auth', 'province']], function () {
 
     Route::get('home', 'HomeController@home');
+    Route::get('get-infrastructure-data/{year}', 'HomeController@infrastructureData');
+    Route::get('get-simpanan-pemda-data', 'HomeController@simpananPemdaData');
+    Route::get('get-realisasi-tkdd-data/{year}', 'HomeController@realisasiTkdd');
+
+    Route::get('get-dak-fisik-data/{year}', 'HomeController@dakFisik');
+    Route::get('get-dana-desa-data/{year}', 'HomeController@danaDesa');
+    Route::get('get-belanja-data/{year}', 'HomeController@belanja');
+    Route::get('get-realisasi-pad-data/{year}', 'HomeController@realisasiPad');
 
     Route::get('/level-1/{reportType?}', 'MapController@map');
     Route::get('get-map-chart/{reportType}', 'MapController@getMapChart');
@@ -31,6 +39,8 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 
     Route::get('/pemda/{satkerCode}', 'PemdaController@profile');
     Route::get('/get-pemda-chart/{year}/{satkerCode}', 'PemdaController@chart');
+    Route::get('/get-pemda-tkdd-table-data/{year}/{satkerCode}', 'PemdaController@tkddTableData');
+    Route::get('/get-pemda-other-table-data/{satkerCode}', 'PemdaController@otherTableData');
 
     Route::get('/account-profile', function () {
         return view('sikd.account-profile');
@@ -62,5 +72,11 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 Route::get('test/api-exception', 'MiscController@apiException');
 
 use App\Service\Mediawave;
+use Illuminate\Support\Facades\Cache;
 
 Route::get('test/apbd', 'TestController@apbd');
+
+Route::get('test/cache_infra', function () {
+    $cache = Cache::get('infrastruktur_2016');
+    var_dump($cache);
+});

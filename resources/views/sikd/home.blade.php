@@ -223,6 +223,7 @@
 		var tkddData = '{!! $tkddData !!}';
         var apbdData = '{!! $apbdData !!}';
         var reportTypes = '{!! $reportTypes !!}';
+        var thisYear = '{!! $thisYear !!}';
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>

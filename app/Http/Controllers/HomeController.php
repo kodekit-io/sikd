@@ -54,13 +54,12 @@ class HomeController extends Controller
         $params = [ 'tahun' => $thisYear ];
 
         // tkdd
-        $tkddResult = $this->tkdd->getAllChart();
-        $tkddResult = ($tkddResult->status == '200') ? $tkddResult->result : [];
+        $tkddRequest = $this->tkdd->getAllChart($thisYear);
+        $tkddResult = ($tkddRequest->status == '200') ? $tkddRequest->result : [];
 
         // apbd
-        $apbd = $this->mediawave->get('apbd/all/0/' . $thisYear, [], 1);
-        $apbdResult = ($apbd->status == '200') ? $apbd->result : [];
-//        $apbdResult = [];
+        $apbdRequest = $this->apbd->getAllChart($thisYear);
+        $apbdResult = ($apbdRequest->status == '200') ? $apbdRequest->result : [];
 
         // reportType
         $reportTypes = config('mediawave.reportType');
@@ -69,10 +68,60 @@ class HomeController extends Controller
             $arr[$reportType['id']] = $reportType['code'];
         }
 
+        $data['thisYear'] = $thisYear;
         $data['reportTypes'] = \GuzzleHttp\json_encode($arr);
         $data['tkddData'] = \GuzzleHttp\json_encode($tkddResult);
         $data['apbdData'] = \GuzzleHttp\json_encode($apbdResult);
 
         return view('sikd.home', $data);
+    }
+
+    public function infrastructureData($year)
+    {
+        $url = 'infrastruktur/' . $year;
+
+        return $this->mediawave->getJsonResult($url);
+    }
+
+    public function simpananPemdaData()
+    {
+        $url = 'simpanan-pemda';
+
+        return $this->mediawave->getJsonResult($url);
+    }
+
+    public function realisasiTkdd($year)
+    {
+        $url = 'top-bottom/realisasi-tkdd/' . $year;
+
+        return $this->mediawave->getJsonResult($url);
+    }
+
+    public function dakFisik($year)
+    {
+        $url = 'top-bottom/dak-fisik/' . $year;
+
+        return $this->mediawave->getJsonResult($url);
+    }
+
+    public function danaDesa($year)
+    {
+        $url = 'top-bottom/dana-desa/' . $year;
+
+        return $this->mediawave->getJsonResult($url);
+    }
+
+    public function belanja($year)
+    {
+        $url = 'top-bottom/belanja/' . $year;
+
+        return $this->mediawave->getJsonResult($url);
+    }
+
+    public function realisasiPad($year)
+    {
+        $url = 'top-bottom/pad/' . $year;
+
+        return $this->mediawave->getJsonResult($url);
     }
 }

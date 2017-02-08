@@ -54,7 +54,7 @@ class Tkdd
 
         $url = 'tkdd/all/0/' . $year . '/' . $groupId;
 
-        return $this->mediawave->get($url, []);
+        return $this->mediawave->get($url);
     }
 
     public function isPostureId($id)

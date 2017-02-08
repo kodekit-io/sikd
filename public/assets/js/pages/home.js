@@ -204,11 +204,13 @@ $(document).ready(function() {
     L0Chart('B11','10','apbd', $apbdData);
 
 
-	function chartL0Row2A(id) {
+	function chartL0Row2A(id, chartUrl) {
 	    $.ajax({
-	        url: 'data/L0_row2_infrastruktur.json',
-	        //dataType: 'jsonp',
+	        //url: 'data/L0_row2_infrastruktur.json',
+			url: chartUrl,
+	        dataType: 'json',
 	        success: function(result){
+			    // result = jQuery.parseJSON(result);
 	            var data = result.data;
 				var t = result.properties.Label;
 				//console.log(t);
@@ -337,9 +339,12 @@ $(document).ready(function() {
 	        }
 	    });
 	}
-	chartL0Row2A('LOC1')
+	var $infraUrl = $baseUrl + '/get-infrastructure-data/' + thisYear;
+    var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
+	chartL0Row2A('LOC1', $infraUrl)
+    // chartL0Row2A('LOC2', $simpananPemdaUrl)
 
-	function tableL0Row3(id,type,url) {
+	function tableL0Row3(id, type, url) {
 		jQuery.support.cors = true;
 	    $.ajax({
 	        type: "GET",
@@ -402,9 +407,15 @@ $(document).ready(function() {
 	    });
 
 	}
-	tableL0Row3('topBottom','Realisasi-TKDD','data/L0_row3_tkdd.json');
-	tableL0Row3('topBottom','DAK-Fisik','data/L0_row3_dak-fisik.json');
-	tableL0Row3('topBottom','Dandes','data/L0_row3_dana-desa.json');
-	tableL0Row3('topBottom','Belanja','data/L0_row3_belanja.json');
-	tableL0Row3('topBottom','PAD','data/L0_row3_pad.json');
+	var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + thisYear;
+    var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + thisYear;
+    var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + thisYear;
+    var $belanjaUrl = $baseUrl + '/get-belanja-data/' + thisYear;
+    var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + thisYear;
+
+    tableL0Row3('topBottom', 'Realisasi-TKDD', $realisasiTkddUrl);
+	tableL0Row3('topBottom', 'DAK-Fisik', $dakFisikUrl);
+	tableL0Row3('topBottom', 'Dandes', $danaDesaUrl);
+	tableL0Row3('topBottom', 'Belanja', $belanjaUrl);
+	tableL0Row3('topBottom', 'PAD', $realisasiPadUrl);
 });

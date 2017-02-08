@@ -50,4 +50,11 @@ class Apbd
 
         return \GuzzleHttp\json_encode($modifiedResult);
     }
+
+    public function getAllChart($year = 2016)
+    {
+        $url = 'apbd/all/0/' . $year;
+
+        return $this->mediawave->get($url);
+    }
 }

@@ -5,7 +5,7 @@
     },
     "data": [
         {
-            "id": "01",
+            "id": 1,
             "name": "Gedung dan Bangunan",
             "dataID": [
                 1,
@@ -117,7 +117,7 @@
             ]
         },
         {
-            "id": "02",
+            "id": 2,
             "name": "Jalan, Irigasi, dan Jaringan",
             "dataID": [
                 1,
@@ -229,7 +229,7 @@
             ]
         },
         {
-            "id": "03",
+            "id": 3,
             "name": "Tanah",
             "dataID": [
                 1,

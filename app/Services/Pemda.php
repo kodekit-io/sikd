@@ -69,4 +69,18 @@ class Pemda
 
         return 'Pemda not found.';
     }
+
+    public function getTkddTableData($year, $satkerCode)
+    {
+        $url = 'tkdd/tabel/' . $year . '/3/' . $satkerCode;
+
+        return $this->mediawave->getJsonResult($url);
+    }
+
+    public function getOtherTableData($satkerCode)
+    {
+        $url = 'tabel-lainnya/tabel/' . $satkerCode;
+
+        return $this->mediawave->getJsonResult($url);
+    }
 }

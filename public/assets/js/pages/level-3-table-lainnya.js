@@ -30,7 +30,8 @@ $(document).ready(function() {
         });
     }
 
-    $.getJSON("../data/L3_Table_LAINNYA.json", function(result) {
+    var $otherTableUrl = $baseUrl + '/get-pemda-other-table-data/' + $satkerCode;
+    $.getJSON($otherTableUrl, function(result) {
         infrastruktur(result);
         simpananPemda(result);
     });

@@ -153,7 +153,10 @@ $(document).ready(function() {
         });
 
     }
-    $.getJSON("../data/L3_Table_TKDD.json", function(result) {
+
+    var $tkddTableUrl = $baseUrl + '/get-pemda-tkdd-table-data/' + $year + '/' + $satkerCode;
+    $.getJSON($tkddTableUrl, function(result) {
         level0(result);
     });
+
 });

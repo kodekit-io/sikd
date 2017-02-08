@@ -79,63 +79,49 @@ class HomeController extends Controller
     public function infrastructureData($year)
     {
         $url = 'infrastruktur/' . $year;
-        $infraRequest = $this->mediawave->get($url);
-        $infraResult = ($infraRequest->status == '200') ? $infraRequest->result : [];
 
-        return \GuzzleHttp\json_encode($infraResult);
+        return $this->mediawave->getJsonResult($url);
     }
 
     public function simpananPemdaData()
     {
         $url = 'simpanan-pemda';
-        $pemdaRequest = $this->mediawave->get($url);
-        $pemdaResult = ($pemdaRequest->status == '200') ? $pemdaRequest->result : [];
 
-        return \GuzzleHttp\json_encode($pemdaResult);
+        return $this->mediawave->getJsonResult($url);
     }
 
     public function realisasiTkdd($year)
     {
         $url = 'top-bottom/realisasi-tkdd/' . $year;
-        $realisasiTkddRequest = $this->mediawave->get($url);
-        $realisasiTkddResult = ($realisasiTkddRequest->status == '200') ? $realisasiTkddRequest->result : [];
 
-        return \GuzzleHttp\json_encode($realisasiTkddResult);
+        return $this->mediawave->getJsonResult($url);
     }
 
     public function dakFisik($year)
     {
         $url = 'top-bottom/dak-fisik/' . $year;
-        $request = $this->mediawave->get($url);
-        $result = ($request->status == '200') ? $request->result : [];
 
-        return \GuzzleHttp\json_encode($result);
+        return $this->mediawave->getJsonResult($url);
     }
 
     public function danaDesa($year)
     {
         $url = 'top-bottom/dana-desa/' . $year;
-        $request = $this->mediawave->get($url);
-        $result = ($request->status == '200') ? $request->result : [];
 
-        return \GuzzleHttp\json_encode($result);
+        return $this->mediawave->getJsonResult($url);
     }
 
     public function belanja($year)
     {
         $url = 'top-bottom/belanja/' . $year;
-        $request = $this->mediawave->get($url);
-        $result = ($request->status == '200') ? $request->result : [];
 
-        return \GuzzleHttp\json_encode($result);
+        return $this->mediawave->getJsonResult($url);
     }
 
     public function realisasiPad($year)
     {
         $url = 'top-bottom/pad/' . $year;
-        $request = $this->mediawave->get($url);
-        $result = ($request->status == '200') ? $request->result : [];
 
-        return \GuzzleHttp\json_encode($result);
+        return $this->mediawave->getJsonResult($url);
     }
 }

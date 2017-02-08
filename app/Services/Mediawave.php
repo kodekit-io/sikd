@@ -160,5 +160,13 @@ class Mediawave
         return new SimpleAPIResponse($code, $message . ' at ' . $apiUrl . '.');
     }
 
+    public function getJsonResult($url)
+    {
+        $request = $this->get($url);
+        $result = ($request->status == '200') ? $request->result : [];
+
+        return \GuzzleHttp\json_encode($result);
+    }
+
 
 }

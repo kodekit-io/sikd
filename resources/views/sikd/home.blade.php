@@ -88,7 +88,7 @@
 		<div class="uk-width-medium-1-1">
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom">
 				<div class="card-content">
-					<div id="topBottom" class="uk-grid uk-grid-medium uk-grid-width-1-5"></div>
+					<div id="topBottom" class="uk-grid uk-grid-medium uk-grid-width-medium-1-5"></div>
 				</div>
 			</div>
 		</div>

@@ -21,7 +21,7 @@
 				<li>
 					<a class="chip sikd-account" data-activates="sikd-account-dropdown" data-beloworigin="true" data-hover="true" data-alignment="right" data-constrainwidth="false">
 						<i class="material-icons sikd-chip-contact">account_circle</i>
-						djpk@kemenkeu.go.id
+						<span class="uk-hidden-small">djpk@kemenkeu.go.id</span>
 					</a>
 					<div id="sikd-account-dropdown" class="dropdown-content transparent z-depth-0">
 						<ul>

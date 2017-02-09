@@ -19,13 +19,20 @@
 //Screenshot
 function capture() {
     $('main').html2canvas({
-        letterRendering: true,
-        background: '#cccccc',
+        //letterRendering: true,
+        //allowTaint: true,
+        background: '#eeeeee',
         onrendered: function (canvas) {
-            var a = document.createElement('a');
-            a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-            a.download = 'sikd.jpg';
-            a.click();
+            var url = canvas.toDataURL();
+            //var url = Canvas2Image.saveAsPNG(canvas);
+            $("<a>", {
+                href: url,
+                download: "sikd.png"
+            })
+            .on("click", function() {
+                $(this).remove();
+            })
+            .appendTo("body")[0].click();
         }
     });
 }

@@ -711,6 +711,23 @@ nav ul a.btn-floating {
     bottom: 3rem;
     right: 1rem;
 }
+.sikd-icon-Realisasi-TKDD:before {
+    content: "\f0ec";
+}
+.sikd-icon-DAK-Fisik:before {
+    content: "\f187";
+}
+.sikd-icon-Dandes:before {
+    content: "\f0f2";
+}
+.sikd-icon-Belanja:before {
+    content: "\f290";
+}
+.sikd-icon-PAD:before {
+    content: "\f0b1";
+}
+
+
 /*MOBILE*/
 
 @media (max-width: 768px) {

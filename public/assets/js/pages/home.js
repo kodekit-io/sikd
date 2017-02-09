@@ -203,8 +203,7 @@ $(document).ready(function() {
     L0Chart('B10','9','apbd', $apbdData);
     L0Chart('B11','10','apbd', $apbdData);
 
-
-	function chartL0Row2A(id, chartUrl) {
+	function chartL0Row2(id, chartUrl, stack) {
 	    $.ajax({
 	        //url: 'data/L0_row2_infrastruktur.json',
 			url: chartUrl,
@@ -213,22 +212,23 @@ $(document).ready(function() {
 			    // result = jQuery.parseJSON(result);
 	            var data = result.data;
 				var t = result.properties.Label;
-				//console.log(t);
+				//console.log(data);
 
 	            if (data.length === 0) {
 	                $('#'+id).html("<div class='center'>No Data</div>");
 	            } else {
 	                var $series=[], $legend=[];
+					//console.log(data.length);
 	                for (var i = 0; i < data.length; i++) {
-	                    $name = data[i].name;
-						$dataName = data[i].dataName;
+	                    $name = String(data[i].name);
+						$dataName = data[0].dataName;
 						$dataValue = data[i].dataValue;
 						$legend[i] = $name;
-						//console.log($dataValue);
+						//console.log($legend);
 						$series[i] = {
 							name: $name,
 							type:'bar',
-							stack: 'data',
+							stack: stack,
 							//barMaxWidth: 50,
 							//itemStyle : { normal: {label : {show: true, position: 'center'}}},
 							data: $dataValue
@@ -256,10 +256,11 @@ $(document).ready(function() {
 	                });
 
 	                var option = {
+						backgroundColor: '#fff',
 						title: {
 							text: t,
 							left: 'center',
-							top: 0
+							top: 20
 						},
 	                    tooltip : {
 	                        trigger: 'axis',
@@ -273,9 +274,9 @@ $(document).ready(function() {
 	                        y: 'bottom',
 	                    },
 	                    grid: {
-	                        x: '20px',
+	                        x: '30px',
 	                        x2: '20px',
-	                        y: '25px',
+	                        y: '50px',
 	                        y2: '60px'
 	                    },
 	                    toolbox: {
@@ -341,8 +342,8 @@ $(document).ready(function() {
 	}
 	var $infraUrl = $baseUrl + '/get-infrastructure-data/' + thisYear;
     var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
-	chartL0Row2A('LOC1', $infraUrl)
-    // chartL0Row2A('LOC2', $simpananPemdaUrl)
+	chartL0Row2('LOC1', $infraUrl, true)
+    chartL0Row2('LOC2', $simpananPemdaUrl, false)
 
 	function tableL0Row3(id, type, url) {
 		jQuery.support.cors = true;
@@ -365,11 +366,11 @@ $(document).ready(function() {
 				var botTitle = bottom.name;
 				var botId = bottom.id;
 
+				var imgType = '<i class="uk-icon uk-icon-button sikd-icon-'+type+'"></i>';
+
 				var card = '<div> \
-					<div class="uk-panel uk-panel-box z-depth-0"> \
-						<h5 class="uk-text-center"> \
-							<a href="#pop_'+type+'" data-uk-modal>'+topTitle+'<br>'+botTitle+'</a> \
-						</h5> \
+					<div class="uk-panel uk-panel-box z-depth-0 uk-text-center"> \
+						<a href="#pop_'+type+'" title="'+topTitle+' &amp; '+botTitle+'" data-uk-tooltip data-uk-modal >'+imgType+'<br>'+topTitle+'<br>'+botTitle+'</a> \
 					</div> \
 					<div id="pop_'+type+'" class="uk-modal"> \
 						<div class="uk-modal-dialog uk-modal-dialog-large"> \

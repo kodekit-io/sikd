@@ -325,17 +325,12 @@ $(document).ready(function() {
 	                    series : dataseries.series
 	                };
 
-	                /*
-					clearTimeout(loadingTicket);
+	                clearTimeout(loadingTicket);
 	                loadingTicket = setTimeout(function (){
 	                    theChart.hideLoading();
 	                    theChart.setOption(option);
 	                    theChart.resize();
-	                },1800);
-					*/
-					theChart.hideLoading();
-					theChart.setOption(option);
-					theChart.resize();
+	                },0);
 	                $(window).on('resize', function(){
 	                    if(theChart != null && theChart != undefined){
 	                        theChart.resize();

@@ -73,27 +73,16 @@
 		{{--ROW 2--}}
 		<div class="uk-width-medium-1-1">
 			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom-remove">
-				<div id="LOC1" class="uk-width-1-1" style="height:400px;"></div>
-				<?php /*
 				<div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true}">
 					<ul class="uk-slideshow sikd-leading">
-						<li><div id="LOC1" class="uk-width-1-1" style="height:400px;"></div></li>
-						<li><div id="LOC2"></div></li>
-						<li><div id="LOC3"></div></li>
-						<li><div id="LOC4"></div></li>
-						<li><div id="LOC5"></div></li>
+						<li id="LOC1" class="uk-width-1-1" style="height:400px;"></li>
+						<li id="LOC2" class="uk-width-1-1" style="height:400px;"></li>
 					</ul>
-					<a class="uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-					<a class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
-					<ul class="uk-dotnav uk-position-bottom uk-flex-center uk-margin-bottom-remove">
-						<li data-uk-slideshow-item="0"><a></a></li>
-						<li data-uk-slideshow-item="1"><a></a></li>
-						<li data-uk-slideshow-item="2"><a></a></li>
-						<li data-uk-slideshow-item="3"><a></a></li>
-						<li data-uk-slideshow-item="4"><a></a></li>
+					<ul class="uk-dotnav uk-position-top uk-flex-center uk-margin-remove">
+						<li data-uk-slideshow-item="0" class="uk-margin-remove"><a></a></li>
+						<li data-uk-slideshow-item="1" class="uk-margin-remove"><a></a></li>
 					</ul>
 				</div>
-				*/ ?>
 			</div>
 		</div>
 
@@ -102,113 +91,6 @@
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom">
 				<div class="card-content">
 					<div id="topBottom" class="uk-grid uk-grid-medium uk-grid-width-1-5"></div>
-					{{--
-					<ul id="sikd-thematics" class="uk-switcher">
-						<li class="uk-width-1-1">
-							<ul class="uk-grid uk-grid-medium uk-grid-width-1-5">
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium indigo white-text uk-icon-line-chart"></i>
-										<div class="skid-thematic__text">
-											<h5>Defisit APBD</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium cyan white-text uk-icon-pie-chart"></i>
-										<div class="skid-thematic__text">
-											<h5>Tax Ratio</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium amber white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 TKDD</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium green white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 APBD</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium blue white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 Terpatuh</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="uk-width-1-1">
-							<ul class="uk-grid uk-grid-medium uk-grid-width-1-5">
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium teal white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 Dana Desa</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium pink darken-4 white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 Kas</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium purple white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 Hibah</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium red white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 Sanksi</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="card-panel blue lighten-5 z-depth-0 skid-thematic">
-										<i class="uk-icon-button uk-icon-medium lime white-text uk-icon-trophy"></i>
-										<div class="skid-thematic__text">
-											<h5>Top 5 DID</h5>
-											<p>Nilai Indikator</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<ul class="uk-pagination uk-margin-bottom-remove" data-uk-switcher="{connect:'#sikd-thematics'}">
-						<li class="uk-active"><span>1</span></li>
-						<li><span>2</span></li>
-					</ul>
-					--}}
-
 				</div>
 			</div>
 		</div>

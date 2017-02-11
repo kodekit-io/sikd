@@ -232,6 +232,9 @@ nav ul a.btn-floating {
     padding: 0 10px 0 20px;
     font-weight: normal;
 }
+.side-nav .collapsible-header i.uk-icon {
+    font-size: inherit;
+}
 .side-nav li>a>i, .side-nav li>a>[class^="mdi-"], .side-nav li>a>[class*="mdi-"], .side-nav li>a>i.material-icons {
     margin: 0;
 }

@@ -271,18 +271,18 @@ $(document).ready(function() {
 	                    legend: {
 	                        data: dataseries.legend,
 	                        x: 'left',
-	                        y: 'bottom',
+	                        bottom: 20,
 	                    },
 	                    grid: {
 	                        x: '30px',
 	                        x2: '20px',
-	                        y: '50px',
-	                        y2: '60px'
+	                        y: '10px',
+	                        y2: '80px'
 	                    },
 	                    toolbox: {
 	                        show: true,
 	                        x: 'right',
-	                        y: 'bottom',
+	                        bottom: 20,
 	                        padding: ['0', '0', '0', '0'],
 	                        feature: {
 	                            mark: {show: true},
@@ -330,7 +330,7 @@ $(document).ready(function() {
 	                    theChart.hideLoading();
 	                    theChart.setOption(option);
 	                    theChart.resize();
-	                },1800);
+	                },1000);
 	                $(window).on('resize', function(){
 	                    if(theChart != null && theChart != undefined){
 	                        theChart.resize();

@@ -232,6 +232,9 @@ nav ul a.btn-floating {
     padding: 0 10px 0 20px;
     font-weight: normal;
 }
+.side-nav .collapsible-header i.uk-icon {
+    font-size: inherit;
+}
 .side-nav li>a>i, .side-nav li>a>[class^="mdi-"], .side-nav li>a>[class*="mdi-"], .side-nav li>a>i.material-icons {
     margin: 0;
 }
@@ -735,11 +738,13 @@ nav ul a.btn-floating {
         min-height: calc(100vh - 102px);
     }
     main.sikd-login {
-        height: 100vh;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
     main.sikd-login+footer {
         width: 100%;
-        position: fixed;
+        position: relative;
         bottom: 0;
     }
     footer {
@@ -751,5 +756,17 @@ nav ul a.btn-floating {
     }
     footer .uk-navbar-flip .uk-subnav>* {
         flex: 1;
+    }
+    .chip.sikd-account {
+        min-width: 30px;
+        width: 32px;
+        margin-top: 10px;
+    }
+    .sikd-login .card-title {
+        font-size: 1.5rem;
+        line-height: normal;
+    }
+    .sikd-login .uk-subnav>*>* {
+        font-size: 1rem;
     }
 }

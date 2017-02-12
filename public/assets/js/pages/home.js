@@ -209,6 +209,7 @@ $(document).ready(function() {
 			url: chartUrl,
 	        dataType: 'json',
 	        success: function(result){
+				console.log(result);
 			    // result = jQuery.parseJSON(result);
 	            var data = result.data;
 				var t = result.properties.Label;
@@ -339,6 +340,8 @@ $(document).ready(function() {
 	            }
 	        }
 	    });
+
+        UIkit.slideshow('#center-slideshow');
 	}
 	var $infraUrl = $baseUrl + '/get-infrastructure-data/' + thisYear;
     var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';

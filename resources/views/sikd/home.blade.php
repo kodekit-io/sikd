@@ -73,7 +73,7 @@
 		{{--ROW 2--}}
 		<div class="uk-width-medium-1-1">
 			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom-remove">
-				<div class="uk-slidenav-position" data-uk-slideshow="{autoplay:true}">
+				<div class="uk-slidenav-position" id="center-slideshow" data-uk-slideshow="{autoplay:true}">
 					<ul class="uk-slideshow sikd-leading">
 						<li id="LOC1" class="uk-width-1-1" style="height:400px;"></li>
 						<li id="LOC2" class="uk-width-1-1" style="height:400px;"></li>

@@ -33,30 +33,34 @@ class MapController extends Controller
         $this->apbdService = $apbdService;
     }
 
-    public function map($reportType = 'pad')
+    public function map($type, $postureId = '')
     {
-        $reportTypes = config('mediawave.reportType');
-        $data['reportTypes'] = $reportTypes;
-        $data['postures'] = $this->tkddService->getPostures();
-        $data['reportType'] = $reportType;
+        $year = '2016';
 
-        if ($this->tkddService->isPostureId($reportType)) {
-            $data['reportName'] = $this->tkddService->getPosturNameById($reportType);
+        if ($type == 'tkdd') {
+            $postureId = $postureId != '' ? $postureId : 39;
+            $data['reportName'] = $this->tkddService->getPostureNameById($postureId);
         } else {
-            $data['reportName'] = $this->getReportNameByCode($reportType);
+            $postureId = $postureId != '' ? $postureId : 1;
+            $data['reportName'] = $this->apbdService->getPostureNameById($postureId);
         }
+
+        $data['reportTypes'] = $this->apbdService->getPostures();
+        $data['postures'] = $this->tkddService->getPostures();
+        $data['postureId'] = $postureId;
+        $data['reportType'] = $type;
+        $data['year'] = $year;
 
         return view('sikd.level-1', $data);
     }
 
-    public function getMapChart($reportType = 'pad')
+    public function getMapChart($type, $year = '2016', $postureId)
     {
-        $year = '2016';
-        if ($this->tkddService->isPostureId($reportType)) {
-            return $this->tkddService->getMapChart($year, $reportType);
+        if ($type = 'tkdd') {
+            return $this->tkddService->getMapChart($year, $postureId);
         }
 
-        return $this->apbdService->getMapChart($year, $reportType);
+        return $this->apbdService->getMapChart($year, $postureId);
     }
 
 }

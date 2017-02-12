@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    // var url = "data/L2_A_detail-prov.json";
-    var url = baseUrl + '/get-province-chart/' + $provinceId + '/' + $reportType;
+    var url = baseUrl + '/get-province-chart/' + $type + '/' + $year + '/' + $postureId + '/' + $provinceId;
     var div = "tableProv";
     $.ajax({
         url : url,

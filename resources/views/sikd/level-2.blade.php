@@ -12,21 +12,21 @@
 			<a href="#" data-activates="switchdata" class="dropdown-button orange white-text z-depth-0 uk-button right" data-beloworigin="true" data-alignment="right">PILIH PROVINSI <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="switchdata" class="dropdown-content slim-drop">
 				@foreach($gProvinces as $province)
-                    <li><a href="{!! url('level-2/' . $province['id'] . '/' . $reportType) !!}">{!! $province['name'] !!}</a></li>
+                    <li><a href="{!! url('level-2/' . $type . '/' . $year . '/' . $postureId . '/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
                 @endforeach
 			</ul>
 
 			<a href="#" data-activates="reportType" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH JENIS INFORMASI <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="reportType" class="dropdown-content slim-drop">
-                @foreach($reportTypes as $type)
-                    <li><a href="{!! url('level-2/' . $provinceId . '/' . $type['code']) !!}">{!! $type['name'] !!}</a></li>
+                @foreach($apbdPostures as $apbdPosture)
+                    <li><a href="{!! url('level-2/apbd/' . $year . '/' . $apbdPosture->id . '/' . $provinceId) !!}">{!! $apbdPosture->name !!}</a></li>
                 @endforeach
 			</ul>
 
             <a href="#" data-activates="posture" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH POSTUR <i class="material-icons right">arrow_drop_down</i></a>
             <ul id="posture" class="dropdown-content slim-drop">
-                @foreach($postures as $posture)
-                    <li><a href="{!! url('level-2/' . $provinceId . '/' . $posture->idPostur) !!}">{!! $posture->uraianPosturSingkat !!}</a></li>
+                @foreach($tkddPostures as $tkddPosture)
+                    <li><a href="{!! url('level-2/tkdd/' . $year . '/' . $tkddPosture->idPostur . '/' . $provinceId) !!}">{!! $tkddPosture->uraianPosturSingkat !!}</a></li>
                 @endforeach
             </ul>
 		</div>
@@ -41,7 +41,9 @@
 @section('page-level-scripts')
     <script type="text/javascript">
         var $provinceId = '{!! $provinceId !!}';
-        var $reportType = '{!! $reportType !!}';
+        var $year = '{!! $year !!}';
+        var $type = '{!! $type !!}';
+        var $postureId = '{!! $postureId !!}';
     </script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/dataTables.materialize.js') !!}"></script>

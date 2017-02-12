@@ -1,6 +1,8 @@
-(function ($, window, document, $reportName, $mapBaseUrl, $reportType) {
+(function ($, window, document, $reportName, $mapBaseUrl, $reportType, $postureId, $year) {
+    console.log($postureId);
+
     $(function () {
-        var $url = $baseUrl + '/get-map-chart/' + $reportType;
+        var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
         L1Map($reportName, $url);
     });
 
@@ -11,7 +13,6 @@
             success : function(result) {
                 result = jQuery.parseJSON(result);
                 data = result.data;
-
                 if (data.length > 0) {
                     var $content = [];
                     var $arrayval = [];
@@ -89,7 +90,7 @@
 
                         myMap.on('click', function (param) {
                             var idProv = param.data.id;
-                            location.href = baseUrl + '/level-2/' + idProv + '/' + $reportType;
+                            location.href = baseUrl + '/level-2/' + $reportType + '/' + $year + '/' + $postureId + '/' + idProv;
                         });
 
                         //myMap.setOption(option);
@@ -100,4 +101,4 @@
             }
         });
     }
-}(window.jQuery, window, document, $reportName, $baseUrl, $reportType));
+}(window.jQuery, window, document, $reportName, $baseUrl, $reportType, $postureId, $year));

@@ -73,16 +73,14 @@
 		{{--ROW 2--}}
 		<div class="uk-width-medium-1-1">
 			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom-remove">
-				<div class="uk-slidenav-position" id="center-slideshow" data-uk-slideshow="{autoplay:true}">
-					<ul class="uk-slideshow sikd-leading">
-						<li id="LOC1" class="uk-width-1-1" style="height:400px;"></li>
-						<li id="LOC2" class="uk-width-1-1" style="height:400px;"></li>
-					</ul>
-					<ul class="uk-dotnav uk-position-top uk-flex-center uk-margin-remove">
-						<li data-uk-slideshow-item="0" class="uk-margin-remove"><a></a></li>
-						<li data-uk-slideshow-item="1" class="uk-margin-remove"><a></a></li>
-					</ul>
+				<div class="uk-slideshow sikd-leading uk-switcher" id="L0C">
+					<div id="LOC1" class="uk-width-1-1" style="height:400px;width:100%;"></div>
+					<div id="LOC2" class="uk-width-1-1" style="height:400px;width:100%;"></div>
 				</div>
+				<ul class="uk-dotnav uk-flex-center uk-margin-remove" data-uk-switcher="{connect:'#L0C'}">
+					<li class="uk-margin-remove"><a></a></li>
+					<li class="uk-margin-remove"><a></a></li>
+				</ul>
 			</div>
 		</div>
 
@@ -90,7 +88,7 @@
 		<div class="uk-width-medium-1-1">
 			<div class="card z-depth-3 soft hoverable uk-margin-top-remove uk-margin-bottom">
 				<div class="card-content">
-					<div id="topBottom" class="uk-grid uk-grid-medium uk-grid-width-1-5"></div>
+					<div id="topBottom" class="uk-grid uk-grid-medium uk-grid-width-medium-1-5"></div>
 				</div>
 			</div>
 		</div>
@@ -101,6 +99,9 @@
 
 @section('page-level-scripts')
 	<script type="text/javascript">
+		$('[data-uk-switcher]').on('show.uk.switcher', function(event){
+			$(window).trigger('resize');
+		});
 		var $baseUrl = "{!! url('/') !!}";
 		var tkddData = '{!! $tkddData !!}';
         var apbdData = '{!! $apbdData !!}';
@@ -109,7 +110,7 @@
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
-	<script src="{!! asset('assets/js/components/slideshow.min.js') !!}"></script>
+	{{--<script src="{!! asset('assets/js/components/slideshow.min.js') !!}"></script>--}}
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/dataTables.uikit.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/home.js') !!}"></script>

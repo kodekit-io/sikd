@@ -3,6 +3,8 @@
 namespace App\Service;
 
 
+use Illuminate\Support\Facades\Cache;
+
 class Apbd
 {
     /**
@@ -19,9 +21,25 @@ class Apbd
         $this->mediawave = $mediawave;
     }
 
-    public function getMapChart($year = '2016', $reportType = 'pad')
+    public function getPostures($type = 'array')
     {
-        $url = 'apbd/' . $reportType . '/1/' . $year;
+        $minutes = 5 * 24 * 60;
+        $postures = Cache::remember('apbd_postures', $minutes, function () {
+            $url = 'apbd/list-postur';
+            $apiRequest = $this->mediawave->get($url);
+            return ($apiRequest->status == '200') ? $apiRequest->result : [];
+        });
+
+        if ($type == 'json') {
+            return \GuzzleHttp\json_encode($postures);
+        }
+
+        return $postures;
+    }
+
+    public function getMapChart($year = '2016', $postureId = 1)
+    {
+        $url = 'apbd/1/' . $year . '/' . $postureId;
         $apiRequest = $this->mediawave->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
         // modified the api result
@@ -35,10 +53,10 @@ class Apbd
         return \GuzzleHttp\json_encode($modifiedResult);
     }
 
-    public function getProvinceChart($year, $reportType, $provinceId)
+    public function getProvinceChart($year, $postureId = '1', $provinceId)
     {
-        $url = 'apbd/' . $reportType . '/2/' . $year;
-        $url .= $provinceId != '' ? '/' . $provinceId : '';
+        $url = 'apbd/2/' . $year . '/' . $postureId . '/' . $provinceId;
+//        $url .= $provinceId != '' ? '/' . $provinceId : '';
         $apiRequest = $this->mediawave->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 
@@ -56,5 +74,17 @@ class Apbd
         $url = 'apbd/all/0/' . $year;
 
         return $this->mediawave->get($url);
+    }
+
+    public function getPostureNameById($postureId)
+    {
+        $postures = $this->getPostures();
+        foreach ($postures as $posture) {
+            if ($posture->id == $postureId) {
+                return $posture->name;
+            }
+        }
+
+        return '';
     }
 }

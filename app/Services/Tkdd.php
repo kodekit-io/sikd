@@ -32,7 +32,7 @@ class Tkdd
         $minutes = 5 * 24 * 60;
         $postures = Cache::remember('postures', $minutes, function () use ($groupId) {
             $url = 'tkdd/list-group/' . $groupId;
-            $apiRequest = $this->mediawave->get($url, []);
+            $apiRequest = $this->mediawave->get($url);
             return ($apiRequest->status == '200') ? $apiRequest->result : [];
         });
 
@@ -69,7 +69,7 @@ class Tkdd
         return false;
     }
 
-    public function getPosturNameById($postureId)
+    public function getPostureNameById($postureId)
     {
         $postures = $this->getPostures();
         foreach ($postures as $posture) {
@@ -81,9 +81,9 @@ class Tkdd
         return '';
     }
 
-    public function getMapChart($year, $reportType)
+    public function getMapChart($year, $postureId = 39)
     {
-        $url = 'tkdd/1/' . $year . '/' . $reportType;
+        $url = 'tkdd/1/' . $year . '/' . $postureId;
         $apiRequest = $this->mediawave->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 
@@ -96,10 +96,10 @@ class Tkdd
         return \GuzzleHttp\json_encode($modifiedResult);
     }
 
-    public function getProvinceChart($year, $postureId = '39', $provinceId = '')
+    public function getProvinceChart($year, $postureId = '39', $provinceId)
     {
-        $url = 'tkdd/2/' . $year . '/' . $postureId;
-        $url .= $provinceId != '' ? '/' . $provinceId : '';
+        $url = 'tkdd/2/' . $year . '/' . $postureId . '/' . $provinceId;
+//        $url .= $provinceId != '' ? '/' . $provinceId : '';
         $apiRequest = $this->mediawave->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 

@@ -54,11 +54,9 @@ $(document).ready(function() {
 
                 var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">' + $percentage + '%</span>';
                 if (type == 'tkdd') {
-                    var linkdetail = $baseUrl + '/level-1/' + $id;
+                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id;
                 } else {
-                    $reportTypes = jQuery.parseJSON(reportTypes);
-                    $reportCode = $reportTypes[$id];
-                    var linkdetail = $baseUrl + '/level-1/' + $reportCode;
+                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id;
                 }
                 var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
 							<div class="uk-width-medium-1-2"> \
@@ -209,6 +207,7 @@ $(document).ready(function() {
 			url: chartUrl,
 	        dataType: 'json',
 	        success: function(result){
+				console.log(result);
 			    // result = jQuery.parseJSON(result);
 	            var data = result.data;
 				var t = result.properties.Label;
@@ -339,6 +338,8 @@ $(document).ready(function() {
 	            }
 	        }
 	    });
+
+        //UIkit.slideshow('#center-slideshow');
 	}
 	var $infraUrl = $baseUrl + '/get-infrastructure-data/' + thisYear;
     var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';

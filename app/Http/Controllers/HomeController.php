@@ -80,14 +80,14 @@ class HomeController extends Controller
     {
         $url = 'infrastruktur/' . $year;
 
-        return $this->mediawave->getJsonResult($url);
+        return $this->mediawave->getJsonResult($url, false);
     }
 
     public function simpananPemdaData()
     {
         $url = 'simpanan-pemda';
 
-        return $this->mediawave->getJsonResult($url);
+        return $this->mediawave->getJsonResult($url, false);
     }
 
     public function realisasiTkdd($year)

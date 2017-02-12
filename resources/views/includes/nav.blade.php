@@ -21,7 +21,7 @@
 				<li>
 					<span class="chip sikd-account">
 						<i class="material-icons sikd-chip-contact">account_circle</i>
-						<span class="uk-hidden-small">djpk@kemenkeu.go.id</span>
+						<span class="uk-hidden-small">{!! auth()->user()->email !!}</span>
 					</span>
 					<?php /*
 					<a class="chip sikd-account" data-activates="sikd-account-dropdown" data-beloworigin="true" data-hover="true" data-alignment="right" data-constrainwidth="false">
@@ -53,7 +53,7 @@
 	</li>
 	<li><a href="{!! url('/') !!}"><i class="uk-icon uk-icon-home uk-icon-justify"></i> BERANDA</a></li>
 
-	<li><a href="{!! url('/level-1') !!}/39"><i class="uk-icon uk-icon-th-large uk-icon-justify"></i> DATA NASIONAL</a></li>
+	<li><a href="{!! url('/level-1/tkdd') !!}/39"><i class="uk-icon uk-icon-th-large uk-icon-justify"></i> DATA NASIONAL</a></li>
 
 	<li>
 		<a class="collapsible-header"><i class="uk-icon uk-icon-th uk-icon-justify"></i> DATA PROVINSI<i class="material-icons right">arrow_drop_down</i></a>
@@ -61,7 +61,7 @@
 		<div class="collapsible-body">
 			<ul>
 				@foreach($gProvinces as $province)
-                    <li><a href="{!! url('/level-2/' . $province['id']) !!}/39">{!! $province['name'] !!}</a></li>
+                    <li><a href="{!! url('/level-2/tkdd/2016/39/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
                 @endforeach
 			</ul>
 		</div>

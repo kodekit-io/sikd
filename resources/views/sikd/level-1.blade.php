@@ -18,6 +18,13 @@
                     <li><a href="{!! url('level-1/tkdd/' . $posture->idPostur) !!}">{!! $posture->uraianPosturSingkat !!}</a></li>
                 @endforeach
             </ul>
+
+			<div class="right uk-margin-right">
+				<select class="browser-default">
+					<option value="1">2016</option>
+					<option value="2">2015</option>
+				</select>
+			</div>
 		</div>
 		<div class="card-content">
 			<div id="map" class=""></div>

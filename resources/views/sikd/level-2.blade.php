@@ -29,6 +29,13 @@
                     <li><a href="{!! url('level-2/tkdd/' . $year . '/' . $tkddPosture->idPostur . '/' . $provinceId) !!}">{!! $tkddPosture->uraianPosturSingkat !!}</a></li>
                 @endforeach
             </ul>
+
+			<div class="right uk-margin-right">
+				<select class="browser-default">
+					<option value="1">2016</option>
+					<option value="2">2015</option>
+				</select>
+			</div>
 		</div>
 		<div class="card-content">
 			<table id="tableProv" class="display uk-table-condensed uk-margin-remove" cellspacing="0" width="100%"></table>

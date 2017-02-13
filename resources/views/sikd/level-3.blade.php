@@ -8,6 +8,12 @@
 		<li class="uk-width-1-1 uk-margin-small-bottom">
 			<div class="card-panel z-depth-3 soft">
 				<h2 class="card-title">Data Umum {!! $pemdaName !!}</h2>
+				<div class="right uk-margin-right">
+					<select class="browser-default">
+						<option value="1">2016</option>
+						<option value="2">2015</option>
+					</select>
+				</div>
 			</div>
 		</li>
 		<li class="uk-width-1-5"><div id="panel1"></div></li>

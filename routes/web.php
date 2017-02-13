@@ -31,11 +31,11 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('get-belanja-data/{year}', 'HomeController@belanja');
     Route::get('get-realisasi-pad-data/{year}', 'HomeController@realisasiPad');
 
-    Route::get('/level-1/{type}/{postureId?}', 'MapController@map');
+    Route::get('/level-1/{type}/{postureId}/{year?}', 'MapController@map');
     Route::get('get-map-chart/{type}/{year}/{postureId?}', 'MapController@getMapChart');
 
-    Route::get('/level-2/{type}/{year}/{postureId}/{provinceId}', 'ProvinceController@province');
-    Route::get('get-province-chart/{type}/{year}/{postureId}/{provinceId}', 'ProvinceController@getProvinceChart');
+    Route::get('/level-2/{type}/{postureId}/{year}/{provinceId}', 'ProvinceController@province');
+    Route::get('get-province-chart/{type}/{postureId}/{year}/{provinceId}', 'ProvinceController@getProvinceChart');
 
     Route::get('/pemda/{satkerCode}', 'PemdaController@profile');
     Route::get('/get-pemda-chart/{year}/{satkerCode}', 'PemdaController@chart');

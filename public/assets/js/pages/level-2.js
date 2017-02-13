@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var url = baseUrl + '/get-province-chart/' + $type + '/' + $year + '/' + $postureId + '/' + $provinceId;
+    var url = baseUrl + '/get-province-chart/' + $type + '/' + $postureId + '/' + $year + '/' + $provinceId;
     var div = "tableProv";
     $.ajax({
         url : url,

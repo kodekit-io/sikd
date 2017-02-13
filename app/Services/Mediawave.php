@@ -168,5 +168,18 @@ class Mediawave
         return \GuzzleHttp\json_encode($result);
     }
 
+    public function getAvailableYears()
+    {
+        $years = [];
+        $start = 2015;
+        $thisYear = date('Y');
+        while ($start <= $thisYear) {
+            $years[] = $start;
+            $start++;
+        }
+
+        return $years;
+    }
+
 
 }

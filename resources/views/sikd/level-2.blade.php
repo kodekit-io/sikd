@@ -16,14 +16,14 @@
                 @endforeach
 			</ul>
 
-			<a href="#" data-activates="reportType" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH JENIS INFORMASI <i class="material-icons right">arrow_drop_down</i></a>
+			<a href="#" data-activates="reportType" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH INFORMASI APBD<i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="reportType" class="dropdown-content slim-drop">
                 @foreach($apbdPostures as $apbdPosture)
                     <li><a href="{!! url('level-2/apbd/' . $year . '/' . $apbdPosture->id . '/' . $provinceId) !!}">{!! $apbdPosture->name !!}</a></li>
                 @endforeach
 			</ul>
 
-            <a href="#" data-activates="posture" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH POSTUR <i class="material-icons right">arrow_drop_down</i></a>
+            <a href="#" data-activates="posture" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH INFORMASI TKDD <i class="material-icons right">arrow_drop_down</i></a>
             <ul id="posture" class="dropdown-content slim-drop">
                 @foreach($tkddPostures as $tkddPosture)
                     <li><a href="{!! url('level-2/tkdd/' . $year . '/' . $tkddPosture->idPostur . '/' . $provinceId) !!}">{!! $tkddPosture->uraianPosturSingkat !!}</a></li>

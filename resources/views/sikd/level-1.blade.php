@@ -5,14 +5,14 @@
 	<div class="card z-depth-3 soft hoverable sikd-map uk-animation-fade">
 		<div class="card-toolbar">
 			<h2 class="card-title" id="titleMap"></h2>
-			<a href="#" data-activates="switchdata" class="dropdown-button orange white-text z-depth-0 uk-button right" data-beloworigin="true" data-alignment="right">PILIH JENIS INFORMASI <i class="material-icons right">arrow_drop_down</i></a>
+			<a href="#" data-activates="switchdata" class="dropdown-button orange white-text z-depth-0 uk-button right" data-beloworigin="true" data-alignment="right">PILIH INFORMASI APBD <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="switchdata" class="dropdown-content slim-drop">
 				@foreach($reportTypes as $type)
 					<li><a href="{!! url('level-1/apbd/' . $type->id) !!}">{!! $type->name !!}</a></li>
 				@endforeach
 			</ul>
 
-            <a href="#" data-activates="postures" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH POSTUR <i class="material-icons right">arrow_drop_down</i></a>
+            <a href="#" data-activates="postures" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH INFORMASI TKDD <i class="material-icons right">arrow_drop_down</i></a>
             <ul id="postures" class="dropdown-content slim-drop">
                 @foreach($postures as $posture)
                     <li><a href="{!! url('level-1/tkdd/' . $posture->idPostur) !!}">{!! $posture->uraianPosturSingkat !!}</a></li>

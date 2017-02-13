@@ -90,7 +90,7 @@
 
                         myMap.on('click', function (param) {
                             var idProv = param.data.id;
-                            location.href = baseUrl + '/level-2/' + $reportType + '/' + $year + '/' + $postureId + '/' + idProv;
+                            location.href = baseUrl + '/level-2/' + $reportType + '/' + $postureId + '/' + $year +  '/' + idProv;
                         });
 
                         //myMap.setOption(option);

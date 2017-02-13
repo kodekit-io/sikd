@@ -61,7 +61,7 @@
 		<div class="collapsible-body">
 			<ul>
 				@foreach($gProvinces as $province)
-                    <li><a href="{!! url('/level-2/tkdd/2016/39/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
+                    <li><a href="{!! url('/level-2/tkdd/39/2016/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
                 @endforeach
 			</ul>
 		</div>

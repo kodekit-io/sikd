@@ -12,30 +12,31 @@
 			<a href="#" data-activates="switchdata" class="dropdown-button orange white-text z-depth-0 uk-button right" data-beloworigin="true" data-alignment="right">PILIH PROVINSI <i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="switchdata" class="dropdown-content slim-drop">
 				@foreach($gProvinces as $province)
-                    <li><a href="{!! url('level-2/' . $type . '/' . $year . '/' . $postureId . '/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
+                    <li><a href="{!! url('level-2/' . $type . '/' . $postureId . '/' . $year .  '/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
                 @endforeach
 			</ul>
 
-			<a href="#" data-activates="reportType" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH JENIS INFORMASI <i class="material-icons right">arrow_drop_down</i></a>
+			<a href="#" data-activates="reportType" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH INFORMASI APBD<i class="material-icons right">arrow_drop_down</i></a>
 			<ul id="reportType" class="dropdown-content slim-drop">
                 @foreach($apbdPostures as $apbdPosture)
-                    <li><a href="{!! url('level-2/apbd/' . $year . '/' . $apbdPosture->id . '/' . $provinceId) !!}">{!! $apbdPosture->name !!}</a></li>
+                    <li><a href="{!! url('level-2/apbd/' . $apbdPosture->id . '/' . $year . '/' . $provinceId) !!}">{!! $apbdPosture->name !!}</a></li>
                 @endforeach
 			</ul>
 
-            <a href="#" data-activates="posture" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH POSTUR <i class="material-icons right">arrow_drop_down</i></a>
+            <a href="#" data-activates="posture" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH INFORMASI TKDD <i class="material-icons right">arrow_drop_down</i></a>
             <ul id="posture" class="dropdown-content slim-drop">
                 @foreach($tkddPostures as $tkddPosture)
-                    <li><a href="{!! url('level-2/tkdd/' . $year . '/' . $tkddPosture->idPostur . '/' . $provinceId) !!}">{!! $tkddPosture->uraianPosturSingkat !!}</a></li>
+                    <li><a href="{!! url('level-2/tkdd/' . $tkddPosture->idPostur . '/' . $year . '/' . $provinceId) !!}">{!! $tkddPosture->uraianPosturSingkat !!}</a></li>
                 @endforeach
             </ul>
 
-			<div class="right uk-margin-right">
-				<select class="browser-default">
-					<option value="1">2016</option>
-					<option value="2">2015</option>
-				</select>
-			</div>
+			<a href="#" data-activates="year" class="dropdown-button orange white-text z-depth-0 uk-button right uk-margin-right" data-beloworigin="true" data-alignment="right">PILIH TAHUN <i class="material-icons right">arrow_drop_down</i></a>
+			<ul id="year" class="dropdown-content slim-drop">
+				@foreach($years as $theYear)
+					<li><a href="{!! url('level-2/' . $type . '/' . $postureId . '/' . $theYear . '/' . $provinceId) !!}">{!! $theYear !!}</a></li>
+				@endforeach
+			</ul>
+
 		</div>
 		<div class="card-content">
 			<table id="tableProv" class="display uk-table-condensed uk-margin-remove" cellspacing="0" width="100%"></table>

@@ -21,22 +21,26 @@ class MapController extends Controller
      * @var Apbd
      */
     private $apbdService;
+    /**
+     * @var Mediawave
+     */
+    private $mediawaveService;
 
     /**
      * MapController constructor.
+     * @param Mediawave $mediawaveService
      * @param Tkdd $tkddService
      * @param Apbd $apbdService
      */
-    public function __construct(Tkdd $tkddService, Apbd $apbdService)
+    public function __construct(Mediawave $mediawaveService, Tkdd $tkddService, Apbd $apbdService)
     {
         $this->tkddService = $tkddService;
         $this->apbdService = $apbdService;
+        $this->mediawaveService = $mediawaveService;
     }
 
-    public function map($type, $postureId = '')
+    public function map($type, $postureId, $year = '2016')
     {
-        $year = '2016';
-
         if ($type == 'tkdd') {
             $postureId = $postureId != '' ? $postureId : 39;
             $data['reportName'] = $this->tkddService->getPostureNameById($postureId);
@@ -50,6 +54,7 @@ class MapController extends Controller
         $data['postureId'] = $postureId;
         $data['reportType'] = $type;
         $data['year'] = $year;
+        $data['years'] = $this->mediawaveService->getAvailableYears();
 
         return view('sikd.level-1', $data);
     }

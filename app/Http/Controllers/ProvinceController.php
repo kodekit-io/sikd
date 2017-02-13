@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\Apbd;
+use App\Service\Mediawave;
 use App\Service\Province;
 use App\Service\ReportType;
 use App\Service\Tkdd;
@@ -24,21 +25,27 @@ class ProvinceController extends Controller
      * @var Tkdd
      */
     private $tkddService;
+    /**
+     * @var Mediawave
+     */
+    private $mediawaveService;
 
     /**
      * ProvinceController constructor.
+     * @param Mediawave $mediawaveService
      * @param Province $provinceService
      * @param Apbd $apbdService
      * @param Tkdd $tkddService
      */
-    public function __construct(Province $provinceService, Apbd $apbdService, Tkdd $tkddService)
+    public function __construct(Mediawave $mediawaveService, Province $provinceService, Apbd $apbdService, Tkdd $tkddService)
     {
         $this->provinceService = $provinceService;
         $this->apbdService = $apbdService;
         $this->tkddService = $tkddService;
+        $this->mediawaveService = $mediawaveService;
     }
 
-    public function province($type, $year, $postureId, $provinceId)
+    public function province($type, $postureId, $year, $provinceId)
     {
         if ($type == 'tkdd') {
             $data['reportName'] = $this->tkddService->getPostureNameById($postureId);
@@ -54,17 +61,17 @@ class ProvinceController extends Controller
         $data['provinceName'] = $this->provinceService->getProvinceNameById($provinceId);
         $data['apbdPostures'] = $this->apbdService->getPostures();
         $data['tkddPostures'] = $this->tkddService->getPostures();
+        $data['years'] = $this->mediawaveService->getAvailableYears();
 
         return view('sikd.level-2', $data);
     }
 
-    public function getProvinceChart($type, $year, $postureId, $provinceId)
+    public function getProvinceChart($type, $postureId, $year, $provinceId)
     {
         if ($type == 'tkdd') {
             return $this->tkddService->getProvinceChart($year, $postureId, $provinceId);
         }
 
-        $year = '2015';
         return $this->apbdService->getProvinceChart($year, $postureId, $provinceId);
     }
 

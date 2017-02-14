@@ -35,6 +35,11 @@ class PemdaController extends Controller
         return $this->pemdaService->getChart($year, $satkerCode);
     }
 
+    public function apbdTableData($year, $satkerCode)
+    {
+        return $this->pemdaService->getApbdTableData($year, $satkerCode);
+    }
+
     public function tkddTableData($year, $satkerCode)
     {
         return $this->pemdaService->getTkddTableData($year, $satkerCode);

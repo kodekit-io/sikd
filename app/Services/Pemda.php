@@ -83,4 +83,11 @@ class Pemda
 
         return $this->mediawave->getJsonResult($url);
     }
+
+    public function getApbdTableData($year, $satkerCode)
+    {
+        $url = 'apbd/tabel/' . $year . '/' . $satkerCode;
+
+        return $this->mediawave->getJsonResult($url);
+    }
 }

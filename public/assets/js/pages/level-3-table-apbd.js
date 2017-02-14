@@ -153,7 +153,9 @@ $(document).ready(function() {
         });
 
     }
-    $.getJSON("../data/L3_Table_APBD.json", function(result) {
+
+    var $apbdTableUrl = $baseUrl + '/get-pemda-apbd-table-data/' + $year + '/' + $satkerCode;
+    $.getJSON($apbdTableUrl, function(result) {
         level0(result);
     });
 });

@@ -10,16 +10,21 @@
 
 	<link href="{!! asset('assets/img/icon.png') !!}" rel="shortcut icon">
 
-	<link rel="stylesheet" href="{!! asset('assets/css/main.css') !!}" />
+	<link rel="stylesheet" href="{!! asset('assets/css/uikit.min.css') !!}" />
+    <link rel="stylesheet" href="{!! asset('assets/css/main.css') !!}" />
+
 	@section('page-level-styles')
     @show
 
-	<!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
+	<script src="{!! asset('assets/js/lib/jquery.min.js') !!}"></script>
+	<script src="{!! asset('assets/js/lib/uikit.min.js') !!}"></script>
+	
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>

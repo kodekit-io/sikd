@@ -121,6 +121,7 @@ main.sikd-login .uk-card-media-left {
 }
 .uk-button-small {
     padding: 0 10px;
+    font-size: 1rem;
 }
 .uk-nav-default,
 .uk-nav-header {
@@ -197,9 +198,8 @@ main.sikd-login .uk-card-media-left {
     position: absolute;
     height: 25px;
     width: 25px;
-    margin-left: -25px;
     top: 0;
-    border-right: 1px dotted #F44336;
+    border-left: 2px dotted #F44336;
 }
 .sikd-progress-persen {
     line-height: 25px;

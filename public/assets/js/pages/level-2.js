@@ -43,7 +43,7 @@ $(document).ready(function() {
                 "searching": false,
                 "info": false,
                 "lengthChange": false,
-                "language": {"sZeroRecords": "", "sEmptyTable": "Data Kosong"},
+                "language": {"sZeroRecords": "", "sEmptyTable": "Tidak ada data"},
                 "columns": [
                     { "data": "kodeSatker", "width": "10%" },
                     { "data": "name", "width": "15%" },

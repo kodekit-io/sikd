@@ -119,6 +119,29 @@ main.sikd-login .uk-card-media-left {
 .uk-offcanvas-bar .uk-nav-default > li.uk-active > a {
     color: #ffde59;
 }
+.uk-button-small {
+    padding: 0 10px;
+}
+.uk-nav-default,
+.uk-nav-header {
+    font-size: 1rem;
+}
+.uk-nav-header:not(:first-child) {
+    margin-top: 10px;
+}
+
+.uk-offcanvas-bar .uk-nav-default>li>a,
+.sikd-nav-side .uk-nav-default>li>a {
+    color: #fff;
+}
+.uk-offcanvas-bar .uk-nav-default .uk-nav-divider,
+.sikd-nav-side .uk-nav-default .uk-nav-divider {
+    border-top: 1px solid #fff;
+}
+.uk-offcanvas-bar ul.uk-nav-sub {
+    padding: 5px 0 5px 33px;
+}
+
 .sikd-cover-title {
     margin: -20px -20px 20px -20px;
 }
@@ -136,46 +159,56 @@ main.sikd-login .uk-card-media-left {
     height: calc(50vh - 100px);
     overflow-x: hidden;
     overflow-y: auto;
-    padding-top: 10px;
+    padding-top: 15px;
     padding-bottom: 10px;
+}
+.sikd-l0r1-tab > ul.uk-tab > * > a {
+    padding: inherit;
+    padding-left: 10px;
+    height: 24px;
 }
 .sikd-l0r1-title {
     padding: 0;
     margin: 0;
     line-height: normal;
 }
-.sikd-progress .uk-progress {
+
+.uk-progress {
     background-color: #ffde59;
-    margin-bottom: 0;
+    margin: 0;
     height: 25px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
-}
-.sikd-progress .uk-progress::-webkit-progress-bar {
-    background-color: #ffde59;
-    border-radius: 3px;
-}
-.sikd-progress .uk-progress::-webkit-progress-value {
-    background-color: #09355B;
-}
-.sikd-progress .uk-progress::-moz-progress-bar {
-    background-color: #09355B;
-}
-.sikd-progress .uk-progress::-ms-fill {
-    background-color: #09355B;
-}
-.sikd-progress .uk-width-expand {
+    width: 100%;
+    overflow: hidden;
     position: relative;
 }
-.sikd-progress .uk-width-auto {
-    line-height: 25px;
+.uk-progress .progress-bar {
+    background-color: #09355B;
+    height: 25px;
 }
-.sikd-progress-text {
-    position: absolute;
-    top: 0;
-    left: 25px;
+.uk-progress .progress-text {
     color: #fff;
+    padding-left: 10px;
     line-height: 25px;
 }
+.uk-progress .progress-mean {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    margin-left: -25px;
+    top: 0;
+    border-right: 1px dotted #F44336;
+}
+.sikd-progress-persen {
+    line-height: 25px;
+    padding: 0 10px 0 0;
+    font-weight: 700;
+    color: #09355B;
+}
+
+
 .sikd-l0r1-chart {
     width: 100% !important;
     margin: 10px 0;
@@ -346,23 +379,19 @@ a.sikd-chart-info {
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
-.uk-nav-default {
-    font-size: 1rem;
+.l1card .uk-card-body {
+    height: calc( 100vh - 180px );
 }
-.uk-offcanvas-bar .uk-nav-default>li>a, .uk-nav-default>li>a {
-    color: #fff;
+.l2card .uk-card-body {
+    min-height: calc( 100vh - 180px );
 }
-.uk-offcanvas-bar .uk-nav-default .uk-nav-divider, .uk-nav-default .uk-nav-divider {
-    border-top: 1px solid #fff;
+.sikd-map {
+    height: 100% !important;
+    width: 100% !important;
 }
-.uk-offcanvas-bar ul.uk-nav-sub {
-    padding: 5px 0 5px 33px;
-}
-
-
 @media (max-width: 768px) {
     main {
-        min-height: 100vh;
+        min-height: calc( 100vh - 145px );
         margin-left: 0 !important;
         padding-top: 65px !important;
     }
@@ -445,15 +474,28 @@ a.sikd-chart-info {
         width: 24px;
         position: relative;
     }
-    #l0r1aTabItem,
-    #l0r1bTabItem {
-        margin-left: 0px !important;
+    .sikd-l0r1-tab > ul.uk-tab {
+        margin-left: 0;
     }
-    #l0r1aTabItem li,
-    #l0r1bTabItem li {
+    .sikd-l0r1-tab > .uk-tab::before {
+        left: 0;
+    }
+    .sikd-l0r1-tab > ul.uk-tab > * > a {
+        padding: 5px;
+        height: 24px;
+        width: 24px;
+        margin: 0;
+    }
+    .sikd-l0r1-tab ul.uk-tab li {
         display: inline-block;
-        margin: 0 0 0 -5px !important;
-        padding: 0 !important;
-        border-bottom: 1px solid #eee;
+        padding: 0;
+        margin: 0;
+    }
+    .l1card .uk-card-body,
+    .l2card .uk-card-body {
+        min-height: calc( 100vh - 290px );
+    }
+    .uk-button-small {
+        line-height: normal;
     }
 }

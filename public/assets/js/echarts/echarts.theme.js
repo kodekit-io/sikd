@@ -217,12 +217,14 @@
             "label": {
                 "normal": {
                     "textStyle": {
-                        "color": "#000000"
+                        "color": "#000000",
+                        "fontSize": 12
                     }
                 },
                 "emphasis": {
                     "textStyle": {
-                        "color": "rgb(81,107,145)"
+                        "color": "rgb(81,107,145)",
+                        "fontSize": 12
                     }
                 }
             }

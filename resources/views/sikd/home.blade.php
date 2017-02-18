@@ -37,6 +37,5 @@
 	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>
 	<script src="{!! asset('assets/js/lib/jquery.bxslider.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
-	<script src="{!! asset('assets/js/datatables/dataTables.uikit.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/home.js') !!}"></script>
 @endsection

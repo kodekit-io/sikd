@@ -15,6 +15,7 @@ l0r1card('l0r1a');
 l0r1card('l0r1b');
 
 function l0r1(div,n,type,result) {
+    console.log(result);
     numeral.locale('id');
     if(type==='apbd') {
         $result = result.apbd;
@@ -24,7 +25,7 @@ function l0r1(div,n,type,result) {
 
     if ($result[n] !== undefined) {
         if ($result.length === 0) {
-            $('#' + div).html("<div class='center'>No data chart</div>");
+            $('#' + div).html("<div class='uk-position-center'>No data</div>");
         } else {
             var $content = [];
             var $legend = [];
@@ -76,16 +77,21 @@ function l0r1(div,n,type,result) {
             var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon sikd-icon-'+slug($name)+'"></span></a></li>';
             $('#'+div+'TabItem').append(tabItem);
 
+            var p = '<div class="uk-progress">'
+                        + '<div class="progress-bar uk-animation-slide-left" style="width: '+$percentage000+'%;"><span class="progress-text">A '+$target+' / R '+$realization+'</span></div>'
+                    + '</div>';
+
             var tabContent = '<li>'
                 + '<div class="uk-card-body">'
                     + '<div class="uk-grid-collapse" uk-grid>'
                         + '<div class="uk-width-1-2"><h4 class="sikd-l0r1-title uk-text-uppercase sikd-blue-text">'+$name+'</h4></div>'
                         + '<div class="uk-width-1-2">'
-                            + '<div class="sikd-progress uk-grid-small" uk-grid>'
-                                + '<div class="uk-width-auto"><span class="uk-text-bold sikd-blue-text">'+$percentage+'%</span></div>'
+                            + '<div class="uk-grid-collapse" uk-grid>'
+                                + '<div class="uk-width-auto">'
+                                    + '<div class="sikd-progress-persen">'+$percentage+'%</div>'
+                                + '</div>'
                                 + '<div class="uk-width-expand">'
-                                    + '<progress id="progress'+n+'" class="uk-progress" value="'+$percentage000+'" max="100"></progress>'
-                                    + '<div class="sikd-progress-text">A '+$target+' / R '+$realization+'</div>'
+                                    + p
                                 + '</div>'
                             + '</div>'
                         + '</div>'
@@ -287,14 +293,19 @@ function l0r2(id, chartUrl, stack) {
                         axisPointer : {
                             type : 'shadow'
                         },
+                        position: function (point, params, dom) {
+                            return [point[0], '10%'];
+                        },
                         formatter: function (params){
-                            var naam=[], waarde=[], serie=[];
+                            //console.log(params);
+                            var naam=[], waarde=[], color=[], serie=[];
                             for (var i = 0; i < params.length; i++) {
                                 naam[i] = params[i].seriesName;
                                 waarde[i] = numeral(params[i].value).format('0.00a');
-                                serie[i] = '<br>'+naam[i]+' = '+waarde[i];
+                                color[i] = '<i class="fa fa-circle fa-fw" style="color:'+params[i].color+'"></i>';
+                                serie[i] = '<br>'+color[i]+' '+naam[i]+' '+waarde[i];
                             }
-                            return '<strong>' + params[0].name + '</strong>' + serie;
+                            return '<strong>' + params[0].name + '</strong>' + serie.join('');
                         }
                     },
                     legend: {

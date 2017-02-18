@@ -14,8 +14,8 @@
         },
         abbreviations: {
             thousand : 'K',
-            million  : 'M',
-            billion  : 'B',
+            million  : 'J',
+            billion  : 'M',
             trillion : 'T'
         },
         currency: {

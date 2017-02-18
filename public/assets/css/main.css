@@ -33,6 +33,10 @@ a.fa {
     color: #fff;
     text-shadow: none
 }
+a span.uk-icon {
+    position: relative;
+    top: -2px;
+}
 main {
     min-height: calc(100vh - 80px);
     padding: 15px !important;
@@ -48,6 +52,38 @@ footer {
 footer .uk-subnav>*>:first-child {
     color: #09355B;
     font-size: 1rem;
+}
+
+main.full-width, footer.full-width {
+    margin-left: 0 !important;
+}
+main.sikd-login {
+    min-height: calc(100vh - 50px);
+    padding: 0 !important;
+    margin: 0 !important;
+}
+main.sikd-login .uk-card-media-left {
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.sikd-login-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    margin: 0;
+    line-height: normal;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 400;
+}
+.sikd-login-logo img {
+    height: 25px;
+    width: auto;
 }
 .sikd-nav-side {
     height: 100vh;
@@ -68,7 +104,24 @@ footer .uk-subnav>*>:first-child {
     line-height: 50px;
     text-align: center;
 }
-
+.sikd-nav-side .uk-nav-default > li > a,
+.uk-offcanvas-bar .uk-nav-default > li > a {
+    color: #fff;
+}
+.sikd-nav-side .uk-nav-default > li > a:focus,
+.sikd-nav-side .uk-nav-default > li > a:hover,
+.uk-offcanvas-bar .uk-nav-default > li > a:focus,
+.uk-offcanvas-bar .uk-nav-default > li > a:hover,
+.uk-offcanvas-bar .uk-nav-default .uk-nav-sub a:hover {
+    color: #ffde59 !important;
+}
+.sikd-nav-side .uk-nav-default > li.uk-active > a,
+.uk-offcanvas-bar .uk-nav-default > li.uk-active > a {
+    color: #ffde59;
+}
+.sikd-cover-title {
+    margin: -20px -20px 20px -20px;
+}
 .sikd-home-row1 {
     height: calc(50vh - 80px);
 }
@@ -140,6 +193,151 @@ a.sikd-chart-info {
 .sikd-blue-text {
     color: #09355B !important;
 }
+.sikd-text5 {
+    display: inline-block;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.sikd-text5:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+.sikd-icon5 {
+    height: 40px;
+    width: 40px;
+    background: #ffde59;
+    font-family: 'FontAwesome';
+    overflow: hidden;
+    font-size: 1.25rem;
+    color: #fff;
+    text-shadow:    rgb(179, 155, 62) 0px 0px 0px,
+                    rgb(182, 159, 64) 1px 1px 0px,
+                    rgb(186, 162, 65) 2px 2px 0px,
+                    rgb(190, 165, 66) 3px 3px 0px,
+                    rgb(194, 169, 68) 4px 4px 0px,
+                    rgb(198, 172, 69) 5px 5px 0px,
+                    rgb(201, 175, 70) 6px 6px 0px,
+                    rgb(205, 179, 72) 7px 7px 0px,
+                    rgb(209, 182, 73) 8px 8px 0px,
+                    rgb(213, 185, 74) 9px 9px 0px,
+                    rgb(217, 189, 76) 10px 10px 0px,
+                    rgb(221, 192, 77) 11px 11px 0px,
+                    rgb(224, 195, 78) 12px 12px 0px,
+                    rgb(228, 199, 80) 13px 13px 0px,
+                    rgb(232, 202, 81) 14px 14px 0px,
+                    rgb(236, 205, 82) 15px 15px 0px,
+                    rgb(240, 209, 84) 16px 16px 0px,
+                    rgb(244, 212, 85) 17px 17px 0px,
+                    rgb(247, 215, 86) 18px 18px 0px,
+                    rgb(251, 219, 88) 19px 19px 0px;
+}
+.sikd-icon5:hover {
+    text-decoration: none;
+    background: #ffde59;
+    color: #09355B;
+}
+.sikd-icon-Realisasi-TKDD:before {
+    content: "\f0ec";
+}
+.sikd-icon-DAK-Fisik:before {
+    content: "\f187";
+}
+.sikd-icon-Dandes:before {
+    content: "\f0f2";
+}
+.sikd-icon-Belanja:before {
+    content: "\f290";
+}
+.sikd-icon-PAD:before {
+    content: "\f0b1";
+}
+.sikd-icon {
+    height: 24px;
+    width: 40px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    background-color: rgba(230, 230, 230, 1);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #09355B;
+    text-shadow:    rgba(200, 200, 200, 1) 0px 0px 0px,
+                    rgba(200, 200, 200, 0.95) 1px 1px 0px,
+                    rgba(200, 200, 200, 0.90) 2px 2px 0px,
+                    rgba(200, 200, 200, 0.85) 3px 3px 0px,
+                    rgba(200, 200, 200, 0.80) 4px 4px 0px,
+                    rgba(200, 200, 200, 0.75) 5px 5px 0px,
+                    rgba(200, 200, 200, 0.70) 6px 6px 0px,
+                    rgba(200, 200, 200, 0.65) 7px 7px 0px,
+                    rgba(200, 200, 200, 0.60) 8px 8px 0px,
+                    rgba(200, 200, 200, 0.55) 9px 9px 0px,
+                    rgba(200, 200, 200, 0.50) 10px 10px 0px,
+                    rgba(200, 200, 200, 0.45) 11px 11px 0px,
+                    rgba(200, 200, 200, 0.40) 12px 12px 0px,
+                    rgba(200, 200, 200, 0.35) 13px 13px 0px,
+                    rgba(200, 200, 200, 0.30) 14px 14px 0px,
+                    rgba(200, 200, 200, 0.25) 15px 15px 0px,
+                    rgba(200, 200, 200, 0.20) 16px 16px 0px,
+                    rgba(200, 200, 200, 0.15) 17px 17px 0px,
+                    rgba(200, 200, 200, 0.10) 18px 18px 0px,
+                    rgba(200, 200, 200, 0.05) 19px 19px 0px;
+}
+.uk-active .sikd-icon {
+    background-color: #09355B;
+    color: #fff;
+    text-shadow: none;
+}
+.sikd-icon:before {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 24px;
+}
+.sikd-icon-transfer:before {
+    content: 'TKDD';
+}
+.sikd-icon-dbh:before {
+    content: 'DBH';
+}
+.sikd-icon-dau:before {
+    content: 'DAU';
+}
+.sikd-icon-dak-fisik:before {
+    content: 'DAKF';
+}
+.sikd-icon-dak-non-fisik:before {
+    content: 'DAKNF';
+}
+.sikd-icon-did:before {
+    content: 'DID';
+}
+.sikd-icon-dandes:before {
+    content: 'DD';
+}
+.sikd-icon-realisasi-pendapatan:before {
+    content: 'RP';
+}
+.sikd-icon-realisasi-belanja:before {
+    content: 'RB';
+}
+.sikd-icon-realisasi-pad:before {
+    content: 'RPAD';
+}
+.sikd-icon-realisasi-belanja-pegawai:before {
+    content: 'RBP';
+}
+.sikd-icon-realisasi-barang-dan-jasa:before {
+    content: 'RBJ';
+}
+.sikd-icon-realisasi-belanja-modal:before {
+    content: 'RBM';
+}
+.sikd-icon-lra:before {
+    content: 'LRA';
+}
+
 .rem1 {
     font-size: 1rem !important;
 }
@@ -157,10 +355,11 @@ a.sikd-chart-info {
 .uk-offcanvas-bar .uk-nav-default .uk-nav-divider, .uk-nav-default .uk-nav-divider {
     border-top: 1px solid #fff;
 }
-a span.uk-icon {
-    position: relative;
-    top: -2px;
+.uk-offcanvas-bar ul.uk-nav-sub {
+    padding: 5px 0 5px 33px;
 }
+
+
 @media (max-width: 768px) {
     main {
         min-height: 100vh;
@@ -177,6 +376,26 @@ a span.uk-icon {
         padding-left: 5px;
         padding-right: 5px;
     }
+    main.sikd-login {
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: 100vh;
+    }
+    main.sikd-login .uk-card {
+        width: 80% !important;
+    }
+    main.sikd-login .uk-card-media-left {
+        height: 200px !important;
+        -webkit-border-top-left-radius: 2px;
+        -webkit-border-top-right-radius: 2px;
+        -moz-border-radius-topleft: 2px;
+        -moz-border-radius-topright: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+    }
+    main.sikd-login .uk-card-media-left canvas {
+        display: none;
+    }
     .sikd-l0r1-title {
         line-height: 1rem;
     }
@@ -187,7 +406,7 @@ a span.uk-icon {
         height: auto;
     }
     .sikd-l0r1-chart {
-        height: calc(250px - 130px);
+        height: calc(250px - 140px);
     }
     .sikd-l0r2-chart {
         height: 210px;
@@ -216,5 +435,25 @@ a span.uk-icon {
         bottom: 0;
         right: 0;
         left: auto !important;
+    }
+    .sikd-icon {
+        height: 24px;
+        width: 24px;
+    }
+    .sikd-icon:before {
+        height: 24px;
+        width: 24px;
+        position: relative;
+    }
+    #l0r1aTabItem,
+    #l0r1bTabItem {
+        margin-left: 0px !important;
+    }
+    #l0r1aTabItem li,
+    #l0r1bTabItem li {
+        display: inline-block;
+        margin: 0 0 0 -5px !important;
+        padding: 0 !important;
+        border-bottom: 1px solid #eee;
     }
 }

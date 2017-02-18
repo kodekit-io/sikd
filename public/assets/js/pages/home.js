@@ -2,7 +2,7 @@ function l0r1card(div) {
     var card =  '<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade">'
                 + '<div class="uk-grid-collapse" uk-grid>'
                     + '<div class="uk-width-auto@m uk-flex-last@m sikd-l0r1-tab">'
-                        + '<ul id="'+div+'TabItem" class="uk-tab-right uk-child-width-expand" uk-tab="connect: #'+div+'TabContent; animation: uk-animation-fade"></ul>'
+                        + '<ul id="'+div+'TabItem" class="uk-tab-right uk-child-width-expand" uk-tab="connect: #'+div+'TabContent;"></ul>'
                     + '</div>'
                     + '<div class="uk-width-expand@m">'
                         + '<ul id="'+div+'TabContent" class="uk-switcher"></ul>'
@@ -15,6 +15,7 @@ l0r1card('l0r1a');
 l0r1card('l0r1b');
 
 function l0r1(div,n,type,result) {
+    numeral.locale('id');
     if(type==='apbd') {
         $result = result.apbd;
     } else if (type==='tkdd') {
@@ -41,7 +42,8 @@ function l0r1(div,n,type,result) {
                 $realization = numeral($realization000).format('0.00a');
 
                 $percentage000 = $achievement[0].percentage;
-                $percentage = Math.round($percentage000 * 100) / 100
+                //$percentage = Math.round($percentage000 * 100) / 100;
+                $percentage = numeral($percentage000).format('0.0');
 
                 $type = 'line';
                 $year = $data[i].year.toString();
@@ -71,7 +73,7 @@ function l0r1(div,n,type,result) {
                 var linkdetail = $baseUrl + '/level-1/apbd/' + $id;
             }
 
-            var tabItem = '<li><a href="#" title="'+$name+'" uk-tooltip="pos:left"><spin class="icon-'+slug($name)+'"></spin>'+$percentage+'</a></li>';
+            var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon sikd-icon-'+slug($name)+'"></span></a></li>';
             $('#'+div+'TabItem').append(tabItem);
 
             var tabContent = '<li>'
@@ -82,7 +84,7 @@ function l0r1(div,n,type,result) {
                             + '<div class="sikd-progress uk-grid-small" uk-grid>'
                                 + '<div class="uk-width-auto"><span class="uk-text-bold sikd-blue-text">'+$percentage+'%</span></div>'
                                 + '<div class="uk-width-expand">'
-                                    + '<progress id="progress'+n+'" class="uk-progress" value="'+$percentage+'" max="100"></progress>'
+                                    + '<progress id="progress'+n+'" class="uk-progress" value="'+$percentage000+'" max="100"></progress>'
                                     + '<div class="sikd-progress-text">A '+$target+' / R '+$realization+'</div>'
                                 + '</div>'
                             + '</div>'
@@ -176,6 +178,7 @@ function l0r1(div,n,type,result) {
                 chart.setOption(option);
                 chart.resize();
             }, 1000);
+
             $(window).on('resize', function(){
                 if(chart != null && chart != undefined){
                     chart.resize();
@@ -221,6 +224,7 @@ function l0r2card(div) {
 l0r2card('l0r2');
 
 function l0r2(id, chartUrl, stack) {
+    numeral.locale('id');
     $.ajax({
         //url: 'data/L0_row2_infrastruktur.json',
 		url: chartUrl,
@@ -282,6 +286,15 @@ function l0r2(id, chartUrl, stack) {
                         trigger: 'axis',
                         axisPointer : {
                             type : 'shadow'
+                        },
+                        formatter: function (params){
+                            var naam=[], waarde=[], serie=[];
+                            for (var i = 0; i < params.length; i++) {
+                                naam[i] = params[i].seriesName;
+                                waarde[i] = numeral(params[i].value).format('0.00a');
+                                serie[i] = '<br>'+naam[i]+' = '+waarde[i];
+                            }
+                            return '<strong>' + params[0].name + '</strong>' + serie;
                         }
                     },
                     legend: {
@@ -374,21 +387,20 @@ l0r2('l0r2b', $simpananPemdaUrl, false)
 
 
 function l0r3card(div) {
-    var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade"><div id="l0r3grid" class="uk-grid-small uk-grid-match uk-child-width-1-5@m" uk-grid></div></div>';
+    var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade"><div id="l0r3grid" class="uk-flex uk-flex-stretch uk-flex-middle uk-grid-small uk-child-width-1-5@m uk-height-1-1" uk-grid></div></div>';
     $('#' + div).append(card);
 
 }
 l0r3card('l0r3');
 
 function l0r3(id, type, url) {
-	jQuery.support.cors = true;
+    numeral.locale('id');
     $.ajax({
-        type: "GET",
         url: url,
         //data: "{}",
-        contentType: "application/json; charset=utf-8",
+        //contentType: "application/json; charset=utf-8",
         dataType: "json",
-        cache: false,
+        //cache: false,
         success: function (param) {
 			var result = param['top-bottom-'+type];
 			var top = result.top;
@@ -401,22 +413,33 @@ function l0r3(id, type, url) {
 			var botTitle = bottom.name;
 			var botId = bottom.id;
 
-			var imgType = '<i class="uk-icon uk-icon-button sikd-icon-'+type+'"></i>';
+			var itemlink =  '<div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>'
+                                + '<div class="uk-width-auto">'
+                                    + '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip class="uk-icon-button sikd-icon5 sikd-icon-'+type+'"></a>'
+                                + '</div>'
+                                + '<div class="uk-width-expand">'
+                                    + '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip class="sikd-text5 sikd-blue-text">'+topTitle+'<br>'+botTitle+'</a>'
+                                + '</div>'
+                            + '</div>';
 
-            var item =  '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip>'+imgType+'</a>'
-                        + '<div id="modal'+type+'" uk-modal>'
+            var pop =   '<div id="modal'+type+'" uk-modal>'
                             + '<div class="uk-modal-dialog uk-modal-body">'
                                 + '<button class="uk-modal-close-default" type="button" uk-close></button>'
-                                + '<h4>'+topTitle+'</h4>'
-                                + '<div class="uk-overflow-auto"><table id="top_'+type+'" class="uk-table uk-table-small">'
-                                    + '<thead><tr><th width="15%">Satker</th><th width="35%">Pemda</th><th width="25%" class="uk-text-right">Alokasi</th><th width="25%" class="uk-text-right">Persentase</th></tr></thead>'
-                                + '</table></div>'
-                                + '<h4>'+botTitle+'</h4>'
-                                + '<div class="uk-overflow-auto"><table id="bot_'+type+'" class="uk-table uk-table-small">'
-                                    + '<thead><tr><th width="15%">Satker</th><th width="35%">Pemda</th><th width="25%" class="uk-text-right">Alokasi</th><th width="25%" class="uk-text-right">Persentase</th></tr></thead>'
-                                + '</table></div>'
+                                + '<h4 class="uk-margin-remove">'+topTitle+'</h4>'
+                                + '<div class="uk-overflow-auto uk-margin-small-bottom">'
+                                    + '<table id="top_'+type+'" class="uk-table uk-table-small">'
+                                        + '<thead><tr><th width="15%">Satker</th><th width="35%">Pemda</th><th width="25%" class="uk-text-right">Alokasi</th><th width="25%" class="uk-text-right">Persentase</th></tr></thead>'
+                                    + '</table>'
+                                + '</div>'
+                                + '<h4 class="uk-margin-remove">'+botTitle+'</h4>'
+                                + '<div class="uk-overflow-auto">'
+                                    + '<table id="bot_'+type+'" class="uk-table uk-table-small">'
+                                        + '<thead><tr><th width="15%">Satker</th><th width="35%">Pemda</th><th width="25%" class="uk-text-right">Alokasi</th><th width="25%" class="uk-text-right">Persentase</th></tr></thead>'
+                                    + '</table>'
+                                + '</div>'
                             + '</div>'
                         + '</div>';
+            var item =  '<div>'+itemlink+''+pop+'</div>';
 			$('#'+id).append(item);
 
 	        var trTop = '';
@@ -425,19 +448,18 @@ function l0r3(id, type, url) {
                                 + '<td>' + topData[0].kodeSatker[i] + '</td>'
                                 + '<td>' + topData[0].namaPemda[i] + '</td>'
                                 + '<td class="uk-text-right">' + numeral(topData[0].target[i]).format('0,0') + '</td>'
-                                + '<td class="uk-text-right">' + numeral(topData[0].percentage[i]).format('0.00') + '</td>'
+                                + '<td class="uk-text-right">' + numeral(topData[0].percentage[i]).format('0.0') + '%</td>'
                             + '</tr>';
 	        });
 	        $('#top_'+type).append(trTop);
 
 			var trBot = '';
 			$.each(botData[0].kodeSatker, function (i, item) {
-				//trBot += "<tr><td>" + botData[0].kodeSatker[i] + "</td><td>" + botData[0].namaPemda[i] + "</td><td class=\"uk-text-right\">" + numeral(botData[0].target[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(botData[0].realization[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(botData[0].percentage[i]).format('0.00') + "%</td></tr>";
                 trBot +=    '<tr>'
                                 + '<td>' + botData[0].kodeSatker[i] + '</td>'
                                 + '<td>' + botData[0].namaPemda[i] + '</td>'
                                 + '<td class="uk-text-right">' + numeral(botData[0].target[i]).format('0,0') + '</td>'
-                                + '<td class="uk-text-right">' + numeral(botData[0].percentage[i]).format('0.00') + '</td>'
+                                + '<td class="uk-text-right">' + numeral(botData[0].percentage[i]).format('0.0') + '%</td>'
                             + '</tr>';
 	        });
 	        $('#bot_'+type).append(trBot);

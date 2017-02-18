@@ -6,6 +6,7 @@
     });
 
 }));
+
 //Screenshot
 function capture() {
     $('main').html2canvas({

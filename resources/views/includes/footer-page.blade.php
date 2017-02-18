@@ -1,4 +1,4 @@
-<footer class="sikd-footer">
+<footer class="full-width sikd-footer">
     <div class="uk-grid-collapse" uk-grid>
         <div class="uk-width-expand@m">
             Copyright &copy; <?php echo date('Y'); ?> - DJPK Kementerian Keuangan RI
@@ -15,19 +15,11 @@
 
 @section('page-level-js-variables')
     <script type="text/javascript">
-        $(document).ready(function() {
-            //numeral.locale('id');
-        });
         var baseUrl = '{!! url('/') !!}';
     </script>
 @show
 
-<script src="{!! asset('assets/js/lib/html2canvas.min.js') !!}"></script>
-<script src="{!! asset('assets/js/lib/jquery.plugin.html2canvas.js') !!}"></script>
-<script src="{!! asset('assets/js/lib/numeral.js') !!}"></script>
-<script src="{!! asset('assets/js/lib/numeral.locale-id.js') !!}"></script>
 @section('page-level-scripts')
 @show
-<script src="{!! asset('assets/js/main.js') !!}"></script>
 </body>
 </html>

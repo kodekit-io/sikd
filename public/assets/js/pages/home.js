@@ -24,7 +24,7 @@ function l0r1(div,n,type,result) {
         $result = result.tkdd;
     }
 
-    if ($result[n] !== undefined) {
+    //if ($result[n] !== undefined) {
         if ($result.length === 0) {
             $('#' + div).html("<div class='uk-position-center'>No data</div>");
         } else {
@@ -192,7 +192,7 @@ function l0r1(div,n,type,result) {
                 }
             });
         }
-    }
+    //}
 }
 var $tkddData = jQuery.parseJSON(tkddData);
 l0r1('l0r1a','0','tkdd', $tkddData);

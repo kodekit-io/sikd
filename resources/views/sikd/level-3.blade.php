@@ -18,7 +18,7 @@
 						@endforeach
 		            </ul>
 				</div>
-				<button class="uk-button uk-button-small uk-button-default" type="button" onclick="history.go(-1);" title="Kembali ke halaman sebelumnya" uk-tooltip><span uk-icon="icon: arrow-left"></span> BACK</button>
+				<button class="uk-button uk-button-small uk-button-default" type="button" onclick="history.go(-1);" title="Kembali ke halaman sebelumnya" uk-tooltip="pos: left"><span uk-icon="icon: arrow-left"></span> BACK</button>
 			</div>
 		</div>
 		<div class="uk-card-body">

@@ -15,7 +15,8 @@ l0r1card('l0r1a');
 l0r1card('l0r1b');
 
 function l0r1(div,n,type,result) {
-    console.log(result);
+    //console.log(result);
+
     numeral.locale('id');
     if(type==='apbd') {
         $result = result.apbd;

@@ -195,7 +195,7 @@ function l0r1(div,n,type,result) {
     }
 }
 var $tkddData = jQuery.parseJSON(tkddData);
-//l0r1('l0r1a','0','tkdd', $tkddData);
+l0r1('l0r1a','0','tkdd', $tkddData);
 //l0r1('l0r1a','1','tkdd', $tkddData);
 //l0r1('l0r1a','3','tkdd', $tkddData);
 //l0r1('l0r1a','4','tkdd', $tkddData);
@@ -204,7 +204,7 @@ var $tkddData = jQuery.parseJSON(tkddData);
 //l0r1('l0r1a','7','tkdd', $tkddData);
 
 var $apbdData = jQuery.parseJSON(apbdData);
-//l0r1('l0r1b','0','apbd', $apbdData);
+l0r1('l0r1b','0','apbd', $apbdData);
 //l0r1('l0r1b','1','apbd', $apbdData);
 //l0r1('l0r1b','2','apbd', $apbdData);
 //l0r1('l0r1b','3','apbd', $apbdData);

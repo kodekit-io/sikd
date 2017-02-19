@@ -78,6 +78,6 @@ use Illuminate\Support\Facades\Cache;
 Route::get('test/apbd', 'TestController@apbd');
 
 Route::get('test/cache_infra', function () {
-    //$cache = Cache::get('infrastruktur_2016');
-    //var_dump($cache);
+    $cache = Cache::get('infrastruktur_2016');
+    var_dump($cache);
 });

@@ -6,7 +6,7 @@
 	<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-animation-fade l1card">
 		<div class="uk-card-header uk-grid-small" uk-grid>
 			<div class="uk-width-expand@m">
-				<h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove"><span id="title"></span> Per Provinsi Tahun {!! $year !!}</h3>
+				<h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove uk-text-uppercase"><span id="title"></span> Per Provinsi Tahun {!! $year !!}</h3>
 			</div>
 			<div class="uk-width-auto@m">
 				<button class="uk-button uk-button-small uk-button-default " type="button"><span class="uk-visible@m">PILIH </span>TAHUN <span uk-icon="icon: chevron-down"></span></button>
@@ -31,6 +31,8 @@
 						@endforeach
 					</ul>
 				</div>
+
+				<button class="uk-button uk-button-small uk-button-default" type="button" onclick="history.go(-1);" title="Kembali ke halaman sebelumnya" uk-tooltip><span uk-icon="icon: arrow-left"></span> BACK</button>
 			</div>
 		</div>
 		<div class="uk-card-body">

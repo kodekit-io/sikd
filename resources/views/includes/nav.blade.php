@@ -16,7 +16,7 @@
             <img class="uk-blend-multiply" src="{!! asset('assets/img/img-login.jpg') !!}" alt="SIKD" uk-cover>
             <canvas width="300" height="300"></canvas>
             <h1 class="sikd-login-title">
-                <div class="sikd-login-logo uk-margin-bottom"><img class="sikd-logo" src="{!! asset('assets/img/logo-white.png') !!}"></div>
+                <div class="sikd-login-logo"><img class="sikd-logo" src="{!! asset('assets/img/logo-white.png') !!}"></div>
                 Dashboard Executive Information System SIKD
             </h1>
         </div>

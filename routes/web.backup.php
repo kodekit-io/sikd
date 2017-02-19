@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('/level-2/{type}/{postureId}/{year}/{provinceId}', 'ProvinceController@province');
     Route::get('get-province-chart/{type}/{postureId}/{year}/{provinceId}', 'ProvinceController@getProvinceChart');
 
-    Route::get('/pemda/{satkerCode}/{year}', 'PemdaController@profile');
+    Route::get('/pemda/{satkerCode}', 'PemdaController@profile');
     Route::get('/get-pemda-chart/{year}/{satkerCode}', 'PemdaController@chart');
     Route::get('/get-pemda-apbd-table-data/{year}/{satkerCode}', 'PemdaController@apbdTableData');
     Route::get('/get-pemda-tkdd-table-data/{year}/{satkerCode}', 'PemdaController@tkddTableData');

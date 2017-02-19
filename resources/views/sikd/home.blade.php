@@ -24,9 +24,6 @@
 
 @section('page-level-scripts')
 	<script type="text/javascript">
-		$(document).ready(function() {
-
-		});
 		var $baseUrl = "{!! url('/') !!}";
 		var tkddData = '{!! $tkddData !!}';
         var apbdData = '{!! $apbdData !!}';

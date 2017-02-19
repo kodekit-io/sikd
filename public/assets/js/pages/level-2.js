@@ -45,33 +45,42 @@ $(document).ready(function() {
                 "lengthChange": false,
                 "language": {"sZeroRecords": "", "sEmptyTable": "Tidak ada data"},
                 "columns": [
-                    { "data": "kodeSatker", "width": "10%" },
-                    { "data": "name", "width": "15%" },
-                    //{ "data": "percentage" },
+                    { "data": "kodeSatker", "width": "5%", "title": "<span class='uk-float-left fa fa-sort'></span>" },
+                    { "data": "name", "width": "15%", "title": "<span class='uk-float-left fa fa-sort'></span>" },
                     {
                         "data": null,
-                        "width": "60%",
+                        "width": "65%",
+                        "title": "<span class='uk-float-left fa fa-sort'></span>",
                         "render": function (data) {
                             var v = data["percentage"];
                             var vnum = numeral(v).format('0.0');
                             var avgnum = numeral(avg).format('0.0');
+                            var l = '';
+                            var b = '';
+                            if(avg >= 100) {
+                                l = 'style="left:100%;margin-left:-2px;"';
+                                b = 'blinking';
+                            } else {
+                                l = 'style="left:'+avg+'%;"';
+                            }
 
                             return  '<div class="uk-progress">'
                                         + '<div class="progress-bar uk-animation-slide-left" style="width: '+v+'%;"><span class="progress-text">'+vnum+'%</span></div>'
-                                        + '<div class="progress-mean" uk-tooltip="pos:left" title="Average: '+avgnum+'%" style="left:'+avg+'%;"></div>'
+                                        + '<div class="progress-mean '+b+'" uk-tooltip="pos:left" title="Average: '+avgnum+'%" '+l+'></div>'
                                     + '</div>';
 
                         }
                     },
                     {
                         "data": null,
+                        "sortable": false,
                         "width": "15%",
                         "class": "uk-text-right",
                         "render": function ( data ) {
                             //console.log(data);
                             var k = data["name"];
-                            var p = baseUrl + '/pemda/' + data["kodeSatker"]
-                            return '<a class="uk-button uk-button-small uk-button-default" href="'+p+'" data-uk-tooltip title="Profil '+k+'">Profil Pemda</a>';
+                            var p = baseUrl + '/pemda/' + data["kodeSatker"] + '/' + $year +  '';
+                            return '<a class="uk-button uk-button-small uk-button-default" href="'+p+'" data-uk-tooltip title="Profil '+k+'"><span class="fa fa-binoculars fa-fw"></span> Profil Pemda</a>';
                         }
                     },
                 ],

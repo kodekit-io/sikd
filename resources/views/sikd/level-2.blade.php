@@ -6,7 +6,7 @@
 	<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-animation-fade l2card">
 		<div class="uk-card-header uk-grid-small" uk-grid>
 			<div class="uk-width-expand@m">
-				<h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove">{!! $reportName !!} Se-Provinsi {!! $provinceName !!} Tahun {!! $year !!}</h3>
+				<h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove uk-text-uppercase">{!! $reportName !!} Se-Provinsi {!! $provinceName !!} Tahun {!! $year !!}</h3>
 			</div>
 			<div class="uk-width-auto@m">
 
@@ -42,11 +42,13 @@
 		                @endforeach
 					</ul>
 				</div>
+
+				<button class="uk-button uk-button-small uk-button-default" type="button" onclick="history.go(-1);" title="Kembali ke halaman sebelumnya" uk-tooltip><span uk-icon="icon: arrow-left"></span> BACK</button>
 			</div>
 		</div>
 		<div class="uk-card-body">
 			<div class="uk-overflow-auto">
-				<table id="tableProv" class="uk-tabel uk-table-striped uk-margin-remove" cellspacing="0" width="100%"></table>
+				<table id="tableProv" class="uk-table-striped uk-margin-remove" cellspacing="0" width="100%"></table>
 			</div>
 		</div>
 

@@ -63,12 +63,15 @@ main.sikd-login {
     margin: 0 !important;
 }
 main.sikd-login .uk-card-media-left {
-    -webkit-border-top-left-radius: 2px;
-    -webkit-border-bottom-left-radius: 2px;
-    -moz-border-radius-topleft: 2px;
-    -moz-border-radius-bottomleft: 2px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    -webkit-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+.sikd-login .uk-card {
+    margin-top: -25px;
 }
 .sikd-login-title {
     position: absolute;
@@ -84,7 +87,16 @@ main.sikd-login .uk-card-media-left {
 .sikd-login-logo img {
     height: 25px;
     width: auto;
+    margin-bottom: 45px;
 }
+.sikd-er-mail,
+.sikd-er-pwd {
+    height: 20px;
+    line-height: 20px;
+    font-size: .875rem;
+    margin-bottom: 5px;
+}
+
 .sikd-nav-side {
     height: 100vh;
     position: fixed;
@@ -121,7 +133,7 @@ main.sikd-login .uk-card-media-left {
 }
 .uk-button-small {
     padding: 0 10px;
-    font-size: 1rem;
+    font-weight: 700;
 }
 .uk-nav-default,
 .uk-nav-header {
@@ -160,8 +172,11 @@ main.sikd-login .uk-card-media-left {
     height: calc(50vh - 100px);
     overflow-x: hidden;
     overflow-y: auto;
-    padding-top: 15px;
+    padding-top: 10px;
     padding-bottom: 10px;
+}
+.sikd-l0r1-tab > ul.uk-tab li:first-child {
+    margin-top: 10px;
 }
 .sikd-l0r1-tab > ul.uk-tab > * > a {
     padding: inherit;
@@ -374,20 +389,53 @@ a.sikd-chart-info {
 .rem1 {
     font-size: 1rem !important;
 }
+.rem125 {
+    font-size: 1.25rem !important;
+}
 .uk-card {
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 .l1card .uk-card-body {
     height: calc( 100vh - 180px );
 }
-.l2card .uk-card-body {
+.l2card > .uk-card-body,
+.l3card > .uk-card-body {
     min-height: calc( 100vh - 180px );
+}
+.l3panel {
+    position: relative;
 }
 .sikd-map {
     height: 100% !important;
     width: 100% !important;
+}
+.sikd-title-gauge {
+    position: absolute;
+    z-index: 1;
+    top:0;
+    text-align: center;
+    padding-top: 1rem;
+    width: calc(100% - 15px) !important;
+}
+.sikd-title-topbottom {
+    margin: 0 !important;
+    padding: 0 0 10px 10px;
+}
+.blinking {
+    opacity: 0;
+    animation: blinking 1s linear infinite;
+}
+@keyframes blinking {
+    from,
+    49.9% {
+        opacity: 0;
+    }
+    50%,
+    to {
+        opacity: 1;
+    }
 }
 @media (max-width: 768px) {
     main {
@@ -412,15 +460,16 @@ a.sikd-chart-info {
     }
     main.sikd-login .uk-card {
         width: 80% !important;
+        margin-top: 0;
     }
     main.sikd-login .uk-card-media-left {
         height: 200px !important;
-        -webkit-border-top-left-radius: 2px;
-        -webkit-border-top-right-radius: 2px;
-        -moz-border-radius-topleft: 2px;
-        -moz-border-radius-topright: 2px;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
+        -webkit-border-radius: 3px 3px 0 0;
+        -webkit-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
     }
     main.sikd-login .uk-card-media-left canvas {
         display: none;
@@ -447,6 +496,10 @@ a.sikd-chart-info {
         overflow-x: auto;
         padding-top: 0;
         padding-bottom: 0;
+    }
+    .sikd-l0r1-tab > ul.uk-tab li:first-child {
+        margin-top: 0;
+        margin-left: 5px;
     }
     .sikd-nav-side {
         height: 50px;
@@ -495,7 +548,10 @@ a.sikd-chart-info {
     .l2card .uk-card-body {
         min-height: calc( 100vh - 290px );
     }
-    .uk-button-small {
-        line-height: normal;
+    .sikd-gauge {
+        height: 200px;
+    }
+    .rem125 {
+        font-size: 1rem !important;
     }
 }

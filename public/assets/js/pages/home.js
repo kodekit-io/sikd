@@ -204,18 +204,18 @@ var $tkddData = jQuery.parseJSON(tkddData);
 //l0r1('l0r1a','7','tkdd', $tkddData);
 
 var $apbdData = jQuery.parseJSON(apbdData);
-l0r1('l0r1b','0','apbd', $apbdData);
-l0r1('l0r1b','1','apbd', $apbdData);
-l0r1('l0r1b','2','apbd', $apbdData);
-l0r1('l0r1b','3','apbd', $apbdData);
-l0r1('l0r1b','4','apbd', $apbdData);
-l0r1('l0r1b','5','apbd', $apbdData);
-l0r1('l0r1b','6','apbd', $apbdData);
-l0r1('l0r1b','7','apbd', $apbdData);
-l0r1('l0r1b','8','apbd', $apbdData);
-l0r1('l0r1b','9','apbd', $apbdData);
-l0r1('l0r1b','10','apbd', $apbdData);
-l0r1('l0r1b','11','apbd', $apbdData);
+//l0r1('l0r1b','0','apbd', $apbdData);
+//l0r1('l0r1b','1','apbd', $apbdData);
+//l0r1('l0r1b','2','apbd', $apbdData);
+//l0r1('l0r1b','3','apbd', $apbdData);
+//l0r1('l0r1b','4','apbd', $apbdData);
+//l0r1('l0r1b','5','apbd', $apbdData);
+//l0r1('l0r1b','6','apbd', $apbdData);
+//l0r1('l0r1b','7','apbd', $apbdData);
+//l0r1('l0r1b','8','apbd', $apbdData);
+//l0r1('l0r1b','9','apbd', $apbdData);
+//l0r1('l0r1b','10','apbd', $apbdData);
+//l0r1('l0r1b','11','apbd', $apbdData);
 
 function l0r2card(div) {
     var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade">'

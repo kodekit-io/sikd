@@ -76,6 +76,7 @@ use App\Service\Sikd;
 use Illuminate\Support\Facades\Cache;
 
 Route::get('test/apbd', 'TestController@apbd');
+Route::get('test/api', 'TestController@api');
 
 Route::get('test/cache_infra', function () {
     $cache = Cache::get('infrastruktur_2016');

@@ -24,11 +24,11 @@
 
 @section('page-level-scripts')
 	<script type="text/javascript">
-		var baseUrl = "{!! url('/') !!}";
-		var tkddData = '{!! $tkddData !!}';
-        var apbdData = '{!! $apbdData !!}';
-        var reportTypes = '{!! $reportTypes !!}';
-        var thisYear = '{!! $thisYear !!}';
+		var $baseUrl = "{!! url('/') !!}";
+		var $tkddData = '{!! $tkddData !!}';
+        var $apbdData = '{!! $apbdData !!}';
+        var $reportTypes = '{!! $reportTypes !!}';
+        var $thisYear = '{!! $thisYear !!}';
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>

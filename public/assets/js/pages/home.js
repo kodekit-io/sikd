@@ -1,4 +1,4 @@
-(function ($, window, document, baseUrl, tkddData, apbdData, reportTypes, thisYear) {
+(function ($, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear) {
 
     $(function () {
         l0r1card('l0r1a');
@@ -6,40 +6,40 @@
         l0r2card('l0r2');
         l0r3card('l0r3');
 
-        var $tkddData = jQuery.parseJSON(tkddData);
-        l0r1('l0r1a','0','tkdd', $tkddData);
-        l0r1('l0r1a','1','tkdd', $tkddData);
-        l0r1('l0r1a','2','tkdd', $tkddData);
-        l0r1('l0r1a','3','tkdd', $tkddData);
-        l0r1('l0r1a','4','tkdd', $tkddData);
-        l0r1('l0r1a','5','tkdd', $tkddData);
-        //l0r1('l0r1a','6','tkdd', $tkddData);
-        l0r1('l0r1a','7','tkdd', $tkddData);
+        var tkddData = jQuery.parseJSON($tkddData);
+        l0r1('l0r1a','0','tkdd', tkddData);
+        l0r1('l0r1a','1','tkdd', tkddData);
+        l0r1('l0r1a','2','tkdd', tkddData);
+        l0r1('l0r1a','3','tkdd', tkddData);
+        l0r1('l0r1a','4','tkdd', tkddData);
+        l0r1('l0r1a','5','tkdd', tkddData);
+        //l0r1('l0r1a','6','tkdd', tkddData);
+        l0r1('l0r1a','7','tkdd', tkddData);
 
-        var $apbdData = jQuery.parseJSON(apbdData);
-        l0r1('l0r1b','0','apbd', $apbdData);
-        l0r1('l0r1b','1','apbd', $apbdData);
-        l0r1('l0r1b','2','apbd', $apbdData);
-        l0r1('l0r1b','3','apbd', $apbdData);
-        l0r1('l0r1b','4','apbd', $apbdData);
-        l0r1('l0r1b','5','apbd', $apbdData);
-        l0r1('l0r1b','6','apbd', $apbdData);
-        l0r1('l0r1b','7','apbd', $apbdData);
-        l0r1('l0r1b','8','apbd', $apbdData);
-        l0r1('l0r1b','9','apbd', $apbdData);
-        l0r1('l0r1b','10','apbd', $apbdData);
-        l0r1('l0r1b','11','apbd', $apbdData);
+        var apbdData = jQuery.parseJSON($apbdData);
+        l0r1('l0r1b','0','apbd', apbdData);
+        l0r1('l0r1b','1','apbd', apbdData);
+        l0r1('l0r1b','2','apbd', apbdData);
+        l0r1('l0r1b','3','apbd', apbdData);
+        l0r1('l0r1b','4','apbd', apbdData);
+        l0r1('l0r1b','5','apbd', apbdData);
+        l0r1('l0r1b','6','apbd', apbdData);
+        l0r1('l0r1b','7','apbd', apbdData);
+        l0r1('l0r1b','8','apbd', apbdData);
+        l0r1('l0r1b','9','apbd', apbdData);
+        l0r1('l0r1b','10','apbd', apbdData);
+        l0r1('l0r1b','11','apbd', apbdData);
 
-        var $infraUrl = baseUrl + '/get-infrastructure-data/' + thisYear;
-        var $simpananPemdaUrl = baseUrl + '/get-simpanan-pemda-data';
+        var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $thisYear;
+        var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
         l0r2('l0r2a', $infraUrl, true)
         l0r2('l0r2b', $simpananPemdaUrl, false)
 
-        var $realisasiTkddUrl = baseUrl + '/get-realisasi-tkdd-data/' + thisYear;
-        var $dakFisikUrl = baseUrl + '/get-dak-fisik-data/' + thisYear;
-        var $danaDesaUrl = baseUrl + '/get-dana-desa-data/' + thisYear;
-        var $belanjaUrl = baseUrl + '/get-belanja-data/' + thisYear;
-        var $realisasiPadUrl = baseUrl + '/get-realisasi-pad-data/' + thisYear;
+        var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $thisYear;
+        var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $thisYear;
+        var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + $thisYear;
+        var $belanjaUrl = $baseUrl + '/get-belanja-data/' + $thisYear;
+        var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + $thisYear;
         l0r3('l0r3grid', 'Realisasi-TKDD', $realisasiTkddUrl);
         l0r3('l0r3grid', 'DAK-Fisik', $dakFisikUrl);
         l0r3('l0r3grid', 'Dandes', $danaDesaUrl);
@@ -109,12 +109,12 @@
                     $percentage = numeral($percentage000).format('0.0');
 
                     $type = 'line';
-                    $year = $data[i].year.toString();
+                    $thn = $data[i].year.toString();
                     $value = $data[i].value;
                     $cat = $data[i].month;
 
-                    $content[i] = {name: $year, type: $type, data: $value};
-                    $legend[i] = $year;
+                    $content[i] = {name: $thn, type: $type, data: $value};
+                    $legend[i] = $thn;
                 }
 
                 var chartData = {
@@ -131,9 +131,9 @@
                 }
 
                 if (type == 'tkdd') {
-                    var linkdetail = baseUrl + '/level-1/tkdd/' + $id;
+                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + '2017';
                 } else {
-                    var linkdetail = baseUrl + '/level-1/apbd/' + $id;
+                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2017';
                 }
 
                 var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon sikd-icon-'+slug($name)+'"></span></a></li>';
@@ -505,4 +505,4 @@
 
     }
 
-}(window.jQuery, window, document, baseUrl, tkddData, apbdData, reportTypes, thisYear));
+}(window.jQuery, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear));

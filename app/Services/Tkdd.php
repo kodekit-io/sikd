@@ -81,7 +81,8 @@ class Tkdd
         return '';
     }
 
-    public function getMapChart($year, $postureId = 39)
+    //public function getMapChart($year, $postureId = 39)
+    public function getMapChart($year, $postureId)
     {
         $url = 'tkdd/1/' . $year . '/' . $postureId;
         $apiRequest = $this->sikd->get($url, []);
@@ -96,7 +97,8 @@ class Tkdd
         return \GuzzleHttp\json_encode($modifiedResult);
     }
 
-    public function getProvinceChart($year, $postureId = '39', $provinceId)
+    //public function getProvinceChart($year, $postureId = '39', $provinceId)
+    public function getProvinceChart($year, $postureId, $provinceId)
     {
         $url = 'tkdd/2/' . $year . '/' . $postureId . '/' . $provinceId;
 //        $url .= $provinceId != '' ? '/' . $provinceId : '';
@@ -111,4 +113,5 @@ class Tkdd
 
         return \GuzzleHttp\json_encode($modifiedResult);
     }
+    
 }

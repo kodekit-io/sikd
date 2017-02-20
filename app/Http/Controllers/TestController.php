@@ -25,4 +25,9 @@ class TestController extends Controller
         $result = $this->sikd->get('apbd/all/0/2016');
         var_dump($result);
     }
+    public function api()
+    {
+        $result = $this->sikd->get('tkdd/tabel/2016/3/992274');
+        dd($result);
+    }
 }

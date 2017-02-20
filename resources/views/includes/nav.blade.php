@@ -22,12 +22,12 @@
         </div>
         <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
             <li><a href="{!! url('/') !!}" title="Monitoring Nasional SIKD" uk-tooltip="pos: top-left"><span uk-icon="icon: home" class="uk-margin-small-right"></span> HOME</a></li>
-            <li><a href="{!! url('/level-1/tkdd/39') !!}" title="Data Nasional" uk-tooltip="pos: top-left"><span uk-icon="icon: thumbnails" class="uk-margin-small-right"></span> DATA NASIONAL</a></li>
+            <li><a href="{!! url('/level-1/tkdd/39/2017') !!}" title="Data Nasional" uk-tooltip="pos: top-left"><span uk-icon="icon: thumbnails" class="uk-margin-small-right"></span> DATA NASIONAL</a></li>
             <li class="uk-parent">
                 <a href="#" title="Data Provinsi" uk-tooltip="pos: top-left"><span uk-icon="icon: grid" class="uk-margin-small-right"></span> DATA PROVINSI</a>
                 <ul class="uk-nav-sub">
     				@foreach($gProvinces as $province)
-                        <li><a href="{!! url('/level-2/tkdd/39/2016/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
+                        <li><a href="{!! url('/level-2/tkdd/39/2017/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
                     @endforeach
                 </ul>
             </li>

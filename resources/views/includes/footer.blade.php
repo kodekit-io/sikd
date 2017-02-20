@@ -15,9 +15,6 @@
 
 @section('page-level-js-variables')
     <script type="text/javascript">
-        $(document).ready(function() {
-            //numeral.locale('id');
-        });
         var baseUrl = '{!! url('/') !!}';
     </script>
 @show

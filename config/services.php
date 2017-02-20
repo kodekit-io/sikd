@@ -35,7 +35,7 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
-    'mediawave' => [
+    'sikd' => [
         'base_url' => env('MWV_BASE_URL'),
         'base_url_v2' => env('MWV_BASE_URL_V2'),
         'app_key' => env('MWV_APP_KEY'),

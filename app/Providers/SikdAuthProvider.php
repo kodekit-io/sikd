@@ -6,12 +6,12 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Auth\GenericUser;
 
-class MediawaveAuthProvider implements UserProvider
+class SikdAuthProvider implements UserProvider
 {
     protected $user;
 
     /**
-     * MediawaveAuthProvider constructor.
+     * SikdAuthProvider constructor.
      */
     public function __construct()
     {

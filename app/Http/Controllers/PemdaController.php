@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\Pemda;
-use App\Service\Mediawave;
+use App\Service\Sikd;
 use Illuminate\Http\Request;
 
 class PemdaController extends Controller
@@ -13,17 +13,17 @@ class PemdaController extends Controller
      */
     private $pemdaService;
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawaveService;
+    private $sikdService;
     /**
      * PemdaController constructor.
      * @param Pemda $pemdaService
      */
-    public function __construct(Mediawave $mediawaveService, Pemda $pemdaService)
+    public function __construct(Sikd $sikdService, Pemda $pemdaService)
     {
         $this->pemdaService = $pemdaService;
-        $this->mediawaveService = $mediawaveService;
+        $this->sikdService = $sikdService;
     }
 
     public function profile($satkerCode,$year)
@@ -31,7 +31,7 @@ class PemdaController extends Controller
         $data['year'] = $year;
         $data['satkerCode'] = $satkerCode;
         $data['pemdaName'] = $this->pemdaService->getPemdaNameBySatkerCode($satkerCode);
-        $data['years'] = $this->mediawaveService->getAvailableYears();
+        $data['years'] = $this->sikdService->getAvailableYears();
 
         return view('sikd.level-3', $data);
     }

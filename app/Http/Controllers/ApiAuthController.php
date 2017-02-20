@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\Mediawave;
+use App\Service\Sikd;
 use Illuminate\Http\Request;
 
 class ApiAuthController extends Controller
@@ -10,20 +10,20 @@ class ApiAuthController extends Controller
 
     protected $apiService;
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawave;
+    private $sikd;
 
     /**
      * Create a new controller instance.
      *
-     * @param Mediawave $mediawave
+     * @param Sikd $sikd
      */
-    public function __construct(Mediawave $mediawave)
+    public function __construct(Sikd $sikd)
     {
         $this->middleware('guest', ['except' => 'logout']);
         // $this->apiService = new ApiService();
-        $this->mediawave = $mediawave;
+        $this->sikd = $sikd;
     }
 
     public function getLogin()
@@ -34,7 +34,7 @@ class ApiAuthController extends Controller
     public function postLogin(Request $request)
     {
         // $apiLoginResult = $this->apiService->login($params);
-        $apiLoginResult = $this->mediawave->getAccessToken($request->get('username'), $request->get('password'));
+        $apiLoginResult = $this->sikd->getAccessToken($request->get('username'), $request->get('password'));
 
         if ($apiLoginResult->status == 200) {
             $token = $apiLoginResult->result->access_token;

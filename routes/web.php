@@ -72,7 +72,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 
 Route::get('test/api-exception', 'MiscController@apiException');
 
-use App\Service\Mediawave;
+use App\Service\Sikd;
 use Illuminate\Support\Facades\Cache;
 
 Route::get('test/apbd', 'TestController@apbd');

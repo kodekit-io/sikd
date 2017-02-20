@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\Mediawave;
+use App\Service\Sikd;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawave;
+    private $sikd;
 
     /**
      * TestController constructor.
      */
-    public function __construct(Mediawave $mediawave)
+    public function __construct(Sikd $sikd)
     {
-        $this->mediawave = $mediawave;
+        $this->sikd = $sikd;
     }
 
     public function apbd()
     {
-        $result = $this->mediawave->get('apbd/all/0/2016');
+        $result = $this->sikd->get('apbd/all/0/2016');
         var_dump($result);
     }
 }

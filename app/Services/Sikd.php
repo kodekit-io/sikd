@@ -13,22 +13,22 @@ use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
-class Mediawave
+class Sikd
 {
     protected $url;
     protected $appKey;
     protected $client;
 
     /**
-     * Mediawave constructor.
+     * Sikd constructor.
      */
     public function __construct(Client $client)
     {
-        $this->urlV2 = config('services.mediawave.base_url_v2');
-        $this->url = config('services.mediawave.base_url');
-        $this->appKey = config('services.mediawave.app_key');
-        $this->clientId = config('services.mediawave.client_id');
-        $this->clientSecret = config('services.mediawave.client_secret');
+        $this->urlV2 = config('services.sikd.base_url_v2');
+        $this->url = config('services.sikd.base_url');
+        $this->appKey = config('services.sikd.app_key');
+        $this->clientId = config('services.sikd.client_id');
+        $this->clientSecret = config('services.sikd.client_secret');
         $this->client = $client;
     }
 

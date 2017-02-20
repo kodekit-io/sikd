@@ -61,6 +61,7 @@
 		$(document).ready(function() {
 			$('#tkdd45').hide();
 		});
+		var $baseUrl = "{!! url('/') !!}";
         var $provinceId = '{!! $provinceId !!}';
         var $year = '{!! $year !!}';
         var $type = '{!! $type !!}';

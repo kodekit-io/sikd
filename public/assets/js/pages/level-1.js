@@ -1,4 +1,4 @@
-(function ($, window, document, $reportName, $mapBaseUrl, $reportType, $postureId, $year) {
+(function ($, window, document, $reportName, $baseUrl, $mapBaseUrl, $reportType, $postureId, $year) {
     //console.log($postureId);
 
     $(function () {
@@ -158,4 +158,4 @@
             }
         });
     }
-}(window.jQuery, window, document, $reportName, $baseUrl, $reportType, $postureId, $year));
+}(window.jQuery, window, document, $reportName, $baseUrl, $mapBaseUrl, $reportType, $postureId, $year));

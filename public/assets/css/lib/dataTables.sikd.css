@@ -63,3 +63,19 @@ div.dataTables_wrapper .uk-inline.l, div.dataTables_wrapper .uk-inline.B {
 div.dataTables_wrapper .uk-inline.B {
     margin-left: 1rem;
 }
+td.details,
+td.details1,
+td.details2,
+td.details3,
+td.details4,
+td.details5
+{
+    padding: 0px !important;
+}
+table.dataTable td thead,
+table.dataTable td thead tr,
+table.dataTable td thead tr th {
+    visibility: hidden !important;
+    height: 0 !important;
+    padding: 0 !important;
+}

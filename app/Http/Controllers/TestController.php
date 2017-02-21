@@ -25,9 +25,39 @@ class TestController extends Controller
         $result = $this->sikd->get('apbd/all/0/2016');
         var_dump($result);
     }
-    public function api()
+    public function api5($a,$b,$c,$d,$e)
     {
-        $result = $this->sikd->get('tkdd/tabel/2016/3/992274');
-        dd($result);
+        $param = $a . '/' . $b . '/' . $c . '/' . $d . '/' . $e;
+        $result = $this->sikd->get($param);
+        //dd($result);
+        echo $param . '<br><pre>'.json_encode($result, JSON_PRETTY_PRINT).'</pre>';
+    }
+    public function api4($a,$b,$c,$d)
+    {
+        $param = $a . '/' . $b . '/' . $c . '/' . $d;
+        $result = $this->sikd->get($param);
+        //dd($result);
+        echo $param . '<br><pre>'.json_encode($result, JSON_PRETTY_PRINT).'</pre>';
+    }
+    public function api3($a,$b,$c)
+    {
+        $param = $a . '/' . $b . '/' . $c;
+        $result = $this->sikd->get($param);
+        //dd($result);
+        echo $param . '<br><pre>'.json_encode($result, JSON_PRETTY_PRINT).'</pre>';
+    }
+    public function api2($a,$b)
+    {
+        $param = $a . '/' . $b;
+        $result = $this->sikd->get($param);
+        //dd($result);
+        echo $param . '<br><pre>'.json_encode($result, JSON_PRETTY_PRINT).'</pre>';
+    }
+    public function api1($a)
+    {
+        $param = $a;
+        $result = $this->sikd->get($param);
+        //dd($result);
+        echo $param . '<br><pre>'.json_encode($result, JSON_PRETTY_PRINT).'</pre>';
     }
 }

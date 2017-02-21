@@ -37,12 +37,12 @@
 			<ul class="uk-switcher uk-margin">
 			    <li>
 					<div class="uk-overflow-auto">
-						<table id="tkdd" class="uk-table uk-table-striped uk-margin-remove" cellspacing="0" width="100%"></table>
+						<table id="tkdd" class="uk-table uk-margin-remove" cellspacing="0" width="100%"></table>
 					</div>
 				</li>
 				<li>
 					<div class="uk-overflow-auto">
-						<table id="apbd" class="uk-table uk-table-striped uk-margin-remove" cellspacing="0" width="100%"></table>
+						<table id="apbd" class="uk-table uk-margin-remove" cellspacing="0" width="100%"></table>
 					</div>
 				</li>
 				<li>

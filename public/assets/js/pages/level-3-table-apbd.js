@@ -2,7 +2,7 @@ var arrPush = [];
 var arrPush1 = [];
 var arrPush2 = [];
 $(document).ready(function() {
-    var ctl = "<a class='uk-icon uk-icon-plus'></a>";
+    var ctl = "<a class='fa fa-plus'></a>";
 
     function level0(result) {
         var apbd0 = $("#apbd").dataTable({
@@ -46,7 +46,7 @@ $(document).ready(function() {
 
         /* level_1 */
         $('#apbd').on("click", "td.control a",function() {
-            $(this).toggleClass('uk-icon-minus').toggleClass('uk-icon-plus');
+            $(this).toggleClass('fa-minus').toggleClass('fa-plus');
 
             var ntr = this.parentNode.parentNode;
             var a = $.inArray(ntr, arrPush);
@@ -96,7 +96,7 @@ $(document).ready(function() {
 
                 /* level_2 */
                 $('#apbd1'+pos).on("click", "td.control"+pos+" a",function() {
-                    $(this).toggleClass('uk-icon-minus').toggleClass('uk-icon-plus');
+                    $(this).toggleClass('fa-minus').toggleClass('fa-plus');
                     var ntr1 = this.parentNode.parentNode;
                     var b = $.inArray(ntr1, arrPush1);
                     if (b === -1) {
@@ -145,7 +145,7 @@ $(document).ready(function() {
 
                         /* level_3 */
                         $('#apbd2'+ pos +''+ pos1).on("click", "td.control"+pos+pos1+" a",function() {
-                            $(this).toggleClass('uk-icon-minus').toggleClass('uk-icon-plus');
+                            $(this).toggleClass('fa-minus').toggleClass('fa-plus');
                             var ntr2 = this.parentNode.parentNode;
                             var c = $.inArray(ntr2, arrPush2);
                             if (c === -1) {
@@ -219,4 +219,11 @@ $(document).ready(function() {
     $.getJSON($apbdTableUrl, function(result) {
         level0(result);
     });
+    
+    /*
+    var $apbdTableUrl = $baseUrl + '/data/L3_Table_APBD.json';
+    $.getJSON($apbdTableUrl, function(result) {
+        level0(result);
+    });
+    */
 });

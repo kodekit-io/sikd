@@ -94,6 +94,7 @@
                 $data = $result[n].trend;
                 $id = $result[n].id;
                 $name = $result[n].name;
+                $icon = $result[n].icon;
                 $info = $result[n].info;
                 $achievement = $result[n].achievement;
 
@@ -136,7 +137,7 @@
                     var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2017';
                 }
 
-                var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon sikd-icon-'+slug($name)+'"></span></a></li>';
+                var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';
                 $('#'+div+'TabItem').append(tabItem);
 
                 var p = '<div class="uk-progress">'
@@ -195,9 +196,6 @@
                         trigger: 'axis',
                         axisPointer : {
                             type : 'shadow'
-                        },
-                        position: function (point, params, dom) {
-                            return [point[0], '10%'];
                         },
                         formatter: function (params){
                             //console.log(params);

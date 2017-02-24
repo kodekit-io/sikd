@@ -67,7 +67,7 @@ class Sikd
         return $parsedResponse;
     }
 
-    public function get($url, $apiVersion = 1, $withToken = true, $cached = true)
+    public function get($url, $apiVersion = 1, $withToken = true, $cached = false)
     {
         // days * hours * minutes
         $minutes = 5 * 24 * 60;

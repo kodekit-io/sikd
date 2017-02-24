@@ -32,8 +32,8 @@
 
         var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $thisYear;
         var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
-        l0r2('l0r2a', $infraUrl, true)
-        l0r2('l0r2b', $simpananPemdaUrl, false)
+        l0r2a('l0r2a', $infraUrl, true);
+        l0r2b('l0r2b', $simpananPemdaUrl);
 
         var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $thisYear;
         var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $thisYear;
@@ -77,7 +77,7 @@
 
 
     function l0r1(div,n,type,result) {
-        console.log(result);
+        //console.log(result);
         numeral.locale('id');
         if(type==='apbd') {
             $result = result.apbd;
@@ -274,7 +274,7 @@
             }
         }
     }
-    function l0r2(id, chartUrl, stack) {
+    function l0r2a(id, chartUrl, stack) {
         numeral.locale('id');
         $.ajax({
             //url: 'data/L0_row2_infrastruktur.json',
@@ -312,7 +312,6 @@
                         legend: $legend,
     					series: $series
                     }
-
 
                     //CHART
                     var dom = document.getElementById(id);
@@ -417,7 +416,7 @@
                         $('.bxslider').bxSlider({
                             auto: true,
                             controls: false,
-                            pause: 10000,
+                            pause: 24000,
                             mode: 'fade',
             				onSliderLoad: function(currentIndex) {
             			        $(window).trigger('resize');
@@ -436,7 +435,166 @@
             }
         });
     }
+    function l0r2b(id, chartUrl) {
+        numeral.locale('id');
+        $.ajax({
+            //url: 'data/L0_row2_infrastruktur.json',
+            url: chartUrl,
+            //dataType: 'json',
+            success: function(result){
+                //console.log(result);
+                result = jQuery.parseJSON(result);
+                var data = result.trend;
+                //console.log(data);
+                var t = result.name;
 
+                if (data.length === 0) {
+                    $('#'+id).html("<div class='center'>No Data</div>");
+                } else {
+                    var $series=[], $legend=[];
+                    //console.log(data.length);
+                    for (var i = 0; i < data.length; i++) {
+                        $year = String(data[i].year);
+                        $month = data[i].month;
+                        $value = data[i].value;
+                        $legend[i] = $year;
+
+                        $series[i] = {
+                            name: $year,
+                            type:'line',
+                            data: $value
+                        }
+                    }
+
+                    var dataseries = {
+                        cat: $month,
+                        legend: $legend,
+                        series: $series
+                    }
+                    console.log(dataseries.legend);
+
+                    //CHART
+                    var dom = document.getElementById(id);
+                    var theme = 'default';
+                    var theChart = echarts.init(dom,theme);
+                    var loadingTicket;
+                    var effectIndex = -1;
+                    var effect = ['spin'];
+
+                    theChart.showLoading({
+                        text : '',
+                    });
+
+                    var option = {
+                        backgroundColor: '#fff',
+                        title: {
+                            text: t,
+                            left: 'center',
+                            top: 10
+                        },
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {
+                                type : 'shadow'
+                            },
+                            position: function (point, params, dom) {
+                                return [point[0], '10%'];
+                            },
+                            formatter: function (params){
+                                //console.log(params);
+                                var naam=[], waarde=[], color=[], serie=[];
+                                for (var i = 0; i < params.length; i++) {
+                                    naam[i] = params[i].seriesName;
+                                    waarde[i] = numeral(params[i].value).format('0.00a');
+                                    color[i] = '<i class="fa fa-circle fa-fw" style="color:'+params[i].color+'"></i>';
+                                    serie[i] = '<br>'+color[i]+' '+naam[i]+' '+waarde[i];
+                                }
+                                return '<strong>' + params[0].name + '</strong>' + serie.join('');
+                            }
+                        },
+                        legend: {
+                            data: dataseries.legend,
+                            x: 'left',
+                            bottom: 0,
+                        },
+                        grid: {
+                            x: '30px',
+                            x2: '10px',
+                            y: '10px',
+                            y2: '50px'
+                        },
+                        toolbox: {
+                            show: true,
+                            x: 'right',
+                            bottom: 0,
+                            padding: ['0', '0', '0', '0'],
+                            feature: {
+                                mark: {show: true},
+                                //dataView : {show: false, readOnly: false},
+                                magicType: {
+                                    show: true,
+                                    type: ['stack', 'tiled'],
+                                    title: {stack: 'Stack', tiled: 'Bar'},
+                                },
+                                restore: {show: true, title: 'Reload'},
+                                saveAsImage: {show: true, title: 'Save'}
+                            }
+                        },
+                        //calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : dataseries.cat,
+                                axisLabel: {
+                                    textStyle: {
+                                        fontSize: 10
+                                    },
+                                    interval: 0,
+                                    rotate: 15
+                                }
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value',
+                                axisLabel: {
+                                    textStyle: {
+                                        fontSize: 10
+                                    },
+                                    formatter: function (v) {
+                                        $v = numeral(v).format('0a');
+                                        return $v;
+                                    }
+                                },
+                            }
+                        ],
+                        series : dataseries.series
+                    };
+
+                    clearTimeout(loadingTicket);
+                    loadingTicket = setTimeout(function (){
+                        /*$('.bxslider').bxSlider({
+                            auto: true,
+                            controls: false,
+                            pause: 10000,
+                            mode: 'fade',
+                            onSliderLoad: function(currentIndex) {
+                                $(window).trigger('resize');
+                            },
+                        });*/
+                        theChart.hideLoading();
+                        theChart.setOption(option);
+                        theChart.resize();
+                    },1000);
+                    $(window).on('resize', function(){
+                        if(theChart != null && theChart != undefined){
+                            theChart.resize();
+                        }
+                    });
+                }
+            }
+        });
+    }
 
     function l0r3(id, type, url) {
         numeral.locale('id');

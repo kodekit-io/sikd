@@ -192,7 +192,8 @@
                 });
                 var option = {
                     tooltip: {
-                        trigger: 'axis'
+                        trigger: 'axis',
+                        formatter: '{b}<br>{a0} {c0}%<br>{a1} {c1}%'
                     },
                     legend: {
                         data: chartData.legend,

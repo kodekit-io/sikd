@@ -191,9 +191,25 @@
                     text: '',
                 });
                 var option = {
-                    tooltip: {
+                    tooltip : {
                         trigger: 'axis',
-                        formatter: '{b}<br>{a0} {c0}%<br>{a1} {c1}%'
+                        axisPointer : {
+                            type : 'shadow'
+                        },
+                        position: function (point, params, dom) {
+                            return [point[0], '10%'];
+                        },
+                        formatter: function (params){
+                            //console.log(params);
+                            var naam=[], waarde=[], color=[], serie=[];
+                            for (var i = 0; i < params.length; i++) {
+                                naam[i] = params[i].seriesName;
+                                waarde[i] = numeral(params[i].value).format('0.00a');
+                                color[i] = '<i class="fa fa-circle fa-fw" style="color:'+params[i].color+'"></i>';
+                                serie[i] = '<br>'+color[i]+' '+naam[i]+' '+waarde[i]+'%';
+                            }
+                            return '<strong>' + params[0].name + '</strong>' + serie.join('');
+                        }
                     },
                     legend: {
                         data: chartData.legend,

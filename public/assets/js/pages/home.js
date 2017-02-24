@@ -1,5 +1,4 @@
 (function ($, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear) {
-
     $(function () {
         l0r1card('l0r1a');
         l0r1card('l0r1b');
@@ -149,7 +148,7 @@
                         + '<div class="uk-grid-collapse" uk-grid>'
                             + '<div class="uk-width-1-2"><h4 class="sikd-l0r1-title uk-text-uppercase sikd-blue-text">'+$name+'</h4></div>'
                             + '<div class="uk-width-1-2">'
-                                + '<div class="uk-grid-collapse" uk-grid>'
+                                + '<div class="uk-grid-collapse progress-wrap" uk-grid>'
                                     + '<div class="uk-width-auto">'
                                         + '<div class="sikd-progress-persen">'+$percentage+'%</div>'
                                     + '</div>'

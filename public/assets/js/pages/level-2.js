@@ -1,5 +1,5 @@
 (function ($, window, document, $baseUrl, $type, $postureId, $year, $provinceId) {
-    //console.log($postureId);
+    console.log('type:'+$type+' posture:'+$postureId+' year:'+$year+' prov:'+$provinceId);
 
     $(function () {
         var url = $baseUrl + '/get-province-chart/' + $type + '/' + $postureId + '/' + $year + '/' + $provinceId;

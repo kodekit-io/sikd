@@ -1,5 +1,5 @@
-(function ($, window, document, $reportName, $baseUrl, $reportType, $postureId, $year) {
-    //console.log($postureId);
+(function ($, window, document, $baseUrl, $reportName, $reportType, $postureId, $year) {
+    console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
 
     $(function () {
         var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
@@ -158,4 +158,4 @@
             }
         });
     }
-}(window.jQuery, window, document, $reportName, $baseUrl, $reportType, $postureId, $year));
+}(window.jQuery, window, document, $baseUrl, $reportName, $reportType, $postureId, $year));

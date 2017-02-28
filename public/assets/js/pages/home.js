@@ -131,9 +131,9 @@
                 }
 
                 if (type == 'tkdd') {
-                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + '2017';
+                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + '2016';
                 } else {
-                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2017';
+                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2016';
                 }
 
                 var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';

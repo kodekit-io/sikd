@@ -4,7 +4,12 @@
     $(function () {
         //var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
         var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
-        l1Map($reportName,$url);
+        if ($reportType==='apbd' && $postureId==='10') {
+            $title = 'LRA';
+        } else {
+            $title = $reportName;
+        }
+        l1Map($title,$url);
     });
 
     function l1Map(title,type) {
@@ -24,7 +29,7 @@
                 }
             },
             success : function(result) {
-                //console.log(result);
+                console.log(result);
                 result = jQuery.parseJSON(result);
                 data = result.result.map;
                 if (data.length > 0) {

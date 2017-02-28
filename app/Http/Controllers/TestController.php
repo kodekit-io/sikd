@@ -25,9 +25,14 @@ class TestController extends Controller
         $result = $this->sikd->get('apbd/all/0/2016');
         var_dump($result);
     }
-    public function map($a,$b,$c)
+    public function map($reportType,$year,$postureId)
     {
-        $param = $a . '/1/' . $b . '/' . $c;
+        if ($reportType==='apbd' && $postureId==='10') {
+            $param = $reportType . '/lra/1/' . $year;
+        } else {
+            $param = $reportType . '/1/' . $year . '/' . $postureId;
+        }
+
         $result = $this->sikd->get($param);
         //dd($result);
         return \GuzzleHttp\json_encode($result);

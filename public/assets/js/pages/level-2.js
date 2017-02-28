@@ -23,7 +23,7 @@
                 }
             },
             success : function(result) {
-                console.log(result);
+                //console.log(result);
                 $result = $.parseJSON(result);
                 data = $result.data;
                 //console.log(result);

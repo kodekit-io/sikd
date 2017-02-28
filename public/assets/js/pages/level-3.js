@@ -1,4 +1,5 @@
 (function ($, window, document, $satkerCode, $year) {
+    console.log('satkerCode:'+$satkerCode+' year:'+$year);
 
     $(function () {
 		var url = $baseUrl + '/get-pemda-chart/' + $year + '/' + $satkerCode;

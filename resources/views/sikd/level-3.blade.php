@@ -7,7 +7,7 @@
 	<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-animation-fade l3card">
 		<div class="uk-card-header uk-grid-small" uk-grid>
 			<div class="uk-width-expand@m">
-				<h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove uk-text-uppercase">Profil {!! $pemdaName !!} Tahun {!! $year !!}</h3>
+				<h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove uk-text-uppercase">Profil {!! $pemdaName !!} Tahun <span id="tahun">{!! $year !!}</span></h3>
 			</div>
 			<div class="uk-width-auto@m">
 				<button class="uk-button uk-button-small uk-button-default " type="button"><span class="uk-visible@m">PILIH </span>TAHUN <span uk-icon="icon: chevron-down"></span></button>
@@ -61,7 +61,7 @@
 			$(window).trigger('resize');
 		});
 		var $baseUrl = '{!! url('/') !!}';
-		var $year = '{!! $year !!}';
+		var $year = $('#tahun').text();
 		var $satkerCode = '{!! $satkerCode !!}';
 	</script>
 	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>

@@ -76,6 +76,7 @@ use App\Service\Sikd;
 use Illuminate\Support\Facades\Cache;
 
 Route::get('test/apbd', 'TestController@apbd');
+Route::get('test/map/{a}/{b}/{c}', 'TestController@map');
 Route::get('test/api-5/{a}/{b}/{c}/{d}/{e}', 'TestController@api5');
 Route::get('test/api-4/{a}/{b}/{c}/{d}', 'TestController@api4');
 Route::get('test/api-3/{a}/{b}/{c}', 'TestController@api3');

@@ -25,6 +25,13 @@ class TestController extends Controller
         $result = $this->sikd->get('apbd/all/0/2016');
         var_dump($result);
     }
+    public function map($a,$b,$c)
+    {
+        $param = $a . '/1/' . $b . '/' . $c;
+        $result = $this->sikd->get($param);
+        //dd($result);
+        return \GuzzleHttp\json_encode($result);
+    }
     public function api5($a,$b,$c,$d,$e)
     {
         $param = $a . '/' . $b . '/' . $c . '/' . $d . '/' . $e;

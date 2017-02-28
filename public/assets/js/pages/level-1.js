@@ -2,7 +2,8 @@
     console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
 
     $(function () {
-        var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
+        //var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
+        var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
         l1Map($reportName,$url);
     });
 
@@ -23,9 +24,9 @@
                 }
             },
             success : function(result) {
-                console.log(result);
+                //console.log(result);
                 result = jQuery.parseJSON(result);
-                data = result.data;
+                data = result.result.map;
                 if (data.length > 0) {
                     var $content = [];
                     var $arrayval = [];
@@ -151,6 +152,8 @@
                         });
                     });
 
+                } else {
+                    $('#map').append('<div class="uk-position-center">Tidak ada data!</div>');
                 }
             },
             error: function (request, status, error) {

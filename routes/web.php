@@ -7,9 +7,11 @@ Route::get('/', function () {
 Route::get('/tentang', function () {
     return view('sikd.page-tentang');
 });
+
 Route::get('/disclaimer', function () {
     return view('sikd.page-disclaimer');
 });
+
 Route::get('/panduan', function () {
     return view('sikd.page-panduan');
 });

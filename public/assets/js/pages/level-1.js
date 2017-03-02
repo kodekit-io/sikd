@@ -2,8 +2,8 @@
     console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
 
     $(function () {
-        //var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
-        var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
+        var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
+        //var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
         if ($reportType==='apbd' && $postureId==='10') {
             $title = 'LRA';
         } else {
@@ -31,7 +31,8 @@
             success : function(result) {
                 console.log(result);
                 result = jQuery.parseJSON(result);
-                data = result.result.map;
+                //data = result.result.map;
+                data = result.data;
                 if (data.length > 0) {
                     var $content = [];
                     var $arrayval = [];

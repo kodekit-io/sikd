@@ -53,7 +53,7 @@ class MapController extends Controller
         $data['postures'] = $this->tkddService->getPostures();
         $data['postureId'] = $postureId;
         $data['reportType'] = $type;
-        $data['year'] = $year;
+        $data['yearParam'] = $year;
         $data['years'] = $this->sikdService->getAvailableYears();
 
         return view('sikd.level-1', $data);
@@ -61,7 +61,7 @@ class MapController extends Controller
 
     public function getMapChart($type, $year = '2016', $postureId)
     {
-        if ($type = 'tkdd') {
+        if ($type == 'tkdd') {
             return $this->tkddService->getMapChart($year, $postureId);
         }
 

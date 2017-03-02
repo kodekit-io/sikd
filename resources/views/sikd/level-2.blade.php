@@ -31,6 +31,7 @@
 						@foreach($apbdPostures as $apbdPosture)
 		                    <li><a href="{!! url('level-2/apbd/' . $apbdPosture->id . '/' . $year . '/' . $provinceId) !!}">{!! $apbdPosture->name !!}</a></li>
 		                @endforeach
+						<li><a href="{!! url('level-2/apbd/lra/' . $year . '/' . $provinceId) !!}">LRA</a></li>
 					</ul>
 				</div>
 
@@ -63,7 +64,7 @@
 		});
 		var $baseUrl = "{!! url('/') !!}";
         var $provinceId = '{!! $provinceId !!}';
-        var $year = $('#tahun').text();
+        var $year = "{!! $year !!}";
         var $type = '{!! $type !!}';
         var $postureId = '{!! $postureId !!}';
     </script>

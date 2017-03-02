@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\Mediawave;
+use App\Service\Sikd;
 use Illuminate\Http\Request;
 
 class MiscController extends Controller
 {
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawave;
+    private $sikd;
 
     /**
      * MiscController constructor.
-     * @param Mediawave $mediawave
+     * @param Sikd $sikd
      */
-    public function __construct(Mediawave $mediawave)
+    public function __construct(Sikd $sikd)
     {
-        $this->mediawave = $mediawave;
+        $this->sikd = $sikd;
     }
 
     public function apiException()
     {
         $params = [ 'tahun' => 2019 ];
-        $response = $this->mediawave->get('TKDD', $params);
+        $response = $this->sikd->get('TKDD', $params);
         var_dump($response);
     }
 }

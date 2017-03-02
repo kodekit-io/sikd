@@ -1,71 +1,40 @@
-<div class="navbar-fixed">
-	<nav class="white z-depth-1 soft">
-		<div class="nav-wrapper">
-			<a href="#" data-activates="sidedrawer" class="left sikd-btn-sidedrawer sikd-blue"><i class="material-icons">menu</i></a>
-
-			<h1 class="sikd-page-title left">
-				<a href="{!! url('/') !!}"  title="Monitoring Nasional SIKD" class="sikd-blue">
-					<img class="sikd-logo" src="{!! asset('assets/img/icon.png') !!}">
-					<span class="uk-hidden-small">Monitoring Nasional SIKD</span>
-				</a>
-			</h1>
-
-
-			<ul class="right uk-subnav uk-margin-right">
-				<li>
-					<a class="btn-floating waves-effect waves-light z-depth-0 grey" title="Screenshot" data-uk-tooltip onclick="capture();"><i class="material-icons">camera_enhance</i></a>
-				</li>
-				<li>
-					<a class="btn-floating waves-effect waves-light z-depth-0 grey" data-uk-tooltip title="Refresh Page" onclick="location.reload();"><i class="material-icons">refresh</i></a>
-				</li>
-				<li>
-					<span class="chip sikd-account">
-						<i class="material-icons sikd-chip-contact">account_circle</i>
-						<span class="uk-hidden-small">{!! auth()->user()->email !!}</span>
-					</span>
-					<?php /*
-					<a class="chip sikd-account" data-activates="sikd-account-dropdown" data-beloworigin="true" data-hover="true" data-alignment="right" data-constrainwidth="false">
-						<i class="material-icons sikd-chip-contact">account_circle</i>
-						<span class="uk-hidden-small">djpk@kemenkeu.go.id</span>
-					</a>
-					<div id="sikd-account-dropdown" class="dropdown-content transparent z-depth-0">
-						<ul>
-
-							<li><a href="{!! url('/account-profile') !!}"><i class="uk-icon-user uk-margin-small-right"></i> My Account</a></li>
-							<?php //if user can ?>
-							<li><a href="{!! url('/account-manage') !!}"><i class="uk-icon-users uk-margin-small-right"></i> Manage Account</a></li>
-							<li><a href="{!! url('/content-management') !!}"><i class="uk-icon-cog uk-margin-small-right"></i> Content Management</a></li>
-							<?php //end if  ?>
-
-							<li><a href="{!! url('logout') !!}"><i class="uk-icon-power-off uk-margin-small-right"></i> Logout</a></li>
-						</ul>
-					</div>
-					*/ ?>
-				</li>
-			</ul>
-		</div>
-	</nav>
+<nav class="sikd-nav-side">
+    <div class="uk-padding-small">
+        <ul class="uk-nav uk-nav-default">
+            <li><a href="#offcanvas" title="Open Menu" uk-tooltip="pos: bottom-left" uk-toggle><span uk-icon="icon: menu"></span></a></li>
+            <li><a href="{!! url('/') !!}" title="Monitoring Nasional SIKD" uk-tooltip="pos: bottom-left"><span uk-icon="icon: home"></span></a></li>
+            <li class="uk-nav-divider"></li>
+            <li><a title="Refresh Page" uk-tooltip="pos: bottom-left" onclick="location.reload();"><span uk-icon="icon: refresh"></span></a></li>
+            <li><a title="Screenshot" uk-tooltip="pos: bottom-left" onclick="capture();"><span uk-icon="icon: camera"></span></a></li>
+            <li><a href="{!! url('logout') !!}" title="Logout" uk-tooltip="pos: bottom-left"><span uk-icon="icon: sign-out" style="top:0"></span></a></li>
+        </ul>
+    </div>
+</nav>
+<div id="offcanvas" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+        <div class="uk-cover-container sikd-cover-title">
+            <img class="uk-blend-multiply" src="{!! asset('assets/img/img-login.jpg') !!}" alt="SIKD" uk-cover>
+            <canvas width="300" height="300"></canvas>
+            <h1 class="sikd-login-title">
+                <div class="sikd-login-logo"><img class="sikd-logo" src="{!! asset('assets/img/logo-white.png') !!}"></div>
+                Dashboard Executive Information System SIKD
+            </h1>
+        </div>
+        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+            <li><a href="{!! url('/') !!}" title="Monitoring Nasional SIKD" uk-tooltip="pos: top-left"><span uk-icon="icon: home" class="uk-margin-small-right"></span> HOME</a></li>
+            <li><a href="{!! url('/level-1/tkdd/39/2017') !!}" title="Data Nasional" uk-tooltip="pos: top-left"><span uk-icon="icon: thumbnails" class="uk-margin-small-right"></span> DATA NASIONAL</a></li>
+            <li class="uk-parent">
+                <a href="#" title="Data Provinsi" uk-tooltip="pos: top-left"><span uk-icon="icon: grid" class="uk-margin-small-right"></span> DATA PROVINSI</a>
+                <ul class="uk-nav-sub">
+    				@foreach($gProvinces as $province)
+                        <li><a href="{!! url('/level-2/tkdd/39/2017/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
+                    @endforeach
+                </ul>
+            </li>
+            <li class="uk-nav-divider"></li>
+            <li><a title="Refresh Page" uk-tooltip="pos: top-left" onclick="location.reload();"><span class="uk-margin-small-right" uk-icon="icon: refresh"></span> Refresh</a></li>
+            <li><a title="Screenshot" uk-tooltip="pos: top-left" onclick="capture();"><span class="uk-margin-small-right" uk-icon="icon: camera"></span> Screenshot</a></li>
+            <li><a href="{!! url('logout') !!}" title="Logout" uk-tooltip="pos: top-left"><span class="uk-margin-small-right" uk-icon="icon: sign-out" style="top:0"></span> Logout</a></li>
+        </ul>
+    </div>
 </div>
-
-<ul id="sidedrawer" class="side-nav collapsible collapsible-accordion">
-	<li class=" sikd-page-title center">
-		<img class="sikd-logo" src="{!! asset('assets/img/logo.png') !!}">
-	</li>
-	<li><a href="{!! url('/') !!}"><i class="uk-icon uk-icon-home uk-icon-justify"></i> BERANDA</a></li>
-
-	<li><a href="{!! url('/level-1/tkdd') !!}/39"><i class="uk-icon uk-icon-th-large uk-icon-justify"></i> DATA NASIONAL</a></li>
-
-	<li>
-		<a class="collapsible-header"><i class="uk-icon uk-icon-th uk-icon-justify"></i> DATA PROVINSI<i class="material-icons right">arrow_drop_down</i></a>
-
-		<div class="collapsible-body">
-			<ul>
-				@foreach($gProvinces as $province)
-                    <li><a href="{!! url('/level-2/tkdd/39/2016/' . $province['id']) !!}">{!! $province['name'] !!}</a></li>
-                @endforeach
-			</ul>
-		</div>
-
-	</li>
-	<li><a href="{!! url('logout') !!}"><i class="uk-icon uk-icon-power-off uk-icon-justify"></i> LOGOUT</a></li>
-</ul>

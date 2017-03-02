@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\Apbd;
-use App\Service\Mediawave;
+use App\Service\Sikd;
 use App\Service\Province;
 use App\Service\ReportType;
 use App\Service\Tkdd;
@@ -26,23 +26,23 @@ class ProvinceController extends Controller
      */
     private $tkddService;
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawaveService;
+    private $sikdService;
 
     /**
      * ProvinceController constructor.
-     * @param Mediawave $mediawaveService
+     * @param Sikd $sikdService
      * @param Province $provinceService
      * @param Apbd $apbdService
      * @param Tkdd $tkddService
      */
-    public function __construct(Mediawave $mediawaveService, Province $provinceService, Apbd $apbdService, Tkdd $tkddService)
+    public function __construct(Sikd $sikdService, Province $provinceService, Apbd $apbdService, Tkdd $tkddService)
     {
         $this->provinceService = $provinceService;
         $this->apbdService = $apbdService;
         $this->tkddService = $tkddService;
-        $this->mediawaveService = $mediawaveService;
+        $this->sikdService = $sikdService;
     }
 
     public function province($type, $postureId, $year, $provinceId)
@@ -61,7 +61,7 @@ class ProvinceController extends Controller
         $data['provinceName'] = $this->provinceService->getProvinceNameById($provinceId);
         $data['apbdPostures'] = $this->apbdService->getPostures();
         $data['tkddPostures'] = $this->tkddService->getPostures();
-        $data['years'] = $this->mediawaveService->getAvailableYears();
+        $data['years'] = $this->sikdService->getAvailableYears();
 
         return view('sikd.level-2', $data);
     }

@@ -1,71 +1,93 @@
-$(document).ready(function() {
-    // var url = "data/L3_A_detail-kotakab-top.json";
-	var url = $baseUrl + '/get-pemda-chart/' + $year + '/' + $satkerCode;
+(function ($, window, document, $satkerCode, $year) {
+    console.log('satkerCode:'+$satkerCode+' year:'+$year);
 
-	function panelMap(id) {
+    $(function () {
+		var url = $baseUrl + '/get-pemda-chart/' + $year + '/' + $satkerCode;
+
+		panelMap('panel1',url);
+		panelGauge('1','panel2',url);
+	    panelGauge('2','panel3',url);
+	    panelGauge('3','panel4',url);
+	    panelGauge('4','panel5',url);
+    });
+
+	function panelMap(div,url) {
+        var w = $('#'+div).width();
+        $('#'+div).height(w);
+		var x = 0;
 	    $.ajax({
 	        url : url,
 	        beforeSend : function(xhr) {
-	            $('#'+id).hide();
+				$('#'+div).append('<div class="preload"><div class="uk-position-center" uk-spinner></div></div>');
+                x++;
 	        },
 	        complete : function(xhr, status) {
-	            $('#'+id).show();
+				x--;
+                if (x <= 0) {
+                    $('#'+div+' .preload').remove();
+                }
 	        },
 	        success : function(result) {
 	            result = jQuery.parseJSON(result);
 	            data = result.detailKotakabTop[0].mapInfo;
 	            detail = result.detailKotakabTop[0].detail;
-
+                //console.log(data+' + '+detail);
 	            if (data.id == undefined) {
-					$('#'+id).html("<div class='center'>No data</div>");
+					$('#'+div).append('<div class="uk-border-rounded" style="height:'+w+'px;background:rgba(200, 200, 200, 0.25);">Tidak ada data</div>');
 				} else {
-                    $mapId = data.id;
-                    $mapName = data.name;
-                    $mapImg = data.image;
-                    $mapDetail = detail;
-                    $mapTitle = $mapDetail.title;
-                    $mapValue = $mapDetail.value;
+					var tr = [];
+					for(var i = 1; i < detail.title.length; i++) {
+						tr[i] = '<tr>'
+							+ '<td>' + detail.title[i] + '</td>'
+							+ '<td>' + detail.value[i] + '</td>'
+						+ '</tr>';
+					}
 
-					var panelmap = '<div class="card-panel z-depth-3 soft hoverable bgmap uk-margin-remove" style="background-image:url('+$mapImg+')"> \
-						<div class="note"> \
-							<h5 class="uk-margin-remove">'+$mapTitle[0]+' ('+$mapValue[0]+')</h5> \
-							<ul class="uk-grid uk-grid-collapse uk-grid-width-1-2"> \
-								<li>'+$mapTitle[1]+'</li><li>'+$mapValue[1]+'</li> \
-								<li>'+$mapTitle[2]+'</li><li>'+$mapValue[2]+'</li> \
-								<li>'+$mapTitle[3]+'</li><li>'+$mapValue[3]+'</li> \
-								<li>'+$mapTitle[4]+'</li><li>'+$mapValue[4]+'</li> \
-							</ul> \
-						</div> \
-					</div>';
-					$('#'+id).html(panelmap);
+					var panel = '<div class="uk-cover-container uk-border-rounded green lighten-5" style="height:'+w+'px">'
+					    + '<img class="uk-blend-multiply" src="'+data.image+'" alt="" uk-cover>'
+					    + '<div class="uk-overlay uk-overlay-default uk-position-bottom uk-padding-small">'
+							+ '<h5 class="uk-margin-small-bottom">'+detail.title[0]+' ('+detail.value[0]+')</h5>'
+					        + '<table cellspacing="0" cellpadding="0" width="100%">'+tr.join('')+'</table>'
+					    + '</div>'
+					+ '</div>';
+					$('#'+div).append(panel);
 	            }
-	        }
+	        },
+            error: function (request, status, error) {
+                $('#'+div).append('<div class="uk-position-center">FOUT!</div>');
+            }
 	    });
 	}
-	function panelGauge(id,divID) {
-        //id = jenis data
-        //divID = id container
-
-        $.ajax({
+	function panelGauge(id,div,url) {
+		numeral.locale('id');
+		var x = 0;
+	    $.ajax({
 	        url : url,
 	        beforeSend : function(xhr) {
-	            $('#'+divID).hide();
+				$('#'+div).append('<div class="preload"><div class="uk-position-center" uk-spinner></div></div>');
+                x++;
 	        },
 	        complete : function(xhr, status) {
-	            $('#'+divID).show();
+				x--;
+                if (x <= 0) {
+                    $('#'+div+' .preload').remove();
+                }
 	        },
 	        success : function(result) {
 	            result = jQuery.parseJSON(result);
 	            data = result.detailKotakabTop[id];
 	            //console.log(data);
 	            if (data.length === 0) {
-					$('#'+divID).html("<div class='center'>No data</div>");
+					$('#'+div).append('<div>Geen data</div>');
 				} else {
                     $id = data.id;
                     $name = data.name;
                     $target = data.target;
                     $realisasi = (data.realization != undefined) ? data.realization : 0;
                     $value = (data.percentage != undefined) ? data.percentage : (data.value != undefined) ? data.value : 0;
+					//$value = numeral($value000).format('0.0');
+					//$target = numeral($target000).format('0.00a');
+					//$realisasi = numeral($realisasi000).format('0.00a');
 
                     var chartData = {
                         i : $id,
@@ -76,34 +98,29 @@ $(document).ready(function() {
 						p : $realisasi/$target * 100,
 					};
                     //console.log(chartData);
-                    var value = chartData.p;
-                    value = Math.round(value * 1) / 1;
+                    //var value = chartData.p;
+                    //value = Math.round(value * 1) / 1;
                     //console.log(value);
-
-					var panelgauge = '<div class="card-panel z-depth-3 soft hoverable uk-margin-remove"> \
-        				<div id="'+divID+'gauge" class="skid-gauge"></div> \
-        			</div>';
-					$('#'+divID).html(panelgauge);
-
-                    var w = $('.uk-width-1-5').width();
-					$('.skid-gauge').width(w-40);
+					var paneltitle = '<h5 class="sikd-title-gauge">'+chartData.n+'</h5>';
+					var panelgauge = '<div id="'+div+'gauge" class="sikd-gauge uk-border-rounded"></div>';
+					$('#'+div).append( paneltitle + panelgauge);
 
                     //CHART
-					var dom = document.getElementById(divID+'gauge');
-					var theme = 'sikd';
+					var dom = document.getElementById(div+'gauge');
+					var theme = 'default';
 					var chart = echarts.init(dom,theme);
 			        var loadingTicket;
 			        var effectIndex = -1;
 			        var effect = ['spin'];
-					//var effectIndex = ++effectIndex % effect.length;
 					chart.showLoading({
 						text : '',
-						//effect : effect[effectIndex],
 					});
 
-                    var optionTooltip = "";
+                    //var optionTooltip = "";
                     if (id==3) {
-                        optionTooltip = chartData.n+'('+chartData.v+')<br>Realisasi: '+chartData.r+' Bulan<br>Target: '+chartData.t+' Bulan';
+                        optionTooltip = chartData.n+' ('+ numeral(chartData.v).format('0.0') +'%)<br>'
+							+ 'Target: '+chartData.t+' Bulan<br>'
+							+ 'Realisasi: '+chartData.r+' Bulan';
                         optionSplitNumber = '12';
                         optionColor = [
                             [0.0833, 'rgba(0, 150, 136, 0.0833)'],
@@ -119,9 +136,10 @@ $(document).ready(function() {
                             [0.9166, 'rgba(0, 150, 136, 0.9166)'],
                             [1, 'rgba(0, 150, 136, 1)']
                         ];
-                        optionDetail = chartData.r+'/'+chartData.t
+                        optionDetail = chartData.r+'/'+chartData.t;
+						optionValue = chartData.p;
                     } else if (id==4) {
-                        optionTooltip = chartData.n+'<br>'+chartData.v;
+                        optionTooltip = chartData.n+'<br>'+ chartData.v +'';
                         optionSplitNumber = '12';
                         optionColor = [
                             //[0.0833, 'rgba(233, 30, 99, 0.0833)'],
@@ -138,24 +156,69 @@ $(document).ready(function() {
                             [1, 'rgba(233, 30, 99, 1)']
                         ];
                         optionDetail = chartData.v;
+						v = 0;
+						switch (optionDetail) {
+							case 'DD-':
+								v = 1;
+								break;
+							case 'DD':
+								v = 2;
+								break;
+							case 'DD+':
+								v = 3;
+								break;
+							case 'CC-':
+								v = 4;
+								break;
+							case 'CC':
+								v = 5;
+								break;
+							case 'CC+':
+								v = 6;
+								break;
+							case 'BB-':
+								v = 7;
+								break;
+							case 'BB':
+								v = 8;
+								break;
+							case 'BB+':
+								v = 9;
+								break;
+							case 'AA-':
+								v = 10;
+								break;
+							case 'AA':
+								v = 11;
+								break;
+							case 'AA+':
+								v = 12;
+								break;
+						}
+						optionValue = v/12 * 100;
                     } else {
-                        optionTooltip = chartData.n+'('+chartData.v+')<br>Realisasi: '+chartData.r+'<br>Target: '+chartData.t;
+                        optionTooltip = chartData.n+' ('+ numeral(chartData.v).format('0.0') +'%)<br>'
+							+ 'Alokasi: '+ numeral(chartData.t).format('0.00a') +'<br>'
+							+ 'Realisasi: '+ numeral(chartData.r).format('0.00a') +'';
                         optionSplitNumber = '10';
                         optionColor = [[1, '#00bcd4']];
-                        optionDetail = chartData.v;
+                        optionDetail = numeral(chartData.v).format('0.0') +'%';
+						optionValue = chartData.p;
                     }
 
                     var option = {
+						backgroundColor: 'rgba(200, 200, 200, 0.25)',
         			    tooltip : {
         			        formatter: optionTooltip
         			    },
                         toolbox: {
 			                show : true,
-							x: 'right',
-							padding: ['30','0','0','5'],
+							right: 10,
+							bottom: 10,
+							padding: ['0','0','0','0'],
 			                feature : {
 			                    mark : {show: true},
-			                    restore : {show: true, title: 'Reload'},
+			                    restore : {show: false, title: 'Reload'},
 			                    saveAsImage : {show: true, title: 'Save'}
 			                }
 			            },
@@ -205,12 +268,7 @@ $(document).ready(function() {
         			            },
 
         			            title : {
-        			                show : true,
-        			                offsetCenter: [0, '-130%'],
-        			                textStyle: {
-        			                    color: '#000',
-        			                    fontSize : 16
-        			                }
+        			                show : false
         			            },
 
                                 detail : {
@@ -220,37 +278,36 @@ $(document).ready(function() {
                                     borderColor: '#ccc',
                                     //width: 100,
                                     //height: 40,
-                                    offsetCenter: [0, '75%'],       // x, y，单位px
-                                    formatter: optionDetail,
-                                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                        color: 'auto',
+                                    offsetCenter: [0, '75%'],
+									formatter: optionDetail,
+                                    textStyle: {
+										color: 'auto',
                                         fontSize : 24
                                     }
                                 },
-
-        			            data:[{value: value, name: chartData.n}]
+        			            data:[{value: optionValue, name: chartData.n}]
         			        }
         			    ]
         			};
 
                     clearTimeout(loadingTicket);
 					loadingTicket = setTimeout(function (){
+						$(window).trigger('resize');
 					    chart.hideLoading();
 					    chart.setOption(option);
-					},1800);
+						chart.resize();
+					},1000);
 					$(window).on('resize', function(){
 	                    if(chart != null && chart != undefined){
 	                        chart.resize();
 	                    }
 	                });
 	            }
-	        }
+	        },
+            error: function (request, status, error) {
+                $('#'+div).append('<div class="uk-position-center">FOUT!</div>');
+            }
 	    });
     }
 
-	panelMap('panel1');
-	panelGauge('1','panel2');
-    panelGauge('2','panel3');
-    panelGauge('3','panel4');
-    panelGauge('4','panel5');
-});
+}(window.jQuery, window, document, $satkerCode, $year));

@@ -8,17 +8,17 @@ use Illuminate\Support\Facades\Cache;
 class Apbd
 {
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawave;
+    private $sikd;
 
     /**
      * Apbd constructor.
-     * @param Mediawave $mediawave
+     * @param Sikd $sikd
      */
-    public function __construct(Mediawave $mediawave)
+    public function __construct(Sikd $sikd)
     {
-        $this->mediawave = $mediawave;
+        $this->sikd = $sikd;
     }
 
     public function getPostures($type = 'array')
@@ -26,7 +26,7 @@ class Apbd
         $minutes = 5 * 24 * 60;
         $postures = Cache::remember('apbd_postures', $minutes, function () {
             $url = 'apbd/list-postur';
-            $apiRequest = $this->mediawave->get($url);
+            $apiRequest = $this->sikd->get($url);
             return ($apiRequest->status == '200') ? $apiRequest->result : [];
         });
 
@@ -40,7 +40,7 @@ class Apbd
     public function getMapChart($year = '2016', $postureId = 1)
     {
         $url = 'apbd/1/' . $year . '/' . $postureId;
-        $apiRequest = $this->mediawave->get($url, []);
+        $apiRequest = $this->sikd->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
         // modified the api result
         $modifiedResult['data'] = [];
@@ -57,7 +57,7 @@ class Apbd
     {
         $url = 'apbd/2/' . $year . '/' . $postureId . '/' . $provinceId;
 //        $url .= $provinceId != '' ? '/' . $provinceId : '';
-        $apiRequest = $this->mediawave->get($url, []);
+        $apiRequest = $this->sikd->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 
         // modified the api result
@@ -73,7 +73,7 @@ class Apbd
     {
         $url = 'apbd/all/0/' . $year;
 
-        return $this->mediawave->get($url);
+        return $this->sikd->get($url);
     }
 
     public function getPostureNameById($postureId)

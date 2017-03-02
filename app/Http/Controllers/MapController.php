@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\Apbd;
-use App\Service\Mediawave;
+use App\Service\Sikd;
 use App\Service\Province;
 use App\Service\Tkdd;
 use Illuminate\Http\Request;
@@ -22,21 +22,21 @@ class MapController extends Controller
      */
     private $apbdService;
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawaveService;
+    private $sikdService;
 
     /**
      * MapController constructor.
-     * @param Mediawave $mediawaveService
+     * @param Sikd $sikdService
      * @param Tkdd $tkddService
      * @param Apbd $apbdService
      */
-    public function __construct(Mediawave $mediawaveService, Tkdd $tkddService, Apbd $apbdService)
+    public function __construct(Sikd $sikdService, Tkdd $tkddService, Apbd $apbdService)
     {
         $this->tkddService = $tkddService;
         $this->apbdService = $apbdService;
-        $this->mediawaveService = $mediawaveService;
+        $this->sikdService = $sikdService;
     }
 
     public function map($type, $postureId, $year = '2016')
@@ -54,7 +54,7 @@ class MapController extends Controller
         $data['postureId'] = $postureId;
         $data['reportType'] = $type;
         $data['year'] = $year;
-        $data['years'] = $this->mediawaveService->getAvailableYears();
+        $data['years'] = $this->sikdService->getAvailableYears();
 
         return view('sikd.level-1', $data);
     }

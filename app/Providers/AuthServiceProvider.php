@@ -26,9 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::provider('mediawave_api', function($app, array $config) {
+        Auth::provider('sikd_api', function($app, array $config) {
             // Return an instance of Illuminate\Contracts\Auth\UserProvider...
-            return new MediawaveAuthProvider();
+            return new SikdAuthProvider();
         });
     }
 }

@@ -8,23 +8,23 @@ use Illuminate\Support\Facades\Cache;
 class Pemda
 {
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawave;
+    private $sikd;
 
     /**
      * Pemda constructor.
-     * @param Mediawave $mediawave
+     * @param Sikd $sikd
      */
-    public function __construct(Mediawave $mediawave)
+    public function __construct(Sikd $sikd)
     {
-        $this->mediawave = $mediawave;
+        $this->sikd = $sikd;
     }
 
     public function getChart($year, $satkerCode, $type = 'json')
     {
         $url = 'level-3/' . $year . '/' . $satkerCode;
-        $apiRequest = $this->mediawave->get($url, []);
+        $apiRequest = $this->sikd->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
         $modifiedResult['detailKotakabTop'] = [];
         if (isset($result->{'detail-kotakab-top'})) {
@@ -47,7 +47,7 @@ class Pemda
         $minutes = 14 * 24 * 60;
         $pemdas = Cache::remember('pemdas', $minutes, function () {
             $url = 'ref-pemda';
-            $apiRequest = $this->mediawave->get($url, []);
+            $apiRequest = $this->sikd->get($url, []);
             return ($apiRequest->status == '200') ? $apiRequest->result : [];
         });
 
@@ -74,20 +74,20 @@ class Pemda
     {
         $url = 'tkdd/tabel/' . $year . '/3/' . $satkerCode;
 
-        return $this->mediawave->getJsonResult($url);
+        return $this->sikd->getJsonResult($url);
     }
 
     public function getOtherTableData($satkerCode)
     {
         $url = 'tabel-lainnya/tabel/' . $satkerCode;
 
-        return $this->mediawave->getJsonResult($url);
+        return $this->sikd->getJsonResult($url);
     }
 
     public function getApbdTableData($year, $satkerCode)
     {
         $url = 'apbd/tabel/' . $year . '/' . $satkerCode;
 
-        return $this->mediawave->getJsonResult($url);
+        return $this->sikd->getJsonResult($url);
     }
 }

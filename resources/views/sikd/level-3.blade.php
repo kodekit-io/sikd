@@ -1,67 +1,71 @@
 @extends('layouts.default')
 @section('page-level-styles')
-	<link rel="stylesheet" href="{!! asset('assets/css/datatables/dataTables.sikd.css') !!}" />
+	<link rel="stylesheet" href="{!! asset('assets/css/lib/dataTables.sikd.css') !!}" />
 @endsection
 @section('content')
-<main class="uk-container uk-container-center uk-margin-top uk-margin-bottom" data-uk-observe>
-	<ul class="uk-grid uk-grid-medium uk-margin-top uk-margin-bottom" data-uk-grid-match data-uk-grid-margin>
-		<li class="uk-width-1-1 uk-margin-small-bottom">
-			<div class="card-panel z-depth-3 soft">
-				<h2 class="card-title">Data Umum {!! $pemdaName !!}</h2>
-				<div class="right uk-margin-right">
-					<select class="browser-default">
-						<option value="1">2016</option>
-						<option value="2">2015</option>
-					</select>
-				</div>
+<main class="uk-container uk-container-expand">
+	<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-animation-fade l3card">
+		<div class="uk-card-header uk-grid-small" uk-grid>
+			<div class="uk-width-expand@m">
+				<h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove uk-text-uppercase">Profil {!! $pemdaName !!} Tahun <span id="tahun">{!! $year !!}</span></h3>
 			</div>
-		</li>
-		<li class="uk-width-1-5"><div id="panel1"></div></li>
-		<li class="uk-width-1-5"><div id="panel2"></div></li>
-		<li class="uk-width-1-5"><div id="panel3"></div></li>
-		<li class="uk-width-1-5"><div id="panel4"></div></li>
-		<li class="uk-width-1-5"><div id="panel5"></div></li>
-		{{--
-		<li class="uk-width-1-1">
-			<div class="card-panel z-depth-3 soft hoverable uk-margin-top-remove">
-				<table class="uk-table bordered" id="apbd" style="width: 100%"></table>
-			</div>
-		</li>
-		--}}
-		<li class="uk-width-1-1">
-			<div class="card z-depth-3 soft hoverable uk-margin-top-remove">
-				<div class="card-action-top">
-					<ul class="tabs" data-uk-switcher="{connect:'#tab-level-3'}">
-						<li class="tab"><a class="active" href="#tab1">APBD</a></li>
-						<li class="tab"><a href="#tab2">TKDD</a></li>
-						<li class="tab"><a href="#tab3">LAINNYA</a></li>
-					</ul>
+			<div class="uk-width-auto@m">
+				<button class="uk-button uk-button-small uk-button-default " type="button"><span class="uk-visible@m">PILIH </span>TAHUN <span uk-icon="icon: chevron-down"></span></button>
+				<div uk-dropdown>
+		            <ul class="uk-nav uk-nav-default uk-dropdown-nav">
+						@foreach($years as $theYear)
+							<li><a href="{!! url('pemda/' . $satkerCode . '/' . $theYear) !!}">{!! $theYear !!}</a></li>
+						@endforeach
+		            </ul>
 				</div>
-				<div class="card-content">
-					<ul id="tab-level-3" class="uk-switcher">
-						<li><table class="uk-table bordered" id="apbd" style="width: 100%"></table></li>
-						<li><table class="uk-table bordered" id="tkdd" style="width: 100%"></table></li>
-						<li id="lainnya"></li>
-					</ul>
-				</div>
+				<button class="uk-button uk-button-small uk-button-default" type="button" onclick="history.go(-1);" title="Kembali ke halaman sebelumnya" uk-tooltip="pos: left"><span uk-icon="icon: arrow-left"></span> BACK</button>
 			</div>
-		</li>
+		</div>
+		<div class="uk-card-body">
+			<div class="uk-grid-small uk-grid-match" uk-grid>
+				<div id="panel1" class="l3panel uk-width-1-5@m uk-width-1-1@s"></div>
+				<div id="panel2" class="l3panel uk-width-1-5@m uk-width-1-2@s"></div>
+				<div id="panel3" class="l3panel uk-width-1-5@m uk-width-1-2@s"></div>
+				<div id="panel4" class="l3panel uk-width-1-5@m uk-width-1-2@s"></div>
+				<div id="panel5" class="l3panel uk-width-1-5@m uk-width-1-2@s"></div>
+			</div>
+			<ul uk-tab>
+			    <li><a href="#" class="rem125 uk-text-bold">TKDD</a></li>
+			    <li><a href="#" class="rem125 uk-text-bold">APBD</a></li>
+			    <li><a href="#" class="rem125 uk-text-bold">LAINNYA</a></li>
+			</ul>
+			<ul class="uk-switcher uk-margin">
+			    <li>
+					<div class="uk-overflow-auto">
+						<table id="tkdd" class="uk-table uk-margin-remove" cellspacing="0" width="100%"></table>
+					</div>
+				</li>
+				<li>
+					<div class="uk-overflow-auto">
+						<table id="apbd" class="uk-table uk-margin-remove" cellspacing="0" width="100%"></table>
+					</div>
+				</li>
+				<li>
+					<div id="lainnya"></div>
+				</li>
+			</ul>
 
-	</ul>
+		</div>
+	</div>
 </main>
 @endsection
 
 @section('page-level-scripts')
 	<script type="text/javascript">
-		$('[data-uk-switcher]').on('show.uk.switcher', function(event){
+		$('.uk-switcher').on('show.uk.switcher', function(){
 			$(window).trigger('resize');
 		});
 		var $baseUrl = '{!! url('/') !!}';
-		var $year = '{!! $year !!}';
+		var $year = $('#tahun').text();
 		var $satkerCode = '{!! $satkerCode !!}';
 	</script>
 	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
-	<script src="{!! asset('assets/js/echarts/sikd.js') !!}"></script>
+	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-3.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/level-3-table-apbd.js') !!}"></script>

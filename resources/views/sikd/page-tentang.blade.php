@@ -2,7 +2,7 @@
 
 @section('content')
 <header id="header"></header>
-<main class="uk-container uk-container-center">
+<main class="full-width uk-container uk-container-expand">
 	<div id="content" class="uk-margin-bottom"></div>
 	<a href="{!! url('/') !!}" class="btn amber darken-2 white-text uk-margin-large-bottom">BACK</a>
 </main>

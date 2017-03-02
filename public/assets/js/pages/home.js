@@ -1,7 +1,83 @@
-$(document).ready(function() {
-	function L0Chart(divID,n,type,result) {
-		var color;
+(function ($, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear) {
+    $(function () {
+        l0r1card('l0r1a');
+        l0r1card('l0r1b');
+        l0r2card('l0r2');
+        l0r3card('l0r3');
 
+        var tkddData = jQuery.parseJSON($tkddData);
+        l0r1('l0r1a','0','tkdd', tkddData);
+        l0r1('l0r1a','1','tkdd', tkddData);
+        l0r1('l0r1a','2','tkdd', tkddData);
+        l0r1('l0r1a','3','tkdd', tkddData);
+        l0r1('l0r1a','4','tkdd', tkddData);
+        l0r1('l0r1a','5','tkdd', tkddData);
+        //l0r1('l0r1a','6','tkdd', tkddData);
+        l0r1('l0r1a','7','tkdd', tkddData);
+
+        var apbdData = jQuery.parseJSON($apbdData);
+        l0r1('l0r1b','0','apbd', apbdData);
+        l0r1('l0r1b','1','apbd', apbdData);
+        l0r1('l0r1b','2','apbd', apbdData);
+        l0r1('l0r1b','3','apbd', apbdData);
+        l0r1('l0r1b','4','apbd', apbdData);
+        l0r1('l0r1b','5','apbd', apbdData);
+        l0r1('l0r1b','6','apbd', apbdData);
+        l0r1('l0r1b','7','apbd', apbdData);
+        l0r1('l0r1b','8','apbd', apbdData);
+        l0r1('l0r1b','9','apbd', apbdData);
+        l0r1('l0r1b','10','apbd', apbdData);
+        l0r1('l0r1b','11','apbd', apbdData);
+
+        var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $thisYear;
+        var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
+        l0r2a('l0r2a', $infraUrl, true);
+        l0r2b('l0r2b', $simpananPemdaUrl);
+
+        var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $thisYear;
+        var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $thisYear;
+        var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + $thisYear;
+        var $belanjaUrl = $baseUrl + '/get-belanja-data/' + $thisYear;
+        var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + $thisYear;
+        l0r3('l0r3grid', 'Realisasi-TKDD', $realisasiTkddUrl);
+        l0r3('l0r3grid', 'DAK-Fisik', $dakFisikUrl);
+        l0r3('l0r3grid', 'Dandes', $danaDesaUrl);
+        l0r3('l0r3grid', 'Belanja', $belanjaUrl);
+        l0r3('l0r3grid', 'PAD', $realisasiPadUrl);
+    });
+    function l0r1card(div) {
+        var card =  '<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade">'
+                    + '<div class="uk-grid-collapse" uk-grid>'
+                        + '<div class="uk-width-auto@m uk-flex-last@m sikd-l0r1-tab">'
+                            + '<ul id="'+div+'TabItem" class="uk-tab-right uk-child-width-expand" uk-tab="connect: #'+div+'TabContent;"></ul>'
+                        + '</div>'
+                        + '<div class="uk-width-expand@m">'
+                            + '<ul id="'+div+'TabContent" class="uk-switcher"></ul>'
+                        + '</div>'
+                    + '</div>'
+                + '</div>';
+        $('#' + div).append(card);
+    }
+    function l0r2card(div) {
+        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade">'
+                        + '<ul class="bxslider">'
+                            + '<li id="l0r2a" class="sikd-l0r2-chart"></li>'
+                            + '<li id="l0r2b" class="sikd-l0r2-chart"></li>'
+                        + '</ul>'
+                    + '</div>';
+        $('#' + div).append(card);
+
+    }
+    function l0r3card(div) {
+        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade"><div id="l0r3grid" class="uk-flex uk-flex-stretch uk-flex-middle uk-grid-small uk-child-width-1-5@m uk-height-1-1" uk-grid></div></div>';
+        $('#' + div).append(card);
+
+    }
+
+
+    function l0r1(div,n,type,result) {
+        //console.log(result);
+        numeral.locale('id');
         if(type==='apbd') {
             $result = result.apbd;
         } else if (type==='tkdd') {
@@ -10,13 +86,14 @@ $(document).ready(function() {
 
         if ($result[n] !== undefined) {
             if ($result.length === 0) {
-                $('#' + divID).html("<div class='center'>No data chart</div>");
+                $('#' + div).html("<div class='uk-position-center'>No data</div>");
             } else {
                 var $content = [];
                 var $legend = [];
                 $data = $result[n].trend;
                 $id = $result[n].id;
                 $name = $result[n].name;
+                $icon = $result[n].icon;
                 $info = $result[n].info;
                 $achievement = $result[n].achievement;
 
@@ -28,15 +105,16 @@ $(document).ready(function() {
                     $realization = numeral($realization000).format('0.00a');
 
                     $percentage000 = $achievement[0].percentage;
-                    $percentage = Math.round($percentage000 * 100) / 100
+                    //$percentage = Math.round($percentage000 * 100) / 100;
+                    $percentage = numeral($percentage000).format('0.0');
 
                     $type = 'line';
-                    $year = $data[i].year.toString();
+                    $thn = $data[i].year.toString();
                     $value = $data[i].value;
                     $cat = $data[i].month;
 
-                    $content[i] = {name: $year, type: $type, data: $value};
-                    $legend[i] = $year;
+                    $content[i] = {name: $thn, type: $type, data: $value};
+                    $legend[i] = $thn;
                 }
 
                 var chartData = {
@@ -52,87 +130,97 @@ $(document).ready(function() {
                     return $slug.toLowerCase();
                 }
 
-                var tab = '<i class="material-icons">assignment</i><br><span class="sikd-lagging-tab__persen">' + $percentage + '%</span>';
                 if (type == 'tkdd') {
-                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id;
+                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + '2016';
                 } else {
-                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id;
+                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2016';
                 }
-                var tabcontent = '<div class="uk-grid uk-grid-collapse" data-uk-grid-match data-uk-grid-margin> \
-							<div class="uk-width-medium-1-2"> \
-								<h5 class="sikd-chart--title sikd-blue">' + $name + '</h5> \
-							</div> \
-							<div class="uk-width-medium-1-2"> \
-								<div class="uk-progress slim uk-margin-bottom-remove sikd-yellow-bg"> \
-									<div class="uk-progress-bar uk-animation-slide-left sikd-blue-bg ' + color + '" style="width: ' + $percentage + '%;">' + $percentage + '%</div> \
-								</div> \
-								<ul class="uk-subnav uk-margin-bottom-remove uk-margin-top-remove sikd-text-ptr"> \
-									<li class="uk-margin-small-top"><strong>' + $percentage + '%</strong></li> \
-									<li class="uk-margin-small-top">(Alokasi : <strong>' + $target + '</strong></li> \
-									<li class="uk-margin-small-top">Realisasi : <strong>' + $realization + '</strong>)</li> \
-								</ul> \
-							</div> \
-							<div class="uk-width-medium-1-1"> \
-								<hr class="uk-margin-bottom-remove uk-margin-small-top"> \
-								<div id="' + divID + 'Chart" class="sikd-chart-lagging"></div> \
-								<ul class="uk-subnav sikd-chart-action"> \
-									<li> \
-										<div class="right uk-margin-right"> \
-											<select class="browser-default"> \
-												<option value="1">2016</option> \
-												<option value="2">2015</option> \
-											</select> \
-										</div> \
-									</li> \
-									<li><a class=""><i class="material-icons" data-uk-tooltip title="' + $info + '">info</i></a></li> \
-									<li><a href="' + linkdetail + '" class="btn z-depth-0 sikd-pink-bg white-text" title="Lihat Detail ' + $name + '" data-uk-tooltip>LIHAT DETAIL</a></li> \
-								</ul> \
-							</div> \
-						</div>';
-                $('#' + divID).html(tabcontent);
 
-                $('#' + divID + 'tab a').html(tab);
-                $('#' + divID + 'tab a').attr('title', '' + $name + '');
+                var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';
+                $('#'+div+'TabItem').append(tabItem);
 
-                $(".sikd-lagging-tab__title").html(function (i, html) {
-                    return html.replace(/ /g, '<br>');
-                });
+                var p = '<div class="uk-progress">'
+                            + '<div class="progress-bar uk-animation-slide-left" style="width: '+$percentage000+'%;"><span class="progress-text">A '+$target+' / R '+$realization+'</span></div>'
+                        + '</div>';
 
-                var w = $('#L0A').width();
-                $('.sikd-chart-lagging').width(w);
-                $('.sikd-chart-lagging').height(w / 2);
+                var tabContent = '<li>'
+                    + '<div class="uk-card-body">'
+                        + '<div class="uk-grid-collapse" uk-grid>'
+                            + '<div class="uk-width-1-2"><h4 class="sikd-l0r1-title uk-text-uppercase sikd-blue-text">'+$name+'</h4></div>'
+                            + '<div class="uk-width-1-2">'
+                                + '<div class="uk-grid-collapse progress-wrap" uk-grid>'
+                                    + '<div class="uk-width-auto">'
+                                        + '<div class="sikd-progress-persen">'+$percentage+'%</div>'
+                                    + '</div>'
+                                    + '<div class="uk-width-expand">'
+                                        + p
+                                    + '</div>'
+                                + '</div>'
+                            + '</div>'
+                            + '<div class="uk-width-1-1">'
+                                + '<div id="'+div+'chart'+n+'" class="sikd-l0r1-chart"></div>'
+                            + '</div>'
+                            + '<div class="uk-width-1-1">'
+                                + '<div class="sikd-l0r1-footer uk-flex uk-flex-between">'
+                                    + '<div>'
+                                        + '<select class="uk-select uk-form-small">'
+                                            + '<option>2016</option>'
+                                            + '<option>2015</option>'
+                                        + '</select>'
+                                    + '</div>'
+                                    + '<div>'
+                                        + '<a title="'+$info+'" uk-tooltip class="sikd-blue-text sikd-chart-info" uk-icon="icon: info"></a>'
+                                        + '<a href="'+linkdetail+'" class="uk-button uk-button-small uk-button-default uk-text-bold rem1 sikd-blue-text" title="Lihat Detail" uk-tooltip><span class="fa fa-binoculars fa-fw"></span> Detail</a>'
+                                    + '</div>'
+                                + '</div>'
+                            + '</div>'
+                        + '</div>'
+                    + '</div>'
+                + '</li>';
+                $('#'+div+'TabContent').append(tabContent);
 
                 //CHART
-                var dom = document.getElementById(divID + 'Chart');
-                var theme = 'sikd';
+                var dom = document.getElementById(div+'chart'+n);
+                var theme = 'default';
                 var chart = echarts.init(dom, theme);
                 var loadingTicket;
-                var effectIndex = -1;
-                var effect = ['spin'];
-                //var effectIndex = ++effectIndex % effect.length;
+                //var effectIndex = -1;
+                //var effect = ['spin'];
+
                 chart.showLoading({
                     text: '',
-                    //effect : effect[effectIndex],
                 });
                 var option = {
-                    //color: clrs,
-                    tooltip: {
-                        trigger: 'axis'
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {
+                            type : 'shadow'
+                        },
+                        formatter: function (params){
+                            //console.log(params);
+                            var naam=[], waarde=[], color=[], serie=[];
+                            for (var i = 0; i < params.length; i++) {
+                                naam[i] = params[i].seriesName;
+                                waarde[i] = numeral(params[i].value).format('0.00a');
+                                color[i] = '<i class="fa fa-circle fa-fw" style="color:'+params[i].color+'"></i>';
+                                serie[i] = '<br>'+color[i]+' '+naam[i]+' '+waarde[i]+'%';
+                            }
+                            return '<strong>' + params[0].name + '</strong>' + serie.join('');
+                        }
                     },
                     legend: {
                         data: chartData.legend,
                         padding: ['0', '0', '0', '0'],
-                        left: 'center',
-                        bottom: 'bottom'
+                        left: 'left',
+                        bottom: '5'
                     },
                     toolbox: {
                         show: true,
-                        left: 'left',
-						bottom: 'bottom',
+                        left: 'right',
+                        bottom: '5',
                         padding: ['0', '0', '0', '0'],
                         feature: {
                             mark: {show: true},
-                            //dataView : {show: false, readOnly: false},
                             magicType: {
                                 show: true,
                                 type: ['line', 'bar'],
@@ -142,290 +230,451 @@ $(document).ready(function() {
                             saveAsImage: {show: true, title: 'Save'}
                         }
                     },
-					grid: {
-						x: '30px',
-						x2: '10px',
-						y: '10px',
-						y2: '50px'
-					},
-                    xAxis: [
-                        {
-                            type: 'category',
-                            boundaryGap: false,
-                            data: chartData.cat
-                        }
-                    ],
-                    yAxis: [
-                        {
-                            type: 'value',
-                            //splitArea : {show : true}
-                            axisLabel: {
-                                formatter: function (v) {
-                                    //$v = abbr(v,2);
-                                    $v = numeral(v).format('0a');
-                                    return $v;
-                                }
+                    grid: {
+                        x: '35px',
+                        x2: '10px',
+                        y: '5px',
+                        y2: '50px'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: chartData.cat
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            formatter: function (v) {
+                                $v = numeral(v).format('0a');
+                                return $v;
                             }
                         }
-                    ],
+                    },
                     series: chartData.content
                 };
-                //chart.setOption(option);
+
                 clearTimeout(loadingTicket);
                 loadingTicket = setTimeout(function () {
                     chart.hideLoading();
                     chart.setOption(option);
-                }, 1800);
-				$(window).on('resize', function(){
+                    chart.resize();
+                    //$(window).trigger('resize');
+                    $('.uk-switcher').on('show.uk.switcher', function(){
+                        chart.resize();
+                    });
+                }, 1000);
+
+                $(window).on('resize', function(){
                     if(chart != null && chart != undefined){
                         chart.resize();
                     }
                 });
+
             }
         }
-	}
+    }
+    function l0r2a(id, chartUrl, stack) {
+        numeral.locale('id');
+        $.ajax({
+            //url: 'data/L0_row2_infrastruktur.json',
+    		url: chartUrl,
+            dataType: 'json',
+            success: function(result){
+    			//console.log(result);
+    		    // result = jQuery.parseJSON(result);
+                var data = result.data;
+    			var t = result.properties.Label;
+
+                if (data.length === 0) {
+                    $('#'+id).html("<div class='center'>No Data</div>");
+                } else {
+                    var $series=[], $legend=[];
+    				//console.log(data.length);
+                    for (var i = 0; i < data.length; i++) {
+                        $name = String(data[i].name);
+    					$dataName = data[0].dataName;
+    					$dataValue = data[i].dataValue;
+    					$legend[i] = $name;
+
+    					$series[i] = {
+    						name: $name,
+    						type:'bar',
+    						stack: stack,
+    						data: $dataValue
+    					}
 
 
-	var $tkddData = jQuery.parseJSON(tkddData);
-	L0Chart('A1','0','tkdd', $tkddData);
-	L0Chart('A2','1','tkdd', $tkddData);
-	L0Chart('A3','2','tkdd', $tkddData);
-	L0Chart('A4','3','tkdd', $tkddData);
-	L0Chart('A5','4','tkdd', $tkddData);
-	L0Chart('A6','5','tkdd', $tkddData);
-	L0Chart('A7','6','tkdd', $tkddData);
-    L0Chart('A8','7','tkdd', $tkddData);
+                    }
 
-    var $apbdData = jQuery.parseJSON(apbdData);
-    L0Chart('B1','0','apbd', $apbdData);
-    L0Chart('B2','1','apbd', $apbdData);
-    L0Chart('B3','2','apbd', $apbdData);
-    L0Chart('B4','3','apbd', $apbdData);
-    L0Chart('B5','4','apbd', $apbdData);
-    L0Chart('B6','5','apbd', $apbdData);
-    L0Chart('B7','6','apbd', $apbdData);
-    L0Chart('B8','7','apbd', $apbdData);
-    L0Chart('B9','8','apbd', $apbdData);
-    L0Chart('B10','9','apbd', $apbdData);
-    L0Chart('B11','10','apbd', $apbdData);
+                    var dataseries = {
+    					cat: $dataName,
+                        legend: $legend,
+    					series: $series
+                    }
 
-	function chartL0Row2(id, chartUrl, stack) {
-	    $.ajax({
-	        //url: 'data/L0_row2_infrastruktur.json',
-			url: chartUrl,
-	        dataType: 'json',
-	        success: function(result){
-				console.log(result);
-			    // result = jQuery.parseJSON(result);
-	            var data = result.data;
-				var t = result.properties.Label;
-				//console.log(data);
+                    //CHART
+                    var dom = document.getElementById(id);
+                    var theme = 'default';
+                    var theChart = echarts.init(dom,theme);
+                    var loadingTicket;
+                    var effectIndex = -1;
+                    var effect = ['spin'];
 
-	            if (data.length === 0) {
-	                $('#'+id).html("<div class='center'>No Data</div>");
-	            } else {
-	                var $series=[], $legend=[];
-					//console.log(data.length);
-	                for (var i = 0; i < data.length; i++) {
-	                    $name = String(data[i].name);
-						$dataName = data[0].dataName;
-						$dataValue = data[i].dataValue;
-						$legend[i] = $name;
-						//console.log($legend);
-						$series[i] = {
-							name: $name,
-							type:'bar',
-							stack: stack,
-							//barMaxWidth: 50,
-							//itemStyle : { normal: {label : {show: true, position: 'center'}}},
-							data: $dataValue
-						}
-	                }
+                    theChart.showLoading({
+                        text : '',
+                    });
 
-	                var dataseries = {
-						cat: $dataName,
-	                    legend: $legend,
-						series: $series
-	                }
+                    var option = {
+    					backgroundColor: '#fff',
+    					title: {
+    						text: t,
+    						left: 'center',
+    						top: 10
+    					},
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {
+                                type : 'shadow'
+                            },
+                            position: function (point, params, dom) {
+                                return [point[0], '10%'];
+                            },
+                            formatter: function (params){
+                                //console.log(params);
+                                var naam=[], waarde=[], color=[], serie=[];
+                                for (var i = 0; i < params.length; i++) {
+                                    naam[i] = params[i].seriesName;
+                                    waarde[i] = numeral(params[i].value).format('0.00a');
+                                    color[i] = '<i class="fa fa-circle fa-fw" style="color:'+params[i].color+'"></i>';
+                                    serie[i] = '<br>'+color[i]+' '+naam[i]+' '+waarde[i];
+                                }
+                                return '<strong>' + params[0].name + '</strong>' + serie.join('');
+                            }
+                        },
+                        legend: {
+                            data: dataseries.legend,
+                            x: 'left',
+                            bottom: 0,
+                        },
+                        grid: {
+                            x: '30px',
+                            x2: '10px',
+                            y: '10px',
+                            y2: '50px'
+                        },
+                        toolbox: {
+                            show: true,
+                            x: 'right',
+                            bottom: 0,
+                            padding: ['0', '0', '0', '0'],
+                            feature: {
+                                mark: {show: true},
+                                //dataView : {show: false, readOnly: false},
+                                magicType: {
+                                    show: true,
+                                    type: ['stack', 'tiled'],
+                                    title: {stack: 'Stack', tiled: 'Bar'},
+                                },
+                                restore: {show: true, title: 'Reload'},
+                                saveAsImage: {show: true, title: 'Save'}
+                            }
+                        },
+                        //calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : dataseries.cat,
+                                axisLabel: {
+                                    textStyle: {
+                                        fontSize: 10
+                                    },
+                                    interval: 0,
+                                    rotate: 15
+                                }
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value',
+                                axisLabel: {
+                                    textStyle: {
+                                        fontSize: 10
+                                    },
+                                    formatter: function (v) {
+                                        $v = numeral(v).format('0a');
+                                        return $v;
+                                    }
+                                },
+                            }
+                        ],
+                        series : dataseries.series
+                    };
 
+                    clearTimeout(loadingTicket);
+                    loadingTicket = setTimeout(function (){
+                        $('.bxslider').bxSlider({
+                            auto: true,
+                            controls: false,
+                            pause: 24000,
+                            mode: 'fade',
+            				onSliderLoad: function(currentIndex) {
+            			        $(window).trigger('resize');
+            			    },
+            			});
+                        theChart.hideLoading();
+                        theChart.setOption(option);
+                        theChart.resize();
+                    },1000);
+                    $(window).on('resize', function(){
+                        if(theChart != null && theChart != undefined){
+                            theChart.resize();
+                        }
+                    });
+                }
+            }
+        });
+    }
+    function l0r2b(id, chartUrl) {
+        numeral.locale('id');
+        $.ajax({
+            //url: 'data/L0_row2_infrastruktur.json',
+            url: chartUrl,
+            //dataType: 'json',
+            success: function(result){
+                //console.log(result);
+                result = jQuery.parseJSON(result);
+                var data = result.trend;
+                //console.log(data);
+                var t = result.name;
 
-	                //CHART
-	                var dom = document.getElementById(id);
-	                var theme = 'sikd';
-	                var theChart = echarts.init(dom,theme);
-	                var loadingTicket;
-	                var effectIndex = -1;
-	                var effect = ['spin'];
-	                //var effectIndex = ++effectIndex % effect.length;
-	                theChart.showLoading({
-	                    text : '',
-	                    //effect : effect[effectIndex],
-	                });
+                if (data.length === 0) {
+                    $('#'+id).html("<div class='center'>No Data</div>");
+                } else {
+                    var $series=[], $legend=[];
+                    //console.log(data.length);
+                    for (var i = 0; i < data.length; i++) {
+                        $year = String(data[i].year);
+                        $month = data[i].month;
+                        $value = data[i].value;
+                        $legend[i] = $year;
 
-	                var option = {
-						backgroundColor: '#fff',
-						title: {
-							text: t,
-							left: 'center',
-							top: 20
-						},
-	                    tooltip : {
-	                        trigger: 'axis',
-	                        axisPointer : {
-	                            type : 'shadow'
-	                        }
-	                    },
-	                    legend: {
-	                        data: dataseries.legend,
-	                        x: 'left',
-	                        bottom: 20,
-	                    },
-	                    grid: {
-	                        x: '30px',
-	                        x2: '20px',
-	                        y: '10px',
-	                        y2: '80px'
-	                    },
-	                    toolbox: {
-	                        show: true,
-	                        x: 'right',
-	                        bottom: 20,
-	                        padding: ['0', '0', '0', '0'],
-	                        feature: {
-	                            mark: {show: true},
-	                            //dataView : {show: false, readOnly: false},
-	                            magicType: {
-	                                show: true,
-	                                type: ['stack', 'tiled'],
-	                                title: {stack: 'Stack', tiled: 'Bar'},
-	                            },
-	                            restore: {show: true, title: 'Reload'},
-	                            saveAsImage: {show: true, title: 'Save'}
-	                        }
-	                    },
-	                    //calculable : true,
-	                    xAxis : [
-	                        {
-	                            type : 'category',
-	                            data : dataseries.cat,
-	                            axisLabel: {
-	                                textStyle: {
-	                                    fontSize: 10
-	                                }
-	                            }
-	                        }
-	                    ],
-	                    yAxis : [
-	                        {
-	                            type : 'value',
-	                            axisLabel: {
-	                                textStyle: {
-	                                    fontSize: 10
-	                                },
-	                                formatter: function (v) {
-	                                    $v = numeral(v).format('0a');
-	                                    return $v;
-	                                }
-	                            },
-	                        }
-	                    ],
-	                    series : dataseries.series
-	                };
+                        $series[i] = {
+                            name: $year,
+                            type:'line',
+                            data: $value
+                        }
+                    }
 
-	                clearTimeout(loadingTicket);
-	                loadingTicket = setTimeout(function (){
-	                    theChart.hideLoading();
-	                    theChart.setOption(option);
-	                    theChart.resize();
-	                },1000);
-	                $(window).on('resize', function(){
-	                    if(theChart != null && theChart != undefined){
-	                        theChart.resize();
-	                    }
-	                });
-	            }
-	        }
-	    });
+                    var dataseries = {
+                        cat: $month,
+                        legend: $legend,
+                        series: $series
+                    }
+                    console.log(dataseries.legend);
 
-        //UIkit.slideshow('#center-slideshow');
-	}
-	var $infraUrl = $baseUrl + '/get-infrastructure-data/' + thisYear;
-    var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
-	chartL0Row2('LOC1', $infraUrl, true)
-    chartL0Row2('LOC2', $simpananPemdaUrl, false)
+                    //CHART
+                    var dom = document.getElementById(id);
+                    var theme = 'default';
+                    var theChart = echarts.init(dom,theme);
+                    var loadingTicket;
+                    var effectIndex = -1;
+                    var effect = ['spin'];
 
-	function tableL0Row3(id, type, url) {
-		jQuery.support.cors = true;
-	    $.ajax({
-	        type: "GET",
-	        url: url,
-	        //data: "{}",
-	        contentType: "application/json; charset=utf-8",
-	        dataType: "json",
-	        cache: false,
-	        success: function (param) {
-				var result = param['top-bottom-'+type];
-				var top = result.top;
-				var topData = top.data;
-				var topTitle = top.name;
-				var topId = top.id;
+                    theChart.showLoading({
+                        text : '',
+                    });
 
-				var bottom = result.bottom;
-				var botData = bottom.data;
-				var botTitle = bottom.name;
-				var botId = bottom.id;
+                    var option = {
+                        backgroundColor: '#fff',
+                        title: {
+                            text: t,
+                            left: 'center',
+                            top: 10
+                        },
+                        tooltip : {
+                            trigger: 'axis',
+                            axisPointer : {
+                                type : 'shadow'
+                            },
+                            position: function (point, params, dom) {
+                                return [point[0], '10%'];
+                            },
+                            formatter: function (params){
+                                //console.log(params);
+                                var naam=[], waarde=[], color=[], serie=[];
+                                for (var i = 0; i < params.length; i++) {
+                                    naam[i] = params[i].seriesName;
+                                    waarde[i] = numeral(params[i].value).format('0.00a');
+                                    color[i] = '<i class="fa fa-circle fa-fw" style="color:'+params[i].color+'"></i>';
+                                    serie[i] = '<br>'+color[i]+' '+naam[i]+' '+waarde[i];
+                                }
+                                return '<strong>' + params[0].name + '</strong>' + serie.join('');
+                            }
+                        },
+                        legend: {
+                            data: dataseries.legend,
+                            x: 'left',
+                            bottom: 0,
+                        },
+                        grid: {
+                            x: '30px',
+                            x2: '10px',
+                            y: '10px',
+                            y2: '50px'
+                        },
+                        toolbox: {
+                            show: true,
+                            x: 'right',
+                            bottom: 0,
+                            padding: ['0', '0', '0', '0'],
+                            feature: {
+                                mark: {show: true},
+                                //dataView : {show: false, readOnly: false},
+                                magicType: {
+                                    show: true,
+                                    type: ['stack', 'tiled'],
+                                    title: {stack: 'Stack', tiled: 'Bar'},
+                                },
+                                restore: {show: true, title: 'Reload'},
+                                saveAsImage: {show: true, title: 'Save'}
+                            }
+                        },
+                        //calculable : true,
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : dataseries.cat,
+                                axisLabel: {
+                                    textStyle: {
+                                        fontSize: 10
+                                    },
+                                    interval: 0,
+                                    rotate: 15
+                                }
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value',
+                                axisLabel: {
+                                    textStyle: {
+                                        fontSize: 10
+                                    },
+                                    formatter: function (v) {
+                                        $v = numeral(v).format('0a');
+                                        return $v;
+                                    }
+                                },
+                            }
+                        ],
+                        series : dataseries.series
+                    };
 
-				var imgType = '<i class="uk-icon uk-icon-button sikd-icon-'+type+'"></i>';
+                    clearTimeout(loadingTicket);
+                    loadingTicket = setTimeout(function (){
+                        /*$('.bxslider').bxSlider({
+                            auto: true,
+                            controls: false,
+                            pause: 10000,
+                            mode: 'fade',
+                            onSliderLoad: function(currentIndex) {
+                                $(window).trigger('resize');
+                            },
+                        });*/
+                        theChart.hideLoading();
+                        theChart.setOption(option);
+                        theChart.resize();
+                    },1000);
+                    $(window).on('resize', function(){
+                        if(theChart != null && theChart != undefined){
+                            theChart.resize();
+                        }
+                    });
+                }
+            }
+        });
+    }
 
-				var card = '<div> \
-					<div class="uk-panel uk-panel-box z-depth-0 uk-text-center"> \
-						<a href="#pop_'+type+'" title="'+topTitle+' &amp; '+botTitle+'" data-uk-tooltip data-uk-modal >'+imgType+'<br>'+topTitle+'<br>'+botTitle+'</a> \
-					</div> \
-					<div id="pop_'+type+'" class="uk-modal"> \
-						<div class="uk-modal-dialog uk-modal-dialog-large"> \
-							<a class="uk-modal-close uk-close"></a> \
-							<h3>'+topTitle+'</h3> \
-							<table id="top_'+type+'" class="uk-table uk-table-striped"> \
-								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%" class="uk-text-right">Target</th><th width="20%" class="uk-text-right">Realization</th><th width="20%" class="uk-text-right">Percentage</th></tr></thead> \
-							</table> \
-							<h3>'+botTitle+'</h3> \
-							<table id="bot_'+type+'" class="uk-table uk-table-striped"> \
-								<thead><tr><th width="20%">Satker</th><th width="20%">Pemda</th><th width="20%" class="uk-text-right">Target</th><th width="20%" class="uk-text-right">Realization</th><th width="20%" class="uk-text-right">Percentage</th></tr></thead> \
-							</table> \
-						</div> \
-					</div> \
-				</div>';
-				$('#'+id).append(card);
+    function l0r3(id, type, url) {
+        numeral.locale('id');
+        $.ajax({
+            url: url,
+            //data: "{}",
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            //cache: false,
+            success: function (param) {
+    			var result = param['top-bottom-'+type];
+    			var top = result.top;
+    			var topData = top.data;
+    			var topTitle = top.name;
+    			var topId = top.id;
 
-		        var trTop = '';
-		        $.each(topData[0].kodeSatker, function (i, item) {
-					trTop += "<tr><td>" + topData[0].kodeSatker[i] + "</td><td>" + topData[0].namaPemda[i] + "</td><td class=\"uk-text-right\">" + numeral(topData[0].target[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(topData[0].realization[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(topData[0].percentage[i]).format('0.00') + "%</td></tr>";
-		        });
-		        $('#top_'+type).append(trTop);
+    			var bottom = result.bottom;
+    			var botData = bottom.data;
+    			var botTitle = bottom.name;
+    			var botId = bottom.id;
 
-				var trBot = '';
-				$.each(botData[0].kodeSatker, function (i, item) {
-					trBot += "<tr><td>" + botData[0].kodeSatker[i] + "</td><td>" + botData[0].namaPemda[i] + "</td><td class=\"uk-text-right\">" + numeral(botData[0].target[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(botData[0].realization[i]).format('0,0') + "</td><td class=\"uk-text-right\">" + numeral(botData[0].percentage[i]).format('0.00') + "%</td></tr>";
-		        });
-		        $('#bot_'+type).append(trBot);
+    			var itemlink =  '<div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>'
+                                    + '<div class="uk-width-auto">'
+                                        + '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip class="uk-icon-button sikd-icon5 sikd-icon-'+type+'"></a>'
+                                    + '</div>'
+                                    + '<div class="uk-width-expand">'
+                                        + '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip class="sikd-text5 sikd-blue-text">'+topTitle+'<br>'+botTitle+'</a>'
+                                    + '</div>'
+                                + '</div>';
 
-	        },
+                var pop =   '<div id="modal'+type+'" uk-modal>'
+                                + '<div class="uk-modal-dialog uk-modal-body">'
+                                    + '<button class="uk-modal-close-default" type="button" uk-close></button>'
+                                    + '<h5 class="sikd-title-topbottom">'+topTitle+'</h5>'
+                                    + '<hr class="uk-margin-remove">'
+                                    + '<div class="uk-overflow-auto uk-margin-small-bottom">'
+                                        + '<table id="top_'+type+'" class="uk-table uk-table-small">'
+                                            + '<thead><tr><th width="15%">Satker</th><th width="35%">Pemda</th><th width="25%" class="uk-text-right">Alokasi</th><th width="25%" class="uk-text-right">Persentase</th></tr></thead>'
+                                        + '</table>'
+                                    + '</div>'
+                                    + '<h5 class="sikd-title-topbottom">'+botTitle+'</h5>'
+                                    + '<hr class="uk-margin-remove">'
+                                    + '<div class="uk-overflow-auto">'
+                                        + '<table id="bot_'+type+'" class="uk-table uk-table-small">'
+                                            + '<thead><tr><th width="15%">Satker</th><th width="35%">Pemda</th><th width="25%" class="uk-text-right">Alokasi</th><th width="25%" class="uk-text-right">Persentase</th></tr></thead>'
+                                        + '</table>'
+                                    + '</div>'
+                                + '</div>'
+                            + '</div>';
+                var item =  '<div>'+itemlink+''+pop+'</div>';
+    			$('#'+id).append(item);
 
-	        error: function (msg) {
-	            alert("error");
-	        }
-	    });
+    	        var trTop = '';
+    	        $.each(topData[0].kodeSatker, function (i, item) {
+                    trTop +=    '<tr>'
+                                    + '<td>' + topData[0].kodeSatker[i] + '</td>'
+                                    + '<td>' + topData[0].namaPemda[i] + '</td>'
+                                    + '<td class="uk-text-right">' + numeral(topData[0].target[i]).format('0,0') + '</td>'
+                                    + '<td class="uk-text-right">' + numeral(topData[0].percentage[i]).format('0.0') + '%</td>'
+                                + '</tr>';
+    	        });
+    	        $('#top_'+type).append(trTop);
 
-	}
-	var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + thisYear;
-    var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + thisYear;
-    var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + thisYear;
-    var $belanjaUrl = $baseUrl + '/get-belanja-data/' + thisYear;
-    var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + thisYear;
+    			var trBot = '';
+    			$.each(botData[0].kodeSatker, function (i, item) {
+                    trBot +=    '<tr>'
+                                    + '<td>' + botData[0].kodeSatker[i] + '</td>'
+                                    + '<td>' + botData[0].namaPemda[i] + '</td>'
+                                    + '<td class="uk-text-right">' + numeral(botData[0].target[i]).format('0,0') + '</td>'
+                                    + '<td class="uk-text-right">' + numeral(botData[0].percentage[i]).format('0.0') + '%</td>'
+                                + '</tr>';
+    	        });
+    	        $('#bot_'+type).append(trBot);
 
-    tableL0Row3('topBottom', 'Realisasi-TKDD', $realisasiTkddUrl);
-	tableL0Row3('topBottom', 'DAK-Fisik', $dakFisikUrl);
-	tableL0Row3('topBottom', 'Dandes', $danaDesaUrl);
-	tableL0Row3('topBottom', 'Belanja', $belanjaUrl);
-	tableL0Row3('topBottom', 'PAD', $realisasiPadUrl);
-});
+            },
+
+            error: function (msg) {
+                alert("error");
+            }
+        });
+
+    }
+
+}(window.jQuery, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear));

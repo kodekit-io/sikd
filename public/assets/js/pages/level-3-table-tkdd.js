@@ -8,6 +8,7 @@ $(document).ready(function() {
         var tkdd0 = $("#tkdd").dataTable({
             data: result.tkdd.level_0,
             dom: 't',
+            language: {"sZeroRecords": "", "sEmptyTable": "Tidak ada data"},
             columns: [
                 {
                     "data": null, "class": "control", "orderable": false, "width": "5%",
@@ -21,9 +22,24 @@ $(document).ready(function() {
                 },
                 { "data": "id", "title": "ID", "width": "15%" },
                 { "data": "name", "title": "Nama", "width": "20%" },
-                { "data": "anggaran", "title": "Anggaran", "width": "20%" },
-                { "data": "realisasi", "title": "Realisasi", "width": "20%" },
-                { "data": "percent", "title": "Persen", "width": "20%" }
+                { "data": "anggaran", "title": "Anggaran", "width": "20%", "class": "uk-text-right",
+                    "render": function ( cellData ) {
+                        var v = numeral(cellData).format('0,0');
+                        return v;
+                    }
+                },
+                { "data": "realisasi", "title": "Realisasi", "width": "20%", "class": "uk-text-right",
+                    "render": function ( cellData ) {
+                        var v = numeral(cellData).format('0,0');
+                        return v;
+                    }
+                },
+                { "data": "percent", "title": "Persen", "width": "20%", "class": "uk-text-right",
+                    "render": function ( cellData ) {
+                        var v = numeral(cellData).format('0.0');
+                        return v+'%';
+                    }
+                }
             ],
             order: [[1, 'asc']]
         });
@@ -56,9 +72,24 @@ $(document).ready(function() {
                         },
                         { "data": "id", "width": "15%" },
                         { "data": "name", "width": "20%" },
-                        { "data": "anggaran", "width": "20%" },
-                        { "data": "realisasi", "width": "20%" },
-                        { "data": "percent", "width": "20%" }
+                        { "data": "anggaran", "width": "20%", "class": "uk-text-right",
+                            "render": function ( cellData ) {
+                                var v = numeral(cellData).format('0,0');
+                                return v;
+                            }
+                        },
+                        { "data": "realisasi", "width": "20%", "class": "uk-text-right",
+                            "render": function ( cellData ) {
+                                var v = numeral(cellData).format('0,0');
+                                return v;
+                            }
+                        },
+                        { "data": "percent", "width": "20%", "class": "uk-text-right",
+                            "render": function ( cellData ) {
+                                var v = numeral(cellData).format('0.0');
+                                return v+'%';
+                            }
+                        }
                     ],
                     order: [[1, 'asc']]
                 });
@@ -90,9 +121,24 @@ $(document).ready(function() {
                                 },
                                 { "data": "id", "width": "15%" },
                                 { "data": "name", "width": "20%" },
-                                { "data": "anggaran", "width": "20%" },
-                                { "data": "realisasi", "width": "20%" },
-                                { "data": "percent", "width": "20%" }
+                                { "data": "anggaran", "width": "20%", "class": "uk-text-right",
+                                    "render": function ( cellData ) {
+                                        var v = numeral(cellData).format('0,0');
+                                        return v;
+                                    }
+                                },
+                                { "data": "realisasi", "width": "20%", "class": "uk-text-right",
+                                    "render": function ( cellData ) {
+                                        var v = numeral(cellData).format('0,0');
+                                        return v;
+                                    }
+                                },
+                                { "data": "percent", "width": "20%", "class": "uk-text-right",
+                                    "render": function ( cellData ) {
+                                        var v = numeral(cellData).format('0.0');
+                                        return v+'%';
+                                    }
+                                }
                             ],
                             order: [[1, 'asc']]
                         });
@@ -124,9 +170,24 @@ $(document).ready(function() {
                                         },
                                         { "data": "id", "width": "15%" },
                                         { "data": "name", "width": "20%" },
-                                        { "data": "anggaran", "width": "20%" },
-                                        { "data": "realisasi", "width": "20%" },
-                                        { "data": "percent", "width": "20%" }
+                                        { "data": "anggaran", "width": "20%", "class": "uk-text-right",
+                                            "render": function ( cellData ) {
+                                                var v = numeral(cellData).format('0,0');
+                                                return v;
+                                            }
+                                        },
+                                        { "data": "realisasi", "width": "20%", "class": "uk-text-right",
+                                            "render": function ( cellData ) {
+                                                var v = numeral(cellData).format('0,0');
+                                                return v;
+                                            }
+                                        },
+                                        { "data": "percent", "width": "20%", "class": "uk-text-right",
+                                            "render": function ( cellData ) {
+                                                var v = numeral(cellData).format('0.0');
+                                                return v+'%';
+                                            }
+                                        }
                                     ],
                                     order: [[1, 'asc']]
                                 });

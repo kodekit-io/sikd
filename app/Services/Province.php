@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\File;
 class Province
 {
     /**
-     * @var Mediawave
+     * @var Sikd
      */
-    private $mediawave;
+    private $sikd;
 
     /**
      * Province constructor.
      */
-    public function __construct(Mediawave $mediawave)
+    public function __construct(Sikd $sikd)
     {
-        $this->mediawave = $mediawave;
+        $this->sikd = $sikd;
     }
 
     public function getProvinces($type = 'array')

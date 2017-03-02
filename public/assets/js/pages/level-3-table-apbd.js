@@ -2,12 +2,13 @@ var arrPush = [];
 var arrPush1 = [];
 var arrPush2 = [];
 $(document).ready(function() {
-    var ctl = "<a class='uk-icon uk-icon-plus'></a>";
+    var ctl = "<a class='fa fa-plus'></a>";
 
     function level0(result) {
         var apbd0 = $("#apbd").dataTable({
             data: result.apbd.level_0,
             dom: 't',
+            language: {"sZeroRecords": "", "sEmptyTable": "Tidak ada data"},
             columns: [
                 {
                     "data": null, "class": "control", "orderable": false, "width": "5%",
@@ -21,16 +22,31 @@ $(document).ready(function() {
                 },
                 { "data": "id", "title": "ID", "width": "15%" },
                 { "data": "name", "title": "Nama", "width": "20%" },
-                { "data": "anggaran", "title": "Anggaran", "width": "20%" },
-                { "data": "realisasi", "title": "Realisasi", "width": "20%" },
-                { "data": "percent", "title": "Persen", "width": "20%" }
+                { "data": "anggaran", "title": "Anggaran", "width": "20%", "class": "uk-text-right",
+                    "render": function ( cellData ) {
+                        var v = numeral(cellData).format('0,0');
+                        return v;
+                    }
+                },
+                { "data": "realisasi", "title": "Realisasi", "width": "20%", "class": "uk-text-right",
+                    "render": function ( cellData ) {
+                        var v = numeral(cellData).format('0,0');
+                        return v;
+                    }
+                },
+                { "data": "percent", "title": "Persen", "width": "20%", "class": "uk-text-right",
+                    "render": function ( cellData ) {
+                        var v = numeral(cellData).format('0.0');
+                        return v+'%';
+                    }
+                }
             ],
             order: [[1, 'asc']]
         });
 
         /* level_1 */
         $('#apbd').on("click", "td.control a",function() {
-            $(this).toggleClass('uk-icon-minus').toggleClass('uk-icon-plus');
+            $(this).toggleClass('fa-minus').toggleClass('fa-plus');
 
             var ntr = this.parentNode.parentNode;
             var a = $.inArray(ntr, arrPush);
@@ -56,16 +72,31 @@ $(document).ready(function() {
                         },
                         { "data": "id", "width": "15%" },
                         { "data": "name", "width": "20%" },
-                        { "data": "anggaran", "width": "20%" },
-                        { "data": "realisasi", "width": "20%" },
-                        { "data": "percent", "width": "20%" }
+                        { "data": "anggaran", "width": "20%", "class": "uk-text-right",
+                            "render": function ( cellData ) {
+                                var v = numeral(cellData).format('0,0');
+                                return v;
+                            }
+                        },
+                        { "data": "realisasi", "width": "20%", "class": "uk-text-right",
+                            "render": function ( cellData ) {
+                                var v = numeral(cellData).format('0,0');
+                                return v;
+                            }
+                        },
+                        { "data": "percent", "width": "20%", "class": "uk-text-right",
+                            "render": function ( cellData ) {
+                                var v = numeral(cellData).format('0.0');
+                                return v+'%';
+                            }
+                        }
                     ],
                     order: [[1, 'asc']]
                 });
 
                 /* level_2 */
                 $('#apbd1'+pos).on("click", "td.control"+pos+" a",function() {
-                    $(this).toggleClass('uk-icon-minus').toggleClass('uk-icon-plus');
+                    $(this).toggleClass('fa-minus').toggleClass('fa-plus');
                     var ntr1 = this.parentNode.parentNode;
                     var b = $.inArray(ntr1, arrPush1);
                     if (b === -1) {
@@ -90,16 +121,31 @@ $(document).ready(function() {
                                 },
                                 { "data": "id", "width": "15%" },
                                 { "data": "name", "width": "20%" },
-                                { "data": "anggaran", "width": "20%" },
-                                { "data": "realisasi", "width": "20%" },
-                                { "data": "percent", "width": "20%" }
+                                { "data": "anggaran", "width": "20%", "class": "uk-text-right",
+                                    "render": function ( cellData ) {
+                                        var v = numeral(cellData).format('0,0');
+                                        return v;
+                                    }
+                                },
+                                { "data": "realisasi", "width": "20%", "class": "uk-text-right",
+                                    "render": function ( cellData ) {
+                                        var v = numeral(cellData).format('0,0');
+                                        return v;
+                                    }
+                                },
+                                { "data": "percent", "width": "20%", "class": "uk-text-right",
+                                    "render": function ( cellData ) {
+                                        var v = numeral(cellData).format('0.0');
+                                        return v+'%';
+                                    }
+                                }
                             ],
                             order: [[1, 'asc']]
                         });
 
                         /* level_3 */
                         $('#apbd2'+ pos +''+ pos1).on("click", "td.control"+pos+pos1+" a",function() {
-                            $(this).toggleClass('uk-icon-minus').toggleClass('uk-icon-plus');
+                            $(this).toggleClass('fa-minus').toggleClass('fa-plus');
                             var ntr2 = this.parentNode.parentNode;
                             var c = $.inArray(ntr2, arrPush2);
                             if (c === -1) {
@@ -124,9 +170,24 @@ $(document).ready(function() {
                                         },
                                         { "data": "id", "width": "15%" },
                                         { "data": "name", "width": "20%" },
-                                        { "data": "anggaran", "width": "20%" },
-                                        { "data": "realisasi", "width": "20%" },
-                                        { "data": "percent", "width": "20%" }
+                                        { "data": "anggaran", "width": "20%", "class": "uk-text-right",
+                                            "render": function ( cellData ) {
+                                                var v = numeral(cellData).format('0,0');
+                                                return v;
+                                            }
+                                        },
+                                        { "data": "realisasi", "width": "20%", "class": "uk-text-right",
+                                            "render": function ( cellData ) {
+                                                var v = numeral(cellData).format('0,0');
+                                                return v;
+                                            }
+                                        },
+                                        { "data": "percent", "width": "20%", "class": "uk-text-right",
+                                            "render": function ( cellData ) {
+                                                var v = numeral(cellData).format('0.0');
+                                                return v+'%';
+                                            }
+                                        }
                                     ],
                                     order: [[1, 'asc']]
                                 });
@@ -158,4 +219,11 @@ $(document).ready(function() {
     $.getJSON($apbdTableUrl, function(result) {
         level0(result);
     });
+    
+    /*
+    var $apbdTableUrl = $baseUrl + '/data/L3_Table_APBD.json';
+    $.getJSON($apbdTableUrl, function(result) {
+        level0(result);
+    });
+    */
 });

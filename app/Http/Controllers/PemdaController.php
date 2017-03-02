@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service\Pemda;
+use App\Service\Sikd;
 use Illuminate\Http\Request;
 
 class PemdaController extends Controller
@@ -11,21 +12,26 @@ class PemdaController extends Controller
      * @var Pemda
      */
     private $pemdaService;
-
+    /**
+     * @var Sikd
+     */
+    private $sikdService;
     /**
      * PemdaController constructor.
      * @param Pemda $pemdaService
      */
-    public function __construct(Pemda $pemdaService)
+    public function __construct(Sikd $sikdService, Pemda $pemdaService)
     {
         $this->pemdaService = $pemdaService;
+        $this->sikdService = $sikdService;
     }
 
-    public function profile($satkerCode)
+    public function profile($satkerCode,$year)
     {
-        $data['year'] = '2015';
+        $data['year'] = $year;
         $data['satkerCode'] = $satkerCode;
         $data['pemdaName'] = $this->pemdaService->getPemdaNameBySatkerCode($satkerCode);
+        $data['years'] = $this->sikdService->getAvailableYears();
 
         return view('sikd.level-3', $data);
     }

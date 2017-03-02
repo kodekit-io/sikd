@@ -1,718 +1,286 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,700,700i');
-@import url('../fonts/MaterialIcons/material-icons.css');
-@import url('materialize.min.css');
-@import url('uikit.min.css');
-@import url('components/tooltip.min.css');
-@import url('components/sticky.min.css');
-@import url('components/progress.min.css');
-@import url('components/slideshow.min.css');
-@import url('components/slidenav.min.css');
-@import url('components/dotnav.min.css');
+@import "fonts/FontAwesome/font-awesome.css";
+@import "fonts/MaterialIcons/material-icons.css";
+@import "lib/color.css";
 
-body {
-    font: 16px/1.5 'Source Sans Pro', sans-serif;
-    background-color: rgba(0, 0, 0, 0.08);
+html {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    background: #edf1f2;
+    color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     font-family: 'Source Sans Pro', sans-serif;
 }
-
-footer {
-    padding: 1em 0;
-    min-height: 50px;
-    line-height: 24px;
-}
-
-footer .uk-subnav>*>* {
-    color: #fff;
-}
-
-main {
-    min-height: calc(100vh - 136px);
-}
-
-main.sikd-login {
-    height: calc(100vh - 56px);
-}
-
-::-webkit-selection {
-    background-color: #e91e63;
-    color: #fff;
+a.fa {
+    text-decoration: none;
 }
 
 ::-moz-selection {
-    background-color: #e91e63;
+    background: #09355B;
     color: #fff;
+    text-shadow: none
 }
 
 ::selection {
-    background-color: #e91e63;
+    background: #09355B;
     color: #fff;
+    text-shadow: none
 }
-
-.input-field label {
-    color: rgba(0, 0, 0, 0.5);
+a span.uk-icon {
+    position: relative;
+    top: -2px;
 }
-.input-field input[type=text]:focus+label,
-.input-field input[type=email]:focus+label,
-.input-field input[type=password]:focus+label {
-    color: rgba(17, 74, 134, 1);
+main {
+    min-height: calc(100vh - 80px);
+    padding: 15px !important;
+    margin-left: 50px !important;
 }
-.input-field input[type=text]:focus,
-.input-field input[type=text].valid,
-.input-field input[type=text].invalid,
-.input-field input[type=email]:focus,
-.input-field input[type=email].valid,
-.input-field input[type=email].invalid,
-.input-field input[type=password]:focus,
-.input-field input[type=password].valid,
-.input-field input[type=password].invalid {
-    border-bottom: 1px solid rgba(17, 74, 134, 1);
-    box-shadow: 0 1px 0 0 #000;
+footer {
+    padding: 15px !important;
+    margin-left: 50px !important;
+    background: #ffde59;
+    color: #09355B;
+    line-height: 20px !important;
 }
-.input-field .prefix.active {
-    color: rgba(17, 74, 134, 1);
-}
-.input-field .prefix {
-	bottom: 25px;
-}
-
-/*UIKIT*/
-
-.uk-container {
-    max-width: 1920px;
-    padding-left: 2em;
-    padding-right: 2em;
-}
-
-.uk-grid .card-panel {}
-
-.uk-progress.slim, .slim .uk-progress-bar {
-    height: 5px;
-}
-
-.uk-dotnav>*>* {
-    width: 10px;
-    height: 10px;
-    border: 1px solid #999;
-    background: #fff;
-}
-
-.uk-dotnav a:hover, .uk-dotnav .uk-active a {
-    background: #999;
-}
-
-.uk-pagination span {
-    cursor: pointer;
-    background: #e8eaf6;
-}
-
-.uk-pagination>.uk-active>span {
-    background: #3f51b5;
-    color: #fff;
-}
-
-.uk-vertical-align-middle p {
-    font-size: 1.2em !important;
-}
-
-
-/*MTRLZ*/
-
-.z-depth-1.soft, nav {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.04), 0 2px 10px 0 rgba(0, 0, 0, 0.03);
-}
-
-.z-depth-2.soft {
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.04);
-}
-
-.z-depth-3.soft {
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.06), 0 17px 50px 0 rgba(0, 0, 0, 0.04);
-}
-
-.z-depth-4.soft {
-    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.06), 0 25px 55px 0 rgba(0, 0, 0, 0.05);
-}
-
-.z-depth-5.soft {
-    box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.05), 0 40px 77px 0 rgba(0, 0, 0, 0.06);
-}
-
-.hoverable {
-    transition: box-shadow .25s;
-    box-shadow: 0;
-}
-
-.hoverable:hover {
-    transition: box-shadow .25s;
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-
-/*Nav*/
-
-.navbar-fixed {
-    height: 50px;
-}
-
-nav {
-    height: 50px;
-    line-height: 50px;
-}
-
-nav .nav-wrapper .btn-floating {
-    height: 30px;
-    line-height: 30px;
-    width: 30px;
-}
-
-nav .nav-wrapper i {
-    line-height: 30px;
-    height: 30px;
-    font-size: 1.25em;
-}
-
-nav ul a.btn-floating {
-    margin: -4px 0 0;
-}
-
-.dropdown-content, .side-nav {
-    padding-left: 0;
-}
-
-.side-nav li {
-    border-bottom: 1px solid #eee;
-}
-
-.side-nav a {
-    text-decoration: none !important;
+footer .uk-subnav>*>:first-child {
+    color: #09355B;
     font-size: 1rem;
-    font-weight: 700;
 }
 
-.btn, .chip {
-    text-decoration: none !important;
+main.full-width, footer.full-width {
+    margin-left: 0 !important;
 }
-
-.btn:hover {}
-
-.sikd-btn-sidedrawer {
-    height: 50px;
-    line-height: 50px;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    padding-left: 9px;
-    padding-right: 13px;
-    width: 50px;
+main.sikd-login {
+    min-height: calc(100vh - 50px);
+    padding: 0 !important;
+    margin: 0 !important;
 }
-
-.sikd-btn-sidedrawer:hover {
-    text-decoration: none;
+main.sikd-login .uk-card-media-left {
+    -webkit-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
 }
-
-.sikd-btn-sidedrawer i {
-    line-height: 50px !important;
-    font-size: 1.8em !important;
+.sikd-login .uk-card {
+    margin-top: -25px;
 }
-.side-nav a,
-.side-nav .collapsible-header,
-.side-nav.fixed .collapsible-header {
-    padding: 0 20px;
-}
-.side-nav .collapsible-body ul {
-    padding-left: 0;
-    margin: 0;
-}
-.side-nav .collapsible-body li a,
-.side-nav.fixed .collapsible-body li a {
-    padding: 0 10px 0 20px;
-    font-weight: normal;
-}
-.side-nav .collapsible-header i.uk-icon {
-    font-size: inherit;
-}
-.side-nav li>a>i, .side-nav li>a>[class^="mdi-"], .side-nav li>a>[class*="mdi-"], .side-nav li>a>i.material-icons {
-    margin: 0;
-}
-
-.sikd-chip-contact {
-    float: left;
-    margin: 0 10px 0 -10px;
-    font-size: 1.75em !important;
-}
-
-.chip.sikd-account {
-    min-width: 80px;
-    height: 30px;
-    font-size: 1em;
-    font-weight: 500;
-    color: rgba(0, 0, 0, 0.6);
-    line-height: 30px;
-    padding: 0 12px;
-    border-radius: 15px;
-    background-color: #e4e4e4;
-    margin: 0;
-}
-
-#sikd-account-dropdown {
-    padding-top: 10px;
-}
-
-#sikd-account-dropdown ul {
-    margin: 0;
-    padding: 0;
-}
-
-#sikd-account-dropdown ul:before {
-    content: "";
+.sikd-login-title {
     position: absolute;
     top: 0;
-    left: 75%;
-    margin-left: -10px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 10px 10px 10px;
-    border-color: transparent transparent #000000 transparent;
+    left: 0;
+    padding: 20px;
+    margin: 0;
+    line-height: normal;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 400;
+}
+.sikd-login-logo img {
+    height: 25px;
+    width: auto;
+    margin-bottom: 45px;
+}
+.sikd-er-mail,
+.sikd-er-pwd {
+    height: 20px;
+    line-height: 20px;
+    font-size: .875rem;
+    margin-bottom: 5px;
 }
 
-#sikd-account-dropdown li {
-    background: #000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+.sikd-nav-side {
+    height: 100vh;
+    position: fixed;
+    width: 50px;
+    background: #09355B;
+    z-index: 10;
 }
-
-#sikd-account-dropdown a, #sikd-account-dropdown a i {
-    font-size: inherit;
+.uk-offcanvas-bar {
+    background: #09355B;
     color: #fff;
 }
-
-#sikd-account-dropdown a:hover {
-    text-decoration: none;
+.sikd-nav-side a.sikd-menu-main {
+    color: #fff;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.sikd-nav-side .uk-nav-default > li > a,
+.uk-offcanvas-bar .uk-nav-default > li > a {
+    color: #fff;
+}
+.sikd-nav-side .uk-nav-default > li > a:focus,
+.sikd-nav-side .uk-nav-default > li > a:hover,
+.uk-offcanvas-bar .uk-nav-default > li > a:focus,
+.uk-offcanvas-bar .uk-nav-default > li > a:hover,
+.uk-offcanvas-bar .uk-nav-default .uk-nav-sub a:hover {
+    color: #ffde59 !important;
+}
+.sikd-nav-side .uk-nav-default > li.uk-active > a,
+.uk-offcanvas-bar .uk-nav-default > li.uk-active > a {
+    color: #ffde59;
+}
+.uk-button-small {
+    padding: 0 10px;
+    font-weight: 700;
+}
+.uk-nav-default,
+.uk-nav-header {
+    font-size: 1rem;
+}
+.uk-nav-header:not(:first-child) {
+    margin-top: 10px;
 }
 
-
-/*Card*/
-
-.card-content {
-    position: relative;
-    font-size: 16px;
+.uk-offcanvas-bar .uk-nav-default>li>a,
+.sikd-nav-side .uk-nav-default>li>a {
+    color: #fff;
+}
+.uk-offcanvas-bar .uk-nav-default .uk-nav-divider,
+.sikd-nav-side .uk-nav-default .uk-nav-divider {
+    border-top: 1px solid #fff;
+}
+.uk-offcanvas-bar ul.uk-nav-sub {
+    padding: 5px 0 5px 33px;
 }
 
-.card-content .uk-switcher {
-    padding-bottom: 0.5em;
+.sikd-cover-title {
+    margin: -20px -20px 20px -20px;
 }
-
-.tabs {
-    margin: 0;
-    padding: 0;
-    background: none !important;
-    height: auto !important;
+.sikd-home-row1 {
+    height: calc(50vh - 80px);
 }
-
-.tabs .indicator {
-    background-color: rgba(17, 74, 134, 1);
-    height: 2px;
-    top: 0px;
-    z-index: 0;
+.sikd-home-row2 {
+    height: calc(50vh - 80px);
 }
-
-.tabs .tab {
-    position: relative;
-    height: auto !important;
+.sikd-home-row3 {
+    height: 100px;
+}
+.sikd-l0r1-tab > ul.uk-tab{
+    width: 60px;
+    height: calc(50vh - 100px);
+    overflow-x: hidden;
+    overflow-y: auto;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-
-/*
-.card-action .tab a.active:before {
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 8px 10px 0 10px;
-	border-color: #ffffff transparent transparent transparent;
-	content: "";
-	position: absolute;
-	top: 0;
-	left: calc(50% - 10px);
-	z-index: 1;
+.sikd-l0r1-tab > ul.uk-tab li:first-child {
+    margin-top: 10px;
 }
-*/
-
-.card .card-action {
-    padding: 0 !important;
-    border-top: none;
-    background-color: rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: inset 0px 10px 10px -15px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: inset 0px 10px 10px -15px rgba(0, 0, 0, 0.5);
-    box-shadow: inset 0px 10px 10px -15px rgba(0, 0, 0, 0.5);
+.sikd-l0r1-tab > ul.uk-tab > * > a {
+    padding: inherit;
+    padding-left: 10px;
+    height: 24px;
 }
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
-    color: rgba(160, 160, 160, 0.75);
-}
-
-.card .card-action a.active {
-    color: rgba(17, 74, 134, 1) !important;
-}
-.card .card-action a {
-    line-height: normal;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.card .card-action-top {
-    padding: 0 !important;
-    border-top: none;
-    background-color: rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: inset 0px -10px 10px -15px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: inset 0px -10px 10px -15px rgba(0, 0, 0, 0.5);
-    box-shadow: inset 0px -10px 10px -15px rgba(0, 0, 0, 0.5);
-}
-.card .card-action-top a:not(.btn):not(.btn-large):not(.btn-floating) {
-    color: rgba(160, 160, 160, 0.75);
-}
-
-.card .card-action-top a.active {
-    color: rgba(17, 74, 134, 1) !important;
-}
-.card .card-action-top a {
-    line-height: normal;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 1em 0;
-}
-.card .card-action-top .tabs .indicator {
-    top: auto;
-    bottom: 0;
-}
-
-.card .card-toolbar {
-    border-top: none;
-    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 10px 1em 5px;
-}
-
-.card-title {
-    line-height: 36px;
-    font-size: 24px;
-    font-weight: 500 !important;
-    display: inline-block;
-    bottom: auto !important;
-    margin: 0;
-}
-
-.sikd-login .card-title {
-    font-size: 2.2rem;
-    top: 0;
-    margin: 0;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.sikd-login input, .sikd-login label {
-    font-size: 16px;
-}
-.sikd-login .card .card-image img {
-    border-radius: 2px 0 0 2px;
-}
-.sikd-link-login {
-    position: absolute;
-    bottom: 10px;
-    margin: 0;
-    padding: 10px;
-    font-size: 16px;
-}
-.sikd-logo {
-    height: 1em;
-    width: auto;
-	line-height: normal;
-}
-.sikd-login-logo {
-	height: 80px;
-	width: 80px;
-	border: 2px solid rgba(17, 74, 134, 1);
-	display: inline-block;
-	line-height: 72px;
-	border-radius: 40px;
-}
-.card-toolbar-small {
-    border-top: none;
-    border-bottom: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 10px !important;
-}
-
-.card-toolbar-small .card-title {
-    line-height: normal;
-    font-size: 1rem;
-    font-weight: 500;
-    display: inline-block;
-}
-
-
-/*Dropdown*/
-.slim-drop.dropdown-content {
-    max-height: 250px !important;
-}
-.slim-drop.dropdown-content li {
-    min-height: 1em;
-    border-bottom: 1px dotted #eee;
-}
-
-.slim-drop.dropdown-content li:last-child {
-    border-bottom: none;
-    margin-bottom: 10px;
-}
-
-.slim-drop.dropdown-content li>a, .slim-drop.dropdown-content li>span {
-    font-size: 1rem;
-    display: block;
-    line-height: 1rem;
-    padding: 5px 12px;
-    margin-left: 0;
-    margin-right: 0;
-    color: inherit !important;
-}
-
-
-/*SIKD*/
-
-.sikd-blue {
-    color: rgba(17, 74, 134, 1) !important;
-}
-
-.sikd-pink {
-    color: rgba(211, 64, 89, 1) !important;
-}
-
-.sikd-yellow {
-    color: rgba(252, 221, 98, 1) !important;
-}
-
-.sikd-blue-bg {
-    background: rgba(17, 74, 134, 1) !important;
-}
-
-.sikd-pink-bg {
-    background: rgba(211, 64, 89, 1) !important;
-}
-
-.sikd-yellow-bg {
-    background: rgba(252, 221, 98, 1) !important;
-}
-
-
-
-
-/*Page*/
-
-.sikd-page-title {
-    /*font-family: 'Montserrat', sans-serif;*/
-    line-height: 50px;
-    height: 50px;
-    text-transform: uppercase;
-    margin: 0;
+.sikd-l0r1-title {
     padding: 0;
-    font-size: 1.25em !important;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-.sikd-page-title a {
-    display: inline-block;
-}
-
-.sikd-page-title a:hover {
-    text-decoration: none;
-}
-
-.sikd-page-title img {
-    vertical-align: middle;
-    margin-top: -3px;
-}
-
-
-/*Chart*/
-.sikd-chart-lagging {
-    display: block;
-}
-.sikd-chart--title {
-    /*font-family: 'Montserrat', sans-serif;*/
-    text-transform: uppercase;
-    font-size: 1.25em;
-    font-weight: 700;
-    letter-spacing: -1px;
-    height: 2em;
-    overflow: hidden;
-}
-
-.sikd-chart-action {
-    position: absolute;
-    z-index: 1;
-    right: 1em;
-    bottom: 1em;
     margin: 0;
-    padding: 0;
-}
-
-.sikd-chart-action i {
-    line-height: 36px;
+    line-height: normal;
 }
 
 .uk-progress {
-    position: relative;
-}
-
-.sikd-m {
-    position: absolute;
-    display: block;
-    width: 20px;
-    height: 100%;
-    top: 0;
-    border-left: 1px dotted #f00;
-    z-index: 1;
-    font-size: 12px;
-    color: #fff;
-}
-
-.sikd-leading {
-    min-width: 100%;
-    min-height: 400px;
-}
-
-
-/*
-
-.sikd-lagging-a .tabs .indicator {
-	background-color: rgb(63, 81, 181);
-	height: 3px;
-}
-.sikd-lagging-b .tabs .indicator {
-	background-color: #ff9800;
-	height: 3px;
-}
-.sikd-lagging-a .tabs a.active {
-	background: rgb(63, 81, 181) !important;
-	color: rgb(63, 81, 181) !important;
-}
-
-.sikd-lagging-b .tabs a.active {
-	background: #ff9800 !important;
-	color: #ff9800 !important;
-}
-*/
-
-.skid-thematic {
-    width: 100%;
-    height: 80px;
-    position: relative;
-    padding: 1em;
-    overflow: hidden;
-}
-
-.skid-thematic__text {
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    text-align: right;
-    width: calc(100% - 4.5em);
-}
-
-.skid-thematic__text h5 {
-    text-transform: uppercase;
-    margin: 0 0 .5em;
-}
-
-.sikd-map {
-    margin-top: calc(15px + 0.5rem);
-    min-height: calc(100vh - 156px - 1.5rem);
-}
-.sikd-map #map {
-    min-height: calc(100vh - 253px - 1.5rem);
-}
-.bgmap {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: 240px;
-}
-
-.bgmap .note {
-    position: absolute;
-    width: calc(100% - 10px);
-    left: 5px;
-    bottom: 5px;
-    background: rgba(255, 255, 255, 0.75);
-    padding: 10px;
-    font-size: .8em;
-}
-
-.skid-gauge-wrap {
-    width: 100%;
-    height: 200px;
+    background-color: #ffde59;
     margin: 0;
-}
-
-.skid-gauge {
-    height: 200px;
-    margin: 0 auto;
-}
-
-.dataTables_wrapper .bottom-row {
-    display: none;
-}
-
-.sikd-indigo .sikd-i:hover {
-    background: #3f51b5 !important;
-}
-
-.sikd-orange .sikd-i:hover {
-    background: #ff9800 !important;
-}
-
-.sikd-text-ptr {
-    font-size: .85rem;
-    letter-spacing: -1%;
-}
-
-/**/
-.header-page {
+    height: 25px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     width: 100%;
-    height: 300px;
-    text-align: center;
-    background-color: #666;
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 20px;
+    overflow: hidden;
     position: relative;
 }
-.header-page:after {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.3);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+.uk-progress .progress-bar {
+    background-color: #09355B;
+    height: 25px;
 }
-.title-page {
-    text-align: center;
+.uk-progress .progress-text {
     color: #fff;
-    z-index: 10;
-    position: relative;
+    padding-left: 10px;
+    line-height: 25px;
 }
-#header + main {
-    min-height: calc(100vh - 320px - 56px);
+.uk-progress .progress-mean {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    top: 0;
+    border-left: 2px dotted #F44336;
 }
-.btn-screenshot {
-    position: fixed;
-    bottom: 3rem;
-    right: 1rem;
+.sikd-progress-persen {
+    line-height: 25px;
+    padding: 0 10px 0 0;
+    font-weight: 700;
+    color: #09355B;
+}
+.sikd-l0r1-chart {
+    width: 100% !important;
+    margin: 10px 0;
+    height: calc(50vh - 185px);
+}
+.sikd-l0r2-chart {
+    height: calc(50vh - 120px);
+}
+a.sikd-chart-info {
+    margin: 5px;
+}
+.sikd-blue {
+    background-color: #09355B !important;
+}
+.sikd-blue-text {
+    color: #09355B !important;
+}
+.sikd-text5 {
+    display: inline-block;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.sikd-text5:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+.sikd-icon5 {
+    height: 40px;
+    width: 40px;
+    background: #ffde59;
+    font-family: 'FontAwesome';
+    overflow: hidden;
+    font-size: 1.25rem;
+    color: #fff;
+    text-shadow:    rgb(179, 155, 62) 0px 0px 0px,
+                    rgb(182, 159, 64) 1px 1px 0px,
+                    rgb(186, 162, 65) 2px 2px 0px,
+                    rgb(190, 165, 66) 3px 3px 0px,
+                    rgb(194, 169, 68) 4px 4px 0px,
+                    rgb(198, 172, 69) 5px 5px 0px,
+                    rgb(201, 175, 70) 6px 6px 0px,
+                    rgb(205, 179, 72) 7px 7px 0px,
+                    rgb(209, 182, 73) 8px 8px 0px,
+                    rgb(213, 185, 74) 9px 9px 0px,
+                    rgb(217, 189, 76) 10px 10px 0px,
+                    rgb(221, 192, 77) 11px 11px 0px,
+                    rgb(224, 195, 78) 12px 12px 0px,
+                    rgb(228, 199, 80) 13px 13px 0px,
+                    rgb(232, 202, 81) 14px 14px 0px,
+                    rgb(236, 205, 82) 15px 15px 0px,
+                    rgb(240, 209, 84) 16px 16px 0px,
+                    rgb(244, 212, 85) 17px 17px 0px,
+                    rgb(247, 215, 86) 18px 18px 0px,
+                    rgb(251, 219, 88) 19px 19px 0px;
+}
+.sikd-icon5:hover {
+    text-decoration: none;
+    background: #ffde59;
+    color: #09355B;
 }
 .sikd-icon-Realisasi-TKDD:before {
     content: "\f0ec";
@@ -729,44 +297,216 @@ nav ul a.btn-floating {
 .sikd-icon-PAD:before {
     content: "\f0b1";
 }
+.sikd-icon {
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    width: 40px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    background-color: rgba(230, 230, 230, 1);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #09355B;
+    text-shadow:    rgba(200, 200, 200, 1) 0px 0px 0px,
+                    rgba(200, 200, 200, 0.95) 1px 1px 0px,
+                    rgba(200, 200, 200, 0.90) 2px 2px 0px,
+                    rgba(200, 200, 200, 0.85) 3px 3px 0px,
+                    rgba(200, 200, 200, 0.80) 4px 4px 0px,
+                    rgba(200, 200, 200, 0.75) 5px 5px 0px,
+                    rgba(200, 200, 200, 0.70) 6px 6px 0px,
+                    rgba(200, 200, 200, 0.65) 7px 7px 0px,
+                    rgba(200, 200, 200, 0.60) 8px 8px 0px,
+                    rgba(200, 200, 200, 0.55) 9px 9px 0px,
+                    rgba(200, 200, 200, 0.50) 10px 10px 0px,
+                    rgba(200, 200, 200, 0.45) 11px 11px 0px,
+                    rgba(200, 200, 200, 0.40) 12px 12px 0px,
+                    rgba(200, 200, 200, 0.35) 13px 13px 0px,
+                    rgba(200, 200, 200, 0.30) 14px 14px 0px,
+                    rgba(200, 200, 200, 0.25) 15px 15px 0px,
+                    rgba(200, 200, 200, 0.20) 16px 16px 0px,
+                    rgba(200, 200, 200, 0.15) 17px 17px 0px,
+                    rgba(200, 200, 200, 0.10) 18px 18px 0px,
+                    rgba(200, 200, 200, 0.05) 19px 19px 0px;
+}
+.uk-active .sikd-icon {
+    background-color: #09355B;
+    color: #fff;
+    text-shadow: none;
+}
 
 
-/*MOBILE*/
-
+.rem1 {
+    font-size: 1rem !important;
+}
+.rem125 {
+    font-size: 1.25rem !important;
+}
+.uk-card {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.l1card .uk-card-body {
+    height: calc( 100vh - 180px );
+}
+.l2card > .uk-card-body,
+.l3card > .uk-card-body {
+    min-height: calc( 100vh - 180px );
+}
+.l3panel {
+    position: relative;
+}
+.sikd-map {
+    height: 100% !important;
+    width: 100% !important;
+}
+.sikd-title-gauge {
+    position: absolute;
+    z-index: 1;
+    top:0;
+    text-align: center;
+    padding-top: 1rem;
+    width: calc(100% - 15px) !important;
+}
+.sikd-title-topbottom {
+    margin: 0 !important;
+    padding: 0 0 10px 10px;
+}
+.blinking {
+    opacity: 0;
+    animation: blinking 1s linear infinite;
+}
+@keyframes blinking {
+    from,
+    49.9% {
+        opacity: 0;
+    }
+    50%,
+    to {
+        opacity: 1;
+    }
+}
+#l0r1bTabContent li:last-child .progress-wrap {
+    visibility: hidden !important;
+}
 @media (max-width: 768px) {
     main {
-        min-height: calc(100vh - 102px);
-    }
-    main.sikd-login {
-        height: auto;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-    main.sikd-login+footer {
-        width: 100%;
-        position: relative;
-        bottom: 0;
+        min-height: calc( 100vh - 145px );
+        margin-left: 0 !important;
+        padding-top: 65px !important;
     }
     footer {
+        padding: 15px !important;
+        line-height: normal !important;
         text-align: center;
+        margin-left: 0 !important;
     }
-    footer .uk-navbar-flip {
-        clear: both;
+    footer .uk-subnav>* {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    main.sikd-login {
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: 100vh;
+    }
+    main.sikd-login .uk-card {
+        width: 80% !important;
+        margin-top: 0;
+    }
+    main.sikd-login .uk-card-media-left {
+        height: 200px !important;
+        -webkit-border-radius: 3px 3px 0 0;
+        -webkit-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
+    }
+    main.sikd-login .uk-card-media-left canvas {
+        display: none;
+    }
+    .sikd-l0r1-title {
+        line-height: 1rem;
+    }
+    .sikd-home-row1, .sikd-home-row1 > div, .sikd-home-row2 {
+        height: 250px;
+    }
+    .sikd-home-row3 {
+        height: auto;
+    }
+    .sikd-l0r1-chart {
+        height: calc(250px - 140px);
+    }
+    .sikd-l0r2-chart {
+        height: 210px;
+    }
+    .sikd-l0r1-tab > ul.uk-tab{
+        width: auto;
+        height: auto;
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .sikd-l0r1-tab > ul.uk-tab li:first-child {
+        margin-top: 0;
+        margin-left: 5px;
+    }
+    .sikd-nav-side {
+        height: 50px;
+        position: fixed;
         width: 100%;
     }
-    footer .uk-navbar-flip .uk-subnav>* {
-        flex: 1;
+    .sikd-nav-side .uk-nav li {
+        display: inline-block;
     }
-    .chip.sikd-account {
-        min-width: 30px;
-        width: 32px;
-        margin-top: 10px;
+    .sikd-nav-side .uk-nav li a {
+        padding: 0 5px;
     }
-    .sikd-login .card-title {
-        font-size: 1.5rem;
-        line-height: normal;
+    .sikd-nav-side .uk-position-bottom {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: auto !important;
     }
-    .sikd-login .uk-subnav>*>* {
-        font-size: 1rem;
+    .sikd-icon {
+        height: 24px;
+        width: 24px;
+    }
+    .sikd-icon:before {
+        height: 24px;
+        width: 24px;
+        position: relative;
+    }
+    .sikd-l0r1-tab > ul.uk-tab {
+        margin-left: 0;
+    }
+    .sikd-l0r1-tab > .uk-tab::before {
+        left: 0;
+    }
+    .sikd-l0r1-tab > ul.uk-tab > * > a {
+        padding: 5px;
+        height: 24px;
+        width: 24px;
+        margin: 0;
+    }
+    .sikd-l0r1-tab ul.uk-tab li {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+    .l1card .uk-card-body,
+    .l2card .uk-card-body {
+        min-height: calc( 100vh - 290px );
+    }
+    .sikd-gauge {
+        height: 200px;
+    }
+    .rem125 {
+        font-size: 1rem !important;
     }
 }

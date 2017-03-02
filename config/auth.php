@@ -76,7 +76,7 @@ return [
         // ],
 
         'users' => [
-            'driver' => 'mediawave_api'
+            'driver' => 'sikd_api'
         ]
     ],
 

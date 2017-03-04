@@ -291,12 +291,9 @@
     function l0r2a(id, chartUrl, stack) {
         numeral.locale('id');
         $.ajax({
-            //url: 'data/L0_row2_infrastruktur.json',
     		url: chartUrl,
             dataType: 'json',
             success: function(result){
-    			//console.log(result);
-    		    // result = jQuery.parseJSON(result);
                 var data = result.data;
     			var t = result.properties.Label;
 
@@ -355,7 +352,6 @@
                                 return [point[0], '10%'];
                             },
                             formatter: function (params){
-                                //console.log(params);
                                 var naam=[], waarde=[], color=[], serie=[];
                                 for (var i = 0; i < params.length; i++) {
                                     naam[i] = params[i].seriesName;
@@ -384,7 +380,6 @@
                             padding: ['0', '0', '0', '0'],
                             feature: {
                                 mark: {show: true},
-                                //dataView : {show: false, readOnly: false},
                                 magicType: {
                                     show: true,
                                     type: ['stack', 'tiled'],
@@ -443,21 +438,16 @@
     function l0r2b(id, chartUrl) {
         numeral.locale('id');
         $.ajax({
-            //url: 'data/L0_row2_infrastruktur.json',
             url: chartUrl,
-            //dataType: 'json',
             success: function(result){
-                //console.log(result);
                 result = jQuery.parseJSON(result);
                 var data = result.trend;
-                //console.log(data);
                 var t = result.name;
 
                 if (data.length === 0) {
                     $('#'+id).html("<div class='center'>No Data</div>");
                 } else {
                     var $series=[], $legend=[];
-                    //console.log(data.length);
                     for (var i = 0; i < data.length; i++) {
                         $year = String(data[i].year);
                         $month = data[i].month;
@@ -476,7 +466,6 @@
                         legend: $legend,
                         series: $series
                     }
-                    console.log(dataseries.legend);
 
                     //CHART
                     var dom = document.getElementById(id);
@@ -596,10 +585,7 @@
         numeral.locale('id');
         $.ajax({
             url: url,
-            //data: "{}",
-            //contentType: "application/json; charset=utf-8",
             dataType: "json",
-            //cache: false,
             success: function (param) {
     			var result = param['top-bottom-'+type];
     			var top = result.top;

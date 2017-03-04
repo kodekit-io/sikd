@@ -28,7 +28,7 @@
 		var $tkddData = '{!! $tkddData !!}';
         var $apbdData = '{!! $apbdData !!}';
         var $reportTypes = '{!! $reportTypes !!}';
-        var $thisYear = '{!! $thisYear !!}';
+        var $year = '{!! $year !!}';
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>

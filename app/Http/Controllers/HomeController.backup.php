@@ -47,18 +47,18 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function home($year='2016')
+    public function home()
     {
-        // $year = date('Y');
-        // $year = '2016';
-        $params = [ 'tahun' => $year ];
+//        $thisYear = date('Y');
+        $thisYear = '2016';
+        $params = [ 'tahun' => $thisYear ];
 
         // tkdd
-        $tkddRequest = $this->tkdd->getAllChart($year);
+        $tkddRequest = $this->tkdd->getAllChart($thisYear);
         $tkddResult = ($tkddRequest->status == '200') ? $tkddRequest->result : [];
 
         // apbd
-        $apbdRequest = $this->apbd->getAllChart($year);
+        $apbdRequest = $this->apbd->getAllChart($thisYear);
         $apbdResult = ($apbdRequest->status == '200') ? $apbdRequest->result : [];
 
         // reportType
@@ -68,7 +68,7 @@ class HomeController extends Controller
             $arr[$reportType['id']] = $reportType['code'];
         }
 
-        $data['year'] = $year;
+        $data['thisYear'] = $thisYear;
         $data['reportTypes'] = \GuzzleHttp\json_encode($arr);
         $data['tkddData'] = \GuzzleHttp\json_encode($tkddResult);
         $data['apbdData'] = \GuzzleHttp\json_encode($apbdResult);

@@ -23,7 +23,7 @@ Route::get('/logout', 'ApiAuthController@logout');
 
 Route::group(['middleware' => ['auth', 'province']], function () {
 
-    Route::get('home', 'HomeController@home');
+    Route::get('home/{year?}', 'HomeController@home');
     Route::get('get-infrastructure-data/{year}', 'HomeController@infrastructureData');
     Route::get('get-simpanan-pemda-data', 'HomeController@simpananPemdaData');
     Route::get('get-realisasi-tkdd-data/{year}', 'HomeController@realisasiTkdd');

@@ -1,4 +1,4 @@
-(function ($, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear) {
+(function ($, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $year) {
     $(function () {
         l0r1card('l0r1a');
         l0r1card('l0r1b');
@@ -29,7 +29,7 @@
         l0r1('l0r1b','10','apbd', apbdData);
         l0r1('l0r1b','11','apbd', apbdData);
 
-        var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $thisYear;
+        var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $year;
         var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
         $('.bxslider').bxSlider({
             auto: true,
@@ -42,16 +42,33 @@
             },
         });
 
-        var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $thisYear;
-        var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $thisYear;
-        var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + $thisYear;
-        var $belanjaUrl = $baseUrl + '/get-belanja-data/' + $thisYear;
-        var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + $thisYear;
+        var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $year;
+        var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $year;
+        var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + $year;
+        var $belanjaUrl = $baseUrl + '/get-belanja-data/' + $year;
+        var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + $year;
         l0r3('l0r3grid', 'Realisasi-TKDD', $realisasiTkddUrl);
         l0r3('l0r3grid', 'DAK-Fisik', $dakFisikUrl);
         l0r3('l0r3grid', 'Dandes', $danaDesaUrl);
         l0r3('l0r3grid', 'Belanja', $belanjaUrl);
         l0r3('l0r3grid', 'PAD', $realisasiPadUrl);
+
+        $('select.select-year').change(function(){
+            $year = $(this).val();
+            window.location = $baseUrl + '/home/' + $year;
+        });
+
+        $('select.select-year').each(function (){
+            var href = window.location.href;
+            var array = href.split('/');
+            var year = array[array.length-1];
+            $(this).find('option[value="'+year+'"]').prop('selected',true);
+            console.log(year);
+            if (year=='home') {
+                $(this).find('option[value="2016"]').prop('selected',true);
+            }
+        });
+
     });
     function l0r1card(div) {
         var card =  '<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade">'
@@ -94,7 +111,7 @@
 
         if ($result[n] !== undefined) {
             if ($result.length === 0) {
-                $('#' + div).html("<div class='uk-position-center'>No data</div>");
+                $('#' + div).html('<div class="uk-position-center">Tidak ada data!</div>');
             } else {
                 var $content = [];
                 var $legend = [];
@@ -131,20 +148,13 @@
                     legend: $legend
                 };
 
-                var slug = function (str) {
-                    var $slug = '';
-                    var trimmed = $.trim(str);
-                    $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                    return $slug.toLowerCase();
-                }
-
                 if (type == 'tkdd') {
-                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + $thisYear;
+                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + $year;
                 } else {
                     if ($id=='10') {
-                        var linkdetail = $baseUrl + '/level-1/apbd/lra/' + $thisYear;
+                        var linkdetail = $baseUrl + '/level-1/apbd/lra/' + $year;
                     } else {
-                        var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + $thisYear;
+                        var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + $year;
                     }
 
                 }
@@ -156,7 +166,8 @@
                     + '<div class="progress-bar uk-animation-slide-left" style="width: '+$percentage000+'%;"><span class="progress-text">A '+$target+' / R '+$realization+'</span></div>'
                 + '</div>';
 
-                var selectYear = '<select class="uk-select uk-form-small">'
+                var selectYear = '<select name="select-year" class="uk-select uk-form-small select-year">'
+                    + '<option value="2017">2017</option>'
                     + '<option value="2016">2016</option>'
                     + '<option value="2015">2015</option>'
                 + '</select>'
@@ -298,7 +309,7 @@
     			var t = result.properties.Label;
 
                 if (data.length === 0) {
-                    $('#'+id).html("<div class='center'>No Data</div>");
+                    $('#'+id).html('<div class="uk-position-center">Tidak ada data!</div>');
                 } else {
                     var $series=[], $legend=[];
     				//console.log(data.length);
@@ -445,7 +456,7 @@
                 var t = result.name;
 
                 if (data.length === 0) {
-                    $('#'+id).html("<div class='center'>No Data</div>");
+                    $('#'+id).html('<div class="uk-position-center">Tidak ada data!</div>');
                 } else {
                     var $series=[], $legend=[];
                     for (var i = 0; i < data.length; i++) {
@@ -660,4 +671,4 @@
 
     }
 
-}(window.jQuery, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear));
+}(window.jQuery, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $year));

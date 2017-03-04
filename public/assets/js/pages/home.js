@@ -31,8 +31,16 @@
 
         var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $thisYear;
         var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
-        l0r2a('l0r2a', $infraUrl, true);
-        l0r2b('l0r2b', $simpananPemdaUrl);
+        $('.bxslider').bxSlider({
+            auto: true,
+            controls: false,
+            pause: 24000,
+            mode: 'fade',
+            onSliderLoad: function(currentIndex) {
+                l0r2a('l0r2a', $infraUrl, true);
+                l0r2b('l0r2b', $simpananPemdaUrl);
+            },
+        });
 
         var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $thisYear;
         var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $thisYear;
@@ -131,17 +139,27 @@
                 }
 
                 if (type == 'tkdd') {
-                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + '2016';
+                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + $thisYear;
                 } else {
-                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2016';
+                    if ($id=='10') {
+                        var linkdetail = $baseUrl + '/level-1/apbd/lra/' + $thisYear;
+                    } else {
+                        var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + $thisYear;
+                    }
+
                 }
 
-                var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';
+                var tabItem = '<li><a title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';
                 $('#'+div+'TabItem').append(tabItem);
 
-                var p = '<div class="uk-progress">'
-                            + '<div class="progress-bar uk-animation-slide-left" style="width: '+$percentage000+'%;"><span class="progress-text">A '+$target+' / R '+$realization+'</span></div>'
-                        + '</div>';
+                var progress = '<div class="uk-progress">'
+                    + '<div class="progress-bar uk-animation-slide-left" style="width: '+$percentage000+'%;"><span class="progress-text">A '+$target+' / R '+$realization+'</span></div>'
+                + '</div>';
+
+                var selectYear = '<select class="uk-select uk-form-small">'
+                    + '<option value="2016">2016</option>'
+                    + '<option value="2015">2015</option>'
+                + '</select>'
 
                 var tabContent = '<li>'
                     + '<div class="uk-card-body">'
@@ -153,7 +171,7 @@
                                         + '<div class="sikd-progress-persen">'+$percentage+'%</div>'
                                     + '</div>'
                                     + '<div class="uk-width-expand">'
-                                        + p
+                                        + progress
                                     + '</div>'
                                 + '</div>'
                             + '</div>'
@@ -163,10 +181,7 @@
                             + '<div class="uk-width-1-1">'
                                 + '<div class="sikd-l0r1-footer uk-flex uk-flex-between">'
                                     + '<div>'
-                                        + '<select class="uk-select uk-form-small">'
-                                            + '<option>2016</option>'
-                                            + '<option>2015</option>'
-                                        + '</select>'
+                                        + selectYear
                                     + '</div>'
                                     + '<div>'
                                         + '<a title="'+$info+'" uk-tooltip class="sikd-blue-text sikd-chart-info" uk-icon="icon: info"></a>'
@@ -412,15 +427,6 @@
 
                     clearTimeout(loadingTicket);
                     loadingTicket = setTimeout(function (){
-                        $('.bxslider').bxSlider({
-                            auto: true,
-                            controls: false,
-                            pause: 24000,
-                            mode: 'fade',
-            				onSliderLoad: function(currentIndex) {
-            			        $(window).trigger('resize');
-            			    },
-            			});
                         theChart.hideLoading();
                         theChart.setOption(option);
                         theChart.resize();
@@ -572,15 +578,6 @@
 
                     clearTimeout(loadingTicket);
                     loadingTicket = setTimeout(function (){
-                        /*$('.bxslider').bxSlider({
-                            auto: true,
-                            controls: false,
-                            pause: 10000,
-                            mode: 'fade',
-                            onSliderLoad: function(currentIndex) {
-                                $(window).trigger('resize');
-                            },
-                        });*/
                         theChart.hideLoading();
                         theChart.setOption(option);
                         theChart.resize();

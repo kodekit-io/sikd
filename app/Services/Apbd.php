@@ -92,7 +92,7 @@ class Apbd
         }
 
         if ($postureId == 'lra') {
-            return 'LRA';
+            return 'Penyampaian Data LRA';
         }
 
         return '';

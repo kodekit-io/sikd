@@ -52,6 +52,7 @@
                     "lengthChange": false,
                     "language": {"sZeroRecords": "", "sEmptyTable": "Tidak ada data"},
                     "columns": [
+                        { "data": "id", "visible": false },
                         { "data": "kodeSatker", "width": "5%", "title": "<span class='uk-float-left fa fa-sort'></span>" },
                         { "data": "name", "width": "15%", "title": "<span class='uk-float-left fa fa-sort'></span>" },
                         {
@@ -91,7 +92,7 @@
                             }
                         },
                     ],
-                    "order": [[ 0, "desc" ]]
+                    "order": [[ 0, "asc" ]]
                 });
             },
             error: function (request, status, error) {

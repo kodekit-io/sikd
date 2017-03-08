@@ -118,6 +118,13 @@ class HomeController extends Controller
         return $this->sikd->getJsonResult($url);
     }
 
+    public function lra($year)
+    {
+        $url = 'top-bottom/lra/' . $year;
+
+        return $this->sikd->getJsonResult($url);
+    }
+
     public function realisasiPad($year)
     {
         $url = 'top-bottom/pad/' . $year;

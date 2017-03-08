@@ -45,12 +45,12 @@
         var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $year;
         var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $year;
         var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + $year;
-        var $belanjaUrl = $baseUrl + '/get-belanja-data/' + $year;
+        var $lraUrl = $baseUrl + '/get-lra-data/' + $year;
         var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + $year;
         l0r3('l0r3grid', 'Realisasi-TKDD', $realisasiTkddUrl);
         l0r3('l0r3grid', 'DAK-Fisik', $dakFisikUrl);
         l0r3('l0r3grid', 'Dandes', $danaDesaUrl);
-        l0r3('l0r3grid', 'Belanja', $belanjaUrl);
+        l0r3('l0r3grid', 'LRA', $lraUrl);
         l0r3('l0r3grid', 'PAD', $realisasiPadUrl);
 
         $('select.select-year').change(function(){

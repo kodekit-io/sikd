@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('get-dana-desa-data/{year}', 'HomeController@danaDesa');
     Route::get('get-belanja-data/{year}', 'HomeController@belanja');
     Route::get('get-realisasi-pad-data/{year}', 'HomeController@realisasiPad');
+    Route::get('get-lra-data/{year}', 'HomeController@lra');
 
     Route::get('/level-1/{type}/{postureId}/{year?}', 'MapController@map');
     Route::get('get-map-chart/{type}/{year}/{postureId?}', 'MapController@getMapChart');
@@ -45,31 +46,21 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('/get-pemda-tkdd-table-data/{year}/{satkerCode}', 'PemdaController@tkddTableData');
     Route::get('/get-pemda-other-table-data/{satkerCode}', 'PemdaController@otherTableData');
 
-    Route::get('/account-profile', function () {
-        return view('sikd.account-profile');
-    });
-
-    Route::get('/account-edit', function () {
-        return view('sikd.account-edit');
-    });
-
-    Route::get('/account-manage', function () {
-        return view('sikd.account-manage');
-    });
-
-    Route::get('/account-add', function () {
-        return view('sikd.account-add');
-    });
-
-    Route::get('/content-management', function () {
-        return view('sikd.content-management');
-    });
-
-    Route::get('/content-edit', function () {
-        return view('sikd.content-edit');
-    });
-
     Route::get('get-provinces', 'ProvinceController@getProvince');
+
+    Route::get('/get-user-list', 'CMSController@getUserList');
+    Route::get('/add-user', 'CMSController@addUser');
+
+    Route::get('/get-tkdd-postur-list', 'CMSController@getTKDDPosturList');
+    Route::get('/get-apbd-postur-list', 'CMSController@getAPBDPosturList');
+    Route::get('/get-apbd-mapping-list', 'CMSController@getAPBDMappingList');
+
+    Route::get('/manage-account', 'CMSController@manageAccount');
+    Route::get('/manage-account-edit', 'CMSController@manageAccountEdit');
+
+    Route::get('/manage-tkdd', 'CMSController@manageTkdd');
+    Route::get('/manage-apbd', 'CMSController@manageApbd');
+    Route::get('/manage-apbd-mapping', 'CMSController@manageApbdMapping');
 });
 
 Route::get('test/api-exception', 'MiscController@apiException');
@@ -90,3 +81,29 @@ Route::get('static', 'MiscController@static');
 //     $cache = Cache::get('infrastruktur_2016');
 //     var_dump($cache);
 // });
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::get('/account-profile', function () {
+//         return view('sikd.account-profile');
+//     });
+//
+//     Route::get('/account-edit', function () {
+//         return view('sikd.account-edit');
+//     });
+//
+//     Route::get('/account-manage', function () {
+//         return view('sikd.account-manage');
+//     });
+//
+//     Route::get('/account-add', function () {
+//         return view('sikd.account-add');
+//     });
+//
+//     Route::get('/content-management', function () {
+//         return view('sikd.content-management');
+//     });
+//
+//     Route::get('/content-edit', function () {
+//         return view('sikd.content-edit');
+//     });
+// });
+

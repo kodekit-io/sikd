@@ -297,6 +297,9 @@ a.sikd-chart-info {
 .sikd-icon-PAD:before {
     content: "\f0b1";
 }
+.sikd-icon-LRA:before {
+    content: "\f02d";
+}
 .sikd-icon {
     height: 24px;
     line-height: 24px;
@@ -391,6 +394,36 @@ a.sikd-chart-info {
 }
 #l0r1bTabContent li:last-child .progress-wrap {
     visibility: hidden !important;
+}
+
+.uk-card-header.uk-grid {
+    margin-left: 0;
+    padding-left: 5px;
+}
+
+.sikd-topbar {
+    padding-left: 60px;
+    background: #000 !important;
+    color: #fff;
+}
+.sikd-topbar .uk-navbar-nav {
+    height: 50px;
+}
+.sikd-topbar .uk-navbar-nav>li>a {
+    height: 50px;
+    color: #fff;
+}
+.sikd-topbar .uk-navbar-nav>li.uk-active>a {
+    color: #ffde59;
+}
+.sikd-topbar.uk-sticky.uk-active {
+    z-index: 1;
+}
+.sikd-cms {
+    min-height: calc( 100vh - 130px );
+}
+.sikd-cms .uk-card-body {
+    min-height: calc( 100vh - 230px );
 }
 @media (max-width: 768px) {
     main {
@@ -508,5 +541,20 @@ a.sikd-chart-info {
     }
     .rem125 {
         font-size: 1rem !important;
+    }
+
+    .sikd-topbar {
+        padding-left: 0px;
+        padding-top: 50px;
+    }
+    .sikd-topbar.uk-sticky.uk-active {
+        z-index: 1;
+    }
+    .sikd-cms {
+        min-height: calc( 100vh - 196px );
+        padding-top: 15px !important;
+    }
+    .sikd-cms .uk-card-body {
+        min-height: calc( 100vh - 340px );
     }
 }

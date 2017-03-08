@@ -73,7 +73,6 @@ class Sikd
         $minutes = 5 * 24 * 60;
         $flatUrl = str_replace('/', '_', $url);
         $flatUrl = str_replace('-', '_', $flatUrl);
-        Log::warning("Flat URL ==> " . $flatUrl);
 
         $headers = [];
 

@@ -5,7 +5,7 @@
         var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
         //var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
         if ($reportType==='apbd' && $postureId==='10') {
-            $title = 'LRA';
+            $title = 'Penyampaian Data LRA';
         } else {
             $title = $reportName;
         }

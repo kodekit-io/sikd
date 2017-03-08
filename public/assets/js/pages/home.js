@@ -75,7 +75,7 @@
     }
 
 
-    function l0r1(div,n,type,result) {
+    function l0r1(div, n, type, result) {
         //console.log(result);
         numeral.locale('id');
         if(type==='apbd') {
@@ -133,6 +133,9 @@
                 if (type == 'tkdd') {
                     var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + '2016';
                 } else {
+                    if ($id == '10') {
+                        $id = 'lra';
+                    }
                     var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2016';
                 }
 
@@ -434,6 +437,7 @@
             }
         });
     }
+
     function l0r2b(id, chartUrl) {
         numeral.locale('id');
         $.ajax({

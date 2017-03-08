@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 Route::get('test/api-exception', 'MiscController@apiException');
 
 use App\Service\Sikd;
-use Illuminate\Support\Facades\Cache;
+// use Illuminate\Support\Facades\Cache;
 
 Route::get('test/apbd', 'TestController@apbd');
 Route::get('test/map/{a}/{b}/{c}', 'TestController@map');
@@ -85,7 +85,8 @@ Route::get('test/api-3/{a}/{b}/{c}', 'TestController@api3');
 Route::get('test/api-2/{a}/{b}', 'TestController@api2');
 Route::get('test/api-1/{a}', 'TestController@api1');
 
-Route::get('test/cache_infra', function () {
-    $cache = Cache::get('infrastruktur_2016');
-    var_dump($cache);
-});
+Route::get('static', 'MiscController@static');
+// Route::get('test/cache_infra', function () {
+//     $cache = Cache::get('infrastruktur_2016');
+//     var_dump($cache);
+// });

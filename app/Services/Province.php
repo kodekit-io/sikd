@@ -22,7 +22,7 @@ class Province
 
     public function getProvinces($type = 'array')
     {
-        $minutes = 5 * 24 * 60;
+        $minutes = 0 * 0 * 60;
         $provinces = Cache::remember('provinces', $minutes, function () {
             $path = public_path('assets/js/pages/indonesia.json');
             $jsonResult = File::get($path);

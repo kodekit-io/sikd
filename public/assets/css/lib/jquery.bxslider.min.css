@@ -22,7 +22,8 @@ ul.bxslider {
 }
 
 .bx-viewport {
-    -webkit-transform: translatez(0)
+    -webkit-transform: translatez(0);
+    overflow: visible !important;
 }
 
 .bx-wrapper .bx-controls-auto, .bx-wrapper .bx-pager {
@@ -42,7 +43,7 @@ ul.bxslider {
 }
 
 .bx-wrapper .bx-pager {
-    text-align: center;
+    text-align: right;
     font-size: .85em;
     font-family: inherit;
     font-weight: 700;

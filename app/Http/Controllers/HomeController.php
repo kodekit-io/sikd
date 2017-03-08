@@ -47,18 +47,18 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function home()
+    public function home($year='2016')
     {
-//        $thisYear = date('Y');
-        $thisYear = '2016';
-        $params = [ 'tahun' => $thisYear ];
+        // $year = date('Y');
+        // $year = '2016';
+        $params = [ 'tahun' => $year ];
 
         // tkdd
-        $tkddRequest = $this->tkdd->getAllChart($thisYear);
+        $tkddRequest = $this->tkdd->getAllChart($year);
         $tkddResult = ($tkddRequest->status == '200') ? $tkddRequest->result : [];
 
         // apbd
-        $apbdRequest = $this->apbd->getAllChart($thisYear);
+        $apbdRequest = $this->apbd->getAllChart($year);
         $apbdResult = ($apbdRequest->status == '200') ? $apbdRequest->result : [];
 
         // reportType
@@ -68,7 +68,7 @@ class HomeController extends Controller
             $arr[$reportType['id']] = $reportType['code'];
         }
 
-        $data['thisYear'] = $thisYear;
+        $data['year'] = $year;
         $data['reportTypes'] = \GuzzleHttp\json_encode($arr);
         $data['tkddData'] = \GuzzleHttp\json_encode($tkddResult);
         $data['apbdData'] = \GuzzleHttp\json_encode($apbdResult);
@@ -114,6 +114,13 @@ class HomeController extends Controller
     public function belanja($year)
     {
         $url = 'top-bottom/belanja/' . $year;
+
+        return $this->sikd->getJsonResult($url);
+    }
+
+    public function lra($year)
+    {
+        $url = 'top-bottom/lra/' . $year;
 
         return $this->sikd->getJsonResult($url);
     }

@@ -70,7 +70,7 @@ class Sikd
     public function get($url, $apiVersion = 1, $withToken = true, $cached = false)
     {
         // days * hours * minutes
-        $minutes = 5 * 24 * 60;
+        $minutes = 0 * 0 * 60;
         $flatUrl = str_replace('/', '_', $url);
         $flatUrl = str_replace('-', '_', $flatUrl);
 

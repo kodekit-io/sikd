@@ -29,7 +29,7 @@
 						@foreach($reportTypes as $type)
 							<li><a href="{!! url('level-1/apbd/' . $type->id . '/' . $yearParam) !!}">{!! $type->name !!}</a></li>
 						@endforeach
-						<li><a href="{!! url('level-1/apbd/lra/' . $yearParam) !!}">LRA</a></li>
+						<li><a href="{!! url('level-1/apbd/lra/' . $yearParam) !!}">Penyampaian Data LRA</a></li>
 					</ul>
 				</div>
 

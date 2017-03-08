@@ -31,7 +31,7 @@
 						@foreach($apbdPostures as $apbdPosture)
 		                    <li><a href="{!! url('level-2/apbd/' . $apbdPosture->id . '/' . $year . '/' . $provinceId) !!}">{!! $apbdPosture->name !!}</a></li>
 		                @endforeach
-						<li><a href="{!! url('level-2/apbd/lra/' . $year . '/' . $provinceId) !!}">LRA</a></li>
+						<li><a href="{!! url('level-2/apbd/lra/' . $year . '/' . $provinceId) !!}">Penyampaian Data LRA</a></li>
 					</ul>
 				</div>
 

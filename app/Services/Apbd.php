@@ -23,7 +23,7 @@ class Apbd
 
     public function getPostures($type = 'array')
     {
-        $minutes = 5 * 24 * 60;
+        $minutes = 0 * 0 * 60;
         $postures = Cache::remember('apbd_postures', $minutes, function () {
             $url = 'apbd/list-postur';
             $apiRequest = $this->sikd->get($url);

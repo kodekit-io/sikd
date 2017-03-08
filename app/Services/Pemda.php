@@ -44,7 +44,7 @@ class Pemda
 
     public function getAllPemda($type = 'array')
     {
-        $minutes = 14 * 24 * 60;
+        $minutes = 0 * 0 * 60;
         $pemdas = Cache::remember('pemdas', $minutes, function () {
             $url = 'ref-pemda';
             $apiRequest = $this->sikd->get($url, []);

@@ -1,5 +1,5 @@
 (function ($, window, document, $baseUrl, $reportName, $reportType, $postureId, $year) {
-    console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
+    //console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
 
     $(function () {
         var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
@@ -65,7 +65,7 @@
                         text : '',
                     });
 
-                    $.get($baseUrl + '/assets/js/pages/indonesiaMap.json', function (idJson) {
+                    $.get($baseUrl + '/assets/js/pages/indonesia.json', function (idJson) {
                         //theMap.hideLoading();
                         echarts.registerMap('Indonesia', idJson, {});
                         var option = {

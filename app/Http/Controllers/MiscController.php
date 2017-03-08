@@ -27,4 +27,11 @@ class MiscController extends Controller
         $response = $this->sikd->get('TKDD', $params);
         var_dump($response);
     }
+
+    public function static()
+    {
+        $param = 'data-static';
+        $result = $this->sikd->get($param);
+        return \GuzzleHttp\json_encode($result->result);
+    }
 }

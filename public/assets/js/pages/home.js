@@ -1,4 +1,4 @@
-(function ($, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear) {
+(function ($, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $year) {
     $(function () {
         l0r1card('l0r1a');
         l0r1card('l0r1b');
@@ -29,21 +29,46 @@
         l0r1('l0r1b','10','apbd', apbdData);
         l0r1('l0r1b','11','apbd', apbdData);
 
-        var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $thisYear;
+        var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $year;
         var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
-        l0r2a('l0r2a', $infraUrl, true);
-        l0r2b('l0r2b', $simpananPemdaUrl);
+        $('.bxslider').bxSlider({
+            auto: true,
+            controls: false,
+            pause: 24000,
+            mode: 'fade',
+            onSliderLoad: function(currentIndex) {
+                l0r2a('l0r2a', $infraUrl, true);
+                l0r2b('l0r2b', $simpananPemdaUrl);
+            },
+        });
 
-        var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $thisYear;
-        var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $thisYear;
-        var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + $thisYear;
-        var $belanjaUrl = $baseUrl + '/get-belanja-data/' + $thisYear;
-        var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + $thisYear;
+        var $realisasiTkddUrl = $baseUrl + '/get-realisasi-tkdd-data/' + $year;
+        var $dakFisikUrl = $baseUrl + '/get-dak-fisik-data/' + $year;
+        var $danaDesaUrl = $baseUrl + '/get-dana-desa-data/' + $year;
+        var $lraUrl = $baseUrl + '/get-lra-data/' + $year;
+        var $realisasiPadUrl = $baseUrl + '/get-realisasi-pad-data/' + $year;
         l0r3('l0r3grid', 'Realisasi-TKDD', $realisasiTkddUrl);
         l0r3('l0r3grid', 'DAK-Fisik', $dakFisikUrl);
         l0r3('l0r3grid', 'Dandes', $danaDesaUrl);
-        l0r3('l0r3grid', 'Belanja', $belanjaUrl);
+        l0r3('l0r3grid', 'LRA', $lraUrl);
         l0r3('l0r3grid', 'PAD', $realisasiPadUrl);
+
+        $('select.select-year').change(function(){
+            $year = $(this).val();
+            window.location = $baseUrl + '/home/' + $year;
+        });
+
+        $('select.select-year').each(function (){
+            var href = window.location.href;
+            var array = href.split('/');
+            var year = array[array.length-1];
+            $(this).find('option[value="'+year+'"]').prop('selected',true);
+            // console.log(year);
+            if (year=='home') {
+                $(this).find('option[value="2016"]').prop('selected',true);
+            }
+        });
+
     });
     function l0r1card(div) {
         var card =  '<div class="uk-card uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade">'
@@ -86,7 +111,7 @@
 
         if ($result[n] !== undefined) {
             if ($result.length === 0) {
-                $('#' + div).html("<div class='uk-position-center'>No data</div>");
+                $('#' + div).html('<div class="uk-position-center">Tidak ada data!</div>');
             } else {
                 var $content = [];
                 var $legend = [];
@@ -123,25 +148,29 @@
                     legend: $legend
                 };
 
-                var slug = function (str) {
-                    var $slug = '';
-                    var trimmed = $.trim(str);
-                    $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-                    return $slug.toLowerCase();
-                }
-
                 if (type == 'tkdd') {
-                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + '2016';
+                    var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + $year;
                 } else {
-                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + '2016';
+                    if ($id=='10') {
+                        var linkdetail = $baseUrl + '/level-1/apbd/lra/' + $year;
+                    } else {
+                        var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + $year;
+                    }
+
                 }
 
-                var tabItem = '<li><a href="#" title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';
+                var tabItem = '<li><a title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';
                 $('#'+div+'TabItem').append(tabItem);
 
-                var p = '<div class="uk-progress">'
-                            + '<div class="progress-bar uk-animation-slide-left" style="width: '+$percentage000+'%;"><span class="progress-text">A '+$target+' / R '+$realization+'</span></div>'
-                        + '</div>';
+                var progress = '<div class="uk-progress">'
+                    + '<div class="progress-bar uk-animation-slide-left" style="width: '+$percentage000+'%;"><span class="progress-text">A '+$target+' / R '+$realization+'</span></div>'
+                + '</div>';
+
+                var selectYear = '<select name="select-year" class="uk-select uk-form-small select-year">'
+                    + '<option value="2017">2017</option>'
+                    + '<option value="2016">2016</option>'
+                    + '<option value="2015">2015</option>'
+                + '</select>'
 
                 var tabContent = '<li>'
                     + '<div class="uk-card-body">'
@@ -153,7 +182,7 @@
                                         + '<div class="sikd-progress-persen">'+$percentage+'%</div>'
                                     + '</div>'
                                     + '<div class="uk-width-expand">'
-                                        + p
+                                        + progress
                                     + '</div>'
                                 + '</div>'
                             + '</div>'
@@ -163,10 +192,7 @@
                             + '<div class="uk-width-1-1">'
                                 + '<div class="sikd-l0r1-footer uk-flex uk-flex-between">'
                                     + '<div>'
-                                        + '<select class="uk-select uk-form-small">'
-                                            + '<option>2016</option>'
-                                            + '<option>2015</option>'
-                                        + '</select>'
+                                        + selectYear
                                     + '</div>'
                                     + '<div>'
                                         + '<a title="'+$info+'" uk-tooltip class="sikd-blue-text sikd-chart-info" uk-icon="icon: info"></a>'
@@ -276,17 +302,14 @@
     function l0r2a(id, chartUrl, stack) {
         numeral.locale('id');
         $.ajax({
-            //url: 'data/L0_row2_infrastruktur.json',
     		url: chartUrl,
             dataType: 'json',
             success: function(result){
-    			//console.log(result);
-    		    // result = jQuery.parseJSON(result);
                 var data = result.data;
     			var t = result.properties.Label;
 
                 if (data.length === 0) {
-                    $('#'+id).html("<div class='center'>No Data</div>");
+                    $('#'+id).html('<div class="uk-position-center">Tidak ada data!</div>');
                 } else {
                     var $series=[], $legend=[];
     				//console.log(data.length);
@@ -329,18 +352,21 @@
     					title: {
     						text: t,
     						left: 'center',
-    						top: 10
+    						top: '-5px',
+                            textStyle: {
+                                fontSize: 14,
+                                color: '#09355B',
+                            },
     					},
                         tooltip : {
                             trigger: 'axis',
                             axisPointer : {
                                 type : 'shadow'
                             },
-                            position: function (point, params, dom) {
-                                return [point[0], '10%'];
-                            },
+                            // position: function (point, params, dom) {
+                            //     return [point[0], '10%'];
+                            // },
                             formatter: function (params){
-                                //console.log(params);
                                 var naam=[], waarde=[], color=[], serie=[];
                                 for (var i = 0; i < params.length; i++) {
                                     naam[i] = params[i].seriesName;
@@ -359,7 +385,7 @@
                         grid: {
                             x: '30px',
                             x2: '10px',
-                            y: '10px',
+                            y: '20px',
                             y2: '50px'
                         },
                         toolbox: {
@@ -369,7 +395,6 @@
                             padding: ['0', '0', '0', '0'],
                             feature: {
                                 mark: {show: true},
-                                //dataView : {show: false, readOnly: false},
                                 magicType: {
                                     show: true,
                                     type: ['stack', 'tiled'],
@@ -412,15 +437,6 @@
 
                     clearTimeout(loadingTicket);
                     loadingTicket = setTimeout(function (){
-                        $('.bxslider').bxSlider({
-                            auto: true,
-                            controls: false,
-                            pause: 24000,
-                            mode: 'fade',
-            				onSliderLoad: function(currentIndex) {
-            			        $(window).trigger('resize');
-            			    },
-            			});
                         theChart.hideLoading();
                         theChart.setOption(option);
                         theChart.resize();
@@ -437,21 +453,16 @@
     function l0r2b(id, chartUrl) {
         numeral.locale('id');
         $.ajax({
-            //url: 'data/L0_row2_infrastruktur.json',
             url: chartUrl,
-            //dataType: 'json',
             success: function(result){
-                //console.log(result);
                 result = jQuery.parseJSON(result);
                 var data = result.trend;
-                //console.log(data);
                 var t = result.name;
 
                 if (data.length === 0) {
-                    $('#'+id).html("<div class='center'>No Data</div>");
+                    $('#'+id).html('<div class="uk-position-center">Tidak ada data!</div>');
                 } else {
                     var $series=[], $legend=[];
-                    //console.log(data.length);
                     for (var i = 0; i < data.length; i++) {
                         $year = String(data[i].year);
                         $month = data[i].month;
@@ -470,7 +481,6 @@
                         legend: $legend,
                         series: $series
                     }
-                    console.log(dataseries.legend);
 
                     //CHART
                     var dom = document.getElementById(id);
@@ -487,18 +497,22 @@
                     var option = {
                         backgroundColor: '#fff',
                         title: {
-                            text: t,
-                            left: 'center',
-                            top: 10
-                        },
+    						text: t,
+    						left: 'center',
+    						top: '-5px',
+                            textStyle: {
+                                fontSize: 14,
+                                color: '#09355B',
+                            },
+    					},
                         tooltip : {
                             trigger: 'axis',
                             axisPointer : {
                                 type : 'shadow'
                             },
-                            position: function (point, params, dom) {
-                                return [point[0], '10%'];
-                            },
+                            // position: function (point, params, dom) {
+                            //     return [point[0], '10%'];
+                            // },
                             formatter: function (params){
                                 //console.log(params);
                                 var naam=[], waarde=[], color=[], serie=[];
@@ -519,7 +533,7 @@
                         grid: {
                             x: '30px',
                             x2: '10px',
-                            y: '10px',
+                            y: '20px',
                             y2: '50px'
                         },
                         toolbox: {
@@ -572,15 +586,6 @@
 
                     clearTimeout(loadingTicket);
                     loadingTicket = setTimeout(function (){
-                        /*$('.bxslider').bxSlider({
-                            auto: true,
-                            controls: false,
-                            pause: 10000,
-                            mode: 'fade',
-                            onSliderLoad: function(currentIndex) {
-                                $(window).trigger('resize');
-                            },
-                        });*/
                         theChart.hideLoading();
                         theChart.setOption(option);
                         theChart.resize();
@@ -599,10 +604,7 @@
         numeral.locale('id');
         $.ajax({
             url: url,
-            //data: "{}",
-            //contentType: "application/json; charset=utf-8",
             dataType: "json",
-            //cache: false,
             success: function (param) {
     			var result = param['top-bottom-'+type];
     			var top = result.top;
@@ -677,4 +679,4 @@
 
     }
 
-}(window.jQuery, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $thisYear));
+}(window.jQuery, window, document, $baseUrl, $tkddData, $apbdData, $reportTypes, $year));

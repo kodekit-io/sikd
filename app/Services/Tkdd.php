@@ -29,7 +29,7 @@ class Tkdd
 
     public function getPostures($groupId = 3, $type = 'array')
     {
-        $minutes = 5 * 24 * 60;
+        $minutes = 0 * 0 * 60;
         $postures = Cache::remember('postures', $minutes, function () use ($groupId) {
             $url = 'tkdd/list-group/' . $groupId;
             $apiRequest = $this->sikd->get($url);
@@ -113,5 +113,5 @@ class Tkdd
 
         return \GuzzleHttp\json_encode($modifiedResult);
     }
-    
+
 }

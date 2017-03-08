@@ -13,26 +13,27 @@ table.dataTable td, table.dataTable th, table.dataTable * {
 table.dataTable th {
     padding-top: 10px !important;
     padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
     height: 1rem;
     line-height: 1rem;
 }
 table.dataTable td {
-    padding: 10px;
+    padding: 5px;
 }
 table.dataTable tr:last-child {
     border-bottom: 1px solid #ddd;
 }
 
 div.dataTables_wrapper .uk-grid+.uk-grid {
-    margin-top: .5rem;
+    margin-top: 1rem;
 }
 div.dataTables_wrapper .uk-grid:first-child {
-    margin-top: 1rem;
+    margin-top: 0;
 }
 div.dataTables_wrapper .uk-grid:last-child {
     margin-top: 1rem;
+    margin-bottom: 0;
 }
 
 div.dataTables_wrapper div.dataTables_filter {
@@ -51,10 +52,10 @@ div.dataTables_wrapper div.dataTables_filter input {
     width: auto
 }
 div.dataTables_wrapper select, div.dataTables_wrapper .uk-select {
-    height: 1.5rem !important;
+    height: 2rem !important;
     vertical-align: middle;
     display: inline-block;
-    line-height: 1.5rem !important;
+    line-height: 100% !important;
     width: auto;
 }
 div.dataTables_wrapper .uk-inline.l, div.dataTables_wrapper .uk-inline.B {
@@ -78,4 +79,7 @@ table.dataTable td thead tr th {
     visibility: hidden !important;
     height: 0 !important;
     padding: 0 !important;
+}
+div.dataTables_wrapper .uk-pagination {
+    margin-bottom: 0;
 }

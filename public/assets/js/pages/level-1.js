@@ -1,15 +1,10 @@
 (function ($, window, document, $baseUrl, $reportName, $reportType, $postureId, $year) {
-    console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
+    //console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
 
     $(function () {
         var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
         //var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
-        if ($reportType==='apbd' && $postureId==='10') {
-            $title = 'LRA';
-        } else {
-            $title = $reportName;
-        }
-        l1Map($title,$url);
+        l1Map($reportName,$url);
     });
 
     function l1Map(title,type) {
@@ -65,7 +60,7 @@
                         text : '',
                     });
 
-                    $.get($baseUrl + '/assets/js/pages/indonesiaMap.json', function (idJson) {
+                    $.get($baseUrl + '/assets/js/pages/indonesia.json', function (idJson) {
                         //theMap.hideLoading();
                         echarts.registerMap('Indonesia', idJson, {});
                         var option = {

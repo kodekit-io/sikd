@@ -63,7 +63,7 @@
             var array = href.split('/');
             var year = array[array.length-1];
             $(this).find('option[value="'+year+'"]').prop('selected',true);
-            console.log(year);
+            // console.log(year);
             if (year=='home') {
                 $(this).find('option[value="2016"]').prop('selected',true);
             }
@@ -352,16 +352,20 @@
     					title: {
     						text: t,
     						left: 'center',
-    						top: 10
+    						top: '-5px',
+                            textStyle: {
+                                fontSize: 14,
+                                color: '#09355B',
+                            },
     					},
                         tooltip : {
                             trigger: 'axis',
                             axisPointer : {
                                 type : 'shadow'
                             },
-                            position: function (point, params, dom) {
-                                return [point[0], '10%'];
-                            },
+                            // position: function (point, params, dom) {
+                            //     return [point[0], '10%'];
+                            // },
                             formatter: function (params){
                                 var naam=[], waarde=[], color=[], serie=[];
                                 for (var i = 0; i < params.length; i++) {
@@ -381,7 +385,7 @@
                         grid: {
                             x: '30px',
                             x2: '10px',
-                            y: '10px',
+                            y: '20px',
                             y2: '50px'
                         },
                         toolbox: {
@@ -493,18 +497,22 @@
                     var option = {
                         backgroundColor: '#fff',
                         title: {
-                            text: t,
-                            left: 'center',
-                            top: 10
-                        },
+    						text: t,
+    						left: 'center',
+    						top: '-5px',
+                            textStyle: {
+                                fontSize: 14,
+                                color: '#09355B',
+                            },
+    					},
                         tooltip : {
                             trigger: 'axis',
                             axisPointer : {
                                 type : 'shadow'
                             },
-                            position: function (point, params, dom) {
-                                return [point[0], '10%'];
-                            },
+                            // position: function (point, params, dom) {
+                            //     return [point[0], '10%'];
+                            // },
                             formatter: function (params){
                                 //console.log(params);
                                 var naam=[], waarde=[], color=[], serie=[];
@@ -525,7 +533,7 @@
                         grid: {
                             x: '30px',
                             x2: '10px',
-                            y: '10px',
+                            y: '20px',
                             y2: '50px'
                         },
                         toolbox: {

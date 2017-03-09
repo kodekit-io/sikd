@@ -100,7 +100,7 @@
     }
 
 
-    function l0r1(div,n,type,result) {
+    function l0r1(div, n, type, result) {
         //console.log(result);
         numeral.locale('id');
         if(type==='apbd') {
@@ -151,12 +151,10 @@
                 if (type == 'tkdd') {
                     var linkdetail = $baseUrl + '/level-1/tkdd/' + $id + '/' + $year;
                 } else {
-                    if ($id=='10') {
-                        var linkdetail = $baseUrl + '/level-1/apbd/lra/' + $year;
-                    } else {
-                        var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + $year;
+                    if ($id == '10') {
+                        $id = 'lra';
                     }
-
+                    var linkdetail = $baseUrl + '/level-1/apbd/' + $id + '/' + $year;
                 }
 
                 var tabItem = '<li><a title="'+$name+' '+$percentage+'%" uk-tooltip="pos:left" style="line-height:normal"><span class="sikd-icon">'+$icon+'</span></a></li>';
@@ -450,6 +448,7 @@
             }
         });
     }
+
     function l0r2b(id, chartUrl) {
         numeral.locale('id');
         $.ajax({

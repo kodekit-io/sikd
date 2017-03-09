@@ -4,7 +4,12 @@
     $(function () {
         var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
         //var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
-        l1Map($reportName,$url);
+        if ($reportType==='apbd' && $postureId==='10') {
+            $title = 'Penyampaian Data LRA';
+        } else {
+            $title = $reportName;
+        }
+        l1Map($title,$url);
     });
 
     function l1Map(title,type) {

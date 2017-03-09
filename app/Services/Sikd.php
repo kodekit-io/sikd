@@ -73,7 +73,6 @@ class Sikd
         $minutes = 0 * 0 * 60;
         $flatUrl = str_replace('/', '_', $url);
         $flatUrl = str_replace('-', '_', $flatUrl);
-        Log::warning("Flat URL ==> " . $flatUrl);
 
         $headers = [];
 
@@ -113,6 +112,30 @@ class Sikd
             }
         }
 
+
+        return $parsedResponse;
+    }
+
+    public function put($url, $params, $apiVersion = 1)
+    {
+        $apiUrl = $this->generateApiUrl($url, $apiVersion);
+
+        $accessToken = session('api_token');
+        $headers = [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . $accessToken
+            ],
+            'body' => $params
+        ];
+
+        try {
+            $request = new Request('PUT', $apiUrl, $headers);
+            $response = $this->client->send($request);
+            $parsedResponse = $this->parseResponse($response);
+        } catch (\Exception $e) {
+            $parsedResponse = $this->proceedException($e, $apiUrl);
+        }
 
         return $parsedResponse;
     }

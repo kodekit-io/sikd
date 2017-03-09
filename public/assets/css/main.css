@@ -402,12 +402,13 @@ a.sikd-chart-info {
 }
 
 .sikd-topbar {
-    padding-left: 60px;
     background: #000 !important;
     color: #fff;
+    width: 100%;
 }
 .sikd-topbar .uk-navbar-nav {
     height: 50px;
+    margin-left: 50px;
 }
 .sikd-topbar .uk-navbar-nav>li>a {
     height: 50px;

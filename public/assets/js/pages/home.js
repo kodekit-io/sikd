@@ -94,7 +94,7 @@
 
     }
     function l0r3card(div) {
-        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade"><div id="l0r3grid" class="uk-flex uk-flex-stretch uk-flex-middle uk-grid-small uk-child-width-1-5@m uk-height-1-1" uk-grid></div></div>';
+        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade"><div id="l0r3grid" class="uk-flex uk-flex-middle uk-grid-small uk-child-width-1-5@m uk-height-1-1" uk-grid></div></div>';
         $('#' + div).append(card);
 
     }

@@ -116,6 +116,30 @@ class Sikd
         return $parsedResponse;
     }
 
+    public function put($url, $params, $apiVersion = 1)
+    {
+        $apiUrl = $this->generateApiUrl($url, $apiVersion);
+
+        $accessToken = session('api_token');
+        $headers = [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Bearer ' . $accessToken
+            ],
+            'body' => $params
+        ];
+
+        try {
+            $request = new Request('PUT', $apiUrl, $headers);
+            $response = $this->client->send($request);
+            $parsedResponse = $this->parseResponse($response);
+        } catch (\Exception $e) {
+            $parsedResponse = $this->proceedException($e, $apiUrl);
+        }
+
+        return $parsedResponse;
+    }
+
     private function parseResponse($response)
     {
         $body = $response->getBody();

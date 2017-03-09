@@ -5,32 +5,32 @@
         var add_account_form = $('#add_account_form');
         add_account_form.validate();
 
-        $(document).on('submit', '#add_account_form', function(e){
-            e.preventDefault();
-            // Validate form
-            if (add_account_form.valid() == true){
-                // show_loading_message();
-                var form_data = $('#add_account_form').serialize();
-                var request   = $.ajax({
-                    url:          $baseUrl+'/add-user',
-                    cache:        false,
-                    data:         form_data,
-                    dataType:     'json',
-                    contentType:  'application/json; charset=utf-8',
-                    type:         'post'
-                });
-                request.done(function(output){
-                    if (output.result == 'success'){
-                        // Reload datable
-                    } else {
-                        alert('Not Succeed');
-                    }
-                });
-                request.fail(function(jqXHR, textStatus){
-                    alert('Failed ' + textStatus);
-                });
-            }
-        });
+        // $(document).on('submit', '#add_account_form', function(e){
+        //     e.preventDefault();
+        //     // Validate form
+        //     if (add_account_form.valid() == true){
+        //         // show_loading_message();
+        //         var form_data = $('#add_account_form').serialize();
+        //         var request   = $.ajax({
+        //             url:          $baseUrl+'/add-user',
+        //             cache:        false,
+        //             data:         form_data,
+        //             dataType:     'json',
+        //             contentType:  'application/json; charset=utf-8',
+        //             type:         'post'
+        //         });
+        //         request.done(function(output){
+        //             if (output.result == 'success'){
+        //                 // Reload datable
+        //             } else {
+        //                 alert('Not Succeed');
+        //             }
+        //         });
+        //         request.fail(function(jqXHR, textStatus){
+        //             alert('Failed ' + textStatus);
+        //         });
+        //     }
+        // });
 
     });
     function userList(div,url) {
@@ -42,6 +42,7 @@
 	        },
 	        success : function(result) {
                 result = $.parseJSON(result);
+                console.log(result);
                 var userList = $("#"+div).dataTable({
                     data: result,
                     //dom: 't',
@@ -57,8 +58,8 @@
                         { "data": null, "width": "20%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["id"];
-                                var edit = $baseUrl + '/manage-account-edit?id='+id;
-                                var del = $baseUrl + '/manage-account-delete?id='+id;
+                                var edit = $baseUrl + '/user/edit/'+id;
+                                var del = $baseUrl + '/user/delete/'+id;
                                 return '<a href="'+edit+'" title="Edit User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
                                 + '<a href="'+del+'" title="Delete User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
                             }

@@ -48,14 +48,18 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 
     Route::get('get-provinces', 'ProvinceController@getProvince');
 
-    Route::get('/get-user-list', 'CMSController@getUserList');
     Route::get('/add-user', 'CMSController@addUser');
 
     Route::get('/get-tkdd-postur-list', 'CMSController@getTKDDPosturList');
     Route::get('/get-apbd-postur-list', 'CMSController@getAPBDPosturList');
     Route::get('/get-apbd-mapping-list', 'CMSController@getAPBDMappingList');
 
-    Route::get('/manage-account', 'CMSController@manageAccount');
+    Route::get('/manage-account', 'UserController@index');
+    Route::get('/get-user-list', 'UserController@getUsers');
+    Route::get('/user/edit/{id}', 'UserController@edit');
+    Route::get('/user/delete/{id}', 'UserController@delete');
+    Route::post('/user/update/{id}', 'UserController@update');
+
     Route::get('/manage-account-edit', 'CMSController@manageAccountEdit');
 
     Route::get('/manage-tkdd', 'CMSController@manageTkdd');

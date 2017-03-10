@@ -33,20 +33,20 @@ class UserController extends Controller
         return \GuzzleHttp\json_encode($users);
     }
 
-    public function add(Request $request)
+    public function add()
     {
-        $data = $request->get('data');
+        $data['year'] = '2016';
+        return view('sikd.manage-account-add', $data);
+    }
 
-        $value = [];
-        parse_str($data, $value);
-        $name = $value['name'];
-        $email = $value['email'];
-
-        if ($this->user->add($name, $email)) {
-            return 'OK';
+    public function create(Request $request)
+    {
+        $response = $this->user->create($request->except(['_token']));
+        if ($response->status == '200') {
+            return redirect('manage-account');
         }
 
-        return 'KO';
+        return redirect('user/add')->withErrors(['error' => $response->result]);
     }
 
     public function edit($id)
@@ -69,6 +69,11 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        $response = $this->user->delete($id);
+        if ($response->status == '200') {
+            return redirect('manage-account');
+        }
 
+        return redirect('manage-account')->withErrors(['error' => $response->result]);
     }
 }

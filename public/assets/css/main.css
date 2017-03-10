@@ -453,7 +453,24 @@ a.sikd-chart-info {
     margin-left: 0;
     padding-left: 5px;
 }
-
+#map + div.uk-overlay.uk-padding-small {
+    padding: 15px 10px 10px;
+}
+.sikd-table-map {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 8px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+.sikd-table-map tr,
+.sikd-table-map td {
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    font-size: .85rem;
+    color: #fff;
+}
 .sikd-topbar {
     background: #000 !important;
     color: #fff;

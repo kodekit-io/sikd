@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.home')
 @section('page-level-styles')
 	<link rel="stylesheet" href="{!! asset('assets/css/lib/jquery.bxslider.min.css') !!}" />
 @endsection

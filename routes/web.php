@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('/user/edit/{id}', 'UserController@edit');
     Route::get('/user/delete/{id}', 'UserController@delete');
     Route::post('/user/update/{id}', 'UserController@update');
+    Route::post('/user/add', 'UserController@add');
 
     Route::get('/manage-account-edit', 'CMSController@manageAccountEdit');
 

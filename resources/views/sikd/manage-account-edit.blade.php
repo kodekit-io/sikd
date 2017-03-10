@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="uk-card-body">
-			<form id="add_account_form" method="post" action="{!! url('user/update/' . $id) !!}">
+			<form id="edit_account_form" method="post" action="{!! url('user/update/' . $id) !!}">
 				{!! csrf_field() !!}
 				<input type="hidden" id="id" name="id" value="">
 				<div class="uk-margin">

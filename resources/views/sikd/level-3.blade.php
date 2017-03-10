@@ -49,7 +49,6 @@
 					<div id="lainnya"></div>
 				</li>
 			</ul>
-
 		</div>
 	</div>
 </main>

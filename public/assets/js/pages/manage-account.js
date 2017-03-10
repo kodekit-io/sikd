@@ -63,8 +63,8 @@
                         { "data": null, "width": "20%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["id"];
-                                var edit = $baseUrl + '/user/edit/'+id;
-                                var del = $baseUrl + '/user/delete/'+id;
+                                var edit = $baseUrl + '/user/' + id + '/edit';
+                                var del = $baseUrl + '/user/' + id + '/delete';
                                 return '<a href="'+edit+'" title="Edit User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
                                 + '<a href="'+del+'" title="Delete User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
                             }

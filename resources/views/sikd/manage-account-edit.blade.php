@@ -26,9 +26,11 @@
 			</div>
 		</div>
 		<div class="uk-card-body">
-			<form id="edit_account_form" method="post" action="{!! url('user/update/' . $id) !!}">
+            @if($errors->any())
+                <h4>{{ $errors->first() }}</h4>
+            @endif
+			<form id="edit_account_form" method="POST" action="{!! url('user/' . $id . '/update') !!}">
 				{!! csrf_field() !!}
-				<input type="hidden" id="id" name="id" value="">
 				<div class="uk-margin">
 					<label class="uk-form-label" for="name">Nama</label>
 					<div class="uk-form-controls">
@@ -41,8 +43,6 @@
 						<input class="uk-input" id="email" name="email" type="text" placeholder="email@domain.name" value="{!! $user->email !!}">
 					</div>
 				</div>
-				<input type="hidden" id="created_at" name="created_at" value="">
-				<input type="hidden" id="updated_at" name="updated_at" value="">
 				<div class="uk-flex uk-flex-between">
 					<a href="{!! url('/user/edit/' . $id) !!}" class="uk-button uk-button-default uk-modal-close">Cancel</a>
 					<button class="uk-button uk-button-primary" type="submit">Save</button>

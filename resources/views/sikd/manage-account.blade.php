@@ -27,9 +27,7 @@
 				    <div class="uk-modal-dialog uk-modal-body">
 				        <button class="uk-modal-close-default" type="button" uk-close></button>
 				        <h4>Tambah Pengguna</h4>
-						<form id="add_account_form" method="post" action="{!! url('/add-user') !!}">
-							{!! csrf_field() !!}
-							<input type="hidden" id="id" name="id" value="">
+						<form id="add_account_form" method="post" action="{!! url('/user/add') !!}">
 							<div class="uk-margin">
 						        <label class="uk-form-label" for="name">Nama</label>
 						        <div class="uk-form-controls">
@@ -42,8 +40,6 @@
 						            <input class="uk-input" id="email" name="email" type="text" placeholder="email@domain.name">
 						        </div>
 						    </div>
-							<input type="hidden" id="created_at" name="created_at" value="">
-							<input type="hidden" id="updated_at" name="updated_at" value="">
 							<div class="uk-flex uk-flex-between">
 					            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
 					            <button class="uk-button uk-button-primary" type="submit">Save</button>
@@ -65,6 +61,7 @@
 @section('page-level-scripts')
 	<script type="text/javascript">
 		var $baseUrl = "{!! url('/') !!}";
+		var $token = "{!! csrf_token() !!}";
 	</script>
 	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>

@@ -119,19 +119,17 @@ class Sikd
     public function put($url, $params, $apiVersion = 1)
     {
         $apiUrl = $this->generateApiUrl($url, $apiVersion);
-
         $accessToken = session('api_token');
         $headers = [
             'headers' => [
-                'Accept' => 'application/json',
+                // 'Accept' => 'application/json',
                 'Authorization' => 'Bearer ' . $accessToken
             ],
-            'body' => $params
+            'form_params'=> $params
         ];
 
         try {
-            $request = new Request('PUT', $apiUrl, $headers);
-            $response = $this->client->send($request);
+            $response = $this->client->request('PUT', $apiUrl, $headers);
             $parsedResponse = $this->parseResponse($response);
         } catch (\Exception $e) {
             $parsedResponse = $this->proceedException($e, $apiUrl);

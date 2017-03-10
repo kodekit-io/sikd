@@ -43,14 +43,22 @@
 						+ '</tr>';
 					}
 
-					var panel = '<div class="uk-cover-container uk-border-rounded green lighten-5" style="height:'+w+'px">'
+					var panelimg = '<div class="uk-cover-container uk-border-rounded green lighten-5" style="height:'+w+'px">'
 					    + '<img class="uk-blend-multiply" src="'+data.image+'" alt="" uk-cover>'
 					    + '<div class="uk-overlay uk-overlay-default uk-position-bottom uk-padding-small">'
 							+ '<h5 class="uk-margin-small-bottom">'+detail.title[0]+' ('+detail.value[0]+')</h5>'
 					        + '<table cellspacing="0" cellpadding="0" width="100%">'+tr.join('')+'</table>'
 					    + '</div>'
 					+ '</div>';
+                    var panel = '<div class="uk-cover-container uk-border-rounded" style="height:'+w+'px;overflow:hidden;z-index:1;">'
+					    + '<div id="map" class="uk-width-1-1 uk-height-1-1 uk-border-rounded"></div>'
+					    + '<div class="uk-overlay uk-position-center uk-padding-small uk-width-1-1 uk-height-1-1">'
+							+ '<h5 class="uk-text-center">'+detail.title[0]+' ('+detail.value[0]+')</h5>'
+					        + '<table class="sikd-table-map uk-border-rounded" cellspacing="0" cellpadding="0" width="100%">'+tr.join('')+'</table>'
+					    + '</div>'
+					+ '</div>';
 					$('#'+div).append(panel);
+                    getMap('map',$satkerCode);
 	            }
 	        },
             error: function (request, status, error) {
@@ -58,6 +66,112 @@
             }
 	    });
 	}
+    function getMap(div,satkerCode) {
+        var dom = document.getElementById(div);
+        var theme = 'default';
+        var theMap = echarts.init(dom,theme);
+        var loadingTicket;
+        var effectIndex = -1;
+        var effect = ['spin'];
+
+        theMap.showLoading({
+            text : '',
+        });
+
+        $.get($baseUrl + '/assets/js/geojson/kabkot.json', function (result) {
+
+            var data = result.features;
+            if (data.length > 0){
+                var prop = [];
+                for(var i = 0; i < data.length; i++) {
+
+                    prop = data[i].properties.satker;
+
+                    if(prop==$satkerCode) {
+                        var coortot = data[i].geometry.coordinates[0].length;
+                        var lat=[], lang=[], latsum=0, latmean='', langsum=0, langmean='';
+                        for(var x = 0; x < coortot; x++) {
+                            lat[x] = data[i].geometry.coordinates[0][x][1];
+                            lang[x] = data[i].geometry.coordinates[0][x][0];
+                            latsum += data[i].geometry.coordinates[0][x][1];
+                            latmean = latsum/coortot;
+                            langsum += data[i].geometry.coordinates[0][x][0];
+                            langmean = langsum/coortot;
+                            //console.log(lang+' | '+lat);
+                        }
+
+                        echarts.registerMap('Indonesia', result, {});
+                        var option = {
+                            backgroundColor: 'rgba(200, 200, 200, 0.25)',
+                            title : {
+                                show: false
+                            },
+                            tooltip : {
+                                show: false
+                            },
+                            grid: {
+                                x: '0',
+                                x2: '0',
+                                y: '0',
+                                y2: '0'
+                            },
+                            toolbox: {
+                            },
+                            series : [
+                                {
+                                    name: 'chart',
+                                    type: 'map',
+                                    z: 0,
+                                    roam: false,
+                                    map: 'Indonesia'
+                                }
+                            ]
+                        };
+
+                        clearTimeout(loadingTicket);
+                        loadingTicket = setTimeout(function () {
+                            theMap.hideLoading();
+                            theMap.setOption(option,true);
+                            theMap.resize();
+                        }, 1000);
+
+                        var locations = [{
+                            name: data[i].properties.name,
+                            coord: [langmean,latmean]
+                        }];
+                        var currentLoc = 0;
+                        setInterval(function () {
+                            theMap.setOption({
+                                series: [{
+                                    center: locations[currentLoc].coord,
+                                    zoom: 50,
+                                    layoutSize: 100,
+                                    aspectScale: 1,
+                                    data:[
+                                        {name: locations[currentLoc].name, selected: true}
+                                    ],
+                                    animationDurationUpdate: 1000,
+                                    animationEasingUpdate: 'cubicInOut'
+                                }]
+                            });
+                            currentLoc = (currentLoc + 1) % locations.length;
+                        }, 2000);
+
+                        $(window).on('resize', function(){
+                            if(theMap != null && theMap != undefined){
+                                theMap.resize();
+                            }
+                        });
+                    } else {
+                        //alert('no');
+                    }
+                }
+            }
+
+        });
+
+
+    }
 	function panelGauge(id,div,url) {
 		numeral.locale('id');
 		var x = 0;

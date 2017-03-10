@@ -23,31 +23,6 @@
 			</div>
 			<div class="uk-width-auto@m">
 				<a class="uk-button uk-button-small uk-button-default" href="{!! url('user/add') !!}">Tambah Pengguna</a>
-				{{--<a id="add_account_btn" class="uk-button uk-button-small uk-button-default" uk-toggle="target: #add_account">Tambah Pengguna</a>--}}
-				{{--<div id="add_account" uk-modal>--}}
-				    {{--<div class="uk-modal-dialog uk-modal-body">--}}
-				        {{--<button class="uk-modal-close-default" type="button" uk-close></button>--}}
-				        {{--<h4>Tambah Pengguna</h4>--}}
-						{{--<form id="add_account_form" method="post" action="{!! url('/user/add') !!}">--}}
-							{{--<div class="uk-margin">--}}
-						        {{--<label class="uk-form-label" for="name">Nama</label>--}}
-						        {{--<div class="uk-form-controls">--}}
-						            {{--<input class="uk-input" id="name" name="name" type="text" placeholder="Nama">--}}
-						        {{--</div>--}}
-						    {{--</div>--}}
-							{{--<div class="uk-margin">--}}
-						        {{--<label class="uk-form-label" for="email">Email</label>--}}
-						        {{--<div class="uk-form-controls">--}}
-						            {{--<input class="uk-input" id="email" name="email" type="text" placeholder="email@domain.name">--}}
-						        {{--</div>--}}
-						    {{--</div>--}}
-							{{--<div class="uk-flex uk-flex-between">--}}
-					            {{--<button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>--}}
-					            {{--<button class="uk-button uk-button-primary" type="submit">Save</button>--}}
-					        {{--</div>--}}
-						{{--</form>--}}
-				    {{--</div>--}}
-				{{--</div>--}}
 			</div>
 		</div>
 		<div class="uk-card-body">

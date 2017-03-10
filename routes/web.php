@@ -48,11 +48,13 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 
     Route::get('get-provinces', 'ProvinceController@getProvince');
 
-    Route::get('/add-user', 'CMSController@addUser');
-
     Route::get('/get-tkdd-postur-list', 'CMSController@getTKDDPosturList');
     Route::get('/get-apbd-postur-list', 'CMSController@getAPBDPosturList');
     Route::get('/get-apbd-mapping-list', 'CMSController@getAPBDMappingList');
+
+    Route::get('/manage-tkdd', 'CMSController@manageTkdd');
+    Route::get('/manage-apbd', 'CMSController@manageApbd');
+    Route::get('/manage-apbd-mapping', 'CMSController@manageApbdMapping');
 
     Route::get('manage-account', 'UserController@index');
     Route::get('get-user-list', 'UserController@getUsers');
@@ -60,11 +62,6 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('user/{id}/edit', 'UserController@edit');
     Route::get('user/{id}/delete', 'UserController@delete');
 
-    Route::get('/manage-account-edit', 'CMSController@manageAccountEdit');
-
-    Route::get('/manage-tkdd', 'CMSController@manageTkdd');
-    Route::get('/manage-apbd', 'CMSController@manageApbd');
-    Route::get('/manage-apbd-mapping', 'CMSController@manageApbdMapping');
 });
 
 Route::group(['middleware' => ['auth']], function () {

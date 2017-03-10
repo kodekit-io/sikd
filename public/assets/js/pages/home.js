@@ -84,7 +84,7 @@
         $('#' + div).append(card);
     }
     function l0r2card(div) {
-        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade">'
+        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-mini uk-height-1-1 uk-animation-fade">'
                         + '<ul class="bxslider">'
                             + '<li id="l0r2a" class="sikd-l0r2-chart"></li>'
                             + '<li id="l0r2b" class="sikd-l0r2-chart"></li>'
@@ -94,7 +94,10 @@
 
     }
     function l0r3card(div) {
-        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-small uk-height-1-1 uk-animation-fade"><div id="l0r3grid" class="uk-flex uk-flex-stretch uk-flex-middle uk-grid-small uk-child-width-1-5@m uk-height-1-1" uk-grid></div></div>';
+        var card =  '<div class="uk-card uk-card-body uk-card-hover uk-card-default uk-card-mini uk-height-1-1 uk-animation-fade">'
+            + '<h5 class="uk-text-center sikd-l0r3-title sikd-blue-text">Top 5 & Bottom 5</h5>'
+            + '<div id="l0r3grid" class="uk-flex uk-flex-center uk-flex-top uk-grid-small uk-child-width-1-3 uk-child-width-1-5@m" uk-grid></div>'
+        + '</div>';
         $('#' + div).append(card);
 
     }
@@ -173,7 +176,7 @@
                 var tabContent = '<li>'
                     + '<div class="uk-card-body">'
                         + '<div class="uk-grid-collapse" uk-grid>'
-                            + '<div class="uk-width-1-2"><h4 class="sikd-l0r1-title uk-text-uppercase sikd-blue-text">'+$name+'</h4></div>'
+                            + '<div class="uk-width-1-2"><h4 class="sikd-l0r1-title uk-text-uppercase sikd-blue-text uk-text-truncate" title="'+$name+'" uk-tooltip>'+$name+'</h4></div>'
                             + '<div class="uk-width-1-2">'
                                 + '<div class="uk-grid-collapse progress-wrap" uk-grid>'
                                     + '<div class="uk-width-auto">'
@@ -184,18 +187,11 @@
                                     + '</div>'
                                 + '</div>'
                             + '</div>'
-                            + '<div class="uk-width-1-1">'
+                            + '<div class="uk-width-1-1 sikd-l0r1-wrap">'
                                 + '<div id="'+div+'chart'+n+'" class="sikd-l0r1-chart"></div>'
-                            + '</div>'
-                            + '<div class="uk-width-1-1">'
-                                + '<div class="sikd-l0r1-footer uk-flex uk-flex-between">'
-                                    + '<div>'
-                                        + selectYear
-                                    + '</div>'
-                                    + '<div>'
-                                        + '<a title="'+$info+'" uk-tooltip class="sikd-blue-text sikd-chart-info" uk-icon="icon: info"></a>'
-                                        + '<a href="'+linkdetail+'" class="uk-button uk-button-small uk-button-default uk-text-bold rem1 sikd-blue-text" title="Lihat Detail" uk-tooltip><span class="fa fa-binoculars fa-fw"></span> Detail</a>'
-                                    + '</div>'
+                                + '<div class="sikd-l0r1-footer">'
+                                        + '<a title="'+$info+'" uk-tooltip class="sikd-chart-info uk-margin-small-right" uk-icon="icon: info"></a>'
+                                        + '<a href="'+linkdetail+'" class="uk-button uk-button-small uk-button-default uk-text-bold" title="Lihat Detail" uk-tooltip><span class="fa fa-binoculars fa-fw"></span> Detail</a>'
                                 + '</div>'
                             + '</div>'
                         + '</div>'
@@ -235,13 +231,13 @@
                     legend: {
                         data: chartData.legend,
                         padding: ['0', '0', '0', '0'],
-                        left: 'left',
-                        bottom: '5'
+                        left: 'center',
+                        bottom: 'bottom'
                     },
                     toolbox: {
                         show: true,
-                        left: 'right',
-                        bottom: '5',
+                        left: 'left',
+                        bottom: 'bottom',
                         padding: ['0', '0', '0', '0'],
                         feature: {
                             mark: {show: true},
@@ -616,14 +612,12 @@
     			var botTitle = bottom.name;
     			var botId = bottom.id;
 
-    			var itemlink =  '<div class="uk-grid-small uk-flex uk-flex-middle" uk-grid>'
-                                    + '<div class="uk-width-auto">'
-                                        + '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip class="uk-icon-button sikd-icon5 sikd-icon-'+type+'"></a>'
-                                    + '</div>'
-                                    + '<div class="uk-width-expand">'
-                                        + '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip class="sikd-text5 sikd-blue-text">'+topTitle+'<br>'+botTitle+'</a>'
-                                    + '</div>'
-                                + '</div>';
+                var topBotTitle = topTitle.replace("Top 5 ", "");
+
+    			var itemlink =  '<a href="#modal'+type+'" uk-toggle title="'+topTitle+' &amp; '+botTitle+'" uk-tooltip class="sikd-text5 sikd-blue-text">'
+                        + '<span class="uk-icon-button sikd-icon5 sikd-icon-'+type+'"></span><br>'
+                        + topBotTitle
+                    + '</a>';
 
                 var pop =   '<div id="modal'+type+'" uk-modal>'
                                 + '<div class="uk-modal-dialog uk-modal-body">'
@@ -644,7 +638,7 @@
                                     + '</div>'
                                 + '</div>'
                             + '</div>';
-                var item =  '<div>'+itemlink+''+pop+'</div>';
+                var item =  '<div class="uk-text-center">'+itemlink+''+pop+'</div>';
     			$('#'+id).append(item);
 
     	        var trTop = '';

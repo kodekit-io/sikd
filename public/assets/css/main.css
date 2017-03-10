@@ -70,6 +70,9 @@ main.sikd-login .uk-card-media-left {
     border-radius: 3px 0 0 3px;
     border-radius: 3px 0 0 3px;
 }
+.uk-card-mini .uk-card-body, .uk-card-mini.uk-card-body {
+    padding: 15px 15px;
+}
 .sikd-login .uk-card {
     margin-top: -25px;
 }
@@ -131,6 +134,15 @@ main.sikd-login .uk-card-media-left {
 .uk-offcanvas-bar .uk-nav-default > li.uk-active > a {
     color: #ffde59;
 }
+.sikd-nav-side .uk-dropdown {
+    min-width: inherit;
+    padding: 10px;
+    background-color: #000;
+}
+.sikd-nav-side .uk-dropdown .uk-nav>li>a {
+    padding: 5px;
+}
+
 .uk-button-small {
     padding: 0 10px;
     font-weight: 700;
@@ -162,10 +174,10 @@ main.sikd-login .uk-card-media-left {
     height: calc(50vh - 80px);
 }
 .sikd-home-row2 {
-    height: calc(50vh - 80px);
+    height: calc(50vh - 90px);
 }
 .sikd-home-row3 {
-    height: 100px;
+    height: 110px;
 }
 .sikd-l0r1-tab > ul.uk-tab{
     width: 60px;
@@ -222,17 +234,38 @@ main.sikd-login .uk-card-media-left {
     font-weight: 700;
     color: #09355B;
 }
+.sikd-l0r1-wrap {
+    position: relative;
+}
 .sikd-l0r1-chart {
     width: 100% !important;
-    margin: 10px 0;
-    height: calc(50vh - 185px);
+    margin: 10px 0 0;
+    height: calc(50vh - 155px);
+}
+.sikd-l0r1-footer {
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+}
+.sikd-l0r1-footer .uk-button-small {
+    padding: 0 5px;
+    height: 24px;
+    line-height: 22px;
+    color: #0e4e85;
+}
+a.sikd-chart-info {
+    color: #0e4e85;
 }
 .sikd-l0r2-chart {
     height: calc(50vh - 120px);
 }
-a.sikd-chart-info {
-    margin: 5px;
+.sikd-l0r3-title {
+    font-size: 15px;
+    margin-bottom: 5px;
+    line-height: normal;
+    font-weight: 700;
 }
+
 .sikd-blue {
     background-color: #09355B !important;
 }
@@ -334,10 +367,30 @@ a.sikd-chart-info {
                     rgba(200, 200, 200, 0.10) 18px 18px 0px,
                     rgba(200, 200, 200, 0.05) 19px 19px 0px;
 }
+.sikd-icon:hover,
 .uk-active .sikd-icon {
-    background-color: #09355B;
+    background-color: #ffde59;
     color: #fff;
-    text-shadow: none;
+    text-shadow:    rgb(179, 155, 62) 0px 0px 0px,
+                    rgb(182, 159, 64) 1px 1px 0px,
+                    rgb(186, 162, 65) 2px 2px 0px,
+                    rgb(190, 165, 66) 3px 3px 0px,
+                    rgb(194, 169, 68) 4px 4px 0px,
+                    rgb(198, 172, 69) 5px 5px 0px,
+                    rgb(201, 175, 70) 6px 6px 0px,
+                    rgb(205, 179, 72) 7px 7px 0px,
+                    rgb(209, 182, 73) 8px 8px 0px,
+                    rgb(213, 185, 74) 9px 9px 0px,
+                    rgb(217, 189, 76) 10px 10px 0px,
+                    rgb(221, 192, 77) 11px 11px 0px,
+                    rgb(224, 195, 78) 12px 12px 0px,
+                    rgb(228, 199, 80) 13px 13px 0px,
+                    rgb(232, 202, 81) 14px 14px 0px,
+                    rgb(236, 205, 82) 15px 15px 0px,
+                    rgb(240, 209, 84) 16px 16px 0px,
+                    rgb(244, 212, 85) 17px 17px 0px,
+                    rgb(247, 215, 86) 18px 18px 0px,
+                    rgb(251, 219, 88) 19px 19px 0px;
 }
 
 
@@ -402,12 +455,13 @@ a.sikd-chart-info {
 }
 
 .sikd-topbar {
-    padding-left: 60px;
     background: #000 !important;
     color: #fff;
+    width: 100%;
 }
 .sikd-topbar .uk-navbar-nav {
     height: 50px;
+    margin-left: 50px;
 }
 .sikd-topbar .uk-navbar-nav>li>a {
     height: 50px;
@@ -472,7 +526,7 @@ a.sikd-chart-info {
         height: auto;
     }
     .sikd-l0r1-chart {
-        height: calc(250px - 140px);
+        height: 140px;
     }
     .sikd-l0r2-chart {
         height: 210px;

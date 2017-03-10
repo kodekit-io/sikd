@@ -43,13 +43,19 @@ class User
         return $this->sikd->put('user-djpk/' . $id, $params);
     }
 
-    public function add($name, $email)
+    public function create($data)
     {
         $params = [
-            'name' => $name,
-            'email' => $email
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password']
         ];
 
-        $this->sikd->post('user-djpk', $params);
+        return $this->sikd->post('user-djpk', $params);
+    }
+
+    public function delete($id)
+    {
+        return $this->sikd->delete('user-djpk/' . $id);
     }
 }

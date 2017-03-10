@@ -47,18 +47,19 @@ class Sikd
         return $tokenResult;
     }
 
-    public function post($url, $params = [], $apiVersion = 1, $withToken=true)
+    public function post($url, $params = [], $apiVersion = 1)
     {
-        if ($withToken) {
-            $params['auth_token'] = session('api_token');
-        }
-
         $apiUrl = $this->generateApiUrl($url, $apiVersion);
+        $accessToken = session('api_token');
+        $headers = [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken
+            ],
+            'form_params'=> $params
+        ];
 
         try {
-            $response = $this->client->post($apiUrl, [
-                'form_params' => $params
-            ]);
+            $response = $this->client->request('POST', $apiUrl, $headers);
             $parsedResponse = $this->parseResponse($response);
         } catch (\Exception $e) {
             $parsedResponse = $this->proceedException($e, $apiUrl);
@@ -130,6 +131,26 @@ class Sikd
 
         try {
             $response = $this->client->request('PUT', $apiUrl, $headers);
+            $parsedResponse = $this->parseResponse($response);
+        } catch (\Exception $e) {
+            $parsedResponse = $this->proceedException($e, $apiUrl);
+        }
+
+        return $parsedResponse;
+    }
+
+    public function delete($url, $apiVersion = 1)
+    {
+        $apiUrl = $this->generateApiUrl($url, $apiVersion);
+        $accessToken = session('api_token');
+        $headers = [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken
+            ]
+        ];
+
+        try {
+            $response = $this->client->request('DELETE', $apiUrl, $headers);
             $parsedResponse = $this->parseResponse($response);
         } catch (\Exception $e) {
             $parsedResponse = $this->proceedException($e, $apiUrl);

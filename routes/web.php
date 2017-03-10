@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 
     Route::get('manage-account', 'UserController@index');
     Route::get('get-user-list', 'UserController@getUsers');
+    Route::get('user/add', 'UserController@add');
     Route::get('user/{id}/edit', 'UserController@edit');
     Route::get('user/{id}/delete', 'UserController@delete');
 
@@ -67,7 +68,7 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::post('user/add', 'UserController@add');
+    Route::post('user/create', 'UserController@create');
     Route::post('user/{id}/update', 'UserController@update');
 });
 

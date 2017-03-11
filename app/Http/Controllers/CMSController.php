@@ -39,11 +39,6 @@ class CMSController extends Controller
         $data['year'] = '2016';
         return view('sikd.manage-apbd', $data);
     }
-    public function manageApbdMapping()
-    {
-        $data['year'] = '2016';
-        return view('sikd.manage-apbd-mapping', $data);
-    }
 
     public function getUserList()
     {

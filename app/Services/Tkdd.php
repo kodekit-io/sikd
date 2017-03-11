@@ -22,11 +22,6 @@ class Tkdd
         $this->sikd = $sikd;
     }
 
-    public function getGroup()
-    {
-        //
-    }
-
     public function getPostures($groupId = 3, $type = 'array')
     {
         $minutes = 0 * 0 * 60;
@@ -112,6 +107,35 @@ class Tkdd
         }
 
         return \GuzzleHttp\json_encode($modifiedResult);
+    }
+
+
+    /************************* CRUD ****************************/
+    public function getTkdd()
+    {
+        $result = $this->sikd->get('ref-tkdd-postur');
+        return $result->result;
+    }
+
+    public function getTkddById($id)
+    {
+        $result = $this->sikd->get('ref-tkdd-postur/' . $id);
+        return $result->result;
+    }
+
+    public function create($data)
+    {
+
+    }
+
+    public function update($data, $id)
+    {
+
+    }
+
+    public function delete($id)
+    {
+        return $this->sikd->delete('ref-tkdd-postur/' . $id);
     }
 
 }

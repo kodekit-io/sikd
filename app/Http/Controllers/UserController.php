@@ -24,7 +24,7 @@ class UserController extends Controller
     public function index()
     {
         $data['year'] = '2016';
-        return view('sikd.manage-account', $data);
+        return view('sikd.users.list', $data);
     }
 
     public function getUsers()
@@ -36,14 +36,14 @@ class UserController extends Controller
     public function add()
     {
         $data['year'] = '2016';
-        return view('sikd.manage-account-add', $data);
+        return view('sikd.users.add', $data);
     }
 
     public function create(Request $request)
     {
         $response = $this->user->create($request->except(['_token']));
         if ($response->status == '200') {
-            return redirect('manage-account');
+            return redirect('user');
         }
 
         return redirect('user/add')->withErrors(['error' => $response->result]);
@@ -54,14 +54,14 @@ class UserController extends Controller
         $data['user'] = $this->user->getUserById($id);
         $data['year'] = '2016';
         $data['id'] = $id;
-        return view('sikd.manage-account-edit', $data);
+        return view('sikd.users.edit', $data);
     }
 
     public function update(Request $request, $id)
     {
         $response = $this->user->update($request->except(['_token']), $id);
         if ($response->status == '200') {
-            return redirect('manage-account');
+            return redirect('user');
         }
 
         return redirect('user/' . $id . '/edit')->withErrors(['error' => $response->result]);
@@ -71,9 +71,9 @@ class UserController extends Controller
     {
         $response = $this->user->delete($id);
         if ($response->status == '200') {
-            return redirect('manage-account');
+            return redirect('user');
         }
 
-        return redirect('manage-account')->withErrors(['error' => $response->result]);
+        return redirect('user')->withErrors(['error' => $response->result]);
     }
 }

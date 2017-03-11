@@ -1,6 +1,6 @@
 (function ($, window, document, $baseUrl) {
     $(function () {
-        var url = $baseUrl + '/get-tkdd-postur-list/';
+        var url = $baseUrl + '/tkdd-posture/get-postures';
 		userList('list',url);
     });
     function userList(div,url) {
@@ -33,10 +33,10 @@
                         { "data": null, "width": "10%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["idPostur"];
-                                var edit = $baseUrl + '/manage-tkdd-edit?id='+id;
-                                var del = $baseUrl + '/manage-tkdd-delete?id='+id;
-                                return '<a href="'+edit+'" title="Edit User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
-                                + '<a href="'+del+'" title="Delete User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
+                                var edit = $baseUrl + '/tkdd-posture/' + id + '/edit';
+                                var del = $baseUrl + '/tkdd-posture/' + id + '/delete';
+                                return '<a href="'+edit+'" title="Edit Postur TKDD" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
+                                + '<a href="'+del+'" title="Delete Postur TKDD" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
                             }
                         }
                     ],

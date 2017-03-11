@@ -61,15 +61,23 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('user/{id}/delete', 'UserController@delete');
 
     Route::get('tkdd-posture', 'TkddController@index');
-    Route::get('get-tkdd-posture-list', 'TkddController@getPostures');
+    Route::get('tkdd-posture/get-postures', 'TkddController@getPostures');
     Route::get('tkdd-posture/add', 'TkddController@add');
     Route::post('tkdd-posture/create', 'TkddController@create');
     Route::get('tkdd-posture/{id}/edit', 'TkddController@edit');
     Route::post('tkdd-posture/{id}/update', 'TkddController@update');
     Route::get('tkdd-posture/{id}/delete', 'TkddController@delete');
 
+    Route::get('apbd-posture', 'ApbdController@index');
+    Route::get('apbd-posture/get-postures', 'ApbdController@getPostures');
+    Route::get('apbd-posture/add', 'ApbdController@add');
+    Route::post('apbd-posture/create', 'ApbdController@create');
+    Route::get('apbd-posture/{id}/edit', 'ApbdController@edit');
+    Route::post('apbd-posture/{id}/update', 'ApbdController@update');
+    Route::get('apbd-posture/{id}/delete', 'ApbdController@delete');
+
     Route::get('account-mapping', 'AccountMappingController@index');
-    Route::get('get-account-mapping', 'AccountMappingController@getAccounts');
+    Route::get('account-mapping/get-accounts', 'AccountMappingController@getAccounts');
     Route::get('account-mapping/add', 'AccountMappingController@add');
     Route::post('account-mapping/create', 'AccountMappingController@create');
     Route::get('account-mapping/{id}/edit', 'AccountMappingController@edit');

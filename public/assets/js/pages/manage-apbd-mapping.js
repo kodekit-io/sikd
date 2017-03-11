@@ -1,6 +1,6 @@
 (function ($, window, document, $baseUrl) {
     $(function () {
-        var url = $baseUrl + '/get-apbd-mapping-list/';
+        var url = $baseUrl + '/account-mapping/get-accounts/';
 		userList('list',url);
     });
     function userList(div,url) {

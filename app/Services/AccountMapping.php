@@ -20,7 +20,8 @@ class AccountMapping
 
     public function getAccounts()
     {
-        return $this->sikd->get('ref-apbd-akun-mapping');
+        $result = $this->sikd->get('ref-apbd-akun-mapping');
+        return $result->result;
     }
 
     public function getAccountById($id)

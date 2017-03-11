@@ -97,4 +97,55 @@ class Apbd
 
         return '';
     }
+
+    /************************* CRUD ****************************/
+    public function getApbd()
+    {
+        $result = $this->sikd->get('ref-apbd-postur');
+        return $result->result;
+    }
+
+    public function getPostureById($id)
+    {
+        $result = $this->sikd->get('ref-apbd-postur/' . $id);
+        return $result->result;
+    }
+
+    public function getApbdPostures()
+    {
+        $result = $this->sikd->get('ref-apbd-postur');
+        return $result->result;
+    }
+
+    public function create($data)
+    {
+        $params = [
+            'id' => $data['id_posture'],
+            'group' => $data['group'],
+            'name' => $data['name'],
+            'id_map' => $data['id_map'],
+            'active' => (isset($data['is_active']) ? $data['is_active'] : 'false'),
+            'icon' => $data['icon']
+        ];
+
+        return $this->sikd->post('ref-apbd-postur', $params);
+    }
+
+    public function update($data, $id)
+    {
+        $params = [
+            'group' => $data['group'],
+            'name' => $data['name'],
+            'id_map' => $data['id_map'],
+            'active' => (isset($data['is_active']) ? $data['is_active'] : 'false'),
+            'icon' => $data['icon']
+        ];
+
+        return $this->sikd->put('ref-apbd-postur/' . $id, $params);
+    }
+
+    public function delete($id)
+    {
+        return $this->sikd->delete('ref-apbd-postur/' . $id);
+    }
 }

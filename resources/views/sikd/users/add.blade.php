@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="uk-flex uk-flex-between">
-                        <a href="{!! url('/manage-account') !!}" class="uk-button uk-button-default uk-modal-close">Cancel</a>
+                        <a href="{!! url('user') !!}" class="uk-button uk-button-default uk-modal-close">Cancel</a>
                         <button class="uk-button uk-button-primary" type="submit">Save</button>
                     </div>
                 </form>

@@ -26,6 +26,12 @@ class AccountMappingController extends Controller
         return view('sikd.account-mappings.list', $data);
     }
 
+    public function getAccounts()
+    {
+        $accounts = $this->accountMapping->getAccounts();
+        return \GuzzleHttp\json_encode($accounts);
+    }
+
     public function add()
     {
         $data['year'] = '2016';

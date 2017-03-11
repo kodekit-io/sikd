@@ -97,4 +97,63 @@ class Apbd
 
         return '';
     }
+
+    /************************* CRUD ****************************/
+    public function getApbd()
+    {
+        $result = $this->sikd->get('ref-apbd-postur');
+        return $result->result;
+    }
+
+    public function getPostureById($id)
+    {
+        $result = $this->sikd->get('ref-apbd-postur/' . $id);
+        return $result->result;
+    }
+
+    public function getApbdPostures()
+    {
+        $result = $this->sikd->get('ref-apbd-postur');
+        return $result->result;
+    }
+
+    public function create($data)
+    {
+        $params = [
+            'idPostur' => $data['id_posture'],
+            'kodePostur' => $data['code'],
+            'uraianPostur' => $data['posture_desc'],
+            'uraianPosturSingkat' => $data['posture_short_desc'],
+            'idInduk' => $data['parent_id'],
+            'adaAkun' => (isset($data['have_account']) ? $data['have_account'] : '0'),
+            'levelnya' => $data['level'],
+            'group' => $data['group'],
+            'icon' => $data['icon']
+        ];
+
+        //dd($params);
+
+        return $this->sikd->post('ref-apbd-postur', $params);
+    }
+
+    public function update($data, $id)
+    {
+        $params = [
+            'kodePostur' => $data['code'],
+            'uraianPostur' => $data['posture_desc'],
+            'uraianPosturSingkat' => $data['posture_short_desc'],
+            'idInduk' => $data['parent_id'],
+            'adaAkun' => (isset($data['have_account']) ? $data['have_account'] : '0'),
+            'levelnya' => $data['level'],
+            'group' => $data['group'],
+            'icon' => $data['icon']
+        ];
+
+        return $this->sikd->put('ref-apbd-postur/' . $id, $params);
+    }
+
+    public function delete($id)
+    {
+        return $this->sikd->delete('ref-apbd-postur/' . $id);
+    }
 }

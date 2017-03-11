@@ -117,20 +117,51 @@ class Tkdd
         return $result->result;
     }
 
-    public function getTkddById($id)
+    public function getPostureById($id)
     {
         $result = $this->sikd->get('ref-tkdd-postur/' . $id);
         return $result->result;
     }
 
+    public function getTkddPostures()
+    {
+        $result = $this->sikd->get('ref-tkdd-postur');
+        return $result->result;
+    }
+
     public function create($data)
     {
+        $params = [
+            'idPostur' => $data['id_posture'],
+            'kodePostur' => $data['code'],
+            'uraianPostur' => $data['posture_desc'],
+            'uraianPosturSingkat' => $data['posture_short_desc'],
+            'idInduk' => $data['parent_id'],
+            'adaAkun' => (isset($data['have_account']) ? $data['have_account'] : '0'),
+            'levelnya' => $data['level'],
+            'group' => $data['group'],
+            'icon' => $data['icon']
+        ];
 
+        //dd($params);
+
+        return $this->sikd->post('ref-tkdd-postur', $params);
     }
 
     public function update($data, $id)
     {
+        $params = [
+            'kodePostur' => $data['code'],
+            'uraianPostur' => $data['posture_desc'],
+            'uraianPosturSingkat' => $data['posture_short_desc'],
+            'idInduk' => $data['parent_id'],
+            'adaAkun' => (isset($data['have_account']) ? $data['have_account'] : '0'),
+            'levelnya' => $data['level'],
+            'group' => $data['group'],
+            'icon' => $data['icon']
+        ];
 
+        return $this->sikd->put('ref-tkdd-postur/' . $id, $params);
     }
 
     public function delete($id)

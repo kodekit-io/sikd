@@ -52,21 +52,32 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('/get-apbd-postur-list', 'CMSController@getAPBDPosturList');
     Route::get('/get-apbd-mapping-list', 'CMSController@getAPBDMappingList');
 
-    Route::get('/manage-tkdd', 'CMSController@manageTkdd');
-    Route::get('/manage-apbd', 'CMSController@manageApbd');
-    Route::get('/manage-apbd-mapping', 'CMSController@manageApbdMapping');
-
-    Route::get('manage-account', 'UserController@index');
+    Route::get('user', 'UserController@index');
     Route::get('get-user-list', 'UserController@getUsers');
     Route::get('user/add', 'UserController@add');
+    Route::post('user/create', 'UserController@create');
     Route::get('user/{id}/edit', 'UserController@edit');
+    Route::post('user/{id}/update', 'UserController@update');
     Route::get('user/{id}/delete', 'UserController@delete');
 
-});
+    Route::get('tkdd-posture', 'TkddController@index');
+    Route::get('get-tkdd-posture-list', 'TkddController@getPostures');
+    Route::get('tkdd-posture/add', 'TkddController@add');
+    Route::post('tkdd-posture/create', 'TkddController@create');
+    Route::get('tkdd-posture/{id}/edit', 'TkddController@edit');
+    Route::post('tkdd-posture/{id}/update', 'TkddController@update');
+    Route::get('tkdd-posture/{id}/delete', 'TkddController@delete');
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::post('user/create', 'UserController@create');
-    Route::post('user/{id}/update', 'UserController@update');
+    Route::get('account-mapping', 'AccountMappingController@index');
+    Route::get('get-account-mapping', 'AccountMappingController@getAccounts');
+    Route::get('account-mapping/add', 'AccountMappingController@add');
+    Route::post('account-mapping/create', 'AccountMappingController@create');
+    Route::get('account-mapping/{id}/edit', 'AccountMappingController@edit');
+    Route::post('account-mapping/{id}/update', 'AccountMappingController@update');
+    Route::get('account-mapping/{id}/delete', 'AccountMappingController@delete');
+
+    Route::get('/manage-apbd', 'CMSController@manageApbd');
+    Route::get('/manage-apbd-mapping', 'CMSController@manageApbdMapping');
 });
 
 Route::get('test/api-exception', 'MiscController@apiException');

@@ -6,7 +6,7 @@
             <li class="uk-nav-divider"></li>
             <li><a title="Refresh Page" uk-tooltip="pos: bottom-left" onclick="location.reload();"><span uk-icon="icon: refresh"></span></a></li>
             <li><a title="Screenshot" uk-tooltip="pos: bottom-left" onclick="capture();"><span uk-icon="icon: camera"></span></a></li>
-            <li><a href="{!! url('/manage-account') !!}" title="Setting" uk-tooltip="pos: bottom-left"><span uk-icon="icon: cog"></span></a></li>
+            <li><a href="{!! url('user') !!}" title="Setting" uk-tooltip="pos: bottom-left"><span uk-icon="icon: cog"></span></a></li>
             <li><a href="{!! url('logout') !!}" title="Logout" uk-tooltip="pos: bottom-left"><span uk-icon="icon: sign-out" style="top:0"></span></a></li>
         </ul>
     </div>
@@ -35,7 +35,7 @@
             <li class="uk-nav-divider"></li>
             <li><a title="Refresh Page" uk-tooltip="pos: top-left" onclick="location.reload();"><span class="uk-margin-small-right" uk-icon="icon: refresh"></span> Refresh</a></li>
             <li><a title="Screenshot" uk-tooltip="pos: top-left" onclick="capture();"><span class="uk-margin-small-right" uk-icon="icon: camera"></span> Screenshot</a></li>
-            <li><a href="{!! url('/manage-account') !!}" title="Setting" uk-tooltip="pos: bottom-left"><span class="uk-margin-small-right" uk-icon="icon: cog"></span> Setting</a></li>
+            <li><a href="{!! url('user') !!}" title="Setting" uk-tooltip="pos: bottom-left"><span class="uk-margin-small-right" uk-icon="icon: cog"></span> Setting</a></li>
             <li><a href="{!! url('logout') !!}" title="Logout" uk-tooltip="pos: top-left"><span class="uk-margin-small-right" uk-icon="icon: sign-out" style="top:0"></span> Logout</a></li>
         </ul>
     </div>

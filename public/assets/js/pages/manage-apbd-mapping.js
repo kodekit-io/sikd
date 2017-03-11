@@ -32,10 +32,10 @@
                         { "data": null, "width": "10%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["id"];
-                                var edit = $baseUrl + '/manage-apbd-mapping-edit?id='+id;
-                                var del = $baseUrl + '/manage-apbd-mapping-delete?id='+id;
-                                return '<a href="'+edit+'" title="Edit User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
-                                + '<a href="'+del+'" title="Delete User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
+                                var edit = $baseUrl + '/account-mapping/' + id + '/edit';
+                                var del = $baseUrl + '/account-mapping/' + id + '/delete';
+                                return '<a href="'+edit+'" title="Edit Akun Mapping" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
+                                + '<a href="'+del+'" title="Delete Mapping Akun" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
                             }
                         }
                     ],

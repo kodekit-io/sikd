@@ -30,6 +30,17 @@ class User
         return $result->result;
     }
 
+    public function create($data)
+    {
+        $params = [
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password']
+        ];
+
+        return $this->sikd->post('user-djpk', $params);
+    }
+
     public function update($data, $id)
     {
         $name = $data['name'];
@@ -41,17 +52,6 @@ class User
         ];
 
         return $this->sikd->put('user-djpk/' . $id, $params);
-    }
-
-    public function create($data)
-    {
-        $params = [
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password']
-        ];
-
-        return $this->sikd->post('user-djpk', $params);
     }
 
     public function delete($id)

@@ -2,18 +2,7 @@
 @section('page-level-styles')
 @endsection
 @section('content')
-    <nav class="uk-navbar-container sikd-topbar" uk-sticky>
-        <div class="uk-navbar-left">
-
-            <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="{!! url('/manage-account') !!}">Pengaturan Pengguna</a></li>
-                <li><a href="{!! url('/manage-tkdd') !!}">Postur TKDD</a></li>
-                <li><a href="{!! url('/manage-apbd') !!}">Postur APBD</a></li>
-                <li><a href="{!! url('/manage-apbd-mapping') !!}">Mapping Akun APBD</a></li>
-            </ul>
-
-        </div>
-    </nav>
+@include('includes.nav-setting')
     <main class="uk-container uk-container-expand sikd-cms">
         <div class="uk-card uk-card-hover uk-card-default uk-card-small uk-animation-fade l3card">
             <div class="uk-card-header uk-grid-small" uk-grid>

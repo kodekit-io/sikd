@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\AccountMapping;
 use App\Service\Apbd;
 use Illuminate\Http\Request;
 
@@ -11,13 +12,18 @@ class ApbdController extends Controller
      * @var Apbd
      */
     private $apbd;
+    /**
+     * @var AccountMapping
+     */
+    private $accountMapping;
 
     /**
      * ApbdController constructor.
      */
-    public function __construct(Apbd $apbd)
+    public function __construct(Apbd $apbd, AccountMapping $accountMapping)
     {
         $this->apbd = $apbd;
+        $this->accountMapping = $accountMapping;
     }
 
     public function index()
@@ -35,6 +41,7 @@ class ApbdController extends Controller
     public function add()
     {
         $data['year'] = '2016';
+        $data['maps'] = $this->accountMapping->getAccounts();
         return view('sikd.apbd-postures.add', $data);
     }
 
@@ -50,7 +57,10 @@ class ApbdController extends Controller
 
     public function edit($id)
     {
-        $data['posture'] = $this->apbd->getPostureById($id);
+        $posture = $this->apbd->getPostureById($id);
+        $data['mapIds'] = explode(',', $posture->id_map);
+        $data['posture'] = $posture;
+        $data['maps'] = $this->accountMapping->getAccounts();
         $data['year'] = '2016';
         $data['id'] = $id;
         return view('sikd.apbd-postures.edit', $data);

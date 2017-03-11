@@ -120,18 +120,13 @@ class Apbd
     public function create($data)
     {
         $params = [
-            'idPostur' => $data['id_posture'],
-            'kodePostur' => $data['code'],
-            'uraianPostur' => $data['posture_desc'],
-            'uraianPosturSingkat' => $data['posture_short_desc'],
-            'idInduk' => $data['parent_id'],
-            'adaAkun' => (isset($data['have_account']) ? $data['have_account'] : '0'),
-            'levelnya' => $data['level'],
+            'id' => $data['id_posture'],
             'group' => $data['group'],
+            'name' => $data['name'],
+            'id_map' => $data['id_map'],
+            'active' => (isset($data['is_active']) ? $data['is_active'] : 'false'),
             'icon' => $data['icon']
         ];
-
-        //dd($params);
 
         return $this->sikd->post('ref-apbd-postur', $params);
     }
@@ -139,13 +134,10 @@ class Apbd
     public function update($data, $id)
     {
         $params = [
-            'kodePostur' => $data['code'],
-            'uraianPostur' => $data['posture_desc'],
-            'uraianPosturSingkat' => $data['posture_short_desc'],
-            'idInduk' => $data['parent_id'],
-            'adaAkun' => (isset($data['have_account']) ? $data['have_account'] : '0'),
-            'levelnya' => $data['level'],
             'group' => $data['group'],
+            'name' => $data['name'],
+            'id_map' => $data['id_map'],
+            'active' => (isset($data['is_active']) ? $data['is_active'] : 'false'),
             'icon' => $data['icon']
         ];
 

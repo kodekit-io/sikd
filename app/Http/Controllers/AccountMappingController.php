@@ -23,6 +23,7 @@ class AccountMappingController extends Controller
     public function index()
     {
         $data['year'] = '2016';
+        $data['classAkun'] = 'class="uk-active"';
         return view('sikd.account-mappings.list', $data);
     }
 
@@ -35,6 +36,7 @@ class AccountMappingController extends Controller
     public function add()
     {
         $data['year'] = '2016';
+        $data['classAkun'] = 'class="uk-active"';
         return view('sikd.account-mappings.add', $data);
     }
 
@@ -52,6 +54,7 @@ class AccountMappingController extends Controller
     {
         $data['account'] = $this->accountMapping->getAccountById($id);
         $data['year'] = '2016';
+        $data['classAkun'] = 'class="uk-active"';
         $data['id'] = $id;
         return view('sikd.account-mappings.edit', $data);
     }

@@ -31,8 +31,6 @@
 	<script type="text/javascript">
 		var $baseUrl = "{!! url('/') !!}";
 	</script>
-	<script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
-	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
 	<script src="{!! asset('assets/js/datatables/dataTables.sikd.js') !!}"></script>
 	<script src="{!! asset('assets/js/pages/manage-apbd-mapping.js') !!}"></script>

@@ -497,7 +497,7 @@ li:first-child .sikd-icon {
 .sikd-topbar {
     background: #000 !important;
     color: #fff;
-    width: 100%;
+    width: 100% !important;
 }
 .sikd-topbar .uk-navbar-nav {
     height: 50px;

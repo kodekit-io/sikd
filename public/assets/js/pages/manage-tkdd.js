@@ -35,8 +35,17 @@
                                 var id = data["idPostur"];
                                 var edit = $baseUrl + '/tkdd-posture/' + id + '/edit';
                                 var del = $baseUrl + '/tkdd-posture/' + id + '/delete';
-                                return '<a href="'+edit+'" title="Edit Postur TKDD" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
-                                + '<a href="'+del+'" title="Delete Postur TKDD" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
+                                return '<a href="'+edit+'" title="Edit User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
+                                + '<a href="#delConfirm'+id+'"title="Delete User" class="uk-button uk-button-small uk-button-default" uk-toggle><span class="fa fa-close red-text"></span></a>'
+                                + '<div id="delConfirm'+id+'" uk-modal>'
+                                    + '<div class="uk-modal-dialog uk-modal-body">'
+                                        + '<h3>Anda yakin akan menghapus ini?</h3><hr>'
+                                        + '<div class="uk-flex uk-flex-between">'
+                                            + '<a class="uk-button uk-button-default uk-modal-close">Batal</a>'
+                                            + '<a href="'+del+'" class="uk-button uk-button-danger">YA, HAPUS!</a>'
+                                        + '</div>'
+                                    + '</div>'
+                                + '</div>';
                             }
                         }
                     ],

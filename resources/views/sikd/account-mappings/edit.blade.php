@@ -14,9 +14,9 @@
                 </div>
             </div>
             <div class="uk-card-body">
-                @if($errors->any())
+                {{-- @if($errors->any())
                     <h4>{{ $errors->first() }}</h4>
-                @endif
+                @endif --}}
                 <form id="edit_account_form" method="POST" action="{!! url('account-mapping/' . $id . '/update') !!}">
                     {!! csrf_field() !!}
                     <div class="uk-margin">

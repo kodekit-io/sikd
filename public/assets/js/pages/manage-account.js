@@ -66,21 +66,22 @@
                                 var edit = $baseUrl + '/user/' + id + '/edit';
                                 var del = $baseUrl + '/user/' + id + '/delete';
                                 return '<a href="'+edit+'" title="Edit User" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
-                                + '<a href="#delConfirm'+id+'"title="Delete User" class="uk-button uk-button-small uk-button-default" uk-toggle><span class="fa fa-close red-text"></span></a>'
-                                + '<div id="delConfirm'+id+'" uk-modal>'
-                                    + '<div class="uk-modal-dialog uk-modal-body">'
-                                        + '<h3>Anda yakin akan menghapus pengguna ini?</h3><hr>'
-                                        + '<div class="uk-flex uk-flex-between">'
-                                            + '<a class="uk-button uk-button-default uk-modal-close">Batal</a>'
-                                            + '<a href="'+del+'" class="uk-button uk-button-danger">YA, HAPUS!</a>'
-                                        + '</div>'
-                                    + '</div>'
-                                + '</div>';
-
+                                + '<a "title="Delete User" class="btn-delete uk-button uk-button-small uk-button-default" data-url="'+del+'"><span class="fa fa-close red-text"></span></a>';
                             }
                         }
                     ],
                     order: [[0, 'asc']]
+                });
+
+                $("body").on("click", "#"+div+" a.btn-delete", function (e) {
+                    e.preventDefault();
+                    var link = $(this).attr('data-url');
+                    $(this).blur();
+                    UIkit.modal.confirm('<h4>Anda yakin akan menghapus ini?</h4>').then(function() {
+                        window.location.href = link;
+                    }, function () {
+
+                    });
                 });
 	        },
             error: function (request, status, error) {

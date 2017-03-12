@@ -144,9 +144,9 @@
                             theMap.setOption({
                                 series: [{
                                     center: locations[currentLoc].coord,
-                                    zoom: 50,
-                                    layoutSize: 100,
-                                    aspectScale: 1,
+                                    zoom: 15,
+                                    // layoutSize: 100,
+                                    // aspectScale: 1,
                                     data:[
                                         {name: locations[currentLoc].name, selected: true}
                                     ],

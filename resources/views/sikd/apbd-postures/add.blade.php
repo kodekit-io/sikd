@@ -33,9 +33,9 @@
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="id_map">ID Map</label>
-                        <div class="uk-form-controls">
+                        <div class="uk-grid-small uk-child-width-1-3@m" uk-grid>
                             @foreach($maps as $map)
-                                <input type="checkbox" name="maps[]" value="{!! $map->id !!}"> {!! $map->urakun !!}<br/>
+                                <div class="uk-form-controls"><input type="checkbox" name="maps[]" value="{!! $map->id !!}"> {!! $map->urakun !!}</div>
                             @endforeach
                         </div>
                     </div>

@@ -7,7 +7,7 @@
         <div class="uk-card uk-card-hover uk-card-default uk-card-small uk-animation-fade l3card">
             <div class="uk-card-header uk-grid-small" uk-grid>
                 <div class="uk-width-expand@m">
-                    <h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove uk-text-uppercase">Tambah Postur APBD</h3>
+                    <h3 class="uk-card-title sikd-blue-text uk-float-left uk-margin-remove uk-text-uppercase">Edit Postur APBD</h3>
                 </div>
                 <div class="uk-width-auto@m">
                     <button class="uk-button uk-button-small uk-button-default" type="button" onclick="history.go(-1);" title="Kembali ke halaman sebelumnya" uk-tooltip="pos: left"><span uk-icon="icon: arrow-left"></span> BACK</button>
@@ -27,12 +27,12 @@
                     </div>
                     <div class="uk-margin">
                         <label class="uk-form-label" for="id_map">ID Map</label>
-                        <div class="uk-form-controls">
+                        <div class="uk-grid-small uk-child-width-1-3@m" uk-grid>
                             @foreach($maps as $map)
                                 @php
                                 $checked = in_array($map->id, $mapIds) ? 'checked' : '';
                                 @endphp
-                                <input type="checkbox" name="maps[]" value="{!! $map->id !!}" {!! $checked !!}> {!! $map->urakun !!}<br/>
+                                <div class="uk-form-controls"><input type="checkbox" name="maps[]" value="{!! $map->id !!}" {!! $checked !!}> {!! $map->urakun !!}</div>
                             @endforeach
                         </div>
                     </div>

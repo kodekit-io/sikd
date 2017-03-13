@@ -367,8 +367,7 @@ a.sikd-chart-info {
                     rgba(200, 200, 200, 0.10) 18px 18px 0px,
                     rgba(200, 200, 200, 0.05) 19px 19px 0px;
 }
-.sikd-icon:hover,
-.uk-active .sikd-icon {
+li:first-child .sikd-icon {
     background-color: #ffde59;
     color: #fff;
     text-shadow:    rgb(179, 155, 62) 0px 0px 0px,
@@ -392,7 +391,31 @@ a.sikd-chart-info {
                     rgb(247, 215, 86) 18px 18px 0px,
                     rgb(251, 219, 88) 19px 19px 0px;
 }
-
+.sikd-icon:hover,
+.uk-active .sikd-icon {
+    background-color: #0e4e85;
+    color: #fff;
+    text-shadow:    rgba(9, 53, 91, 1) 0px 0px 0px,
+                    rgba(9, 53, 91, .95) 1px 1px 0px,
+                    rgba(9, 53, 91, .90) 2px 2px 0px,
+                    rgba(9, 53, 91, .85) 3px 3px 0px,
+                    rgba(9, 53, 91, .80) 4px 4px 0px,
+                    rgba(9, 53, 91, .75) 5px 5px 0px,
+                    rgba(9, 53, 91, .70) 6px 6px 0px,
+                    rgba(9, 53, 91, .65) 7px 7px 0px,
+                    rgba(9, 53, 91, .60) 8px 8px 0px,
+                    rgba(9, 53, 91, .55) 9px 9px 0px,
+                    rgba(9, 53, 91, .50) 10px 10px 0px,
+                    rgba(9, 53, 91, .45) 11px 11px 0px,
+                    rgba(9, 53, 91, .40) 12px 12px 0px,
+                    rgba(9, 53, 91, .35) 13px 13px 0px,
+                    rgba(9, 53, 91, .30) 14px 14px 0px,
+                    rgba(9, 53, 91, .25) 15px 15px 0px,
+                    rgba(9, 53, 91, .20) 16px 16px 0px,
+                    rgba(9, 53, 91, .15) 17px 17px 0px,
+                    rgba(9, 53, 91, .10) 18px 18px 0px,
+                    rgba(9, 53, 91, .05) 19px 19px 0px;
+}
 
 .rem1 {
     font-size: 1rem !important;
@@ -474,7 +497,7 @@ a.sikd-chart-info {
 .sikd-topbar {
     background: #000 !important;
     color: #fff;
-    width: 100%;
+    width: 100% !important;
 }
 .sikd-topbar .uk-navbar-nav {
     height: 50px;

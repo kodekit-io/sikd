@@ -48,10 +48,6 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 
     Route::get('get-provinces', 'ProvinceController@getProvince');
 
-    Route::get('/get-tkdd-postur-list', 'CMSController@getTKDDPosturList');
-    Route::get('/get-apbd-postur-list', 'CMSController@getAPBDPosturList');
-    Route::get('/get-apbd-mapping-list', 'CMSController@getAPBDMappingList');
-
     Route::get('user', 'UserController@index');
     Route::get('get-user-list', 'UserController@getUsers');
     Route::get('user/add', 'UserController@add');
@@ -83,9 +79,6 @@ Route::group(['middleware' => ['auth', 'province']], function () {
     Route::get('account-mapping/{id}/edit', 'AccountMappingController@edit');
     Route::post('account-mapping/{id}/update', 'AccountMappingController@update');
     Route::get('account-mapping/{id}/delete', 'AccountMappingController@delete');
-
-    Route::get('/manage-apbd', 'CMSController@manageApbd');
-    Route::get('/manage-apbd-mapping', 'CMSController@manageApbdMapping');
 });
 
 Route::get('test/api-exception', 'MiscController@apiException');

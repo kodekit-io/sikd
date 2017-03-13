@@ -34,12 +34,22 @@
                                 var id = data["id"];
                                 var edit = $baseUrl + '/account-mapping/' + id + '/edit';
                                 var del = $baseUrl + '/account-mapping/' + id + '/delete';
-                                return '<a href="'+edit+'" title="Edit Akun Mapping" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
-                                + '<a href="'+del+'" title="Delete Mapping Akun" class="uk-button uk-button-small uk-button-default"><span class="fa fa-close red-text"></span></a>';
+                                return '<a href="'+edit+'" title="Edit" class="uk-button uk-button-small uk-button-default"><span class="fa fa-pencil green-text"></span></a>'
+                                + '<a title="Delete" class="btn-delete uk-button uk-button-small uk-button-default" data-url="'+del+'"><span class="fa fa-close red-text"></span></a>';
                             }
                         }
                     ],
                     order: [[0, 'asc']]
+                });
+                $("body").on("click", "#"+div+" a.btn-delete", function (e) {
+                    e.preventDefault();
+                    var link = $(this).attr('data-url');
+                    $(this).blur();
+                    UIkit.modal.confirm('<h4>Anda yakin akan menghapus ini?</h4>').then(function() {
+                        window.location.href = link;
+                    }, function () {
+
+                    });
                 });
 	        },
             error: function (request, status, error) {

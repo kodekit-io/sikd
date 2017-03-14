@@ -123,7 +123,7 @@ class Apbd
             'id' => $data['id_posture'],
             'group' => $data['group'],
             'name' => $data['name'],
-            'id_map' => $data['id_map'],
+            'id_map' => isset($data['maps']) ? implode(',', $data['maps']) : '',
             'active' => (isset($data['is_active']) ? $data['is_active'] : 'false'),
             'icon' => $data['icon']
         ];
@@ -136,7 +136,7 @@ class Apbd
         $params = [
             'group' => $data['group'],
             'name' => $data['name'],
-            'id_map' => $data['id_map'],
+            'id_map' => isset($data['maps']) ? implode(',', $data['maps']) : '',
             'active' => (isset($data['is_active']) ? $data['is_active'] : 'false'),
             'icon' => $data['icon']
         ];

@@ -37,6 +37,15 @@
                             <input class="uk-input" id="password" name="password" type="password">
                         </div>
                     </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="role">Role</label>
+                        <div class="uk-form-controls">
+                            <select name="role" class="uk-input">
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="uk-flex uk-flex-between">
                         <a href="{!! url('user') !!}" class="uk-button uk-button-default uk-modal-close">Cancel</a>
                         <button class="uk-button uk-button-primary" type="submit">Save</button>

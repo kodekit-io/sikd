@@ -35,6 +35,7 @@ class User
         $params = [
             'name' => $data['name'],
             'email' => $data['email'],
+            'role' => $data['role'],
             'password' => $data['password']
         ];
 
@@ -45,10 +46,12 @@ class User
     {
         $name = $data['name'];
         $email = $data['email'];
+        $role = $data['role'];
 
         $params = [
             'name' => $name,
-            'email' => $email
+            'email' => $email,
+            'role' => $role
         ];
 
         return $this->sikd->put('user-djpk/' . $id, $params);

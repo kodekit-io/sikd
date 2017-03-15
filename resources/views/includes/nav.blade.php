@@ -1,3 +1,6 @@
+@php
+$year = isset($year) ? $year : '2016';
+@endphp
 <nav class="sikd-nav-side">
     <div class="uk-padding-small">
         <ul class="uk-nav uk-nav-default">

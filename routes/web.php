@@ -21,7 +21,7 @@ Route::post('/login', 'ApiAuthController@postLogin');
 Route::post('/logout', 'ApiAuthController@logout');
 Route::get('/logout', 'ApiAuthController@logout');
 
-Route::group(['middleware' => ['auth', 'province']], function () {
+Route::group(['middleware' => ['auth', 'province', 'role']], function () {
 
     Route::get('home/{year?}', 'HomeController@home');
     Route::get('get-infrastructure-data/{year}', 'HomeController@infrastructureData');
@@ -48,37 +48,37 @@ Route::group(['middleware' => ['auth', 'province']], function () {
 
     Route::get('get-provinces', 'ProvinceController@getProvince');
 
-    Route::get('user', 'UserController@index');
-    Route::get('get-user-list', 'UserController@getUsers');
-    Route::get('user/add', 'UserController@add');
-    Route::post('user/create', 'UserController@create');
-    Route::get('user/{id}/edit', 'UserController@edit');
-    Route::post('user/{id}/update', 'UserController@update');
-    Route::get('user/{id}/delete', 'UserController@delete');
+    Route::get('user', 'UserController@index')->name('user.index');
+    Route::get('get-user-list', 'UserController@getUsers')->name('user.list');
+    Route::get('user/add', 'UserController@add')->name('user.add');
+    Route::post('user/create', 'UserController@create')->name('user.create');
+    Route::get('user/{id}/edit', 'UserController@edit')->name('user.edit');
+    Route::post('user/{id}/update', 'UserController@update')->name('user.update');
+    Route::get('user/{id}/delete', 'UserController@delete')->name('user.delete');
 
-    Route::get('tkdd-posture', 'TkddController@index');
-    Route::get('tkdd-posture/get-postures', 'TkddController@getPostures');
-    Route::get('tkdd-posture/add', 'TkddController@add');
-    Route::post('tkdd-posture/create', 'TkddController@create');
-    Route::get('tkdd-posture/{id}/edit', 'TkddController@edit');
-    Route::post('tkdd-posture/{id}/update', 'TkddController@update');
-    Route::get('tkdd-posture/{id}/delete', 'TkddController@delete');
+    Route::get('tkdd-posture', 'TkddController@index')->name('tkdd-posture.index');
+    Route::get('tkdd-posture/get-postures', 'TkddController@getPostures')->name('tkdd-posture.list');
+    Route::get('tkdd-posture/add', 'TkddController@add')->name('tkdd-posture.add');
+    Route::post('tkdd-posture/create', 'TkddController@create')->name('tkdd-posture.create');
+    Route::get('tkdd-posture/{id}/edit', 'TkddController@edit')->name('tkdd-posture.edit');
+    Route::post('tkdd-posture/{id}/update', 'TkddController@update')->name('tkdd-posture.update');
+    Route::get('tkdd-posture/{id}/delete', 'TkddController@delete')->name('tkdd-posture.delete');
 
-    Route::get('apbd-posture', 'ApbdController@index');
-    Route::get('apbd-posture/get-postures', 'ApbdController@getPostures');
-    Route::get('apbd-posture/add', 'ApbdController@add');
-    Route::post('apbd-posture/create', 'ApbdController@create');
-    Route::get('apbd-posture/{id}/edit', 'ApbdController@edit');
-    Route::post('apbd-posture/{id}/update', 'ApbdController@update');
-    Route::get('apbd-posture/{id}/delete', 'ApbdController@delete');
+    Route::get('apbd-posture', 'ApbdController@index')->name('apbd-posture.index');
+    Route::get('apbd-posture/get-postures', 'ApbdController@getPostures')->name('apbd-posture.list');
+    Route::get('apbd-posture/add', 'ApbdController@add')->name('apbd-posture.add');
+    Route::post('apbd-posture/create', 'ApbdController@create')->name('apbd-posture.create');
+    Route::get('apbd-posture/{id}/edit', 'ApbdController@edit')->name('apbd-posture.edit');
+    Route::post('apbd-posture/{id}/update', 'ApbdController@update')->name('apbd-posture.update');
+    Route::get('apbd-posture/{id}/delete', 'ApbdController@delete')->name('apbd-posture.delete');
 
-    Route::get('account-mapping', 'AccountMappingController@index');
-    Route::get('account-mapping/get-accounts', 'AccountMappingController@getAccounts');
-    Route::get('account-mapping/add', 'AccountMappingController@add');
-    Route::post('account-mapping/create', 'AccountMappingController@create');
-    Route::get('account-mapping/{id}/edit', 'AccountMappingController@edit');
-    Route::post('account-mapping/{id}/update', 'AccountMappingController@update');
-    Route::get('account-mapping/{id}/delete', 'AccountMappingController@delete');
+    Route::get('account-mapping', 'AccountMappingController@index')->name('account-mapping.index');
+    Route::get('account-mapping/get-accounts', 'AccountMappingController@getAccounts')->name('account-mapping.list');
+    Route::get('account-mapping/add', 'AccountMappingController@add')->name('account-mapping.add');
+    Route::post('account-mapping/create', 'AccountMappingController@create')->name('account-mapping.create');
+    Route::get('account-mapping/{id}/edit', 'AccountMappingController@edit')->name('account-mapping.edit');
+    Route::post('account-mapping/{id}/update', 'AccountMappingController@update')->name('account-mapping.update');
+    Route::get('account-mapping/{id}/delete', 'AccountMappingController@delete')->name('account-mapping.delete');
 });
 
 Route::get('test/api-exception', 'MiscController@apiException');

@@ -35,14 +35,14 @@ class Sikd
     public function getAccessToken($username, $password)
     {
         $params = [
-            'grant_type' => 'password',
-            'client_id' => $this->clientId,
-            'client_secret' => $this->clientSecret,
+//            'grant_type' => 'password',
+//            'client_id' => $this->clientId,
+//            'client_secret' => $this->clientSecret,
             'username' => $username,
             'password' => $password
         ];
 
-        $tokenResult = $this->post('oauth/token', $params);
+        $tokenResult = $this->post('oauth2/token', $params);
 
         return $tokenResult;
     }

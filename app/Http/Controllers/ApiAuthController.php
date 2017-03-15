@@ -37,24 +37,30 @@ class ApiAuthController extends Controller
         $apiLoginResult = $this->sikd->getAccessToken($request->get('username'), $request->get('password'));
 
         if ($apiLoginResult->status == 200) {
-            $token = $apiLoginResult->result->access_token;
-            $this->signIn($request->get('username'), $request->get('password'), $token);
+            if (isset($apiLoginResult->result->status) && $apiLoginResult->result->status == 'error') {
+                return redirect('/login')->withErrors(['error' => $apiLoginResult->result->message]);
+            } else {
+                $token = $apiLoginResult->result->access_token;
+                $role = $apiLoginResult->result->role;
+                $this->signIn($request->get('username'), $request->get('password'), $token, $role);
 
-            return redirect('/home');
+                return redirect('/home');
+            }
         } else {
             return redirect('/login')->withErrors(['error' => 'Please check your username and/or password.']);
         }
 
     }
 
-    protected function signIn($userName, $password, $token)
+    protected function signIn($userName, $password, $token, $role)
     {
         $attributes = [
-            'id'        => $userName,
-            'password'  => $password,
-            'email'     => $userName,
-            'name'      => $userName,
-            'remember_token' => ''
+            'id' => $userName,
+            'password' => $password,
+            'email' => $userName,
+            'name' => $userName,
+            'remember_token' => '',
+            'role' => $role
         ];
 
         session(['userAttributes' => $attributes]);

@@ -23,7 +23,6 @@ class TkddController extends Controller
 
     public function index()
     {
-        $data['year'] = '2016';
         $data['classTkdd'] = 'class="uk-active"';
         return view('sikd.tkdd-postures.list', $data);
     }
@@ -36,7 +35,6 @@ class TkddController extends Controller
 
     public function add()
     {
-        $data['year'] = '2016';
         $data['classTkdd'] = 'class="uk-active"';
         return view('sikd.tkdd-postures.add', $data);
     }
@@ -54,7 +52,6 @@ class TkddController extends Controller
     public function edit($id)
     {
         $data['posture'] = $this->tkdd->getPostureById($id);
-        $data['year'] = '2016';
         $data['id'] = $id;
         $data['classTkdd'] = 'class="uk-active"';
         return view('sikd.tkdd-postures.edit', $data);

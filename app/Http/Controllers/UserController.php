@@ -23,7 +23,6 @@ class UserController extends Controller
 
     public function index()
     {
-        $data['year'] = '2016';
         $data['classUser'] = 'class="uk-active"';
         return view('sikd.users.list', $data);
     }
@@ -36,7 +35,6 @@ class UserController extends Controller
 
     public function add()
     {
-        $data['year'] = '2016';
         $data['classUser'] = 'class="uk-active"';
         return view('sikd.users.add', $data);
     }
@@ -54,7 +52,6 @@ class UserController extends Controller
     public function edit($id)
     {
         $data['user'] = $this->user->getUserById($id);
-        $data['year'] = '2016';
         $data['id'] = $id;
         $data['classUser'] = 'class="uk-active"';
         return view('sikd.users.edit', $data);

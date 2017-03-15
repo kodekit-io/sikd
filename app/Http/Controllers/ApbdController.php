@@ -28,7 +28,6 @@ class ApbdController extends Controller
 
     public function index()
     {
-        $data['year'] = '2016';
         $data['classApbd'] = 'class="uk-active"';
         return view('sikd.apbd-postures.list', $data);
     }
@@ -41,7 +40,6 @@ class ApbdController extends Controller
 
     public function add()
     {
-        $data['year'] = '2016';
         $data['classApbd'] = 'class="uk-active"';
         $data['maps'] = $this->accountMapping->getAccounts();
         return view('sikd.apbd-postures.add', $data);
@@ -63,7 +61,6 @@ class ApbdController extends Controller
         $data['mapIds'] = explode(',', $posture->id_map);
         $data['posture'] = $posture;
         $data['maps'] = $this->accountMapping->getAccounts();
-        $data['year'] = '2016';
         $data['id'] = $id;
         $data['classApbd'] = 'class="uk-active"';
         return view('sikd.apbd-postures.edit', $data);

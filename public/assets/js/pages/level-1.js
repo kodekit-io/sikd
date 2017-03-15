@@ -29,7 +29,7 @@
                 }
             },
             success : function(result) {
-                console.log(result);
+                //console.log(result);
                 result = jQuery.parseJSON(result);
                 //data = result.result.map;
                 data = result.data;

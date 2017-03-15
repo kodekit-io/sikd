@@ -11,7 +11,7 @@
             if (add_account_form.valid() == true){
                 // show_loading_message();
                 var form_data = $('#add_account_form').serialize();
-                console.log(form_data);
+                //console.log(form_data);
                 var request   = $.ajax({
                     method: "POST",
                     url: $baseUrl + '/user/add',
@@ -47,7 +47,7 @@
 	        },
 	        success : function(result) {
                 result = $.parseJSON(result);
-                console.log(result);
+                //console.log(result);
                 var userList = $("#"+div).dataTable({
                     data: result,
                     //dom: 't',
@@ -59,7 +59,8 @@
                     columns: [
                         { "data": "id", "title": "ID", "width": "10%" },
                         { "data": "name", "title": "Nama", "width": "30%" },
-                        { "data": "email", "title": "Email", "width": "40%" },
+                        { "data": "email", "title": "Email", "width": "30%" },
+                        { "data": "role", "title": "Role", "width": "10%" },
                         { "data": null, "width": "20%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["id"];

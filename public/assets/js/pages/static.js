@@ -15,7 +15,7 @@
             },
             success : function(result) {
                 $data = jQuery.parseJSON(result);
-                console.log($data);
+                //console.log($data);
                 $title = [];
                 $content = [];
                 if ($data.length === 0) {

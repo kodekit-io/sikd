@@ -59,7 +59,8 @@
                     columns: [
                         { "data": "id", "title": "ID", "width": "10%" },
                         { "data": "name", "title": "Nama", "width": "30%" },
-                        { "data": "email", "title": "Email", "width": "40%" },
+                        { "data": "email", "title": "Email", "width": "30%" },
+                        { "data": "role", "title": "Role", "width": "10%" },
                         { "data": null, "width": "20%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["id"];

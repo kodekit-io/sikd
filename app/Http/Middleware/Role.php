@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 class Role
 {
@@ -24,6 +25,7 @@ class Role
     {
         $role = session('userAttributes')['role'];
         $currentRouteName = Route::currentRouteName();
+        View::share('role', $role);
         if (in_array($currentRouteName, $this->adminAccess)) {
             if ($role == 'admin') {
                 return $next($request);

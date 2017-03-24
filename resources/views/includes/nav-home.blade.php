@@ -5,7 +5,7 @@
             <li><a href="{!! url('/') !!}" title="Monitoring Nasional SIKD" uk-tooltip="pos: bottom-left"><span uk-icon="icon: home"></span></a></li>
             <li class="uk-nav-divider"></li>
             <li>
-                <a href="{!! url('/') !!}" title="Pilih Tahun" uk-tooltip="pos: bottom-left"><span uk-icon="icon: calendar"></span></a>
+                <a title="Pilih Tahun" uk-tooltip="pos: bottom-left"><span uk-icon="icon: calendar"></span></a>
 				<div uk-dropdown="pos: right-top">
 		            <ul class="uk-nav uk-nav-default uk-dropdown-nav">
 		                <li><a href="{!! url('home/2015') !!}">Tahun 2015</a></li>

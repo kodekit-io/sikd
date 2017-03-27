@@ -26,6 +26,10 @@ Route::group(['middleware' => ['auth', 'province', 'role']], function () {
     Route::get('home/{year?}', 'HomeController@home');
     Route::get('get-infrastructure-data/{year}', 'HomeController@infrastructureData');
     Route::get('get-simpanan-pemda-data', 'HomeController@simpananPemdaData');
+	Route::get('get-ipm', 'HomeController@dataIpm');
+	Route::get('get-ppm', 'HomeController@dataPpm');
+	Route::get('get-tpt', 'HomeController@dataTpt');
+
     Route::get('get-realisasi-tkdd-data/{year}', 'HomeController@realisasiTkdd');
 
     Route::get('get-dak-fisik-data/{year}', 'HomeController@dakFisik');

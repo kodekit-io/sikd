@@ -70,13 +70,15 @@ class ApiAuthController extends Controller
         $this->saveApiToken($token);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         \Auth::logout();
-        session()->flush();
-//        session()->forget('userAttributes');
 
-        return redirect('/home');
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+        return redirect('home');
     }
 
     protected function saveApiToken($token)

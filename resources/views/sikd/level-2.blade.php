@@ -14,10 +14,21 @@
 				<div uk-dropdown>
 		            <ul class="uk-nav uk-nav-default uk-dropdown-nav">
 						@foreach($years as $theYear)
-							<li><a href="{!! url('level-2/' . $type . '/' . $postureId . '/' . $theYear . '/' . $provinceId) !!}">{!! $theYear !!}</a></li>
+							<li><a href="{!! url('level-2/' . $type . '/' . $postureId . '/' . $theYear . '/' . $provinceId . '/' . $monthParam) !!}">{!! $theYear !!}</a></li>
 						@endforeach
 		            </ul>
 				</div>
+
+				@if($postureId == 'lra')
+                    <button class="uk-button uk-button-small uk-button-default " type="button"><span class="uk-visible@m">PILIH </span>BULAN <span uk-icon="icon: chevron-down"></span></button>
+                    <div uk-dropdown>
+                        <ul class="uk-nav uk-nav-default uk-dropdown-nav">
+                            @foreach($months as $monthId => $month)
+                                <li><a href="{!! url('level-2/' . $type . '/' . $postureId . '/' . $year . '/' . $provinceId . '/' . $monthId) !!}">{!! $month !!}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+				@endif
 
 				<button class="uk-button uk-button-small uk-button-default " type="button"><span class="uk-visible@m">PILIH </span>INFORMASI <span uk-icon="icon: chevron-down"></span></button>
 				<div uk-dropdown class="uk-height-large uk-max-height-large uk-overflow-auto">
@@ -31,7 +42,7 @@
 						@foreach($apbdPostures as $apbdPosture)
 		                    <li><a href="{!! url('level-2/apbd/' . $apbdPosture->id . '/' . $year . '/' . $provinceId) !!}">{!! $apbdPosture->name !!}</a></li>
 		                @endforeach
-						<li><a href="{!! url('level-2/apbd/lra/' . $year . '/' . $provinceId) !!}">Penyampaian Data LRA</a></li>
+						<li><a href="{!! url('level-2/apbd/lra/' . $year . '/' . $provinceId . '/' . $monthParam) !!}">Penyampaian Data LRA</a></li>
 					</ul>
 				</div>
 

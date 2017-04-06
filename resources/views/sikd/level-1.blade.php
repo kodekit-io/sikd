@@ -13,10 +13,20 @@
 				<div uk-dropdown>
 		            <ul class="uk-nav uk-nav-default uk-dropdown-nav">
 		                @foreach($years as $year)
-		                <li><a href="{!! url('level-1/' . $reportType . '/' . $postureId . '/' . $year) !!}">{!! $year !!}</a></li>
+		                <li><a href="{!! url('level-1/' . $reportType . '/' . $postureId . '/' . $year . '/' . $monthParam) !!}">{!! $year !!}</a></li>
 		                @endforeach
 		            </ul>
 				</div>
+				@if($postureId == 'lra')
+					<button class="uk-button uk-button-small uk-button-default " type="button"><span class="uk-visible@m">PILIH </span>BULAN <span uk-icon="icon: chevron-down"></span></button>
+					<div uk-dropdown>
+						<ul class="uk-nav uk-nav-default uk-dropdown-nav">
+						@foreach($months as $monthId => $month)
+								<li><a href="{!! url('level-1/' . $reportType . '/' . $postureId . '/' . $yearParam . '/' . $monthId) !!}">{!! $month !!}</a></li>
+						@endforeach
+						</ul>
+					</div>
+				@endif
 				<button class="uk-button uk-button-small uk-button-default " type="button"><span class="uk-visible@m">PILIH </span>INFORMASI <span uk-icon="icon: chevron-down"></span></button>
 				<div uk-dropdown class="uk-height-large uk-max-height-large uk-overflow-auto">
 		            <ul class="uk-nav uk-nav-default uk-dropdown-nav">
@@ -29,7 +39,7 @@
 						@foreach($reportTypes as $type)
 							<li><a href="{!! url('level-1/apbd/' . $type->id . '/' . $yearParam) !!}">{!! $type->name !!}</a></li>
 						@endforeach
-						<li><a href="{!! url('level-1/apbd/lra/' . $yearParam) !!}">Penyampaian Data LRA</a></li>
+						<li><a href="{!! url('level-1/apbd/lra/' . $yearParam . '/' . $monthParam) !!}">Penyampaian Data LRA</a></li>
 					</ul>
 				</div>
 
@@ -54,6 +64,7 @@
 		var $postureId = "{!! $postureId !!}";
 		var $reportName = "{!! $reportName !!}";
 		var $year = "{!! $yearParam !!}";
+		var $month = "{!! $monthParam !!}";
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>

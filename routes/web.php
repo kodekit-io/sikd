@@ -38,11 +38,11 @@ Route::group(['middleware' => ['auth', 'province', 'role']], function () {
     Route::get('get-realisasi-pad-data/{year}', 'HomeController@realisasiPad');
     Route::get('get-lra-data/{year}', 'HomeController@lra');
 
-    Route::get('/level-1/{type}/{postureId}/{year?}', 'MapController@map');
-    Route::get('get-map-chart/{type}/{year}/{postureId?}', 'MapController@getMapChart');
+    Route::get('/level-1/{type}/{postureId}/{year?}/{month?}', 'MapController@map');
+    Route::get('get-map-chart/{type}/{year}/{postureId?}/{month?}', 'MapController@getMapChart');
 
-    Route::get('/level-2/{type}/{postureId}/{year}/{provinceId}', 'ProvinceController@province');
-    Route::get('get-province-chart/{type}/{postureId}/{year}/{provinceId}', 'ProvinceController@getProvinceChart');
+    Route::get('/level-2/{type}/{postureId}/{year}/{provinceId}/{month?}', 'ProvinceController@province');
+    Route::get('get-province-chart/{type}/{postureId}/{year}/{provinceId}/{month?}', 'ProvinceController@getProvinceChart');
 
     Route::get('/pemda/{satkerCode}/{year}', 'PemdaController@profile');
     Route::get('/get-pemda-chart/{year}/{satkerCode}', 'PemdaController@chart');

@@ -37,11 +37,14 @@ class Apbd
         return $postures;
     }
 
-    public function getMapChart($year = '2016', $postureId = 1)
+    public function getMapChart($year = '2016', $postureId = 1, $month = '')
     {
         $url = 'apbd/1/' . $year . '/' . $postureId;
         if ($postureId == 'lra') {
             $url = 'apbd/lra/1/' . $year;
+            if ($month != '') {
+                $url .= '/' . $month;
+            }
         }
         $apiRequest = $this->sikd->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
@@ -56,11 +59,14 @@ class Apbd
         return \GuzzleHttp\json_encode($modifiedResult);
     }
 
-    public function getProvinceChart($year, $postureId = '1', $provinceId)
+    public function getProvinceChart($year, $postureId = '1', $provinceId, $month = '')
     {
         $url = 'apbd/2/' . $year . '/' . $postureId . '/' . $provinceId;
         if ($postureId == 'lra') {
             $url = 'apbd/lra/2/' . $year . '/' . $provinceId;
+            if ($month != '') {
+                $url .= '/' . $month;
+            }
         }
 //        $url .= $provinceId != '' ? '/' . $provinceId : '';
         $apiRequest = $this->sikd->get($url, []);

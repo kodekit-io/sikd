@@ -1,13 +1,13 @@
-(function ($, window, document, $baseUrl, $reportName, $reportType, $postureId, $year) {
+(function ($, window, document, $chartData) {
     //console.log('name:'+$reportName+' postur:'+$postureId+' type:'+$reportType+' year:'+$year);
 
     $(function () {
-        var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
-        if ($postureId == 'lra') {
-            $url += '/' + $month;
+        var $url = $chartData.baseUrl + '/get-map-chart/' + $chartData.reportType + '/' + $chartData.year + '/'  + $chartData.postureId;
+        if ($chartData.postureId == 'lra') {
+            $url += '/' + $chartData.month;
         }
         //var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
-        $title = $reportName;
+        $title = $chartData.reportName;
         l1Map($title,$url);
     });
 
@@ -64,7 +64,7 @@
                         text : '',
                     });
 
-                    $.get($baseUrl + '/assets/js/pages/indonesia.json', function (idJson) {
+                    $.get($chartData.baseUrl + '/assets/js/pages/indonesia.json', function (idJson) {
                         //theMap.hideLoading();
                         echarts.registerMap('Indonesia', idJson, {});
                         var option = {
@@ -135,7 +135,7 @@
 
                         theMap.on('click', function (param) {
                             var idProv = param.data.id;
-                            location.href = baseUrl + '/level-2/' + $reportType + '/' + $postureId + '/' + $year +  '/' + idProv;
+                            location.href = $chartData.baseUrl + '/level-2/' + $chartData.reportType + '/' + $chartData.postureId + '/' + $chartData.year +  '/' + idProv;
                         });
                         //theMap.setOption(option);
                         //theMap.setOption(option,true);
@@ -166,4 +166,4 @@
             }
         });
     }
-}(window.jQuery, window, document, $baseUrl, $reportName, $reportType, $postureId, $year));
+}(window.jQuery, window, document, $chartData));

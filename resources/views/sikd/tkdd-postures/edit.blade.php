@@ -17,7 +17,7 @@
                 @if($errors->any())
                     <h4>{{ $errors->first() }}</h4>
                 @endif
-                <form id="edit_account_form" method="POST" action="{!! url('tkdd-posture/' . $id . '/update') !!}">
+                <form id="edit_account_form" method="POST" action="{!! url('tkdd-posture/' . $id . '/update') !!}" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <div class="uk-margin">
                         <label class="uk-form-label" for="code">Kode Postur</label>
@@ -56,6 +56,12 @@
                         <label class="uk-form-label" for="group">Group</label>
                         <div class="uk-form-controls">
                             <input class="uk-input" id="group" name="group" type="text" value="{!! $posture->group !!}">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="icon_image">Icon Image</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="icon_image" name="icon_image" type="file">
                         </div>
                     </div>
                     <div class="uk-margin">

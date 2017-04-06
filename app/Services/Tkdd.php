@@ -5,6 +5,7 @@ namespace App\Service;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class Tkdd
 {
@@ -129,8 +130,25 @@ class Tkdd
         return $result->result;
     }
 
-    public function create($data)
+    public function create($request)
     {
+        $data = $request->except(['_token']);
+        $fileFieldName = 'icon_image';
+        $fileUrl = '';
+
+        if ($request->hasFile($fileFieldName)) {
+            if ($request->file($fileFieldName)->isValid()) {
+                $fileName = str_slug($data['posture_short_desc']) . '_' . $data['id_posture'] . '.' . $request->file($fileFieldName)->getClientOriginalExtension();
+                $fileUrl = url('posture_icons/tkdd/' . $fileName);
+                Log::warning('file url ==> ' . $fileUrl);
+                $dirPath = public_path('posture_icons/tkdd');
+                if (! is_dir($dirPath)) {
+                    mkdir($dirPath, 0777, true);
+                }
+                $request->file($fileFieldName)->move($dirPath, $fileName);
+            }
+        }
+
         $params = [
             'idPostur' => $data['id_posture'],
             'kodePostur' => $data['code'],
@@ -143,13 +161,32 @@ class Tkdd
             'icon' => $data['icon']
         ];
 
+//        if ($fileUrl != '') {
+//            $params['image_url'] = $fileUrl;
+//        }
+
         //dd($params);
 
         return $this->sikd->post('ref-tkdd-postur', $params);
     }
 
-    public function update($data, $id)
+    public function update($request, $id)
     {
+        $data = $request->except(['_token']);
+        $fileUrl = '';
+        $fileFieldName = 'icon_image';
+        if ($request->hasFile($fileFieldName)) {
+            if ($request->file($fileFieldName)->isValid()) {
+                $fileName = str_slug($data['posture_short_desc']) . '_' . $id . '.' . $request->file($fileFieldName)->getClientOriginalExtension();
+                $fileUrl = url('posture_icons/tkdd/' . $fileName);
+                $dirPath = public_path('posture_icons/tkdd');
+                if (! is_dir($dirPath)) {
+                    mkdir($dirPath, 0777, true);
+                }
+                $request->file($fileFieldName)->move($dirPath, $fileName);
+            }
+        }
+
         $params = [
             'kodePostur' => $data['code'],
             'uraianPostur' => $data['posture_desc'],
@@ -160,6 +197,10 @@ class Tkdd
             'group' => $data['group'],
             'icon' => $data['icon']
         ];
+
+//        if ($fileUrl != '') {
+//            $params['image_url'] = $fileUrl;
+//        }
 
         return $this->sikd->put('ref-tkdd-postur/' . $id, $params);
     }

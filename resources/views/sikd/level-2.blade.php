@@ -78,6 +78,15 @@
         var $year = "{!! $year !!}";
         var $type = '{!! $type !!}';
         var $postureId = '{!! $postureId !!}';
+        var $month = '{!! $monthParam !!}';
+        var $chartData = {
+            'baseUrl': $baseUrl,
+            'provinceId': $provinceId,
+            'year': $year,
+            'type': $type,
+            'postureId': $postureId,
+            'month': $month
+        };
     </script>
 	<script src="{!! asset('assets/js/datatables/jquery.dataTables.min.js') !!}"></script>
 	{{--<script src="{!! asset('assets/js/datatables/dataTables.sikd.js') !!}"></script>--}}

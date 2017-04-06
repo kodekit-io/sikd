@@ -4,6 +4,7 @@ namespace App\Service;
 
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class Apbd
 {
@@ -68,7 +69,7 @@ class Apbd
                 $url .= '/' . $month;
             }
         }
-//        $url .= $provinceId != '' ? '/' . $provinceId : '';
+
         $apiRequest = $this->sikd->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 
@@ -123,8 +124,25 @@ class Apbd
         return $result->result;
     }
 
-    public function create($data)
+    public function create($request)
     {
+        $data = $request->except(['_token']);
+        $fileFieldName = 'icon_image';
+        $fileUrl = '';
+
+        if ($request->hasFile($fileFieldName)) {
+            if ($request->file($fileFieldName)->isValid()) {
+                $fileName = str_slug($data['name']) . '_' . $data['id_posture'] . '.' . $request->file($fileFieldName)->getClientOriginalExtension();
+                $fileUrl = url('posture_icons/apbd/' . $fileName);
+                Log::warning('file url ==> ' . $fileUrl);
+                $dirPath = public_path('posture_icons/apbd');
+                if (! is_dir($dirPath)) {
+                    mkdir($dirPath, 0777, true);
+                }
+                $request->file($fileFieldName)->move($dirPath, $fileName);
+            }
+        }
+
         $params = [
             'id' => $data['id_posture'],
             'group' => $data['group'],
@@ -134,11 +152,30 @@ class Apbd
             'icon' => $data['icon']
         ];
 
+//        if ($fileUrl != '') {
+//            $params['image_url'] = $fileUrl;
+//        }
+
         return $this->sikd->post('ref-apbd-postur', $params);
     }
 
-    public function update($data, $id)
+    public function update($request, $id)
     {
+        $data = $request->except(['_token']);
+        $fileUrl = '';
+        $fileFieldName = 'icon_image';
+        if ($request->hasFile($fileFieldName)) {
+            if ($request->file($fileFieldName)->isValid()) {
+                $fileName = str_slug($data['name']) . '_' . $id . '.' . $request->file($fileFieldName)->getClientOriginalExtension();
+                $fileUrl = url('posture_icons/apbd/' . $fileName);
+                $dirPath = public_path('posture_icons/apbd');
+                if (! is_dir($dirPath)) {
+                    mkdir($dirPath, 0777, true);
+                }
+                $request->file($fileFieldName)->move($dirPath, $fileName);
+            }
+        }
+
         $params = [
             'group' => $data['group'],
             'name' => $data['name'],
@@ -146,6 +183,10 @@ class Apbd
             'active' => (isset($data['is_active']) ? $data['is_active'] : 'false'),
             'icon' => $data['icon']
         ];
+
+//        if ($fileUrl != '') {
+//            $params['image_url'] = $fileUrl;
+//        }
 
         return $this->sikd->put('ref-apbd-postur/' . $id, $params);
     }

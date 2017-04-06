@@ -65,6 +65,15 @@
 		var $reportName = "{!! $reportName !!}";
 		var $year = "{!! $yearParam !!}";
 		var $month = "{!! $monthParam !!}";
+
+		var $chartData = {
+		    'baseUrl': $baseUrl,
+            'reportType': $reportType,
+            'postureId': $postureId,
+            'reportName': $reportName,
+            'year': $year,
+            'month': $month
+        };
 	</script>
     <script src="{!! asset('assets/js/echarts/echarts.js') !!}"></script>
 	<script src="{!! asset('assets/js/echarts/echarts.theme.js') !!}"></script>

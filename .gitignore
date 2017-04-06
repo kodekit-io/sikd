@@ -1,5 +1,6 @@
 /node_modules
 /public/storage
+/public/posture_icons
 /vendor
 /.idea
 Homestead.json

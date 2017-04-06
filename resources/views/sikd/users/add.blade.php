@@ -42,7 +42,10 @@
                         <div class="uk-form-controls">
                             <select name="role" class="uk-input">
                                 <option value="admin">Admin</option>
-                                <option value="user">User</option>
+                                <option value="user">Home</option>
+                                <option value="user">Level 1</option>
+                                <option value="user">level 2</option>
+                                <option value="user">level 3</option>
                             </select>
                         </div>
                     </div>

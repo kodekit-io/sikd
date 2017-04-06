@@ -47,7 +47,7 @@ class ApbdController extends Controller
 
     public function create(Request $request)
     {
-        $response = $this->apbd->create($request->except(['_token']));
+        $response = $this->apbd->create($request);
         if ($response->status == '200') {
             return redirect('apbd-posture');
         }
@@ -68,7 +68,7 @@ class ApbdController extends Controller
 
     public function update(Request $request, $id)
     {
-        $response = $this->apbd->update($request->except(['_token']), $id);
+        $response = $this->apbd->update($request, $id);
         if ($response->status == '200') {
             return redirect('apbd-posture');
         }

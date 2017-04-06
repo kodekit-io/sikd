@@ -17,7 +17,7 @@
                 @if($errors->any())
                     <h4>{{ $errors->first() }}</h4>
                 @endif
-                <form id="edit_account_form" method="POST" action="{!! url('apbd-posture/create') !!}">
+                <form id="edit_account_form" method="POST" action="{!! url('apbd-posture/create') !!}" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <div class="uk-margin">
                         <label class="uk-form-label" for="id_posture">ID Postur</label>
@@ -49,6 +49,13 @@
 
                     <div class="uk-margin">
                         <input type="checkbox" name="is_active" value="1" /> <label class="uk-form-label" for="is_active">Active ?</label>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="icon_image">Icon Image</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="icon_image" name="icon_image" type="file">
+                        </div>
                     </div>
 
                     <div class="uk-margin">

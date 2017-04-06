@@ -41,7 +41,7 @@ class TkddController extends Controller
 
     public function create(Request $request)
     {
-        $response = $this->tkdd->create($request->except(['_token']));
+        $response = $this->tkdd->create($request);
         if ($response->status == '200') {
             return redirect('tkdd-posture');
         }
@@ -59,7 +59,7 @@ class TkddController extends Controller
 
     public function update(Request $request, $id)
     {
-        $response = $this->tkdd->update($request->except(['_token']), $id);
+        $response = $this->tkdd->update($request, $id);
         if ($response->status == '200') {
             return redirect('tkdd-posture');
         }

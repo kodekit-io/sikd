@@ -4,6 +4,7 @@ namespace App\Service;
 
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class Apbd
 {
@@ -68,7 +69,9 @@ class Apbd
                 $url .= '/' . $month;
             }
         }
-//        $url .= $provinceId != '' ? '/' . $provinceId : '';
+
+        Log::warning('province lra url ==> ' . $url);
+
         $apiRequest = $this->sikd->get($url, []);
         $result = ($apiRequest->status == '200') ? $apiRequest->result : [];
 

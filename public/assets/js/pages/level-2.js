@@ -1,9 +1,11 @@
-(function ($, window, document, $baseUrl, $type, $postureId, $year, $provinceId) {
-    //console.log('type:'+$type+' posture:'+$postureId+' year:'+$year+' prov:'+$provinceId);
-
+(function ($, window, document, $chartData) {
     $(function () {
-        var url = $baseUrl + '/get-province-chart/' + $type + '/' + $postureId + '/' + $year + '/' + $provinceId;
-        l2table('tableProv',url);
+        var $url = $chartData.baseUrl + '/get-province-chart/' + $chartData.type + '/' + $chartData.postureId + '/' + $chartData.year + '/' + $chartData.provinceId;
+        if ($chartData.postureId == 'lra') {
+            $url += '/' + $chartData.month;
+        }
+        console.log($url);
+        l2table('tableProv', $url);
     });
 
     function l2table(div,url) {
@@ -87,7 +89,7 @@
                             "render": function ( data ) {
                                 //console.log(data);
                                 var k = data["name"];
-                                var p = baseUrl + '/pemda/' + data["kodeSatker"] + '/' + $year +  '';
+                                var p = $chartData.baseUrl + '/pemda/' + data["kodeSatker"] + '/' + $chartData.year +  '';
                                 return '<a class="uk-button uk-button-small uk-button-default" href="'+p+'" data-uk-tooltip title="Profil '+k+'"><span class="fa fa-binoculars fa-fw"></span> Profil Pemda</a>';
                             }
                         },
@@ -102,4 +104,4 @@
 
     }
 
-}(window.jQuery, window, document, $baseUrl, $type, $postureId, $year, $provinceId));
+}(window.jQuery, window, document, $chartData));

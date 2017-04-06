@@ -3,12 +3,11 @@
 
     $(function () {
         var $url = $baseUrl + '/get-map-chart/' + $reportType + '/' + $year + '/'  + $postureId;
-        //var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
-        if ($reportType==='apbd' && $postureId==='10') {
-            $title = 'Penyampaian Data LRA';
-        } else {
-            $title = $reportName;
+        if ($postureId == 'lra') {
+            $url += '/' + $month;
         }
+        //var $url = $baseUrl + '/test/map/' + $reportType + '/' + $year + '/'  + $postureId;
+        $title = $reportName;
         l1Map($title,$url);
     });
 

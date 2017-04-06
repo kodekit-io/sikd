@@ -39,14 +39,19 @@ class MapController extends Controller
         $this->sikdService = $sikdService;
     }
 
-    public function map($type, $postureId, $year = '2016')
+    public function map($type, $postureId, $year = '2016', $month = '')
     {
+        $data['monthParam'] = '';
         if ($type == 'tkdd') {
             $postureId = $postureId != '' ? $postureId : 39;
             $data['reportName'] = $this->tkddService->getPostureNameById($postureId);
         } else {
             $postureId = $postureId != '' ? $postureId : 1;
             $data['reportName'] = $this->apbdService->getPostureNameById($postureId);
+            if ($postureId == 'lra') {
+                $data['months'] = get_months();
+                $data['monthParam'] = $month;
+            }
         }
 
         $data['reportTypes'] = $this->apbdService->getPostures();
@@ -59,13 +64,13 @@ class MapController extends Controller
         return view('sikd.level-1', $data);
     }
 
-    public function getMapChart($type, $year = '2016', $postureId)
+    public function getMapChart($type, $year = '2016', $postureId, $month = '')
     {
         if ($type == 'tkdd') {
             return $this->tkddService->getMapChart($year, $postureId);
         }
 
-        return $this->apbdService->getMapChart($year, $postureId);
+        return $this->apbdService->getMapChart($year, $postureId, $month);
     }
 
 }

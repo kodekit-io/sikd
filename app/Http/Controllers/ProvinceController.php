@@ -45,14 +45,20 @@ class ProvinceController extends Controller
         $this->sikdService = $sikdService;
     }
 
-    public function province($type, $postureId, $year, $provinceId)
+    public function province($type, $postureId, $year, $provinceId, $month = '')
     {
+        $data['monthParam'] = '';
+
         if ($type == 'tkdd') {
             $data['reportName'] = $this->tkddService->getPostureNameById($postureId);
         } else {
             $data['reportName'] = $this->apbdService->getPostureNameById($postureId);
         }
 
+        if ($postureId == 'lra') {
+            $data['monthParam'] = $month;
+            $data['months'] = get_months();
+        }
         $data['type'] = $type;
         $data['postureId'] = $postureId;
         $data['year'] = $year;
@@ -66,7 +72,7 @@ class ProvinceController extends Controller
         return view('sikd.level-2', $data);
     }
 
-    public function getProvinceChart($type, $postureId, $year, $provinceId)
+    public function getProvinceChart($type, $postureId, $year, $provinceId, $month = '')
     {
         if ($type == 'tkdd') {
             return $this->tkddService->getProvinceChart($year, $postureId, $provinceId);

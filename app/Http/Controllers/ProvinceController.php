@@ -78,7 +78,7 @@ class ProvinceController extends Controller
             return $this->tkddService->getProvinceChart($year, $postureId, $provinceId);
         }
 
-        return $this->apbdService->getProvinceChart($year, $postureId, $provinceId);
+        return $this->apbdService->getProvinceChart($year, $postureId, $provinceId, $month);
     }
 
     public function getProvince()

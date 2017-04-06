@@ -59,11 +59,14 @@ class Apbd
         return \GuzzleHttp\json_encode($modifiedResult);
     }
 
-    public function getProvinceChart($year, $postureId = '1', $provinceId)
+    public function getProvinceChart($year, $postureId = '1', $provinceId, $month = '')
     {
         $url = 'apbd/2/' . $year . '/' . $postureId . '/' . $provinceId;
         if ($postureId == 'lra') {
             $url = 'apbd/lra/2/' . $year . '/' . $provinceId;
+            if ($month != '') {
+                $url .= '/' . $month;
+            }
         }
 //        $url .= $provinceId != '' ? '/' . $provinceId : '';
         $apiRequest = $this->sikd->get($url, []);

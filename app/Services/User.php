@@ -32,10 +32,11 @@ class User
 
     public function create($data)
     {
+        $roles = isset($data['roles']) ? implode(',', $data['roles']) : '';
         $params = [
             'name' => $data['name'],
             'email' => $data['email'],
-            'role' => $data['role'],
+            'role' => $roles,
             'password' => $data['password']
         ];
 
@@ -46,12 +47,12 @@ class User
     {
         $name = $data['name'];
         $email = $data['email'];
-        $role = $data['role'];
+        $roles = isset($data['roles']) ? implode(',', $data['roles']) : '';
 
         $params = [
             'name' => $name,
             'email' => $email,
-            'role' => $role
+            'role' => $roles
         ];
 
         return $this->sikd->put('user-djpk/' . $id, $params);

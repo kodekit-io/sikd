@@ -35,6 +35,7 @@ class UserController extends Controller
 
     public function add()
     {
+        $data['roles'] = $this->getRoles();
         $data['classUser'] = 'class="uk-active"';
         return view('sikd.users.add', $data);
     }
@@ -51,7 +52,10 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $data['user'] = $this->user->getUserById($id);
+        $user = $this->user->getUserById($id);
+        $data['roles'] = $this->getRoles();
+        $data['user'] = $user;
+        $data['userRoles'] = explode(',', $user->role);
         $data['id'] = $id;
         $data['classUser'] = 'class="uk-active"';
         return view('sikd.users.edit', $data);
@@ -75,5 +79,16 @@ class UserController extends Controller
         }
 
         return redirect('user')->withErrors(['error' => $response->result]);
+    }
+
+    private function getRoles()
+    {
+        return [
+            'admin' => 'Admin',
+            'home' => 'Home',
+            'level-1' => 'Level 1',
+            'level-2' => 'Level 2',
+            'level-3' => 'Level 3'
+        ];
     }
 }

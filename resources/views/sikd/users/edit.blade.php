@@ -35,15 +35,13 @@
 				<div class="uk-margin">
 					<label class="uk-form-label" for="role">Role</label>
 					<div class="uk-form-controls" uk-grid>
-						{{-- <select name="role" class="uk-input">
-							<option value="admin" @if($user->role == 'admin') selected @endif>Admin</option>
-							<option value="user" @if($user->role == 'user') selected @endif>User</option>
-						</select> --}}
-						<label><input class="uk-checkbox" type="checkbox" value="admin" @if($user->role == 'admin') checked @endif> Admin</label>
-						<label><input class="uk-checkbox" type="checkbox" value="home" @if($user->role == 'home') checked @endif> Home</label>
-						<label><input class="uk-checkbox" type="checkbox" value="level-1" @if($user->role == 'level-1') checked @endif> Level 1</label>
-						<label><input class="uk-checkbox" type="checkbox" value="level-2" @if($user->role == 'level-2') checked @endif> Level 2</label>
-						<label><input class="uk-checkbox" type="checkbox" value="level-3" @if($user->role == 'level-3') checked @endif> Level 3</label>
+						@foreach($roles as $roleId => $roleName)
+						<label>
+                            <input class="uk-checkbox" type="checkbox" name="roles[]" value="{!! $roleId !!}"
+                                   @if(in_array($roleId, $userRoles)) checked @endif>
+                            {!! $roleName !!}
+                        </label>
+						@endforeach
 					</div>
 				</div>
 				<div class="uk-flex uk-flex-between">

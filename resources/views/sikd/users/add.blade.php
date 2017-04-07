@@ -40,18 +40,9 @@
                     <div class="uk-margin">
                         <label class="uk-form-label" for="role">Role</label>
                         <div class="uk-form-controls" uk-grid>
-                            {{-- <select name="role" class="uk-input">
-                                <option value="admin">Admin</option>
-                                <option value="user">Home</option>
-                                <option value="user">Level 1</option>
-                                <option value="user">level 2</option>
-                                <option value="user">level 3</option>
-                            </select> --}}
-                            <label><input class="uk-checkbox" type="checkbox" value="admin"> Admin</label>
-    						<label><input class="uk-checkbox" type="checkbox" value="home"> Home</label>
-    						<label><input class="uk-checkbox" type="checkbox" value="level-1"> Level 1</label>
-    						<label><input class="uk-checkbox" type="checkbox" value="level-2"> Level 2</label>
-    						<label><input class="uk-checkbox" type="checkbox" value="level-3"> Level 3</label>
+                            @foreach($roles as $roleId => $roleName)
+                            <label><input class="uk-checkbox" type="checkbox" name="roles[]" value="{!! $roleId !!}"> {!! $roleName !!}</label>
+                            @endforeach
                         </div>
                     </div>
                     <div class="uk-flex uk-flex-between">

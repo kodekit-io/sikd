@@ -31,6 +31,9 @@
 
         var $infraUrl = $baseUrl + '/get-infrastructure-data/' + $year;
         var $simpananPemdaUrl = $baseUrl + '/get-simpanan-pemda-data';
+		var $dataIpm = $baseUrl + '/get-ipm';
+		var $dataPpm = $baseUrl + '/get-ppm';
+		var $dataTpt = $baseUrl + '/get-tpt';
         $('.bxslider').bxSlider({
             auto: true,
             controls: false,
@@ -39,6 +42,9 @@
             onSliderLoad: function(currentIndex) {
                 l0r2a('l0r2a', $infraUrl, true);
                 l0r2b('l0r2b', $simpananPemdaUrl);
+				l0r2a('l0r2c', $dataIpm, true);
+				l0r2a('l0r2d', $dataPpm, true);
+				l0r2a('l0r2e', $dataTpt, true);
             },
         });
 
@@ -88,6 +94,9 @@
                         + '<ul class="bxslider">'
                             + '<li id="l0r2a" class="sikd-l0r2-chart"></li>'
                             + '<li id="l0r2b" class="sikd-l0r2-chart"></li>'
+							+ '<li id="l0r2c" class="sikd-l0r2-chart"></li>'
+                            + '<li id="l0r2d" class="sikd-l0r2-chart"></li>'
+							+ '<li id="l0r2e" class="sikd-l0r2-chart"></li>'
                         + '</ul>'
                     + '</div>';
         $('#' + div).append(card);

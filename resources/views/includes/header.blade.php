@@ -8,7 +8,7 @@
 
 	<title>Dashboard Executive Information System SIKD</title>
 
-	<link href="{!! asset('assets/img/icon.png') !!}" rel="shortcut icon">
+	<link href="{!! asset('assets/img/favicon.png') !!}" rel="shortcut icon">
 
 	<link rel="stylesheet" href="{!! asset('assets/css/uikit.min.css') !!}" />
     <link rel="stylesheet" href="{!! asset('assets/css/main.css') !!}" />

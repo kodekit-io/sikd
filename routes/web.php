@@ -26,6 +26,10 @@ Route::group(['middleware' => ['auth', 'province', 'role']], function () {
     Route::get('home/{year?}', 'HomeController@home');
     Route::get('get-infrastructure-data/{year}', 'HomeController@infrastructureData');
     Route::get('get-simpanan-pemda-data', 'HomeController@simpananPemdaData');
+	Route::get('get-ipm', 'HomeController@dataIpm');
+	Route::get('get-ppm', 'HomeController@dataPpm');
+	Route::get('get-tpt', 'HomeController@dataTpt');
+
     Route::get('get-realisasi-tkdd-data/{year}', 'HomeController@realisasiTkdd');
 
     Route::get('get-dak-fisik-data/{year}', 'HomeController@dakFisik');
@@ -95,33 +99,3 @@ Route::get('test/api-2/{a}/{b}', 'TestController@api2');
 Route::get('test/api-1/{a}', 'TestController@api1');
 
 Route::get('static', 'MiscController@static');
-// Route::get('test/cache_infra', function () {
-//     $cache = Cache::get('infrastruktur_2016');
-//     var_dump($cache);
-// });
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::get('/account-profile', function () {
-//         return view('sikd.account-profile');
-//     });
-//
-//     Route::get('/account-edit', function () {
-//         return view('sikd.account-edit');
-//     });
-//
-//     Route::get('/account-manage', function () {
-//         return view('sikd.account-manage');
-//     });
-//
-//     Route::get('/account-add', function () {
-//         return view('sikd.account-add');
-//     });
-//
-//     Route::get('/content-management', function () {
-//         return view('sikd.content-management');
-//     });
-//
-//     Route::get('/content-edit', function () {
-//         return view('sikd.content-edit');
-//     });
-// });
-

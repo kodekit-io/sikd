@@ -90,6 +90,25 @@ class HomeController extends Controller
         return $this->sikd->getJsonResult($url, false);
     }
 
+	public function dataIpm()
+    {
+        $url = 'data-ipm';
+
+        return $this->sikd->getJsonResult($url, false);
+    }
+	public function dataPpm()
+    {
+        $url = 'data-ppm';
+
+        return $this->sikd->getJsonResult($url, false);
+    }
+	public function dataTpt()
+    {
+        $url = 'data-tpt';
+
+        return $this->sikd->getJsonResult($url, false);
+    }
+
     public function realisasiTkdd($year)
     {
         $url = 'top-bottom/realisasi-tkdd/' . $year;

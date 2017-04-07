@@ -5,9 +5,9 @@
         </div>
         <div class="uk-width-auto@m">
             <ul class="uk-subnav uk-margin-remove uk-flex uk-flex-center">
-                <li><a href="{!! url('/tentang') !!}">Tentang</a></li>
-                <li><a href="{!! url('/disclaimer') !!}">Disclaimer</a></li>
-                <li><a href="{!! url('/panduan') !!}">Panduan</a></li>
+                <li><a href="{!! url('/tentang') !!}" title="Tentang" uk-tooltip>Tentang</a></li>
+                <li><a href="{!! url('/disclaimer') !!}" title="Disclaimer" uk-tooltip>Disclaimer</a></li>
+                <li><a href="{!! url('/panduan') !!}" title="Panduan" uk-tooltip>Panduan</a></li>
             </ul>
         </div>
     </div>

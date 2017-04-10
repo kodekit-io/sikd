@@ -18,3 +18,14 @@ if (!function_exists('get_months')) {
         ];
     }
 }
+
+if (!function_exists('is_allowed')) {
+    function is_allowed($roleName) {
+        $roles = session('userAttributes')['role'];
+        $userRoles = explode(',', $roles);
+        if (in_array($roleName, $userRoles)) {
+            return true;
+        }
+        return false;
+    }
+}

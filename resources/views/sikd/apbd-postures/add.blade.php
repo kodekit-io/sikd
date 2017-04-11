@@ -19,51 +19,58 @@
                 @endif
                 <form id="edit_account_form" method="POST" action="{!! url('apbd-posture/create') !!}" enctype="multipart/form-data">
                     {!! csrf_field() !!}
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="id_posture">ID Postur</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="id_posture" name="id_posture" type="text" placeholder="">
+                    <div class="uk-child-width-1-4 uk-margin" uk-grid>
+                        <div class="">
+                            <label class="uk-form-label" for="id_posture">ID Postur</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="id_posture" name="id_posture" type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="">
+                            <label class="uk-form-label" for="name">Name</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="name" name="name" type="text">
+                            </div>
+                        </div>
+                        <div class="">
+                            <label class="uk-form-label" for="group">Group</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="group" name="group" type="text">
+                            </div>
+                        </div>
+                        <div class="">
+                            <label class="uk-form-label" for="is_active">Active ?</label>
+                            <div class="uk-form-controls">
+                                <label><input class="uk-checkbox" type="checkbox" name="is_active" value="1" /> Ya</label>
+                            </div>
+                        </div>
+                        {{-- <div class="">
+                            <input type="checkbox" name="is_active" value="1" /> <label class="uk-form-label" for="is_active">Active ?</label>
+                        </div> --}}
+                        <div class="uk-width-1-1">
+                            <label class="uk-form-label" for="id_map">ID Map</label>
+                            <div class="uk-grid-small uk-child-width-1-3@m" uk-grid>
+                                @foreach($maps as $map)
+                                    <div class="uk-form-controls">
+                                        <label><input class="uk-checkbox" type="checkbox" name="maps[]" value="{!! $map->id !!}"> {!! $map->urakun !!}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="">
+                            <label class="uk-form-label" for="icon">Icon Text</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-input" id="icon" name="icon" type="text">
+                            </div>
+                        </div>
+                        <div class="uk-width-expand">
+                            <label class="uk-form-label" for="icon_image">Icon Image (Rekomendasi ukuran 24x24px format .png)</label>
+                            <div class="uk-form-controls">
+                                <input class="" id="icon_image" name="icon_image" type="file">
+                            </div>
                         </div>
                     </div>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="name">Name</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="name" name="name" type="text">
-                        </div>
-                    </div>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="id_map">ID Map</label>
-                        <div class="uk-grid-small uk-child-width-1-3@m" uk-grid>
-                            @foreach($maps as $map)
-                                <div class="uk-form-controls"><input type="checkbox" name="maps[]" value="{!! $map->id !!}"> {!! $map->urakun !!}</div>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="group">Group</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="group" name="group" type="text">
-                        </div>
-                    </div>
-
-                    <div class="uk-margin">
-                        <input type="checkbox" name="is_active" value="1" /> <label class="uk-form-label" for="is_active">Active ?</label>
-                    </div>
-
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="icon_image">Icon Image</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="icon_image" name="icon_image" type="file">
-                        </div>
-                    </div>
-
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="icon">Icon</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="icon" name="icon" type="text">
-                        </div>
-                    </div>
+                    <hr>
                     <div class="uk-flex uk-flex-between">
                         <a href="{!! url('apbd-posture') !!}" class="uk-button uk-button-default uk-modal-close">Cancel</a>
                         <button class="uk-button uk-button-primary" type="submit">Save</button>

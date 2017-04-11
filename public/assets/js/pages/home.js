@@ -130,9 +130,16 @@
                 $data = $result[n].trend;
                 $id = $result[n].id;
                 $name = $result[n].name;
-                $icon = $result[n].icon;
+                $iconTxt = $result[n].icon;
+                $iconImg = $result[n].icon_path;
                 $info = $result[n].info;
                 $achievement = $result[n].achievement;
+
+                if ($iconImg == '' || $iconImg == undefined) {
+                    $icon = $iconTxt;
+                } else {
+                    $icon = '<img src="'+$iconImg+'" alt="'+$iconTxt+'" />';
+                }
 
                 for (i = 0; i < $data.length; i++) {
                     $target000 = $achievement[0].target;

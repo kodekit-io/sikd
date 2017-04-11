@@ -21,15 +21,28 @@
                     info: false,
                     language: {"sZeroRecords": "", "sEmptyTable": "Tidak ada data"},
                     columns: [
-                        { "data": "idPostur", "title": "ID", "width": "5%" },
-                        { "data": "kodePostur", "title": "Kode", "width": "5%" },
+                        { "data": "idPostur", "title": "ID", "width": "2.5%" },
+                        { "data": "kodePostur", "title": "Kode", "width": "2.5%" },
                         { "data": "uraianPostur", "title": "Uraian", "width": "20%" },
-                        { "data": "uraianPosturSingkat", "title": "Singkat", "width": "10%" },
-                        { "data": "idInduk", "title": "Induk", "width": "10%" },
-                        { "data": "adaAkun", "title": "Ada Akun", "width": "10%" },
-                        { "data": "levelnya", "title": "Level", "width": "10%" },
-                        { "data": "group", "title": "Grup", "width": "10%" },
-                        { "data": "icon", "title": "Icon", "width": "10%" },
+                        { "data": "uraianPosturSingkat", "title": "Singkat", "width": "15%" },
+                        { "data": "idInduk", "title": "Induk", "width": "7.5%" },
+                        { "title": "Ada Akun?", "width": "7.5%",
+                            "data": function ( data ) {
+                                var akun = data["adaAkun"];
+                                switch(akun) {
+                                    case 0:
+                                        return "Tidak"
+                                        break;
+                                    case 1:
+                                        return "Ya"
+                                        break;
+                                }
+                            }
+                        },
+                        { "data": "levelnya", "title": "Level", "width": "5%" },
+                        { "data": "group", "title": "Grup", "width": "5%" },
+                        { "data": "icon", "title": "Icon", "width": "5%" },
+                        { "data": "icon_path", "title": "Icon Image", "width": "20%" },
                         { "data": null, "width": "10%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["idPostur"];

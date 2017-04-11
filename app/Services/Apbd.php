@@ -152,9 +152,9 @@ class Apbd
             'icon' => $data['icon']
         ];
 
-//        if ($fileUrl != '') {
-//            $params['image_url'] = $fileUrl;
-//        }
+        if ($fileUrl != '') {
+            $params['icon_path'] = $fileUrl;
+        }
 
         return $this->sikd->post('ref-apbd-postur', $params);
     }
@@ -184,9 +184,9 @@ class Apbd
             'icon' => $data['icon']
         ];
 
-//        if ($fileUrl != '') {
-//            $params['image_url'] = $fileUrl;
-//        }
+        if ($fileUrl != '') {
+            $params['icon_path'] = $fileUrl;
+        }
 
         return $this->sikd->put('ref-apbd-postur/' . $id, $params);
     }

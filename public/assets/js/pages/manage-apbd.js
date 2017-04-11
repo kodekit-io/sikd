@@ -24,12 +24,26 @@
                         // {"group":1,"id":1,"name":"Realisasi APBD","id_map":"14","active":"true","icon":"APBD","created_at":null,"updated_at":null}
                         //
 
-                        { "data": "id", "title": "id", "width": "10%" },
-                        { "data": "group", "title": "Grup", "width": "10%" },
-                        { "data": "name", "title": "Nama", "width": "40%" },
+                        { "data": "id", "title": "id", "width": "5%" },
+                        { "data": "group", "title": "Grup", "width": "5%" },
+                        { "data": "name", "title": "Nama", "width": "30%" },
                         { "data": "id_map", "title": "Map ID", "width": "10%" },
-                        { "data": "active", "title": "Aktif", "width": "10%" },
+                        // { "data": "active", "title": "Aktif", "width": "10%" },
+                        { "title": "Aktif?", "width": "10%",
+                            "data": function ( data ) {
+                                var aktif = data["active"];
+                                switch(aktif) {
+                                    case "false":
+                                        return "Tidak"
+                                        break;
+                                    case "true":
+                                        return "Ya"
+                                        break;
+                                }
+                            }
+                        },
                         { "data": "icon", "title": "Icon", "width": "10%" },
+                        { "data": "icon_path", "title": "Icon Image", "width": "20%" },
                         { "data": null, "width": "10%", "class": "uk-text-right",
                             "render": function ( data ) {
                                 var id = data["id"];

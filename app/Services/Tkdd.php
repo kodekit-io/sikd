@@ -161,9 +161,9 @@ class Tkdd
             'icon' => $data['icon']
         ];
 
-//        if ($fileUrl != '') {
-//            $params['image_url'] = $fileUrl;
-//        }
+        if ($fileUrl != '') {
+            $params['icon_path'] = $fileUrl;
+        }
 
         //dd($params);
 
@@ -198,9 +198,9 @@ class Tkdd
             'icon' => $data['icon']
         ];
 
-//        if ($fileUrl != '') {
-//            $params['image_url'] = $fileUrl;
-//        }
+        if ($fileUrl != '') {
+            $params['icon_path'] = $fileUrl;
+        }
 
         return $this->sikd->put('ref-tkdd-postur/' . $id, $params);
     }
